@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/features/dashboard/presentation/screen/job_seeker_deshboared_screen.dart';
+import 'package:zasulehry_job_seeker/features/home/presentation/screen/home_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
 import '../../features/auth/forgot password/presentation/screen/forgot_password.dart';
@@ -19,6 +21,7 @@ import '../../features/splash/splash_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
+  static const String home = "/home_screen.dart";
   static const String splash = "/splash_screen.dart";
   static const String onboarding = "/onboarding_screen.dart";
   static const String signUp = "/sign_up_screen.dart";
@@ -33,14 +36,6 @@ class AppRoutes {
   static const String jobSeekerDashboard = "/job_seeker_dashboard.dart";
   static const String employerDashboard = "/employer_dashboard.dart";
 
-  // Employer Routes
-  static const String jobPosting = "/job_posting.dart";
-  static const String candidateManagement = "/candidate_management.dart";
-
-  // Job Seeker Routes
-  static const String jobSearch = "/job_search.dart";
-  static const String applicationTracking = "/application_tracking.dart";
-
   // Common Routes
   static const String notifications = "/notifications_screen.dart";
   static const String chat = "/chat_screen.dart";
@@ -52,6 +47,7 @@ class AppRoutes {
   static const String setting = "/setting_screen.dart";
 
   static List<GetPage> routes = [
+    GetPage(name: home, page: () => const HomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: onboarding, page: () => const OnboardingScreen()),
     GetPage(name: signUp, page: () => SignUpScreen()),
@@ -70,5 +66,11 @@ class AppRoutes {
     GetPage(name: privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: termsOfServices, page: () => const TermsOfServicesScreen()),
     GetPage(name: setting, page: () => const SettingScreen()),
+
+    // Dashboard Routes
+    GetPage(
+      name: jobSeekerDashboard,
+      page: () => const JobSeekerDeshboaredScreen(),
+    ),
   ];
 }

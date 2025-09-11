@@ -27,7 +27,7 @@ class SignInController extends GetxController {
 
   Future<void> signInUser() async {
     if (!formKey.currentState!.validate()) return;
-    Get.toNamed(AppRoutes.profile);
+    Get.toNamed(AppRoutes.home);
     return;
 
     isLoading = true;
@@ -52,11 +52,13 @@ class SignInController extends GetxController {
       LocalStorage.myName = data['data']["attributes"]["fullName"];
 
       LocalStorage.myEmail = data['data']["attributes"]["email"];
-      
+
       // Handle user role from API response
       String apiRole = data['data']["attributes"]["role"] ?? "jobSeeker";
-      LocalStorage.userRole = apiRole == "employer" ? UserRole.employer : UserRole.jobSeeker;
-      
+      LocalStorage.userRole = apiRole == "employer"
+          ? UserRole.employer
+          : UserRole.jobSeeker;
+
       LocalStorage.isLogIn = true;
 
       LocalStorage.setBool(LocalStorageKeys.isLogIn, LocalStorage.isLogIn);
