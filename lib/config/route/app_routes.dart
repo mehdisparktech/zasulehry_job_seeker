@@ -6,12 +6,6 @@ import '../../features/auth/forgot password/presentation/screen/verify_screen.da
 import '../../features/auth/sign in/presentation/screen/sign_in_screen.dart';
 import '../../features/auth/sign up/presentation/screen/sign_up_screen.dart';
 import '../../features/auth/sign up/presentation/screen/verify_user.dart';
-import '../../features/dashboard/presentation/screen/job_seeker_dashboard_screen.dart';
-import '../../features/dashboard/presentation/screen/employer_dashboard_screen.dart';
-import '../../features/employer/job_posting/presentation/screen/job_posting_screen.dart';
-import '../../features/employer/candidate_management/presentation/screen/candidate_management_screen.dart';
-import '../../features/job_seeker/job_search/presentation/screen/job_search_screen.dart';
-import '../../features/job_seeker/application_tracking/presentation/screen/application_tracking_screen.dart';
 import '../../features/message/presentation/screen/chat_screen.dart';
 import '../../features/message/presentation/screen/message_screen.dart';
 import '../../features/notifications/presentation/screen/notifications_screen.dart';
@@ -34,19 +28,19 @@ class AppRoutes {
   static const String verifyEmail = "/verify_screen.dart";
   static const String createPassword = "/create_password.dart";
   static const String changePassword = "/change_password_screen.dart";
-  
+
   // Dashboard Routes
   static const String jobSeekerDashboard = "/job_seeker_dashboard.dart";
   static const String employerDashboard = "/employer_dashboard.dart";
-  
+
   // Employer Routes
   static const String jobPosting = "/job_posting.dart";
   static const String candidateManagement = "/candidate_management.dart";
-  
+
   // Job Seeker Routes
   static const String jobSearch = "/job_search.dart";
   static const String applicationTracking = "/application_tracking.dart";
-  
+
   // Common Routes
   static const String notifications = "/notifications_screen.dart";
   static const String chat = "/chat_screen.dart";
@@ -67,19 +61,6 @@ class AppRoutes {
     GetPage(name: verifyEmail, page: () => const VerifyScreen()),
     GetPage(name: createPassword, page: () => CreatePassword()),
     GetPage(name: changePassword, page: () => ChangePasswordScreen()),
-    
-    // Dashboard Routes
-    GetPage(name: jobSeekerDashboard, page: () => const JobSeekerDashboardScreen()),
-    GetPage(name: employerDashboard, page: () => const EmployerDashboardScreen()),
-    
-    // Employer Routes
-    GetPage(name: jobPosting, page: () => const JobPostingScreen()),
-    GetPage(name: candidateManagement, page: () => const CandidateManagementScreen()),
-    
-    // Job Seeker Routes
-    GetPage(name: jobSearch, page: () => const JobSearchScreen()),
-    GetPage(name: applicationTracking, page: () => const ApplicationTrackingScreen()),
-    
     // Common Routes
     GetPage(name: notifications, page: () => const NotificationScreen()),
     GetPage(name: chat, page: () => const ChatListScreen()),
