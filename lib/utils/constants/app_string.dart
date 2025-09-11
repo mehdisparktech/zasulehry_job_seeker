@@ -43,7 +43,7 @@ class AppString {
   static const String fullName = "Full Name";
   static const String createYourAccount = "Create Your Account";
   static const String otpVerify = "OTP Verify";
-  static const String inbox = "Inbox";
+  static const String inbox = "Messages";
   static const String searchDoctor = "search a doctor";
   static const String activeNow = "Active Now";
   static const String messageHere = "message here";
@@ -72,7 +72,7 @@ class AppString {
   static const String startServer = "Please, start the Server";
   static const String unknownError = "Unknown Error";
   static const String welcometitle = "Percenter jobs";
-static const String welcomesubtitle = "Welcome to job finder";
-static const String getStarted = "Get Started";
+  static const String welcomesubtitle = "Welcome to job finder";
+  static const String getStarted = "Get Started";
+  static const String forgotPasswordSubtitle = "enter your email address";
 }
-

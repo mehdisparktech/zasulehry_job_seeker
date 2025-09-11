@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/component/bottom_nav_bar/common_bottom_bar.dart';
+import 'package:zasulehry_job_seeker/component/card/job_card.dart';
+import 'package:zasulehry_job_seeker/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/utils/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/utils/constants/app_images.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,6 +14,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: CommonAppBar(
         title: 'Home',
+        subtitle: 'subtitle',
+        isCenterTitle: false,
         isShowBackButton: false,
         actions: [
           IconButton(
@@ -17,12 +23,36 @@ class HomeScreen extends StatelessWidget {
             icon: const Icon(Icons.notifications_outlined),
           ),
         ],
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.person_2_outlined),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: CircleAvatar(
+            backgroundColor: AppColors.white,
+            radius: 10,
+            child: const CommonImage(
+              imageSrc: AppImages.noImage,
+              width: 24,
+              height: 24,
+            ),
+          ),
         ),
       ),
-      body: const Center(child: Text('Home')),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          itemCount: 10,
+          itemBuilder: (context, index) => JobCard(
+            companyName: 'Google',
+            location: 'California, USA',
+            jobTitle: 'Senior Business Analyst',
+            salaryRange: '\$200-\$300/Month',
+            timePosted: '2 Days Ago',
+            isFullTime: true,
+            companyLogo: 'G',
+          ),
+          separatorBuilder: (context, index) => const SizedBox(height: 16),
+        ),
+      ),
       bottomNavigationBar: CommonBottomNavBar(currentIndex: 0),
     );
   }

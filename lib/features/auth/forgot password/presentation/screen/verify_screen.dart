@@ -8,7 +8,6 @@ import '../../../../../../../utils/constants/app_colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../../../../utils/constants/app_string.dart';
 
-
 class VerifyScreen extends StatefulWidget {
   const VerifyScreen({super.key});
 
@@ -30,32 +29,40 @@ class _VerifyScreenState extends State<VerifyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       /// App Bar Section
-      appBar: AppBar(
-        title: const CommonText(
-          text: AppString.forgotPassword,
-          fontWeight: FontWeight.w700,
-          fontSize: 24,
-        ),
-      ),
+      appBar: AppBar(elevation: 0),
 
       /// Body Section
       body: GetBuilder<ForgetPasswordController>(
-        builder:
-            (controller) => SingleChildScrollView(
-              padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
-              child: Form(
-                key: formKey,
+        builder: (controller) => Center(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Form(
+              key: formKey,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
+                    const CommonText(
+                      text: AppString.verify,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 24,
+                      bottom: 10,
+                    ),
+
                     /// instruction how to get OTP
-                    Center(
-                      child: CommonText(
-                        text:
-                            "${AppString.codeHasBeenSendTo} ${controller.emailController.text}",
-                        fontSize: 18,
-                        top: 100,
-                        bottom: 60,
-                      ),
+                    CommonText(
+                      text:
+                          "${AppString.codeHasBeenSendTo} ${controller.emailController.text}",
+                      fontSize: 12,
+                      bottom: 20,
+                      maxLines: 2,
+                      color: AppColors.textFiledColor,
                     ),
 
                     /// OTP Filed here
@@ -76,9 +83,9 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         autoFocus: true,
                         pinTheme: PinTheme(
                           shape: PinCodeFieldShape.box,
-                          borderRadius: BorderRadius.circular(8),
-                          fieldHeight: 60.h,
-                          fieldWidth: 60.w,
+                          borderRadius: BorderRadius.circular(24),
+                          fieldHeight: 50.h,
+                          fieldWidth: 50.w,
                           activeFillColor: AppColors.transparent,
                           selectedFillColor: AppColors.transparent,
                           inactiveFillColor: AppColors.transparent,
@@ -96,20 +103,18 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
                     /// Resent OTP or show Timer
                     GestureDetector(
-                      onTap:
-                          controller.time == '00:00'
-                              ? () {
-                                controller.startTimer();
-                                controller.forgotPasswordRepo();
-                              }
-                              : () {},
+                      onTap: controller.time == '00:00'
+                          ? () {
+                              controller.startTimer();
+                              controller.forgotPasswordRepo();
+                            }
+                          : () {},
                       child: CommonText(
-                        text:
-                            controller.time == '00:00'
-                                ? AppString.resendCode
-                                : "${AppString.resendCodeIn} ${controller.time} ${AppString.minute}",
-                        top: 60,
-                        bottom: 100,
+                        text: controller.time == '00:00'
+                            ? AppString.resendCode
+                            : "${AppString.resendCodeIn} ${controller.time} ${AppString.minute}",
+                        top: 20,
+                        bottom: 20,
                         fontSize: 18,
                       ),
                     ),
@@ -128,6 +133,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
                 ),
               ),
             ),
+          ),
+        ),
       ),
     );
   }

@@ -29,7 +29,7 @@ class CommonTextField extends StatelessWidget {
     this.hintTextColor = AppColors.textFiledColor,
     this.labelTextColor = AppColors.textFiledColor,
     this.textColor = AppColors.black,
-    this.borderColor = AppColors.transparent,
+    this.borderColor = AppColors.background,
     this.onSubmitted,
     this.onTap,
     this.suffixIcon,
