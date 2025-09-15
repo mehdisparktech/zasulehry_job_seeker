@@ -88,7 +88,7 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
 
     if (index == 0) {
       if (!(widget.currentIndex == 0)) {
-        Get.toNamed(AppRoutes.home);
+        Get.toNamed(AppRoutes.jobSeekerHome);
       }
     } else if (index == 1) {
       if (!(widget.currentIndex == 1)) {

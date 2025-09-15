@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/features/dashboard/presentation/screen/job_seeker_deshboared_screen.dart';
-import 'package:zasulehry_job_seeker/features/home/presentation/screen/home_screen.dart';
+import 'package:zasulehry_job_seeker/features/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:zasulehry_job_seeker/features/onboarding_screen/select_roule_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
@@ -22,7 +22,7 @@ import '../../features/splash/splash_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
-  static const String home = "/home_screen.dart";
+  static const String jobSeekerHome = "/job_seeker_home_screen.dart";
   static const String splash = "/splash_screen.dart";
   static const String onboarding = "/onboarding_screen.dart";
   static const String signUp = "/sign_up_screen.dart";
@@ -48,7 +48,7 @@ class AppRoutes {
   static const String setting = "/setting_screen.dart";
   static const String selectRole = "/select_role_screen.dart";
   static List<GetPage> routes = [
-    GetPage(name: home, page: () => const HomeScreen()),
+    GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: onboarding, page: () => const OnboardingScreen()),
     GetPage(name: signUp, page: () => SignUpScreen()),

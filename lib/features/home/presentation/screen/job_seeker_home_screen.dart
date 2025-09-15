@@ -6,17 +6,17 @@ import 'package:zasulehry_job_seeker/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/utils/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/utils/constants/app_images.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class JobSeekerHomeScreen extends StatelessWidget {
+  const JobSeekerHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(
-        title: 'Home',
+        title: 'Job Seeker Home',
         subtitle: 'subtitle',
-        isCenterTitle: false,
         isShowBackButton: false,
+        isCenterTitle: false,
         actions: [
           IconButton(
             onPressed: () {},
