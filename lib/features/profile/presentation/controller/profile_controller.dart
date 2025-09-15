@@ -27,6 +27,7 @@ class ProfileController extends GetxController {
   /// all controller here
   TextEditingController nameController = TextEditingController();
   TextEditingController numberController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   /// select image function here
   getProfileImage() async {
@@ -80,6 +81,23 @@ class ProfileController extends GetxController {
       Utils.errorSnackBar(response.statusCode, response.message);
     }
 
+    isLoading = false;
+    update();
+  }
+
+  deleteAccountRepo() async {
+    isLoading = true;
+    update();
+
+    var body = {"password": passwordController.text};
+
+    var response = await ApiService.delete(ApiEndPoint.user, body: body);
+
+    if (response.statusCode == 200) {
+      Get.offAllNamed(AppRoutes.signIn);
+    } else {
+      Utils.errorSnackBar(response.statusCode, response.message);
+    }
     isLoading = false;
     update();
   }

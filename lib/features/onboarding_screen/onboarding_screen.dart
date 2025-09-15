@@ -38,7 +38,7 @@ class OnboardingScreen extends StatelessWidget {
             Spacer(),
             CommonButton(
               titleText: AppString.getStarted,
-              onTap: () => Get.toNamed(AppRoutes.signUp),
+              onTap: () => Get.toNamed(AppRoutes.selectRole),
             ),
           ],
         ),

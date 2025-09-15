@@ -31,82 +31,94 @@ class ProfileScreen extends StatelessWidget {
       /// Body Section Starts here
       body: GetBuilder<ProfileController>(
         builder: (controller) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-            child: Column(
-              children: [
-                /// User Profile Image here
-                Center(
-                  child: CircleAvatar(
-                    radius: 85.sp,
-                    backgroundColor: Colors.transparent,
-                    child: const ClipOval(
-                      child: CommonImage(
-                        imageSrc: AppImages.profile,
-                        size: 170,
-                        defaultImage: AppImages.profile,
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+              child: Column(
+                children: [
+                  /// User Profile Image here
+                  Center(
+                    child: CircleAvatar(
+                      radius: 85.sp,
+                      backgroundColor: Colors.transparent,
+                      child: const ClipOval(
+                        child: CommonImage(
+                          imageSrc: AppImages.profile,
+                          size: 170,
+                          defaultImage: AppImages.profile,
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                /// User Name here
-                const CommonText(
-                  text: LocalStorageKeys.myName,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  top: 20,
-                  bottom: 24,
-                ),
-
-                /// Edit Profile item here
-                Item(
-                  icon: Icons.person,
-                  title: AppString.editProfile,
-                  onTap: () => Get.toNamed(AppRoutes.editProfile),
-                ),
-
-                /// Setting item here
-                Item(
-                  icon: Icons.settings,
-                  title: AppString.settings,
-                  onTap: () => Get.toNamed(AppRoutes.setting),
-                ),
-
-                /// Language item here
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.language),
-                          CommonText(
-                            text: controller.selectedLanguage,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                            left: 16,
-                          ),
-                          const Spacer(),
-                          PopUpMenu(
-                            items: controller.languages,
-                            selectedItem: [controller.selectedLanguage],
-                            onTap: controller.selectLanguage,
-                          ),
-                        ],
-                      ),
-                      const Divider(),
-                    ],
+                  /// User Name here
+                  const CommonText(
+                    text: LocalStorageKeys.myName,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    top: 20,
+                    bottom: 24,
                   ),
-                ),
 
-                /// Log Out item here
-                Item(
-                  icon: Icons.logout,
-                  title: AppString.logOut,
-                  onTap: logOutPopUp,
-                ),
-              ],
+                  /// Edit Profile item here
+                  Item(
+                    icon: Icons.person,
+                    title: AppString.editProfile,
+                    onTap: () => Get.toNamed(AppRoutes.editProfile),
+                  ),
+
+                  /// Setting item here
+                  Item(
+                    icon: Icons.settings,
+                    title: AppString.settings,
+                    onTap: () => Get.toNamed(AppRoutes.setting),
+                  ),
+
+                  /// Change password Item here
+                  Item(
+                    title: AppString.changePassword,
+                    iconDate: Icons.lock_outline,
+                    onTap: () => Get.toNamed(AppRoutes.changePassword),
+                  ),
+
+                  /// Terms of Service Item here
+                  Item(
+                    title: AppString.termsOfServices,
+                    iconDate: Icons.gavel,
+                    onTap: () => Get.toNamed(AppRoutes.termsOfServices),
+                  ),
+
+                  /// Privacy Policy Item here
+                  Item(
+                    onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
+                    title: AppString.privacyPolicy,
+                    icon: Icons.network_wifi_1_bar,
+                  ),
+
+                  /// Delete Account Item here
+                  Item(
+                    title: AppString.deleteAccount,
+                    iconDate: Icons.delete_outline_rounded,
+                    onTap: () => deletePopUp(
+                      controller: controller.passwordController,
+                      onTap: controller.deleteAccountRepo,
+                      isLoading: controller.isLoading,
+                    ),
+                  ),
+                  Item(
+                    icon: Icons.language,
+                    title: AppString.language,
+                    onTap: logOutPopUp,
+                  ),
+
+                  /// Log Out item here
+                  Item(
+                    icon: Icons.logout,
+                    title: AppString.logOut,
+                    onTap: logOutPopUp,
+                  ),
+                ],
+              ),
             ),
           );
         },

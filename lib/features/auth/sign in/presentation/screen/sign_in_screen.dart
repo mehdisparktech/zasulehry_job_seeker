@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/utils/constants/app_images.dart';
 import '../../../../../../../config/route/app_routes.dart';
 import '../../../../../../../utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +20,7 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
       /// App Bar Sections Starts here
       appBar: AppBar(),
@@ -28,37 +31,33 @@ class SignInScreen extends StatelessWidget {
           return SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
             child: Form(
-              key: controller.formKey,
+              key: formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10,
                 children: [
                   /// Log In Instruction here
-                  const CommonText(
-                    text: AppString.logIntoYourAccount,
-                    fontSize: 32,
-                    bottom: 20,
-                    top: 36,
-                  ),
+                  CommonImage(imageSrc: AppImages.noImage, size: 70).center,
+                  10.height,
+                  CommonText(
+                    text: AppString.welcomeBack,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.blue500,
+                  ).center,
+                  20.height,
 
                   /// Account Email Input here
-                  const CommonText(text: AppString.email, bottom: 8),
                   CommonTextField(
                     controller: controller.emailController,
-                    prefixIcon: const Icon(Icons.mail),
                     hintText: AppString.email,
                     validator: OtherHelper.emailValidator,
                   ),
 
                   /// Account Password Input here
-                  const CommonText(
-                    text: AppString.password,
-                    bottom: 8,
-                    top: 24,
-                  ),
                   CommonTextField(
                     controller: controller.passwordController,
-                    prefixIcon: const Icon(Icons.lock),
                     isPassword: true,
                     hintText: AppString.password,
                     validator: OtherHelper.passwordValidator,
@@ -73,7 +72,7 @@ class SignInScreen extends StatelessWidget {
                         text: AppString.forgotThePassword,
                         top: 10,
                         bottom: 30,
-                        color: AppColors.primaryColor,
+                        color: AppColors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
@@ -82,14 +81,14 @@ class SignInScreen extends StatelessWidget {
 
                   /// Submit Button here
                   CommonButton(
-                    titleText: AppString.signIn,
+                    titleText: AppString.logIn,
                     isLoading: controller.isLoading,
                     onTap: controller.signInUser,
                   ),
                   30.height,
 
                   /// Account Creating Instruction here
-                  const DoNotHaveAccount(),
+                  const DoNotHaveAccount().center,
                   30.height,
                 ],
               ),

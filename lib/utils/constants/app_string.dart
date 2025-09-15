@@ -1,4 +1,5 @@
 class AppString {
+  static const String welcomeBack = "Welcome Back";
   static const String dataEmpty = "Data Empty";
   static const String noInternet = "No Internet";
   static const String checkInternet = "Check Internet";
@@ -26,6 +27,7 @@ class AppString {
   static const String createNewPassword = "Create New Password";
   static const String createYourNewPassword = "Create Your New Password";
   static const String password = "Password";
+  static const String location = "Location";
   static const String continues = "Continue";
   static const String email = "Email";
   static const String codeHasBeenSendTo = "Code has been send to";
@@ -35,11 +37,12 @@ class AppString {
   static const String minute = "minute";
   static const String verify = "Verify";
   static const String logIntoYourAccount = "Login to Your Account";
-  static const String forgotThePassword = "Forgot the password";
+  static const String forgotThePassword = "Forgot password? ";
+  static const String logIn = "Log In";
   static const String signIn = "Sign in";
-  static const String doNotHaveAccount = "Don’t have an account";
+  static const String doNotHaveAccount = "Don’t have an account? ";
   static const String signUp = "Sign up";
-  static const String alreadyHaveAccount = "Already have an account";
+  static const String alreadyHaveAccount = "Already have an account ? ";
   static const String fullName = "Full Name";
   static const String createYourAccount = "Create Your Account";
   static const String otpVerify = "OTP Verify";
@@ -75,4 +78,5 @@ class AppString {
   static const String welcomesubtitle = "Welcome to job finder";
   static const String getStarted = "Get Started";
   static const String forgotPasswordSubtitle = "enter your email address";
+  static const String language = "Language";
 }

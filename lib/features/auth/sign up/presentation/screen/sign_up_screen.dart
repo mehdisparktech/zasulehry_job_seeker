@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/utils/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/utils/constants/app_images.dart';
 import '../../../../../../../utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,9 +17,12 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Sign Up Form Key
+    final signUpFormKey = GlobalKey<FormState>();
+
     return Scaffold(
       /// App Bar Section Starts Here
-      appBar: AppBar(),
+      appBar: AppBar(title: CommonText(text: AppString.signUp)),
 
       /// Body Section Starts Here
       body: GetBuilder<SignUpController>(
@@ -24,18 +30,51 @@ class SignUpScreen extends StatelessWidget {
           return SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Form(
-              key: controller.signUpFormKey,
+              key: signUpFormKey,
               child: Column(
                 children: [
                   /// Sign UP Instructions here
-                  const CommonText(
-                    text: AppString.createYourAccount,
-                    fontSize: 32,
-                    bottom: 20,
+                  CommonImage(imageSrc: AppImages.noImage, size: 70),
+                  10.height,
+                  CommonText(
+                    text: AppString.welcomeBack,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.blue500,
                   ),
+                  20.height,
 
                   /// All Text Filed here
                   SignUpAllField(controller: controller),
+                  10.height,
+
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: controller.isTermsAndConditions,
+                        onChanged: (value) {
+                          controller.isTermsAndConditions = value ?? false;
+                          controller.update();
+                        },
+                        activeColor: AppColors.blue500,
+                        side: BorderSide(color: AppColors.primaryColor),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "By signing up, you agree to our ",
+                              style: TextStyle(color: AppColors.textFiledColor),
+                            ),
+                            TextSpan(
+                              text: "Terms of Service",
+                              style: TextStyle(color: AppColors.primaryColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
 
                   16.height,
 

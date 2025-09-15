@@ -15,13 +15,10 @@ import '../../../../../utils/app_utils.dart';
 import '../../../../../utils/enum/enum.dart';
 
 class SignUpController extends GetxController {
-  /// Sign Up Form Key
-  final signUpFormKey = GlobalKey<FormState>();
-
   bool isPopUpOpen = false;
   bool isLoading = false;
   bool isLoadingVerify = false;
-
+  bool isTermsAndConditions = false;
   Timer? _timer;
   int start = 0;
 
@@ -56,6 +53,9 @@ class SignUpController extends GetxController {
   TextEditingController otpController = TextEditingController(
     text: kDebugMode ? '123456' : '',
   );
+  TextEditingController location = TextEditingController(
+    text: kDebugMode ? 'Dhaka' : '',
+  );
 
   @override
   void dispose() {
@@ -69,7 +69,9 @@ class SignUpController extends GetxController {
 
   setSelectedRole(value) {
     selectRole = value;
-    selectedUserRole = value == "Employer" ? UserRole.employer : UserRole.jobSeeker;
+    selectedUserRole = value == "Employer"
+        ? UserRole.employer
+        : UserRole.jobSeeker;
     update();
   }
 
@@ -79,7 +81,7 @@ class SignUpController extends GetxController {
   }
 
   signUpUser() async {
-    if (!signUpFormKey.currentState!.validate()) return;
+    //if (!signUpFormKey.currentState!.validate()) return;
     Get.toNamed(AppRoutes.verifyUser);
     return;
     isLoading = true;
@@ -155,7 +157,10 @@ class SignUpController extends GetxController {
       LocalStorage.setString(LocalStorageKeys.myImage, LocalStorage.myImage);
       LocalStorage.setString(LocalStorageKeys.myName, LocalStorage.myName);
       LocalStorage.setString(LocalStorageKeys.myEmail, LocalStorage.myEmail);
-      LocalStorage.setString(LocalStorageKeys.userRole, selectedUserRole == UserRole.employer ? "employer" : "jobSeeker");
+      LocalStorage.setString(
+        LocalStorageKeys.userRole,
+        selectedUserRole == UserRole.employer ? "employer" : "jobSeeker",
+      );
 
       // if (LocalStorage.myRole == 'consultant') {
       //   Get.toNamed(AppRoutes.personalInformation);
