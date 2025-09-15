@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:zasulehry_job_seeker/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/component/bottom_nav_bar/common_bottom_bar.dart';
@@ -7,6 +8,7 @@ import 'package:zasulehry_job_seeker/component/card/job_card.dart';
 import 'package:zasulehry_job_seeker/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/component/text_field/common_text_field.dart';
+import 'package:zasulehry_job_seeker/features/home/presentation/screen/view_job_details_screen.dart';
 import 'package:zasulehry_job_seeker/utils/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/utils/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/utils/extensions/extension.dart';
@@ -174,6 +176,7 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
               timePosted: '2 Days Ago',
               isFullTime: true,
               companyLogo: 'G',
+              onTap: () => Get.to(() => ViewJobDetailsScreen()),
             ),
             separatorBuilder: (context, index) => 16.height,
           ),
