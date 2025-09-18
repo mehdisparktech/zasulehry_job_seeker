@@ -19,6 +19,15 @@ import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/scr
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/setting_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/terms_of_services_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/edit_profile.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/my_applied_jobs_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/approved_jobs_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/pending_jobs_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/canceled_jobs_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/saved_jobs_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/feedback/presentation/screen/feedback_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/resume/presentation/screen/resume_creation_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/salary/presentation/screen/salary_calculator_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/salary/presentation/screen/salary_comparison_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -36,6 +45,19 @@ class AppRoutes {
   // Dashboard Routes
   static const String jobSeekerDashboard = "/job_seeker_dashboard.dart";
   static const String employerDashboard = "/employer_dashboard.dart";
+
+  // Job Management Routes
+  static const String myAppliedJobs = "/my_applied_jobs_screen.dart";
+  static const String approvedJobs = "/approved_jobs_screen.dart";
+  static const String pendingJobs = "/pending_jobs_screen.dart";
+  static const String canceledJobs = "/canceled_jobs_screen.dart";
+  static const String savedJobs = "/saved_jobs_screen.dart";
+
+  // Other Dashboard Routes
+  static const String feedback = "/feedback_screen.dart";
+  static const String resumeCreation = "/resume_creation_screen.dart";
+  static const String salaryCalculator = "/salary_calculator_screen.dart";
+  static const String salaryComparison = "/salary_comparison_screen.dart";
 
   // Common Routes
   static const String notifications = "/notifications_screen.dart";
@@ -74,5 +96,18 @@ class AppRoutes {
       page: () => const JobSeekerDeshboaredScreen(),
     ),
     GetPage(name: selectRole, page: () => const SelectRouleScreen()),
+
+    // Job Management Routes
+    GetPage(name: myAppliedJobs, page: () => const MyAppliedJobsScreen()),
+    GetPage(name: approvedJobs, page: () => const ApprovedJobsScreen()),
+    GetPage(name: pendingJobs, page: () => const PendingJobsScreen()),
+    GetPage(name: canceledJobs, page: () => const CanceledJobsScreen()),
+    GetPage(name: savedJobs, page: () => const SavedJobsScreen()),
+
+    // Other Dashboard Routes
+    GetPage(name: feedback, page: () => const FeedbackScreen()),
+    GetPage(name: resumeCreation, page: () => const ResumeCreationScreen()),
+    GetPage(name: salaryCalculator, page: () => const SalaryCalculatorScreen()),
+    GetPage(name: salaryComparison, page: () => const SalaryComparisonScreen()),
   ];
 }
