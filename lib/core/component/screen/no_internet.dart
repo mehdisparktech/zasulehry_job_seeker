@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utils/constants/app_colors.dart';
-import '../../utils/constants/app_string.dart';
+import '../../constants/app_colors.dart';
+import '../../constants/app_string.dart';
 import '../button/common_button.dart';
 import '../text/common_text.dart';
 

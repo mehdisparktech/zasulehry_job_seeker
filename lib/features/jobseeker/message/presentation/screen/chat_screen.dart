@@ -10,7 +10,7 @@ import '../../../../../core/component/text_field/common_text_field.dart';
 import '../controller/chat_controller.dart';
 import '../../data/model/chat_list_model.dart';
 import '../../../../../core/utils/enum/enum.dart';
-import '../../../../../core/utils/constants/app_string.dart';
+import '../../../../../core/constants/app_string.dart';
 import '../widgets/chat_list_item.dart';
 
 class ChatListScreen extends StatelessWidget {

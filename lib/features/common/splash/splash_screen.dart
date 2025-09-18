@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import '../../../../../core/config/route/app_routes.dart';
 import 'package:get/get.dart';
-import '../../../core/utils/constants/app_images.dart';
+import '../../../core/constants/app_images.dart';
 import '../../../core/component/image/common_image.dart';
 import '../../../core/services/storage/storage_services.dart';
 import '../../../core/utils/enum/enum.dart';

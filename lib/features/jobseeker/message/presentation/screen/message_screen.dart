@@ -7,7 +7,7 @@ import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../controller/message_controller.dart';
-import '../../../../../core/utils/constants/app_string.dart';
+import '../../../../../core/constants/app_string.dart';
 import '../widgets/chat_bubble_message.dart';
 
 class MessageScreen extends StatefulWidget {

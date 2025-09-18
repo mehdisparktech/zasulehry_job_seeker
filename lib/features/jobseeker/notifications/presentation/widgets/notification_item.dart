@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../data/model/notification_model.dart';
 import '../../../../../core/utils/extensions/extension.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
+import '../../../../../core/constants/app_colors.dart';
 
 class NotificationItem extends StatelessWidget {
   const NotificationItem({super.key, required this.item});

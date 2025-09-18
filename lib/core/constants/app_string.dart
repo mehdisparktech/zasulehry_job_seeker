@@ -74,7 +74,7 @@ class AppString {
   static const String thePasswordDoesNotMatch = "The password does not match";
   static const String startServer = "Please, start the Server";
   static const String unknownError = "Unknown Error";
-  static const String welcometitle = "Percenter jobs";
+  static const String welcometitle = "JobsinApp";
   static const String welcomesubtitle = "Welcome to job finder";
   static const String getStarted = "Get Started";
   static const String forgotPasswordSubtitle = "enter your email address";

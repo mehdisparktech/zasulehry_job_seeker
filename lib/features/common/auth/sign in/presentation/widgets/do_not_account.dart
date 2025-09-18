@@ -5,8 +5,8 @@ import '../../../../../../core/config/route/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../core/utils/constants/app_colors.dart';
-import '../../../../../../core/utils/constants/app_string.dart';
+import '../../../../../../core/constants/app_colors.dart';
+import '../../../../../../core/constants/app_string.dart';
 
 class DoNotHaveAccount extends StatelessWidget {
   const DoNotHaveAccount({super.key});

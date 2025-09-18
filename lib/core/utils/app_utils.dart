@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-import 'constants/app_colors.dart';
+import '../constants/app_colors.dart';
 
 class Utils {
   static successSnackBar(String title, String message) {

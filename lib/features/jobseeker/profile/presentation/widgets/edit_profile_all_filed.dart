@@ -3,8 +3,8 @@ import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_phone_number_text_filed.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
 import '../controller/profile_controller.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
-import '../../../../../core/utils/constants/app_string.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_string.dart';
 import '../../../../../core/utils/helpers/other_helper.dart';
 import '../../../../../core/utils/log/app_log.dart';
 

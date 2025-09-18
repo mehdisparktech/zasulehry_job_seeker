@@ -1,4 +1,4 @@
-import 'package:zasulehry_job_seeker/core/utils/constants/app_string.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 
 class ApiResponseModel {
   final int? _statusCode;

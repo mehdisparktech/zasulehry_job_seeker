@@ -7,8 +7,8 @@ import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../controller/profile_controller.dart';
-import '../../../../../core/utils/constants/app_images.dart';
-import '../../../../../core/utils/constants/app_string.dart';
+import '../../../../../core/constants/app_images.dart';
+import '../../../../../core/constants/app_string.dart';
 import '../widgets/edit_profile_all_filed.dart';
 
 class EditProfile extends StatelessWidget {

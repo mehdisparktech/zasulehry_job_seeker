@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 
 import '../other_widgets/common_loader.dart';
 import '../text/common_text.dart';

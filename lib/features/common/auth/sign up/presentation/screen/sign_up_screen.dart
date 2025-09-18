@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_colors.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../../core/component/button/common_button.dart';
 import '../../../../../../core/component/text/common_text.dart';
 import '../controller/sign_up_controller.dart';
-import '../../../../../../core/utils/constants/app_string.dart';
+import '../../../../../../core/constants/app_string.dart';
 import '../widget/already_accunt_rich_text.dart';
 import '../widget/sign_up_all_filed.dart';
 
@@ -59,18 +59,22 @@ class SignUpScreen extends StatelessWidget {
                         activeColor: AppColors.blue500,
                         side: BorderSide(color: AppColors.primaryColor),
                       ),
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "By signing up, you agree to our ",
-                              style: TextStyle(color: AppColors.textFiledColor),
-                            ),
-                            TextSpan(
-                              text: "Terms of Service",
-                              style: TextStyle(color: AppColors.primaryColor),
-                            ),
-                          ],
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: "By signing up, you agree to our ",
+                                style: TextStyle(
+                                  color: AppColors.textFiledColor,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Terms of Service",
+                                style: TextStyle(color: AppColors.primaryColor),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

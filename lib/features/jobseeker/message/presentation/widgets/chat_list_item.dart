@@ -4,7 +4,7 @@ import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../data/model/chat_list_model.dart';
 import '../../../../../core/utils/extensions/extension.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
+import '../../../../../core/constants/app_colors.dart';
 
 Widget chatListItem({required ChatModel item}) {
   return Container(

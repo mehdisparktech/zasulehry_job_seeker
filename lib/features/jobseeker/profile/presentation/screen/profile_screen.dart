@@ -9,8 +9,8 @@ import '../../../../../core/component/other_widgets/item.dart';
 import '../../../../../core/component/pop_up/common_pop_menu.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../controller/profile_controller.dart';
-import '../../../../../core/utils/constants/app_images.dart';
-import '../../../../../core/utils/constants/app_string.dart';
+import '../../../../../core/constants/app_images.dart';
+import '../../../../../core/constants/app_string.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

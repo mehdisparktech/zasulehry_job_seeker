@@ -7,8 +7,8 @@ import '../../../../../core/component/bottom_nav_bar/common_bottom_bar.dart';
 import '../../../../../core/component/pop_up/common_pop_menu.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../controller/setting_controller.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
-import '../../../../../core/utils/constants/app_string.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_string.dart';
 import '../widgets/setting_item.dart';
 
 class SettingScreen extends StatelessWidget {

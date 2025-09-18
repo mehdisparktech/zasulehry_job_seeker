@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import '../../../../../../core/component/button/common_button.dart';
 import '../../../../../../core/component/text/common_text.dart';
 import '../controller/sign_up_controller.dart';
-import '../../../../../../core/utils/constants/app_colors.dart';
+import '../../../../../../core/constants/app_colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../../../../core/utils/constants/app_string.dart';
+import '../../../../../../core/constants/app_string.dart';
 
 class VerifyUser extends StatefulWidget {
   const VerifyUser({super.key});

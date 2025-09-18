@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 
 class ViewJobDetailsScreen extends StatelessWidget {
   const ViewJobDetailsScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

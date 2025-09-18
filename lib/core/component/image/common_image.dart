@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../utils/constants/app_images.dart';
+import '../../constants/app_images.dart';
 import '../../utils/log/error_log.dart';
 
 class CommonImage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
+import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/component/text/common_text.dart';
 
 class SettingItem extends StatelessWidget {

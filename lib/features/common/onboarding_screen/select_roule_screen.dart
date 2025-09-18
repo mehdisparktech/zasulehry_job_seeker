@@ -4,8 +4,8 @@ import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/services/storage/storage_services.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_colors.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 import '../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,21 +23,31 @@ class SelectRouleScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CommonText(
-                text: "Are you a",
+                text: "Are You",
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
               ),
               20.height,
-              selectRoleCard("Job Seeker", AppImages.noImage, () {
-                Get.toNamed(AppRoutes.signUp);
-                LocalStorage.userRole = UserRole.jobSeeker;
-              }),
+              selectRoleCard(
+                text: "A Job Seeker",
+                imageSrc: AppImages.seeker,
+                onTap: () {
+                  LocalStorage.userRole = UserRole.jobSeeker;
+                  Get.toNamed(AppRoutes.signUp);
+                },
+                isSeleted: true,
+              ),
               20.height,
-              selectRoleCard("Employer", AppImages.noImage, () {
-                Get.toNamed(AppRoutes.signUp);
-                LocalStorage.userRole = UserRole.employer;
-              }),
+              selectRoleCard(
+                text: "An Employer",
+                imageSrc: AppImages.employer,
+                onTap: () {
+                  LocalStorage.userRole = UserRole.employer;
+                  Get.toNamed(AppRoutes.signUp);
+                },
+                isSeleted: false,
+              ),
             ],
           ),
         ),
@@ -45,21 +55,43 @@ class SelectRouleScreen extends StatelessWidget {
     );
   }
 
-  Widget selectRoleCard(String text, String imageSrc, VoidCallback onTap) {
+  Widget selectRoleCard({
+    required String text,
+    required String imageSrc,
+    required VoidCallback onTap,
+    required bool isSeleted,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 140,
         width: 240,
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(6),
+          color: isSeleted ? null : Colors.white,
+          gradient: isSeleted
+              ? LinearGradient(
+                  begin: Alignment(-0.9, 0),
+                  end: Alignment(1.0, 0),
+                  colors: [
+                    Color(0xFF083E4B), // #083E4B
+                    Color(0xFF074E5E), // #074E5E
+                    Color(0xFF0288A6), // #0288A6
+                  ],
+                  stops: [0.0, 0.4, 1.0],
+                )
+              : null,
+          borderRadius: BorderRadius.circular(8.0),
         ),
         child: Column(
           children: [
-            CommonImage(imageSrc: imageSrc, height: 20, width: 20),
             20.height,
-            CommonText(text: text),
+            CommonImage(imageSrc: imageSrc, height: 64, width: 64),
+            20.height,
+            CommonText(
+              text: text,
+              color: isSeleted ? AppColors.white : AppColors.black,
+              fontSize: 16,
+            ),
           ],
         ),
       ),

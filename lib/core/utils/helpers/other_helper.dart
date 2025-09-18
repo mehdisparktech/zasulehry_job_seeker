@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_string.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 
-import '../constants/app_colors.dart';
+import '../../constants/app_colors.dart';
 
 class OtherHelper {
   static RegExp emailRegexp = RegExp(

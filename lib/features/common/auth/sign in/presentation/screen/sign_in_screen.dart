@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
-import 'package:zasulehry_job_seeker/core/utils/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../../../../core/config/route/app_routes.dart';
 import '../../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,8 +10,8 @@ import '../../../../../../core/component/text/common_text.dart';
 import '../../../../../../core/component/text_field/common_text_field.dart';
 import '../controller/sign_in_controller.dart';
 
-import '../../../../../../core/utils/constants/app_colors.dart';
-import '../../../../../../core/utils/constants/app_string.dart';
+import '../../../../../../core/constants/app_colors.dart';
+import '../../../../../../core/constants/app_string.dart';
 import '../../../../../../core/utils/helpers/other_helper.dart';
 import '../widgets/do_not_account.dart';
 

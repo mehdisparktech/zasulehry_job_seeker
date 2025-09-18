@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/services/storage/storage_services.dart';
+import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 import '../../../../../../core/utils/helpers/other_helper.dart';
-import '../../../../../../core/utils/constants/app_string.dart';
+import '../../../../../../core/constants/app_string.dart';
 import '../../../../../../core/component/text_field/common_text_field.dart';
 import '../controller/sign_up_controller.dart';
 
@@ -16,18 +18,22 @@ class SignUpAllField extends StatelessWidget {
       spacing: 10,
       children: [
         /// User Name here
-        CommonTextField(
-          hintText: AppString.fullName,
-          controller: controller.nameController,
-          validator: OtherHelper.validator,
-        ),
+        LocalStorage.userRole == UserRole.employer
+            ? CommonTextField(
+                hintText: AppString.fullName,
+                controller: controller.nameController,
+                validator: OtherHelper.validator,
+              )
+            : SizedBox.shrink(),
 
         /// User location here
-        CommonTextField(
-          controller: controller.location,
-          hintText: AppString.location,
-          validator: OtherHelper.validator,
-        ),
+        LocalStorage.userRole == UserRole.employer
+            ? CommonTextField(
+                controller: controller.location,
+                hintText: AppString.location,
+                validator: OtherHelper.validator,
+              )
+            : SizedBox.shrink(),
 
         /// User Email here
         CommonTextField(

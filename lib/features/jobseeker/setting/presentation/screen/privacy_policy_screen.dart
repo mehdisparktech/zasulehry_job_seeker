@@ -5,7 +5,7 @@ import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/other_widgets/common_loader.dart';
 import '../../../../../core/component/screen/error_screen.dart';
 import '../controller/privacy_policy_controller.dart';
-import '../../../../../core/utils/constants/app_string.dart';
+import '../../../../../core/constants/app_string.dart';
 import '../../../../../core/utils/enum/enum.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
