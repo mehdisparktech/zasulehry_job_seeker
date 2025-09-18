@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
-import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 
 class ViewJobDetailsScreen extends StatelessWidget {
@@ -11,6 +10,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: CommonAppBar(title: 'Job Details'),
       body: _buildBody(),
     );
@@ -54,15 +54,15 @@ class ViewJobDetailsScreen extends StatelessWidget {
                   CommonText(
                     text: 'Google',
                     fontSize: 20,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.black,
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(width: 4.w),
                   CommonText(
                     text: '\$200 / Monthly',
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.black,
                     textAlign: TextAlign.left,
                   ),
@@ -75,7 +75,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
         CommonText(
           text: '🩺 Senior Business Analytics',
           fontSize: 20,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w500,
           color: AppColors.blue500,
           textAlign: TextAlign.left,
         ),
@@ -92,6 +92,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   textAlign: TextAlign.left,
+                  color: AppColors.textFiledColor,
                 ),
               ],
             ),
@@ -103,8 +104,8 @@ class ViewJobDetailsScreen extends StatelessWidget {
                   text: '20 Jan 2025',
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.black,
                   textAlign: TextAlign.left,
+                  color: AppColors.textFiledColor,
                 ),
               ],
             ),
@@ -136,7 +137,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
         CommonText(
           text: 'Job Description',
           fontSize: 18,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w500,
           color: AppColors.black,
           textAlign: TextAlign.left,
         ),
@@ -168,7 +169,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
         CommonText(
           text: 'Responsibilities',
           fontSize: 18,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w500,
           color: AppColors.black,
           textAlign: TextAlign.left,
         ),
@@ -194,7 +195,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
         CommonText(
           text: 'Qualifications',
           fontSize: 18,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w500,
           color: AppColors.black,
           textAlign: TextAlign.left,
         ),
@@ -241,36 +242,61 @@ class ViewJobDetailsScreen extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: CommonButton(
-            titleText: 'Save',
-            buttonColor: AppColors.white,
-            titleColor: AppColors.black,
-            titleSize: 16.sp,
-            titleWeight: FontWeight.w600,
-            buttonRadius: 20,
-            buttonHeight: 50.h,
-            onTap: () {
-              // Handle save action
-            },
-          ),
+          child: _buildButton('Save', () {
+            // Handle save action
+          }),
         ),
-        SizedBox(width: 26.w),
+        SizedBox(width: 24.w),
         Expanded(
-          flex: 2,
-          child: CommonButton(
-            titleText: 'Apply Now',
-            buttonColor: AppColors.black,
-            titleColor: AppColors.white,
-            titleSize: 16.sp,
-            titleWeight: FontWeight.w600,
-            buttonRadius: 20,
-            buttonHeight: 50.h,
-            onTap: () {
-              // Handle apply now action
-            },
-          ),
+          child: _buildButton('Apply Now', () {
+            // Handle apply now action
+          }, isGradient: true),
         ),
       ],
+    );
+  }
+
+  Widget _buildButton(
+    String text,
+    VoidCallback onTap, {
+    bool isGradient = false,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: isGradient ? null : AppColors.white,
+        gradient: isGradient
+            ? const LinearGradient(
+                begin: Alignment(-0.9, 0),
+                end: Alignment(1.0, 0),
+                colors: [
+                  Color(0xFF083E4B), // #083E4B
+                  Color(0xFF074E5E), // #074E5E
+                  Color(0xFF0288A6), // #0288A6
+                ],
+                stops: [0.0, 0.4, 1.0],
+              )
+            : null,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppColors.primaryColor, width: 2),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: onTap,
+          child: Container(
+            height: 50.h,
+            width: double.infinity,
+            alignment: Alignment.center,
+            child: CommonText(
+              text: text,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: isGradient ? AppColors.white : AppColors.primaryColor,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

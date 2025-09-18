@@ -79,4 +79,14 @@ class AppString {
   static const String getStarted = "Get Started";
   static const String forgotPasswordSubtitle = "enter your email address";
   static const String language = "Language";
+  static const String dashboard = "Dashboard";
+  static const String myAppliedJobs = "My Applied Jobs";
+  static const String approvedJobs = "Approved Jobs";
+  static const String pendingJobs = "Pending Jobs";
+  static const String canceledJobs = "Canceled Jobs";
+  static const String savedJobs = "Saved Jobs";
+  static const String feedback = "Feedback";
+  static const String jobsinAppResumeCreation = "JobsinApp Resume Creation";
+  static const String salaryCalculator = "Salary Calculator";
+  static const String salaryComparison = "Salary Comparison";
 }
