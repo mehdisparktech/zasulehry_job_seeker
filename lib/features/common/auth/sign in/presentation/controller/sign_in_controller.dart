@@ -1,0 +1,85 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
+import '../../../../../../core/config/route/app_routes.dart';
+import '../../../../../../core/services/api/api_service.dart';
+import '../../../../../../core/config/api/api_end_point.dart';
+import '../../../../../../core/services/storage/storage_keys.dart';
+import '../../../../../../core/services/storage/storage_services.dart';
+import '../../../../../../core/utils/enum/enum.dart';
+
+class SignInController extends GetxController {
+  /// Sign in Button Loading variable
+  bool isLoading = false;
+
+  /// email and password Controller here
+  TextEditingController emailController = TextEditingController(
+    text: kDebugMode ? 'developernaimul00@gmail.com' : '',
+  );
+  TextEditingController passwordController = TextEditingController(
+    text: kDebugMode ? 'hello123' : "",
+  );
+
+  /// Sign in Api call here
+
+  Future<void> signInUser() async {
+    //if (!formKey.currentState!.validate()) return;
+    Get.toNamed(AppRoutes.jobSeekerHome);
+    return;
+
+    isLoading = true;
+    update();
+
+    Map<String, String> body = {
+      "email": emailController.text,
+      "password": passwordController.text,
+    };
+
+    var response = await ApiService.post(
+      ApiEndPoint.signIn,
+      body: body,
+    ).timeout(const Duration(seconds: 30));
+
+    if (response.statusCode == 200) {
+      var data = response.data;
+
+      LocalStorage.token = data['data']["accessToken"];
+      LocalStorage.userId = data['data']["attributes"]["_id"];
+      LocalStorage.myImage = data['data']["attributes"]["image"];
+      LocalStorage.myName = data['data']["attributes"]["fullName"];
+
+      LocalStorage.myEmail = data['data']["attributes"]["email"];
+
+      // Handle user role from API response
+      String apiRole = data['data']["attributes"]["role"] ?? "jobSeeker";
+      LocalStorage.userRole = apiRole == "employer"
+          ? UserRole.employer
+          : UserRole.jobSeeker;
+
+      LocalStorage.isLogIn = true;
+
+      LocalStorage.setBool(LocalStorageKeys.isLogIn, LocalStorage.isLogIn);
+      LocalStorage.setString(LocalStorageKeys.token, LocalStorage.token);
+      LocalStorage.setString(LocalStorageKeys.userId, LocalStorage.userId);
+      LocalStorage.setString(LocalStorageKeys.myImage, LocalStorage.myImage);
+      LocalStorage.setString(LocalStorageKeys.myName, LocalStorage.myName);
+      LocalStorage.setString(LocalStorageKeys.myEmail, LocalStorage.myEmail);
+      LocalStorage.setString(LocalStorageKeys.userRole, apiRole);
+
+      // Navigate based on user role
+      if (LocalStorage.userRole == UserRole.employer) {
+        Get.offAllNamed(AppRoutes.employerDashboard);
+      } else {
+        Get.offAllNamed(AppRoutes.jobSeekerDashboard);
+      }
+
+      emailController.clear();
+      passwordController.clear();
+    } else {
+      Get.snackbar(response.statusCode.toString(), response.message);
+    }
+
+    isLoading = false;
+    update();
+  }
+}
