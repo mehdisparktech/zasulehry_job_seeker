@@ -12,6 +12,7 @@ import '../../data/model/chat_list_model.dart';
 import '../../../../../core/utils/enum/enum.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../widgets/chat_list_item.dart';
+import '../../../../../core/constants/app_colors.dart';
 
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({super.key});
@@ -24,6 +25,8 @@ class ChatListScreen extends StatelessWidget {
         title: AppString.inbox,
         leading: SizedBox.shrink(),
       ),
+
+      backgroundColor: AppColors.background,
 
       /// Body Section Starts here
       body: GetBuilder<ChatController>(
@@ -38,20 +41,24 @@ class ChatListScreen extends StatelessWidget {
 
           /// Show main data here
           Status.completed => Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
             child: Column(
               children: [
                 /// User Search bar here
                 CommonTextField(
-                  prefixIcon: const Icon(Icons.search),
-                  hintText: AppString.searchDoctor,
+                  prefixIcon: const Icon(Icons.search, color: Colors.grey),
+                  hintText: AppString.searchHere,
+                  fillColor: Colors.white,
+                  borderRadius: 24,
+                  borderColor: Colors.white,
+                  paddingVertical: 12,
                 ),
 
                 /// Show all Chat List here
                 Expanded(
                   child: ListView.builder(
                     itemCount: controller.chats.length,
-                    padding: EdgeInsets.only(top: 16.h),
+                    padding: EdgeInsets.only(top: 12.h, bottom: 8.h),
                     itemBuilder: (context, index) {
                       ChatModel item = controller.chats[index];
                       return GestureDetector(

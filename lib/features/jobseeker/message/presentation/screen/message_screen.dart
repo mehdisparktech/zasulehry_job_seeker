@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import '../controller/message_controller.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../widgets/chat_bubble_message.dart';
+import '../../../../../core/constants/app_colors.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -35,33 +36,81 @@ class _MessageScreenState extends State<MessageScreen> {
     return GetBuilder<MessageController>(
       builder: (controller) {
         return Scaffold(
+          backgroundColor: AppColors.background,
           /// App Bar Section starts here
           appBar: AppBar(
-            leading: Padding(
-              padding: EdgeInsets.only(left: 20.w),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            toolbarHeight: 88.h,
+            centerTitle: false,
+            automaticallyImplyLeading: false,
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment(-0.9, 0),
+                  end: Alignment(1.0, 0),
+                  colors: [
+                    Color(0xFF083E4B),
+                    Color(0xFF074E5E),
+                    Color(0xFF0288A6),
+                  ],
+                  stops: [0.0, 0.4, 1.0],
+                ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(24.r),
+                  bottomRight: Radius.circular(24.r),
+                ),
+              ),
+            ),
+            titleSpacing: 0,
+            title: Padding(
+              padding: EdgeInsets.only(left: 8.w, right: 12.w),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  /// participant image here
+                  IconButton(
+                    onPressed: () => Get.back(),
+                    icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
+                  ),
                   CircleAvatar(
-                    radius: 30.sp,
+                    radius: 20.r,
                     backgroundColor: Colors.transparent,
                     child: ClipOval(
-                      child: CommonImage(imageSrc: image, size: 60),
+                      child: CommonImage(imageSrc: image, size: 40),
                     ),
                   ),
-                  12.width,
-
-                  /// participant Name here
-                  CommonText(
-                    text: name,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
+                  10.width,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CommonText(
+                          text: name,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: AppColors.white,
+                        ),
+                        CommonText(
+                          text: AppString.activeNow,
+                          fontSize: 12,
+                          color: AppColors.white.withOpacity(0.8),
+                        ),
+                      ],
+                    ),
                   ),
+                  Container(
+                    width: 34.r,
+                    height: 34.r,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.call, color: Colors.white, size: 18),
+                  ),
+                  8.width,
                 ],
               ),
             ),
-            leadingWidth: Get.width,
           ),
 
           /// Body Section starts here
@@ -71,6 +120,7 @@ class _MessageScreenState extends State<MessageScreen> {
               /// Show data  here
               : ListView.builder(
                   reverse: true,
+                  padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
                   controller: controller.scrollController,
                   itemCount: controller.isMoreLoading
                       ? controller.messages.length + 1
@@ -99,23 +149,52 @@ class _MessageScreenState extends State<MessageScreen> {
             padding: MediaQuery.of(context).viewInsets,
             duration: const Duration(milliseconds: 100),
             curve: Curves.decelerate,
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 24.h),
-
-              /// Send message text filed here
-              child: CommonTextField(
-                hintText: AppString.messageHere,
-                suffixIcon: GestureDetector(
-                  onTap: controller.addNewMessage,
-                  child: Padding(
-                    padding: EdgeInsets.all(16.sp),
-                    child: const Icon(Icons.send),
-                  ),
+            child: Container(
+              padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 20.h, top: 8.h),
+              decoration: const BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
-                borderColor: Colors.white,
-                borderRadius: 8,
-                controller: controller.messageController,
-                onSubmitted: (p0) => controller.addNewMessage(),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    /// Send message text filed here
+                    child: CommonTextField(
+                      hintText: AppString.typeHere,
+                      fillColor: AppColors.filledColor,
+                      borderRadius: 24,
+                      borderColor: Colors.transparent,
+                      paddingVertical: 12,
+                      controller: controller.messageController,
+                      onSubmitted: (p0) => controller.addNewMessage(),
+                      suffixIcon: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.image_outlined),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  8.width,
+                  GestureDetector(
+                    onTap: controller.addNewMessage,
+                    child: Container(
+                      width: 44.r,
+                      height: 44.r,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.primaryColor,
+                      ),
+                      child: const Icon(Icons.send, color: Colors.white, size: 20),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
