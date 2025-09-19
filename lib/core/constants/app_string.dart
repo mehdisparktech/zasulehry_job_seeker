@@ -91,4 +91,11 @@ class AppString {
   static const String salaryComparison = "Salary Comparison";
   static const String searchHere = "Search Here";
   static const String typeHere = "Type ......";
+
+  // Profile specific
+  static const String personalInformation = "Personal Information";
+  static const String workInformation = "Work Information";
+  static const String contactAndSupport = "Contact & Support";
+  static const String shareApp = "Share App";
+  static const String review = "Review";
 }

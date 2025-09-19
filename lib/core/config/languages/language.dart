@@ -66,6 +66,12 @@ class LocalConstants extends Translations {
       "Privacy Policy": "Privacy Policy",
       "Delete account": "Delete account",
       "Terms of Services": "Terms of Services",
+      // New profile specific
+      "Personal Information": "Personal Information",
+      "Work Information": "Work Information",
+      "Contact & Support": "Contact & Support",
+      "Share App": "Share App",
+      "Review": "Review",
     },
   };
 }
