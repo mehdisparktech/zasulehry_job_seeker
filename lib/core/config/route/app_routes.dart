@@ -32,6 +32,10 @@ import 'package:zasulehry_job_seeker/features/jobseeker/feedback/presentation/sc
 import 'package:zasulehry_job_seeker/features/jobseeker/resume/presentation/screen/resume_creation_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/salary/presentation/screen/salary_calculator_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/salary/presentation/screen/salary_comparison_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/work_information_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/contact_support_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/share_app_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/personal_information_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -77,6 +81,12 @@ class AppRoutes {
   static const String connectedAccounts = "/connected_accounts_screen.dart";
   static const String impressum = "/impressum_screen.dart";
   static const String selectRole = "/select_role_screen.dart";
+  
+  // Profile Routes
+  static const String personalInformation = "/personal_information_screen.dart";
+  static const String workInformation = "/work_information_screen.dart";
+  static const String contactSupport = "/contact_support_screen.dart";
+  static const String shareApp = "/share_app_screen.dart";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -121,5 +131,11 @@ class AppRoutes {
     GetPage(name: resumeCreation, page: () => const ResumeCreationScreen()),
     GetPage(name: salaryCalculator, page: () => const SalaryCalculatorScreen()),
     GetPage(name: salaryComparison, page: () => const SalaryComparisonScreen()),
+    
+    // Profile Routes
+    GetPage(name: personalInformation, page: () => const PersonalInformationScreen()),
+    GetPage(name: workInformation, page: () => const WorkInformationScreen()),
+    GetPage(name: contactSupport, page: () => const ContactSupportScreen()),
+    GetPage(name: shareApp, page: () => const ShareAppScreen()),
   ];
 }

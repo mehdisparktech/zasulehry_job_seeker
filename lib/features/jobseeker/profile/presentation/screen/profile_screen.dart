@@ -86,13 +86,14 @@ class ProfileScreen extends StatelessWidget {
                           Item(
                             icon: Icons.person,
                             title: AppString.personalInformation,
-                            onTap: () => Get.toNamed(AppRoutes.editProfile),
+                            onTap: () => Get.toNamed(AppRoutes.personalInformation),
                           ),
 
                           // Work Information
                           Item(
                             icon: Icons.work_outline,
                             title: AppString.workInformation,
+                            onTap: () => Get.toNamed(AppRoutes.workInformation),
                           ),
 
                           // Settings
@@ -106,10 +107,15 @@ class ProfileScreen extends StatelessWidget {
                           Item(
                             icon: Icons.contact_support,
                             title: AppString.contactAndSupport,
+                            onTap: () => Get.toNamed(AppRoutes.contactSupport),
                           ),
 
                           // Share App
-                          Item(icon: Icons.share, title: AppString.shareApp),
+                          Item(
+                            icon: Icons.share, 
+                            title: AppString.shareApp,
+                            onTap: () => Get.toNamed(AppRoutes.shareApp),
+                          ),
 
                           // Review
                           Item(
