@@ -12,6 +12,7 @@ import '../../../../../core/constants/app_images.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/services/storage/storage_services.dart';
+import '../widgets/review_bottom_sheet.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -121,6 +122,7 @@ class ProfileScreen extends StatelessWidget {
                           Item(
                             icon: Icons.star_rate_rounded,
                             title: AppString.review,
+                            onTap: () => showReviewBottomSheet(context),
                           ),
 
                           // Log Out
