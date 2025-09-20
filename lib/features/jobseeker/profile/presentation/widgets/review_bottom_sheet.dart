@@ -86,7 +86,7 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
           // Title
           CommonText(
             text: "Give Your Feedback",
-            fontSize: 20.sp,
+            fontSize: 24.sp,
             fontWeight: FontWeight.w600,
             color: AppColors.black,
           ),
@@ -103,12 +103,12 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
                   });
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(right: 8.w),
+                  padding: EdgeInsets.only(right: 14.w),
                   child: Icon(
                     Icons.star,
-                    size: 32.sp,
+                    size: 48.sp,
                     color: index < selectedRating
-                        ? AppColors.primaryColor
+                        ? AppColors.blue500
                         : AppColors.textFiledColor.withOpacity(0.3),
                   ),
                 ),
@@ -121,7 +121,7 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
           // Review Label
           CommonText(
             text: "Review",
-            fontSize: 16.sp,
+            fontSize: 20.sp,
             fontWeight: FontWeight.w500,
             color: AppColors.black,
           ),
