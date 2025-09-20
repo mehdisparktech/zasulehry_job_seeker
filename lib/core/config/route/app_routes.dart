@@ -14,6 +14,7 @@ import 'package:zasulehry_job_seeker/features/common/auth/change_password/presen
 import 'package:zasulehry_job_seeker/features/jobseeker/notifications/presentation/screen/notifications_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/message/presentation/screen/chat_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/message/presentation/screen/message_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/edit_work_information_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/profile_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/privacy_policy_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/setting_screen.dart';
@@ -60,6 +61,8 @@ class AppRoutes {
   static const String pendingJobs = "/pending_jobs_screen.dart";
   static const String canceledJobs = "/canceled_jobs_screen.dart";
   static const String savedJobs = "/saved_jobs_screen.dart";
+  static const String EditworkInformation =
+      "/edit_work_information_screen.dart";
 
   // Other Dashboard Routes
   static const String feedback = "/feedback_screen.dart";
@@ -81,7 +84,7 @@ class AppRoutes {
   static const String connectedAccounts = "/connected_accounts_screen.dart";
   static const String impressum = "/impressum_screen.dart";
   static const String selectRole = "/select_role_screen.dart";
-  
+
   // Profile Routes
   static const String personalInformation = "/personal_information_screen.dart";
   static const String workInformation = "/work_information_screen.dart";
@@ -107,9 +110,15 @@ class AppRoutes {
     GetPage(name: privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: termsOfServices, page: () => const TermsOfServicesScreen()),
     GetPage(name: setting, page: () => const SettingScreen()),
-    GetPage(name: languageSelection, page: () => const LanguageSelectionScreen()),
+    GetPage(
+      name: languageSelection,
+      page: () => const LanguageSelectionScreen(),
+    ),
     GetPage(name: countrySelection, page: () => const CountrySelectionScreen()),
-    GetPage(name: connectedAccounts, page: () => const ConnectedAccountsScreen()),
+    GetPage(
+      name: connectedAccounts,
+      page: () => const ConnectedAccountsScreen(),
+    ),
     GetPage(name: impressum, page: () => const ImpressumScreen()),
 
     // Dashboard Routes
@@ -125,15 +134,22 @@ class AppRoutes {
     GetPage(name: pendingJobs, page: () => const PendingJobsScreen()),
     GetPage(name: canceledJobs, page: () => const CanceledJobsScreen()),
     GetPage(name: savedJobs, page: () => const SavedJobsScreen()),
+    GetPage(
+      name: EditworkInformation,
+      page: () => const EditWorkInformationScreen(),
+    ),
 
     // Other Dashboard Routes
     GetPage(name: feedback, page: () => const FeedbackScreen()),
     GetPage(name: resumeCreation, page: () => const ResumeCreationScreen()),
     GetPage(name: salaryCalculator, page: () => const SalaryCalculatorScreen()),
     GetPage(name: salaryComparison, page: () => const SalaryComparisonScreen()),
-    
+
     // Profile Routes
-    GetPage(name: personalInformation, page: () => const PersonalInformationScreen()),
+    GetPage(
+      name: personalInformation,
+      page: () => const PersonalInformationScreen(),
+    ),
     GetPage(name: workInformation, page: () => const WorkInformationScreen()),
     GetPage(name: contactSupport, page: () => const ContactSupportScreen()),
     GetPage(name: shareApp, page: () => const ShareAppScreen()),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
@@ -9,14 +8,15 @@ import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 
-class WorkInformationScreen extends StatefulWidget {
-  const WorkInformationScreen({super.key});
+class EditWorkInformationScreen extends StatefulWidget {
+  const EditWorkInformationScreen({super.key});
 
   @override
-  State<WorkInformationScreen> createState() => _WorkInformationScreenState();
+  State<EditWorkInformationScreen> createState() =>
+      _EditWorkInformationScreenState();
 }
 
-class _WorkInformationScreenState extends State<WorkInformationScreen> {
+class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
   final TextEditingController categoryController = TextEditingController();
   final TextEditingController subCategoryController = TextEditingController();
   final TextEditingController experienceController = TextEditingController();
@@ -98,7 +98,6 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
             ),
 
             16.height,
-
             // Experience Field
             _buildSectionLabel("Experience"),
             CommonTextField(
@@ -112,7 +111,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
             16.height,
 
             // Salary Field
-            _buildSectionLabel("Salary (Monthly)"),
+            _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
             CommonTextField(
               controller: salaryController,
               hintText: "\$250",
@@ -126,7 +125,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
 
             // Resume Section
             _buildSectionLabel("Resume"),
-            _buildResumeSection(),
+            _buildResumeUploadSection(),
 
             16.height,
 
@@ -153,16 +152,15 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
 
             // Edit Information Button
             CommonButton(
-              titleText: "Edit Information",
+              titleText: "Confirm",
               onTap: () {
                 // Handle edit information
-                // Get.snackbar(
-                //   "Success",
-                //   "Work information updated successfully",
-                //   backgroundColor: AppColors.primaryColor,
-                //   colorText: AppColors.white,
-                // );
-                Get.toNamed(AppRoutes.EditworkInformation);
+                Get.snackbar(
+                  "Success",
+                  "Work information updated successfully",
+                  backgroundColor: AppColors.primaryColor,
+                  colorText: AppColors.white,
+                );
               },
             ),
 
@@ -230,13 +228,92 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
     );
   }
 
-  Widget _buildResumeSection() {
+  // ignore: unused_element
+  Widget _buildFormField({
+    required String label,
+    required String hintText,
+    TextEditingController? controller,
+    bool isDropdown = false,
+    VoidCallback? onTap,
+    Widget? suffixIcon,
+  }) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        CommonText(
+          text: label,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
+        ),
+        8.height,
+        Container(
+          height: 50.h,
+          decoration: BoxDecoration(
+            color: AppColors.filledColor,
+            border: Border.all(
+              color: AppColors.textFiledColor.withOpacity(0.3),
+            ),
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          child: isDropdown
+              ? GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CommonText(
+                          text: hintText,
+                          fontSize: 14,
+                          color: AppColors.textFiledColor,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_down,
+                          color: AppColors.textFiledColor,
+                          size: 20.sp,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : TextField(
+                  controller: controller,
+                  style: TextStyle(color: AppColors.black, fontSize: 14.sp),
+                  decoration: InputDecoration(
+                    hintText: hintText,
+                    hintStyle: TextStyle(
+                      color: AppColors.textFiledColor,
+                      fontSize: 14.sp,
+                    ),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 12.w,
+                      vertical: 15.h,
+                    ),
+                    suffixIcon: suffixIcon,
+                  ),
+                ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildResumeUploadSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CommonText(
+          text: 'Upload Resume',
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
+        ),
+        12.height,
         // Upload Resume Button
         GestureDetector(
           onTap: () {
-            // Handle resume upload
             Get.snackbar(
               "Info",
               "Resume upload functionality will be implemented",
@@ -245,23 +322,24 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
             );
           },
           child: Container(
-            width: double.infinity,
             height: 50.h,
             decoration: BoxDecoration(
+              color: AppColors.filledColor,
               border: Border.all(
-                color: AppColors.textFiledColor.withOpacity(0.3),
+                color: AppColors.primaryColor.withOpacity(0.3),
+                style: BorderStyle.solid,
               ),
-              borderRadius: BorderRadius.circular(10.r),
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.upload_file,
+                  Icons.cloud_upload_outlined,
                   color: AppColors.primaryColor,
                   size: 20.sp,
                 ),
-                SizedBox(width: 8.w),
+                8.width,
                 CommonText(
                   text: 'Upload Resume',
                   fontSize: 14,
@@ -272,10 +350,8 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
             ),
           ),
         ),
-
-        SizedBox(height: 12.h),
-
-        // Example PDF Display
+        12.height,
+        // Existing PDF Display
         Container(
           padding: EdgeInsets.all(12.w),
           decoration: BoxDecoration(
@@ -300,7 +376,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                   ),
                 ),
               ),
-              SizedBox(width: 12.w),
+              12.width,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -322,7 +398,6 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  // Handle download
                   Get.snackbar(
                     "Info",
                     "Download functionality will be implemented",
@@ -331,7 +406,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                   );
                 },
                 child: Icon(
-                  Icons.download,
+                  Icons.download_outlined,
                   color: AppColors.primaryColor,
                   size: 20.sp,
                 ),
@@ -339,52 +414,163 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
             ],
           ),
         ),
+        12.height,
+        // Add Other Button
+        GestureDetector(
+          onTap: () {
+            Get.snackbar(
+              "Info",
+              "Add other resume functionality will be implemented",
+              backgroundColor: AppColors.primaryColor,
+              colorText: AppColors.white,
+            );
+          },
+          child: Container(
+            height: 40.h,
+            width: 100.w,
+            decoration: BoxDecoration(
+              color: AppColors.primaryColor,
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Center(
+              child: CommonText(
+                text: 'Add Other',
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: AppColors.white,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
 
   Widget _buildImageAttachmentSection() {
-    return Container(
-      height: 120.h,
-      child: GridView.builder(
-        scrollDirection: Axis.horizontal,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 8.w,
-          mainAxisSpacing: 8.w,
-          childAspectRatio: 1,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CommonText(
+          text: 'Attachment (Maximum 8 Image)',
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
         ),
-        itemCount: 6, // 6 placeholder boxes as shown in image
-        itemBuilder: (context, index) {
-          return GestureDetector(
+        12.height,
+        // Upload Documents Button
+        GestureDetector(
+          onTap: () {
+            Get.snackbar(
+              "Info",
+              "Document upload functionality will be implemented",
+              backgroundColor: AppColors.primaryColor,
+              colorText: AppColors.white,
+            );
+          },
+          child: Container(
+            height: 50.h,
+            decoration: BoxDecoration(
+              color: AppColors.filledColor,
+              border: Border.all(
+                color: AppColors.primaryColor.withOpacity(0.3),
+                style: BorderStyle.solid,
+              ),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.cloud_upload_outlined,
+                  color: AppColors.primaryColor,
+                  size: 20.sp,
+                ),
+                8.width,
+                CommonText(
+                  text: 'Upload Documents',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.primaryColor,
+                ),
+              ],
+            ),
+          ),
+        ),
+        12.height,
+        // Image Grid
+        Container(
+          height: 120.h,
+          child: GridView.builder(
+            scrollDirection: Axis.horizontal,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8.w,
+              mainAxisSpacing: 8.w,
+              childAspectRatio: 1,
+            ),
+            itemCount: 6,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Get.snackbar(
+                    "Info",
+                    "Image upload functionality will be implemented",
+                    backgroundColor: AppColors.primaryColor,
+                    colorText: AppColors.white,
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.filledColor,
+                    borderRadius: BorderRadius.circular(8.r),
+                    border: Border.all(
+                      color: AppColors.textFiledColor.withOpacity(0.3),
+                    ),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.add_photo_alternate_outlined,
+                      color: AppColors.textFiledColor,
+                      size: 24.sp,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        12.height,
+        // Add More Button
+        Align(
+          alignment: Alignment.centerRight,
+          child: GestureDetector(
             onTap: () {
-              // Handle image upload
               Get.snackbar(
                 "Info",
-                "Image upload functionality will be implemented",
+                "Add more images functionality will be implemented",
                 backgroundColor: AppColors.primaryColor,
                 colorText: AppColors.white,
               );
             },
             child: Container(
+              height: 40.h,
+              width: 100.w,
               decoration: BoxDecoration(
-                color: AppColors.filledColor,
+                color: AppColors.primaryColor,
                 borderRadius: BorderRadius.circular(8.r),
-                border: Border.all(
-                  color: AppColors.textFiledColor.withOpacity(0.3),
-                ),
               ),
               child: Center(
-                child: Icon(
-                  Icons.add_photo_alternate_outlined,
-                  color: AppColors.textFiledColor,
-                  size: 24.sp,
+                child: CommonText(
+                  text: 'Add More',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.white,
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        ),
+      ],
     );
   }
 
