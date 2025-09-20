@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import '../../../../../core/config/route/app_routes.dart';
-import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../core/component/bottom_nav_bar/common_bottom_bar.dart';
-import '../../../../../core/component/pop_up/common_pop_menu.dart';
-import '../../../../../core/component/text/common_text.dart';
 import '../controller/setting_controller.dart';
-import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../widgets/setting_item.dart';
+import '../widgets/profile_visibility_option.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -18,88 +15,115 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       /// App Bar Section starts here
-      appBar: AppBar(
-        centerTitle: true,
-        title: const CommonText(
-          text: AppString.settings,
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
+      appBar: CommonAppBar(title: AppString.settings),
 
       /// Body Section starts here
       body: GetBuilder<SettingController>(
         builder: (controller) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: Column(
-              children: [
-                70.height,
-
-                /// Change password Item here
-                InkWell(
-                  onTap: () => Get.toNamed(AppRoutes.changePassword),
-                  child: const SettingItem(
-                    title: AppString.changePassword,
-                    iconDate: Icons.lock_outline,
-                  ),
-                ),
-
-                /// Terms of Service Item here
-                InkWell(
-                  onTap: () => Get.toNamed(AppRoutes.termsOfServices),
-                  child: const SettingItem(
-                    title: AppString.termsOfServices,
-                    iconDate: Icons.gavel,
-                  ),
-                ),
-
-                /// Privacy Policy Item here
-                InkWell(
-                  onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
-                  child: const SettingItem(
-                    title: AppString.privacyPolicy,
-                    iconDate: Icons.network_wifi_1_bar,
-                  ),
-                ),
-
-                /// Delete Account Item here
-                InkWell(
-                  onTap: () => deletePopUp(
-                    controller: controller.passwordController,
-                    onTap: controller.deleteAccountRepo,
-                    isLoading: controller.isLoading,
-                  ),
-                  child: Container(
-                    height: 52.h,
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    decoration: BoxDecoration(
-                      color: AppColors.blueLight,
-                      borderRadius: BorderRadius.circular(4.r),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.delete_outline_rounded,
-                          color: AppColors.secondary,
-                        ),
-                        CommonText(
-                          text: AppString.deleteAccount,
-                          color: AppColors.secondary,
-                          left: 12.w,
-                        ),
-                      ],
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+              child: Column(
+                children: [
+                  /// Language Item
+                  InkWell(
+                    onTap: () {
+                      // Add language selection functionality
+                    },
+                    child: const SettingItem(
+                      title: AppString.language,
+                      iconDate: Icons.language,
                     ),
                   ),
-                ),
-              ],
+
+                  /// Country Item
+                  InkWell(
+                    onTap: () {
+                      // Add country selection functionality
+                    },
+                    child: const SettingItem(
+                      title: AppString.country,
+                      iconDate: Icons.location_on_outlined,
+                    ),
+                  ),
+
+                  /// Change Password Item
+                  InkWell(
+                    onTap: () => Get.toNamed(AppRoutes.changePassword),
+                    child: const SettingItem(
+                      title: AppString.changePassword,
+                      iconDate: Icons.lock_outline,
+                    ),
+                  ),
+
+                  /// Connected Accounts Item
+                  InkWell(
+                    onTap: () {
+                      // Add connected accounts functionality
+                    },
+                    child: const SettingItem(
+                      title: AppString.connectedAccounts,
+                      iconDate: Icons.account_circle_outlined,
+                    ),
+                  ),
+
+                  /// Privacy Policy Item
+                  InkWell(
+                    onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
+                    child: const SettingItem(
+                      title: AppString.privacyPolicy,
+                      iconDate: Icons.privacy_tip_outlined,
+                    ),
+                  ),
+
+                  /// Terms & Condition Item
+                  InkWell(
+                    onTap: () => Get.toNamed(AppRoutes.termsOfServices),
+                    child: const SettingItem(
+                      title: AppString.termsOfServices,
+                      iconDate: Icons.description_outlined,
+                    ),
+                  ),
+
+                  /// Impressum Item
+                  InkWell(
+                    onTap: () {
+                      // Add impressum functionality
+                    },
+                    child: const SettingItem(
+                      title: AppString.impressum,
+                      iconDate: Icons.info_outline,
+                    ),
+                  ),
+
+                  SizedBox(height: 20.h),
+
+                  /// Profile Visibility Section
+                  ProfileVisibilityOption(
+                    title: AppString.employersCanSeeYourProfile,
+                    description:
+                        AppString.onJobsinAppPlatformWeTryToHideIdentityDetails,
+                    isSelected: true,
+                    onTap: () {
+                      // Handle profile visibility selection
+                    },
+                  ),
+
+                  ProfileVisibilityOption(
+                    title: AppString.employersCannotSeeYourProfile,
+                    description:
+                        AppString.theEmployersYouHaveAppliedToCanSeeYourProfile,
+                    isSelected: false,
+                    onTap: () {
+                      // Handle profile visibility selection
+                    },
+                  ),
+                ],
+              ),
             ),
           );
         },
       ),
-
-      /// Bottom Navigation Bar Section starts here
-      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 0),
     );
   }
 }
