@@ -6,4 +6,5 @@ class AppImages {
   static const String profile = "$baseurl/profile.png";
   static const String employer = "$baseurl/employer.png";
   static const String seeker = "$baseurl/seeker.png";
+  static const String google = "$baseurl/google.png";
 }

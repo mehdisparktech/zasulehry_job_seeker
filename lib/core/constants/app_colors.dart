@@ -4,9 +4,15 @@ class AppColors {
   static const Color primaryColor = Color(0xFF0288A6);
   static const Color secondary = Color(0xFF074E5E);
   static const Color background = Color(0xFFE6E6E6);
-  static const Color backgroundGradient = Color(0xFF083E4B); // Button gradient start
-  static const Color backgroundGradient2 = Color(0xFF074E5E); // Button gradient middle
-  static const Color backgroundGradient3 = Color(0xFF0288A6); // Button gradient end
+  static const Color backgroundGradient = Color(
+    0xFF083E4B,
+  ); // Button gradient start
+  static const Color backgroundGradient2 = Color(
+    0xFF074E5E,
+  ); // Button gradient middle
+  static const Color backgroundGradient3 = Color(
+    0xFF0288A6,
+  ); // Button gradient end
 
   static const Color transparent = Colors.transparent;
   static const Color white = Colors.white;
@@ -16,4 +22,5 @@ class AppColors {
   static const Color textFiledColor = Color(0xFF979797);
   static const blueLight = Color(0xFFe8e8f5);
   static const blue500 = Color(0xFF056B82);
+  static const Color blue100 = Color(0xFFB2D1D8);
 }

@@ -36,7 +36,8 @@ class _MessageScreenState extends State<MessageScreen> {
     return GetBuilder<MessageController>(
       builder: (controller) {
         return Scaffold(
-          backgroundColor: AppColors.background,
+          backgroundColor: AppColors.white,
+
           /// App Bar Section starts here
           appBar: AppBar(
             backgroundColor: Colors.transparent,
@@ -69,7 +70,10 @@ class _MessageScreenState extends State<MessageScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Get.back(),
-                    icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: Colors.white,
+                    ),
                   ),
                   CircleAvatar(
                     radius: 20.r,
@@ -105,7 +109,11 @@ class _MessageScreenState extends State<MessageScreen> {
                       color: Colors.white.withOpacity(0.2),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.call, color: Colors.white, size: 18),
+                    child: const Icon(
+                      Icons.call,
+                      color: Colors.white,
+                      size: 18,
+                    ),
                   ),
                   8.width,
                 ],
@@ -120,7 +128,10 @@ class _MessageScreenState extends State<MessageScreen> {
               /// Show data  here
               : ListView.builder(
                   reverse: true,
-                  padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
+                  padding: EdgeInsets.symmetric(
+                    vertical: 12.h,
+                    horizontal: 8.w,
+                  ),
                   controller: controller.scrollController,
                   itemCount: controller.isMoreLoading
                       ? controller.messages.length + 1
@@ -150,7 +161,12 @@ class _MessageScreenState extends State<MessageScreen> {
             duration: const Duration(milliseconds: 100),
             curve: Curves.decelerate,
             child: Container(
-              padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 20.h, top: 8.h),
+              padding: EdgeInsets.only(
+                left: 16.w,
+                right: 16.w,
+                bottom: 40.h,
+                top: 8.h,
+              ),
               decoration: const BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.only(
@@ -164,9 +180,9 @@ class _MessageScreenState extends State<MessageScreen> {
                     /// Send message text filed here
                     child: CommonTextField(
                       hintText: AppString.typeHere,
-                      fillColor: AppColors.filledColor,
+                      fillColor: AppColors.white,
+                      borderColor: Colors.grey,
                       borderRadius: 24,
-                      borderColor: Colors.transparent,
                       paddingVertical: 12,
                       controller: controller.messageController,
                       onSubmitted: (p0) => controller.addNewMessage(),
@@ -189,9 +205,13 @@ class _MessageScreenState extends State<MessageScreen> {
                       height: 44.r,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: AppColors.primaryColor,
+                        color: AppColors.white,
                       ),
-                      child: const Icon(Icons.send, color: Colors.white, size: 20),
+                      child: const Icon(
+                        Icons.send,
+                        color: AppColors.primaryColor,
+                        size: 20,
+                      ),
                     ),
                   ),
                 ],

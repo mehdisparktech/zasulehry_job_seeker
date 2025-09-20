@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 
 class JobCard extends StatefulWidget {
@@ -63,19 +64,10 @@ class JobCardState extends State<JobCard> {
                   width: 50,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  child: Center(
-                    child: Text(
-                      widget.companyLogo,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF0288A6),
-                      ),
-                    ),
-                  ),
+                  child: CommonImage(imageSrc: widget.companyLogo),
                 ),
                 10.width,
                 // Company Name and Location
@@ -88,7 +80,7 @@ class JobCardState extends State<JobCard> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       4.height,
@@ -96,7 +88,7 @@ class JobCardState extends State<JobCard> {
                         widget.location,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -125,7 +117,7 @@ class JobCardState extends State<JobCard> {
                 ),
               ],
             ),
-            16.height,
+            6.height,
             // Job Title
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,7 +127,7 @@ class JobCardState extends State<JobCard> {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 const Spacer(),
@@ -144,7 +136,7 @@ class JobCardState extends State<JobCard> {
                     'Full Time',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -153,13 +145,13 @@ class JobCardState extends State<JobCard> {
                     'Part Time',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
               ],
             ),
-            12.height,
+            6.height,
             // Bottom Row - Salary, Full Time, and Time Posted
             Row(
               children: [
@@ -168,7 +160,7 @@ class JobCardState extends State<JobCard> {
                   widget.salaryRange,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -176,10 +168,7 @@ class JobCardState extends State<JobCard> {
                 // Time Posted
                 Text(
                   widget.timePosted,
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.8),
-                    fontSize: 14,
-                  ),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],
             ),

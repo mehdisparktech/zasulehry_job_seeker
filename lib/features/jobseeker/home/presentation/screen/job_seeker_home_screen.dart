@@ -182,7 +182,7 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
               salaryRange: '\$200-\$300/Month',
               timePosted: '2 Days Ago',
               isFullTime: true,
-              companyLogo: 'G',
+              companyLogo: AppImages.google,
               onTap: () => Get.to(() => ViewJobDetailsScreen()),
             ),
             separatorBuilder: (context, index) => 16.height,
@@ -215,9 +215,23 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
         double salary = 50; // Example
         double distance = 10;
 
-        final List<String> categories = ['Category', 'IT', 'Marketing', 'Design'];
-        final List<String> subCategories = ['Sub Category', 'Frontend', 'Backend', 'UI/UX'];
-        final List<String> employmentTypes = ['Full Time', 'Part Time', 'Contract'];
+        final List<String> categories = [
+          'Category',
+          'IT',
+          'Marketing',
+          'Design',
+        ];
+        final List<String> subCategories = [
+          'Sub Category',
+          'Frontend',
+          'Backend',
+          'UI/UX',
+        ];
+        final List<String> employmentTypes = [
+          'Full Time',
+          'Part Time',
+          'Contract',
+        ];
         final List<String> experiences = ['With Experience', 'Fresher'];
 
         return StatefulBuilder(
@@ -242,21 +256,26 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
                     value: value,
                     hint: CommonText(
                       text: hint,
-                      color: AppColors.blue500,
+                      color: AppColors.black,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
-                    icon: Icon(Icons.keyboard_arrow_down, color: AppColors.blue500),
+                    icon: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: AppColors.black,
+                    ),
                     items: items
-                        .map((e) => DropdownMenuItem<String>(
-                              value: e,
-                              child: CommonText(
-                                text: e,
-                                color: AppColors.blue500,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ))
+                        .map(
+                          (e) => DropdownMenuItem<String>(
+                            value: e,
+                            child: CommonText(
+                              text: e,
+                              color: AppColors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        )
                         .toList(),
                     onChanged: onChanged,
                   ),
@@ -269,17 +288,20 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
               return GestureDetector(
                 onTap: () => setState(() => salaryTypeIndex = index),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 6.h,
+                  ),
                   decoration: BoxDecoration(
-                    color: selected ? AppColors.background : Colors.white,
+                    color: selected ? AppColors.primaryColor : Colors.white,
                     borderRadius: BorderRadius.circular(6.r),
-                    border: Border.all(color: AppColors.background),
+                    border: Border.all(color: AppColors.primaryColor),
                   ),
                   child: CommonText(
                     text: text,
-                    color: AppColors.blue500,
+                    color: selected ? Colors.white : AppColors.black,
                     fontSize: 12,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               );
@@ -315,7 +337,11 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
                                 shape: BoxShape.circle,
                                 border: Border.all(color: Colors.redAccent),
                               ),
-                              child: Icon(Icons.close, color: Colors.redAccent, size: 18.sp),
+                              child: Icon(
+                                Icons.close,
+                                color: Colors.redAccent,
+                                size: 18.sp,
+                              ),
                             ),
                           ),
                         ],
@@ -360,8 +386,8 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
                           CommonText(
                             text: 'Salary',
                             fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.blue500,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.black,
                           ),
                           12.width,
                           segmentButton('Hourly', 0),
@@ -388,8 +414,16 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CommonText(text: '\$10', fontSize: 12, color: AppColors.blue500),
-                              CommonText(text: '\$100', fontSize: 12, color: AppColors.blue500),
+                              CommonText(
+                                text: '\$10',
+                                fontSize: 12,
+                                color: AppColors.blue500,
+                              ),
+                              CommonText(
+                                text: '\$100',
+                                fontSize: 12,
+                                color: AppColors.blue500,
+                              ),
                             ],
                           ),
                         ],
@@ -398,8 +432,8 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
                       CommonText(
                         text: 'Distance',
                         fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.blue500,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.black,
                       ),
                       8.height,
                       Column(
@@ -417,8 +451,16 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CommonText(text: '10km', fontSize: 12, color: AppColors.blue500),
-                              CommonText(text: '100km', fontSize: 12, color: AppColors.blue500),
+                              CommonText(
+                                text: '10km',
+                                fontSize: 12,
+                                color: AppColors.blue500,
+                              ),
+                              CommonText(
+                                text: '100km',
+                                fontSize: 12,
+                                color: AppColors.blue500,
+                              ),
                             ],
                           ),
                         ],

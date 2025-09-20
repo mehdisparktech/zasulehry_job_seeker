@@ -33,14 +33,14 @@ class ChatBubbleMessage extends StatelessWidget {
         mainAxisAlignment: isMe
             ? MainAxisAlignment.end
             : MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           // Show sender's profile image for received messages
           if (!isMe && image.isNotEmpty)
             Row(
               children: [
                 CircleAvatar(
-                  radius: 16.r,
+                  radius: 14.r,
                   child: ClipOval(
                     child: CommonImage(
                       imageSrc: image,
@@ -55,70 +55,52 @@ class ChatBubbleMessage extends StatelessWidget {
 
           // Message bubble
           Flexible(
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.75,
-                minWidth: 60.w,
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(isMe ? 12.r : 4.r),
-                  topRight: Radius.circular(isMe ? 4.r : 12.r),
-                  bottomLeft: Radius.circular(12.r),
-                  bottomRight: Radius.circular(12.r),
-                ),
-                color: isMe ? AppColors.primaryColor : AppColors.white,
-                border: !isMe
-                    ? Border.all(
-                        color: AppColors.primaryColor.withOpacity(0.2),
-                        width: 1,
-                      )
-                    : null,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Message text
-                  CommonText(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.45,
+                    minWidth: 60.w,
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 8.h,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12.r),
+                      topRight: Radius.circular(12.r),
+                      bottomLeft: Radius.circular(isMe ? 12.r : 4.r),
+                      bottomRight: Radius.circular(isMe ? 4.r : 12.r),
+                    ),
+                    color: isMe ? AppColors.primaryColor : AppColors.blue100,
+                    border: !isMe
+                        ? Border.all(
+                            color: AppColors.primaryColor.withOpacity(0.2),
+                            width: 1,
+                          )
+                        : null,
+                  ),
+                  child: CommonText(
                     text: text,
-                    fontSize: 14.sp,
+                    fontSize: 16.sp,
                     color: isMe ? AppColors.white : AppColors.black,
                     maxLines: 100, // Allow many lines
                     textAlign: TextAlign.left,
+                    fontWeight: FontWeight.w400,
                   ),
-
-                  // Timestamp
-                  SizedBox(height: 4.h),
-                  CommonText(
-                    text: _formatTime(time),
-                    fontSize: 10.sp,
-                    color: isMe
-                        ? AppColors.white.withOpacity(0.7)
-                        : AppColors.black.withOpacity(0.5),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // Show sender's profile image for sent messages
-          if (isMe)
-            Row(
-              children: [
-                SizedBox(width: 8.w),
-                CircleAvatar(
-                  radius: 16.r,
-                  backgroundColor: AppColors.primaryColor,
-                  child: Icon(
-                    Icons.person,
-                    size: 16.sp,
-                    color: AppColors.white,
-                  ),
+                ),
+                SizedBox(height: 4.h),
+                CommonText(
+                  text: "${_formatTime(time)} Pm",
+                  fontSize: 14.sp,
+                  color: AppColors.textFiledColor,
                 ),
               ],
             ),
+          ),
         ],
       ),
     );
