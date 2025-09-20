@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/pop_up/job_application_popup.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 
@@ -249,7 +251,13 @@ class ViewJobDetailsScreen extends StatelessWidget {
         SizedBox(width: 24.w),
         Expanded(
           child: _buildButton('Apply Now', () {
-            // Handle apply now action
+            // Show job application popup
+            Get.dialog(
+              const JobApplicationPopup(
+                jobTitle: 'Senior Business Analytics',
+                companyName: 'Google',
+              ),
+            );
           }, isGradient: true),
         ),
       ],
