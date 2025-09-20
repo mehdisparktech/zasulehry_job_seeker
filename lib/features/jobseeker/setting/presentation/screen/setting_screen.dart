@@ -27,9 +27,7 @@ class SettingScreen extends StatelessWidget {
                 children: [
                   /// Language Item
                   InkWell(
-                    onTap: () {
-                      // Add language selection functionality
-                    },
+                    onTap: () => Get.toNamed(AppRoutes.languageSelection),
                     child: const SettingItem(
                       title: AppString.language,
                       iconDate: Icons.language,
@@ -38,9 +36,7 @@ class SettingScreen extends StatelessWidget {
 
                   /// Country Item
                   InkWell(
-                    onTap: () {
-                      // Add country selection functionality
-                    },
+                    onTap: () => Get.toNamed(AppRoutes.countrySelection),
                     child: const SettingItem(
                       title: AppString.country,
                       iconDate: Icons.location_on_outlined,
@@ -58,9 +54,7 @@ class SettingScreen extends StatelessWidget {
 
                   /// Connected Accounts Item
                   InkWell(
-                    onTap: () {
-                      // Add connected accounts functionality
-                    },
+                    onTap: () => Get.toNamed(AppRoutes.connectedAccounts),
                     child: const SettingItem(
                       title: AppString.connectedAccounts,
                       iconDate: Icons.account_circle_outlined,
@@ -87,9 +81,7 @@ class SettingScreen extends StatelessWidget {
 
                   /// Impressum Item
                   InkWell(
-                    onTap: () {
-                      // Add impressum functionality
-                    },
+                    onTap: () => Get.toNamed(AppRoutes.impressum),
                     child: const SettingItem(
                       title: AppString.impressum,
                       iconDate: Icons.info_outline,

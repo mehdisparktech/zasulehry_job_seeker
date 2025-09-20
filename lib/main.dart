@@ -11,7 +11,6 @@ import 'core/services/storage/storage_services.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init.tryCatch();
-
   runApp(const MyApp());
 }
 

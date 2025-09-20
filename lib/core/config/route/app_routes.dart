@@ -18,6 +18,10 @@ import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/scr
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/privacy_policy_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/setting_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/terms_of_services_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/language_selection_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/country_selection_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/connected_accounts_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/impressum_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/edit_profile.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/my_applied_jobs_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/approved_jobs_screen.dart';
@@ -68,6 +72,10 @@ class AppRoutes {
   static const String privacyPolicy = "/privacy_policy_screen.dart";
   static const String termsOfServices = "/terms_of_services_screen.dart";
   static const String setting = "/setting_screen.dart";
+  static const String languageSelection = "/language_selection_screen.dart";
+  static const String countrySelection = "/country_selection_screen.dart";
+  static const String connectedAccounts = "/connected_accounts_screen.dart";
+  static const String impressum = "/impressum_screen.dart";
   static const String selectRole = "/select_role_screen.dart";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
@@ -89,6 +97,10 @@ class AppRoutes {
     GetPage(name: privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: termsOfServices, page: () => const TermsOfServicesScreen()),
     GetPage(name: setting, page: () => const SettingScreen()),
+    GetPage(name: languageSelection, page: () => const LanguageSelectionScreen()),
+    GetPage(name: countrySelection, page: () => const CountrySelectionScreen()),
+    GetPage(name: connectedAccounts, page: () => const ConnectedAccountsScreen()),
+    GetPage(name: impressum, page: () => const ImpressumScreen()),
 
     // Dashboard Routes
     GetPage(
