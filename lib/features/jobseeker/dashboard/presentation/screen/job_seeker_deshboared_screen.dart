@@ -58,6 +58,13 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
                 onTap: () => Get.toNamed(AppRoutes.feedback),
               ),
 
+              /// Appointments Item here
+              Item(
+                icon: Icons.calendar_today,
+                title: AppString.appointments,
+                onTap: () => Get.toNamed(AppRoutes.appointments),
+              ),
+
               /// Resume Creation Item here
               Item(
                 icon: Icons.document_scanner_outlined,

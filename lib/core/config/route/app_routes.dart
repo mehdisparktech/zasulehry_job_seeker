@@ -37,6 +37,7 @@ import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/scr
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/contact_support_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/share_app_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/personal_information_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/screen/appointments_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -69,6 +70,7 @@ class AppRoutes {
   static const String resumeCreation = "/resume_creation_screen.dart";
   static const String salaryCalculator = "/salary_calculator_screen.dart";
   static const String salaryComparison = "/salary_comparison_screen.dart";
+  static const String appointments = "/appointments_screen.dart";
 
   // Common Routes
   static const String notifications = "/notifications_screen.dart";
@@ -153,5 +155,8 @@ class AppRoutes {
     GetPage(name: workInformation, page: () => const WorkInformationScreen()),
     GetPage(name: contactSupport, page: () => const ContactSupportScreen()),
     GetPage(name: shareApp, page: () => const ShareAppScreen()),
+    
+    // Appointments Route
+    GetPage(name: appointments, page: () => const AppointmentsScreen()),
   ];
 }

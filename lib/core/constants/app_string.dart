@@ -96,6 +96,7 @@ class AppString {
   static const String jobsinAppResumeCreation = "JobsinApp Resume Creation";
   static const String salaryCalculator = "Salary Calculator";
   static const String salaryComparison = "Salary Comparison";
+  static const String appointments = "Appointments";
   static const String searchHere = "Search Here";
   static const String typeHere = "Type ......";
 
