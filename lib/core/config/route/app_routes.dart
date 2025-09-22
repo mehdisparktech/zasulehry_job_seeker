@@ -50,10 +50,6 @@ import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/
     as employer_my_applied_jobs;
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_posted_jobs_screen.dart'
     as employer_posted_jobs;
-import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_pending_jobs_screen.dart'
-    as employer_pending_jobs;
-import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_canceled_jobs_screen.dart'
-    as employer_canceled_jobs;
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_saved_jobs_screen.dart'
     as employer_saved_jobs;
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_chat_screen.dart'
@@ -98,6 +94,14 @@ import 'package:zasulehry_job_seeker/features/employer/setting/presentation/scre
     as employer_impressum;
 import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/two_step_verification.dart'
     as employer_two_step_verification;
+import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_post_job_screen.dart'
+    as employer_post_job;
+import 'package:zasulehry_job_seeker/features/employer/ai_tools/presentation/screen/ai_tools_screen.dart'
+    as employer_ai_tools;
+import 'package:zasulehry_job_seeker/features/employer/profile/presentation/screen/employer_verify_account_screen.dart'
+    as employer_verify_account;
+import 'package:zasulehry_job_seeker/features/employer/download_center/presentation/screen/employer_download_center_screen.dart'
+    as employer_download_center;
 
 // Employer invoice imports
 import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_list_screen.dart'
@@ -219,6 +223,10 @@ class AppRoutes {
   static const String employerInvoiceDetail = "/employer_invoice_detail";
   static const String employerTwoStepVerification =
       "/employer_two_step_verification";
+  static const String employerPostJob = "/employer_post_job";
+  static const String employerAiTools = "/employer_ai_tools";
+  static const String employerVerifyAccount = "/employer_verify_account";
+  static const String employerDownloadCenter = "/employer_download_center";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -307,14 +315,7 @@ class AppRoutes {
       name: employerPostedJobs,
       page: () => employer_posted_jobs.EmployerPostedJobsScreen(),
     ),
-    GetPage(
-      name: employerPendingJobs,
-      page: () => employer_pending_jobs.PendingJobsScreen(),
-    ),
-    GetPage(
-      name: employerCanceledJobs,
-      page: () => employer_canceled_jobs.CanceledJobsScreen(),
-    ),
+
     GetPage(
       name: employerSavedJobs,
       page: () => employer_saved_jobs.SavedJobsScreen(),
@@ -416,6 +417,22 @@ class AppRoutes {
     GetPage(
       name: employerTwoStepVerification,
       page: () => employer_two_step_verification.TwoStepVerificationScreen(),
+    ),
+    GetPage(
+      name: employerPostJob,
+      page: () => employer_post_job.EmployerPostJobScreen(),
+    ),
+    GetPage(
+      name: employerAiTools,
+      page: () => employer_ai_tools.AiToolsScreen(),
+    ),
+    GetPage(
+      name: employerVerifyAccount,
+      page: () => const employer_verify_account.EmployerVerifyAccountScreen(),
+    ),
+    GetPage(
+      name: employerDownloadCenter,
+      page: () => employer_download_center.EmployerDownloadCenterScreen(),
     ),
   ];
 }

@@ -120,4 +120,11 @@ class AppString {
   static const String downloadCenter = "Download Center";
   static const String verifyAccount = "Verify Account";
   static const String twoStepVerification = "Two Step Verification";
+  static const String uploadBusinessDocuments = "Upload Business Documents";
+  static const String businessDocumentExamples =
+      "Examples of Business Documents";
+  static const String byContinuingYouAccepted =
+      "By Continuing, You Accepted The";
+  static const String privacyPolicyAnd = "Privacy Policy And";
+  static const String termsAndCondition = "Terms & Condition";
 }

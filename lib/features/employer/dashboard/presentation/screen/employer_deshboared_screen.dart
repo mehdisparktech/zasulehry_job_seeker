@@ -57,15 +57,14 @@ class EmployerDeshboaredScreen extends StatelessWidget {
               Item(
                 icon: Icons.add_box_outlined,
                 title: AppString.postJob,
-                // TODO: Wire to employer post job screen when available
-                onTap: null,
+                onTap: () => Get.toNamed(AppRoutes.employerPostJob),
               ),
 
               // AI Tools
               Item(
                 icon: Icons.auto_awesome,
                 title: AppString.aiTools,
-                onTap: null,
+                onTap: () => Get.toNamed(AppRoutes.employerAiTools),
               ),
 
               // Appointments
@@ -101,15 +100,14 @@ class EmployerDeshboaredScreen extends StatelessWidget {
               Item(
                 icon: Icons.download,
                 title: AppString.downloadCenter,
-                // Closest available related feature: Work Information / Invoice
-                onTap: () => Get.toNamed(AppRoutes.employerInvoiceList),
+                onTap: () => Get.toNamed(AppRoutes.employerDownloadCenter),
               ),
 
               // Verify Account
               Item(
                 icon: Icons.verified_user,
                 title: AppString.verifyAccount,
-                onTap: () => Get.toNamed(AppRoutes.verifyUser),
+                onTap: () => Get.toNamed(AppRoutes.employerVerifyAccount),
               ),
 
               // Salary Calculator
