@@ -1,18 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/other_widgets/item.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 
-class JobSeekerDeshboaredScreen extends StatelessWidget {
-  const JobSeekerDeshboaredScreen({super.key});
+class EmployerDeshboaredScreen extends StatelessWidget {
+  const EmployerDeshboaredScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: AppString.dashboard, isBackButton: false),
+      appBar: CommonAppBar(
+        title: 'Welcome To Percenter',
+        subtitle: 'Example Name',
+        isCenterTitle: false,
+        leading: Padding(
+          padding: EdgeInsets.only(left: 10.w),
+          child: CircleAvatar(
+            backgroundColor: AppColors.white,
+            radius: 24.r,
+            child: CommonImage(
+              imageSrc: AppImages.google,
+              width: 30.w,
+              height: 30.h,
+            ),
+          ),
+        ),
+        isBackButton: false,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications, color: AppColors.white),
+            color: AppColors.white,
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

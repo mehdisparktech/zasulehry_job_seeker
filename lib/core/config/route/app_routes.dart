@@ -40,7 +40,7 @@ import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/scr
 import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/screen/appointments_screen.dart';
 
 // Employer imports with prefixes to avoid conflicts
-import 'package:zasulehry_job_seeker/features/employer/dashboard/presentation/screen/employer_job_seeker_deshboared_screen.dart'
+import 'package:zasulehry_job_seeker/features/employer/dashboard/presentation/screen/employer_deshboared_screen.dart'
     as employer_dashboard;
 import 'package:zasulehry_job_seeker/features/employer/appointments/presentation/screen/employer_appointments_screen.dart'
     as employer_appointments;
@@ -286,7 +286,7 @@ class AppRoutes {
     // Employer Routes
     GetPage(
       name: employerDashboard,
-      page: () => employer_dashboard.JobSeekerDeshboaredScreen(),
+      page: () => const employer_dashboard.EmployerDeshboaredScreen(),
     ),
     GetPage(
       name: employerAppointments,
