@@ -11,7 +11,6 @@ class EmployerDownloadCenterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: 'Download Center', isCenterTitle: true),
-      backgroundColor: AppColors.background,
       body: Padding(
         padding: EdgeInsets.all(16.w),
         child: Column(
@@ -63,11 +62,8 @@ class EmployerDownloadCenterScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(
-          color: AppColors.textFiledColor.withOpacity(0.3),
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(color: AppColors.blue500, width: 1),
         boxShadow: [
           BoxShadow(
             color: AppColors.black.withOpacity(0.05),

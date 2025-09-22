@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_detail_screen.dart';
 
 class EmployerInvoiceListScreen extends StatefulWidget {
@@ -66,7 +67,7 @@ class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
                   text: invoice['date'],
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
-                  color: Colors.grey,
+                  color: AppColors.textSecondary,
                 ),
               ],
             ),
@@ -80,7 +81,7 @@ class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
                 },
                 icon: Icon(
                   Icons.visibility_outlined,
-                  color: Colors.grey.shade600,
+                  color: AppColors.blue500,
                   size: 20.sp,
                 ),
                 padding: EdgeInsets.zero,
@@ -93,7 +94,7 @@ class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
                 },
                 icon: Icon(
                   Icons.download_outlined,
-                  color: Colors.grey.shade600,
+                  color: AppColors.blue500,
                   size: 20.sp,
                 ),
                 padding: EdgeInsets.zero,

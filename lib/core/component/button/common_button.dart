@@ -17,6 +17,7 @@ class CommonButton extends StatefulWidget {
   final double buttonHeight;
   final double buttonWidth;
   final bool isLoading;
+  final bool isGradient;
 
   const CommonButton({
     this.onTap,
@@ -31,6 +32,7 @@ class CommonButton extends StatefulWidget {
     this.isLoading = false,
     this.buttonWidth = double.infinity,
     this.borderColor = AppColors.primaryColor,
+    this.isGradient = true,
     super.key,
   });
 
@@ -76,16 +78,19 @@ class _CommonButtonState extends State<CommonButton>
         scale: (1 - _animationController.value).toDouble(),
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(-0.9, 0),
-              end: Alignment(1.0, 0),
-              colors: [
-                Color(0xFF083E4B), // #083E4B
-                Color(0xFF074E5E), // #074E5E
-                Color(0xFF0288A6), // #0288A6
-              ],
-              stops: [0.0, 0.4, 1.0],
-            ),
+            color: widget.buttonColor,
+            gradient: widget.isGradient
+                ? LinearGradient(
+                    begin: Alignment(-0.9, 0),
+                    end: Alignment(1.0, 0),
+                    colors: [
+                      Color(0xFF083E4B), // #083E4B
+                      Color(0xFF074E5E), // #074E5E
+                      Color(0xFF0288A6), // #0288A6
+                    ],
+                    stops: [0.0, 0.4, 1.0],
+                  )
+                : null,
             borderRadius: BorderRadius.circular(widget.buttonRadius),
             border: Border.all(
               color: widget.borderColor ?? Colors.transparent,

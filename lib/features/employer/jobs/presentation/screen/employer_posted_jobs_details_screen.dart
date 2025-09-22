@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/applied_seekers_screen.dart';
 
 class EmployerPostedJobsDetailsScreen extends StatelessWidget {
@@ -44,25 +46,25 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
   Widget _buildJobHeader() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         // Company header with logo, name, salary and verification
         Row(
           children: [
             // Google logo (using G icon)
             Container(
-              width: 24.w,
-              height: 24.h,
+              width: 30.w,
+              height: 30.h,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(4.r),
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: Center(
-                child: CommonText(
-                  text: 'G',
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor,
+                child: CommonImage(
+                  imageSrc: AppImages.google,
+                  width: 24.w,
+                  height: 24.h,
                 ),
               ),
             ),
@@ -74,33 +76,14 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
                   CommonText(
                     text: 'Google',
                     fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.black,
                   ),
-                  Row(
-                    children: [
-                      CommonText(
-                        text: '\$200 / Monthly',
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.black,
-                      ),
-                      SizedBox(width: 8.w),
-                      // Verification badge
-                      Container(
-                        width: 20.w,
-                        height: 20.h,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.check,
-                          color: Colors.white,
-                          size: 12.sp,
-                        ),
-                      ),
-                    ],
+                  CommonText(
+                    text: '\$200 / Monthly',
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black,
                   ),
                 ],
               ),
@@ -113,19 +96,17 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: CommonText(
-                text: '🩺 Senior Business Analytics',
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600,
-                color: AppColors.blue500,
-              ),
+            CommonText(
+              text: '🩺 Senior Business Analytics',
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.blue500,
             ),
             CommonText(
               text: '20 Likes',
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
-              color: AppColors.textFiledColor,
+              color: AppColors.textSecondary,
             ),
           ],
         ),
@@ -140,15 +121,14 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
                   Icon(
                     Icons.location_on_outlined,
                     size: 16.sp,
-                    color: AppColors.textFiledColor,
+                    color: AppColors.blue500,
                   ),
-                  SizedBox(width: 4.w),
                   Expanded(
                     child: CommonText(
                       text: 'XYZ Hospital, 123 Main Street',
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColors.textFiledColor,
+                      color: AppColors.textSecondary,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -162,14 +142,14 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
                 Icon(
                   Icons.access_time_outlined,
                   size: 16.sp,
-                  color: AppColors.textFiledColor,
+                  color: AppColors.textSecondary,
                 ),
                 SizedBox(width: 4.w),
                 CommonText(
                   text: '20 Jan 2025',
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.textFiledColor,
+                  color: AppColors.textSecondary,
                 ),
               ],
             ),
@@ -187,12 +167,21 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
               decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                borderRadius: BorderRadius.circular(16.r),
+                gradient: LinearGradient(
+                  begin: Alignment(-0.9, 0),
+                  end: Alignment(1.0, 0),
+                  colors: [
+                    Color(0xFF083E4B), // #083E4B
+                    Color(0xFF074E5E), // #074E5E
+                    Color(0xFF0288A6), // #0288A6
+                  ],
+                  stops: [0.0, 0.4, 1.0],
+                ),
+                borderRadius: BorderRadius.circular(4.r),
               ),
               child: CommonText(
                 text: '4 Applied',
-                fontSize: 12.sp,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
@@ -209,7 +198,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
       children: [
         CommonText(
           text: 'Job Description',
-          fontSize: 18,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.black,
           textAlign: TextAlign.left,
@@ -218,9 +207,9 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
         CommonText(
           text:
               'We Are Seeking A Compassionate Nurse To Join Our Growing Department, Providing Quality Care To Patients In A Fast-Paced Environment.',
-          fontSize: 14,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: AppColors.black,
+          color: AppColors.textSecondary,
           textAlign: TextAlign.left,
           maxLines: 10,
         ),
@@ -241,7 +230,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
       children: [
         CommonText(
           text: 'Responsibilities',
-          fontSize: 18,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.black,
           textAlign: TextAlign.left,
@@ -267,7 +256,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
       children: [
         CommonText(
           text: 'Qualifications',
-          fontSize: 18,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.black,
           textAlign: TextAlign.left,
@@ -299,9 +288,9 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
           Expanded(
             child: CommonText(
               text: text,
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
-              color: AppColors.black,
+              color: AppColors.textSecondary,
               textAlign: TextAlign.left,
               maxLines: 10,
             ),
@@ -337,7 +326,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24.r),
-        border: Border.all(color: AppColors.primaryColor, width: 2.w),
+        border: Border.all(color: AppColors.blue500, width: 2.w),
       ),
       child: Material(
         color: Colors.transparent,
@@ -352,7 +341,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
               text: 'Edit Now',
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.primaryColor,
+              color: AppColors.blue500,
             ),
           ),
         ),

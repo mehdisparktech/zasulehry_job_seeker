@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/detailed_profile_screen.dart';
 
 class SeekerProfileScreen extends StatelessWidget {
@@ -72,7 +74,7 @@ class SeekerProfileScreen extends StatelessWidget {
               shape: BoxShape.circle,
               color: AppColors.blue100,
               border: Border.all(
-                color: AppColors.primaryColor.withOpacity(0.2),
+                color: AppColors.blue500.withOpacity(0.2),
                 width: 2,
               ),
             ),
@@ -104,19 +106,19 @@ class SeekerProfileScreen extends StatelessWidget {
                           text: jobTitle,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.textFiledColor,
+                          color: AppColors.textSecondary,
                         ),
                       ],
                     ),
                   ),
-                  Row(
+                  Column(
                     children: [
                       // Chat Icon
                       Container(
                         width: 40.w,
                         height: 40.h,
                         decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
+                          color: AppColors.blue500,
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
@@ -125,23 +127,13 @@ class SeekerProfileScreen extends StatelessWidget {
                           size: 20.sp,
                         ),
                       ),
-                      SizedBox(width: 12.w),
+                      SizedBox(height: 12.h),
                       // Contact Button
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16.w,
-                          vertical: 8.h,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.primaryColor),
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        child: CommonText(
-                          text: 'Contact',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primaryColor,
-                        ),
+                      CommonText(
+                        text: 'Contact',
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.blue500,
                       ),
                     ],
                   ),
@@ -155,21 +147,15 @@ class SeekerProfileScreen extends StatelessWidget {
   }
 
   Widget _buildDefaultAvatar() {
-    String initials = '';
-    List<String> nameParts = seekerName.split(' ');
-    if (nameParts.isNotEmpty) {
-      initials = nameParts[0][0].toUpperCase();
-      if (nameParts.length > 1) {
-        initials += nameParts[1][0].toUpperCase();
-      }
-    }
-
-    return Center(
-      child: CommonText(
-        text: initials,
-        fontSize: 24.sp,
-        fontWeight: FontWeight.w600,
-        color: AppColors.primaryColor,
+    return CircleAvatar(
+      radius: 25.r,
+      child: ClipOval(
+        child: CommonImage(
+          imageSrc: AppImages.profile,
+          width: 50.w,
+          height: 50.h,
+          fill: BoxFit.cover,
+        ),
       ),
     );
   }
@@ -182,7 +168,7 @@ class SeekerProfileScreen extends StatelessWidget {
           text: 'About Me',
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
-          color: AppColors.black,
+          color: AppColors.blue500,
         ),
         SizedBox(height: 12.h),
         CommonText(
@@ -190,8 +176,9 @@ class SeekerProfileScreen extends StatelessWidget {
               'Lorem Ipsum Dolor Sit Amet Consectetur. Ultrices Eu Vitae Bibendum Id At. Mattis Tortor Cursus Viverra Eget Augue Condimentum. Facilisi Eu Vel Non Scelerisque Neque. Massa Massa Egestas Morbi Odio Nunc Sollicitudin. Vitae In R...',
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: AppColors.black,
+          color: AppColors.textSecondary,
           maxLines: 10,
+          textAlign: TextAlign.left,
         ),
       ],
     );
@@ -205,122 +192,112 @@ class SeekerProfileScreen extends StatelessWidget {
           text: 'Resume',
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
-          color: AppColors.black,
+          color: AppColors.blue500,
         ),
         SizedBox(height: 12.h),
-        Container(
-          padding: EdgeInsets.all(16.w),
-          decoration: BoxDecoration(
-            color: AppColors.filledColor,
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          child: Row(
-            children: [
-              // PDF Icon
-              Container(
-                width: 40.w,
-                height: 40.h,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-                child: Center(
-                  child: CommonText(
-                    text: 'PDF',
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+        Row(
+          children: [
+            // PDF Icon
+            Container(
+              width: 40.w,
+              height: 40.h,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Center(
+                child: CommonText(
+                  text: 'PDF',
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
                 ),
               ),
-              SizedBox(width: 12.w),
+            ),
+            SizedBox(width: 12.w),
 
-              // File Info
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CommonText(
-                      text: 'Example.pdf',
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.black,
-                    ),
-                    SizedBox(height: 2.h),
-                    CommonText(
-                      text: '01.02.2024',
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textFiledColor,
-                    ),
-                  ],
-                ),
-              ),
-
-              // Action Icons
-              Row(
+            // File Info
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.visibility_outlined,
-                    color: AppColors.textFiledColor,
-                    size: 20.sp,
+                  CommonText(
+                    text: 'Example.pdf',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.black,
                   ),
-                  SizedBox(width: 12.w),
-                  Icon(
-                    Icons.download_outlined,
-                    color: AppColors.textFiledColor,
-                    size: 20.sp,
+                  SizedBox(height: 2.h),
+                  CommonText(
+                    text: '01.02.2024',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+
+            // Action Icons
+            Row(
+              children: [
+                Icon(
+                  Icons.visibility_outlined,
+                  color: AppColors.blue500,
+                  size: 20.sp,
+                ),
+                SizedBox(width: 12.w),
+                Icon(
+                  Icons.download_outlined,
+                  color: AppColors.blue500,
+                  size: 20.sp,
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );
   }
 
   Widget _buildQualification() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CommonText(
-          text: 'Qualification',
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w600,
-          color: AppColors.black,
-        ),
-        SizedBox(height: 12.h),
-
-        // Exam/Degree Title
-        _buildQualificationRow('Exam/Degree Title', ''),
-        SizedBox(height: 8.h),
-        CommonText(
-          text: 'Bachelor Of Science BSC',
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-          color: AppColors.black,
-        ),
-        SizedBox(height: 16.h),
-
-        // Table Header
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
-          decoration: BoxDecoration(
-            color: AppColors.filledColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8.r),
-              topRight: Radius.circular(8.r),
-            ),
+    return Container(
+      padding: EdgeInsets.all(16.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: AppColors.blue100, width: 1),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CommonText(
+            text: 'Qualification',
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.blue500,
           ),
-          child: Row(
+          SizedBox(height: 12.h),
+
+          // Exam/Degree Title
+          _buildQualificationRow('Exam/Degree Title', ''),
+          SizedBox(height: 8.h),
+          CommonText(
+            text: 'Bachelor Of Science BSC',
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            color: AppColors.textSecondary,
+          ),
+          SizedBox(height: 16.h),
+
+          // Table Header
+          Row(
             children: [
               Expanded(
                 flex: 2,
                 child: CommonText(
                   text: 'Passing Year',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
                   color: AppColors.black,
                 ),
               ),
@@ -328,8 +305,8 @@ class SeekerProfileScreen extends StatelessWidget {
                 flex: 2,
                 child: CommonText(
                   text: 'Result Type',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
                   color: AppColors.black,
                 ),
               ),
@@ -337,33 +314,23 @@ class SeekerProfileScreen extends StatelessWidget {
                 flex: 1,
                 child: CommonText(
                   text: 'Result',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
                   color: AppColors.black,
                 ),
               ),
             ],
           ),
-        ),
+          SizedBox(height: 8.h),
 
-        // Table Data
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: AppColors.filledColor),
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(8.r),
-              bottomRight: Radius.circular(8.r),
-            ),
-          ),
-          child: Row(
+          // Table Data
+          Row(
             children: [
               Expanded(
                 flex: 2,
                 child: CommonText(
                   text: '2022',
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.black,
                 ),
@@ -372,7 +339,7 @@ class SeekerProfileScreen extends StatelessWidget {
                 flex: 2,
                 child: CommonText(
                   text: 'CGPA',
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.black,
                 ),
@@ -381,15 +348,15 @@ class SeekerProfileScreen extends StatelessWidget {
                 flex: 1,
                 child: CommonText(
                   text: '4.06',
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.black,
                 ),
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -424,13 +391,13 @@ class SeekerProfileScreen extends StatelessWidget {
           text: 'Availability',
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
-          color: AppColors.black,
+          color: AppColors.blue500,
         ),
         SizedBox(height: 12.h),
         CommonText(
           text: '07:00AM-08:00 Pm',
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w400,
           color: AppColors.black,
         ),
       ],
@@ -445,13 +412,13 @@ class SeekerProfileScreen extends StatelessWidget {
           text: 'Expected Salary',
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
-          color: AppColors.black,
+          color: AppColors.blue500,
         ),
         SizedBox(height: 12.h),
         CommonText(
           text: '\$500',
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w400,
           color: AppColors.black,
         ),
       ],

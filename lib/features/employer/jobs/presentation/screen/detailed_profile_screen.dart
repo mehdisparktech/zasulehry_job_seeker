@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 
 class DetailedProfileScreen extends StatelessWidget {
   final String seekerName;
@@ -78,58 +80,48 @@ class DetailedProfileScreen extends StatelessWidget {
   }
 
   Widget _buildDefaultAvatar() {
-    String initials = '';
-    List<String> nameParts = seekerName.split(' ');
-    if (nameParts.isNotEmpty) {
-      initials = nameParts[0][0].toUpperCase();
-      if (nameParts.length > 1) {
-        initials += nameParts[1][0].toUpperCase();
-      }
-    }
-
-    return Center(
-      child: CommonText(
-        text: initials,
-        fontSize: 36.sp,
-        fontWeight: FontWeight.w600,
-        color: AppColors.primaryColor,
+    return CircleAvatar(
+      radius: 25.r,
+      child: ClipOval(
+        child: CommonImage(
+          imageSrc: AppImages.profile,
+          width: 100.w,
+          height: 100.h,
+          fill: BoxFit.cover,
+        ),
       ),
     );
   }
 
   Widget _buildPersonalInformation() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CommonText(
-          text: 'Personal Information',
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w600,
-          color: AppColors.primaryColor,
-        ),
-        SizedBox(height: 16.h),
-
-        Container(
-          padding: EdgeInsets.all(16.w),
-          decoration: BoxDecoration(
-            border: Border.all(color: AppColors.primaryColor.withOpacity(0.3)),
-            borderRadius: BorderRadius.circular(12.r),
+    return Container(
+      padding: EdgeInsets.all(16.w),
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.blue100, width: 1),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          CommonText(
+            text: 'Personal Information',
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.blue500,
           ),
-          child: Column(
-            children: [
-              _buildInfoRow('Name', 'Example Name'),
-              SizedBox(height: 12.h),
-              _buildInfoRow('Email', 'Example@Gmail.Com'),
-              SizedBox(height: 12.h),
-              _buildInfoRow('Contact', '+15352832128'),
-              SizedBox(height: 12.h),
-              _buildInfoRow('Location', 'Dhaka Bangladesh'),
-              SizedBox(height: 12.h),
-              _buildInfoRow('Role', 'Job Seeker'),
-            ],
-          ),
-        ),
-      ],
+          SizedBox(height: 16.h),
+          _buildInfoRow('Name', 'Example Name'),
+          SizedBox(height: 12.h),
+          _buildInfoRow('Email', 'Example@Gmail.Com'),
+          SizedBox(height: 12.h),
+          _buildInfoRow('Contact', '+15352832128'),
+          SizedBox(height: 12.h),
+          _buildInfoRow('Location', 'Dhaka Bangladesh'),
+          SizedBox(height: 12.h),
+          _buildInfoRow('Role', 'Job Seeker'),
+        ],
+      ),
     );
   }
 
@@ -141,7 +133,7 @@ class DetailedProfileScreen extends StatelessWidget {
           text: 'Work Information',
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
-          color: AppColors.black,
+          color: AppColors.blue500,
         ),
         SizedBox(height: 16.h),
 
@@ -154,73 +146,66 @@ class DetailedProfileScreen extends StatelessWidget {
         SizedBox(height: 16.h),
 
         // Resume/CV Section
-        Container(
-          padding: EdgeInsets.all(16.w),
-          decoration: BoxDecoration(
-            color: AppColors.filledColor,
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          child: Row(
-            children: [
-              // PDF Icon
-              Container(
-                width: 40.w,
-                height: 40.h,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-                child: Center(
-                  child: CommonText(
-                    text: 'PDF',
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+        Row(
+          children: [
+            // PDF Icon
+            Container(
+              width: 40.w,
+              height: 40.h,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Center(
+                child: CommonText(
+                  text: 'PDF',
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
                 ),
               ),
-              SizedBox(width: 12.w),
+            ),
+            SizedBox(width: 12.w),
 
-              // File Info
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CommonText(
-                      text: 'Example.pdf',
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.black,
-                    ),
-                    SizedBox(height: 2.h),
-                    CommonText(
-                      text: '01.02.2024',
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textFiledColor,
-                    ),
-                  ],
-                ),
-              ),
-
-              // Action Icons
-              Row(
+            // File Info
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.visibility_outlined,
-                    color: AppColors.textFiledColor,
-                    size: 20.sp,
+                  CommonText(
+                    text: 'Example.pdf',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.black,
                   ),
-                  SizedBox(width: 12.w),
-                  Icon(
-                    Icons.download_outlined,
-                    color: AppColors.textFiledColor,
-                    size: 20.sp,
+                  SizedBox(height: 2.h),
+                  CommonText(
+                    text: '01.02.2024',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+
+            // Action Icons
+            Row(
+              children: [
+                Icon(
+                  Icons.visibility_outlined,
+                  color: AppColors.blue500,
+                  size: 20.sp,
+                ),
+                SizedBox(width: 12.w),
+                Icon(
+                  Icons.download_outlined,
+                  color: AppColors.blue500,
+                  size: 20.sp,
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );
@@ -229,6 +214,7 @@ class DetailedProfileScreen extends StatelessWidget {
   Widget _buildWorkInfoRow(String label, String value) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
           width: 100.w,
@@ -251,6 +237,7 @@ class DetailedProfileScreen extends StatelessWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.black,
+            textAlign: TextAlign.start,
           ),
         ),
       ],
@@ -260,6 +247,7 @@ class DetailedProfileScreen extends StatelessWidget {
   Widget _buildInfoRow(String label, String value) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
           width: 80.w,
@@ -268,6 +256,7 @@ class DetailedProfileScreen extends StatelessWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
             color: AppColors.black,
+            textAlign: TextAlign.start,
           ),
         ),
         CommonText(
@@ -282,6 +271,7 @@ class DetailedProfileScreen extends StatelessWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.black,
+            textAlign: TextAlign.start,
           ),
         ),
       ],
@@ -357,6 +347,7 @@ class DetailedProfileScreen extends StatelessWidget {
           fontWeight: FontWeight.w400,
           color: AppColors.black,
           maxLines: 10,
+          textAlign: TextAlign.start,
         ),
       ],
     );

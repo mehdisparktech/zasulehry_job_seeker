@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/seeker_profile_screen.dart';
 
 class AppliedSeekersScreen extends StatelessWidget {
@@ -12,7 +14,6 @@ class AppliedSeekersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: 'Applied Seekers'),
       body: _buildBody(),
     );
@@ -92,11 +93,11 @@ class AppliedSeekersScreen extends StatelessWidget {
                       profileImage,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
-                        return _buildDefaultAvatar(name);
+                        return _buildDefaultAvatar();
                       },
                     ),
                   )
-                : _buildDefaultAvatar(name),
+                : _buildDefaultAvatar(),
           ),
           SizedBox(width: 16.w),
 
@@ -107,16 +108,16 @@ class AppliedSeekersScreen extends StatelessWidget {
               children: [
                 CommonText(
                   text: name,
-                  fontSize: 16.sp,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.black,
                 ),
                 SizedBox(height: 4.h),
                 CommonText(
                   text: title,
-                  fontSize: 14.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.textFiledColor,
+                  color: AppColors.textSecondary,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -130,15 +131,24 @@ class AppliedSeekersScreen extends StatelessWidget {
               _viewSeekerProfile(name, title);
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
               decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                borderRadius: BorderRadius.circular(20.r),
+                gradient: LinearGradient(
+                  begin: Alignment(-0.9, 0),
+                  end: Alignment(1.0, 0),
+                  colors: [
+                    Color(0xFF083E4B), // #083E4B
+                    Color(0xFF074E5E), // #074E5E
+                    Color(0xFF0288A6), // #0288A6
+                  ],
+                  stops: [0.0, 0.4, 1.0],
+                ),
+                borderRadius: BorderRadius.circular(4.r),
               ),
               child: CommonText(
                 text: 'View',
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w600,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),
@@ -148,22 +158,16 @@ class AppliedSeekersScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultAvatar(String name) {
-    String initials = '';
-    List<String> nameParts = name.split(' ');
-    if (nameParts.isNotEmpty) {
-      initials = nameParts[0][0].toUpperCase();
-      if (nameParts.length > 1) {
-        initials += nameParts[1][0].toUpperCase();
-      }
-    }
-
-    return Center(
-      child: CommonText(
-        text: initials,
-        fontSize: 18.sp,
-        fontWeight: FontWeight.w600,
-        color: AppColors.primaryColor,
+  Widget _buildDefaultAvatar() {
+    return CircleAvatar(
+      radius: 25.r,
+      child: ClipOval(
+        child: CommonImage(
+          imageSrc: AppImages.profile,
+          width: 50.w,
+          height: 50.h,
+          fill: BoxFit.cover,
+        ),
       ),
     );
   }

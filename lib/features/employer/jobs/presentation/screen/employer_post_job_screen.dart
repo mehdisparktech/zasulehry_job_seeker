@@ -60,7 +60,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
       appBar: CommonAppBar(
         title: AppString.postJob,
         isBackButton: true,
-        isCenterTitle: false,
+        isCenterTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -102,12 +102,9 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               CommonTextField(
                 controller: deadlineController,
                 hintText: "Type Here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
-                suffixIcon: Icon(
-                  Icons.calendar_today,
-                  color: AppColors.textFiledColor,
-                ),
+
                 onTap: () async {
                   DateTime? pickedDate = await showDatePicker(
                     context: context,
@@ -129,7 +126,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               CommonTextField(
                 controller: jobDescriptionController,
                 hintText: "Type here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 mexLength: 500,
                 keyboardType: TextInputType.multiline,
@@ -143,7 +140,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               CommonTextField(
                 controller: keyResponsibilitiesController,
                 hintText: "Type Here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 mexLength: 500,
                 keyboardType: TextInputType.multiline,
@@ -152,7 +149,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               SizedBox(height: 8.h),
               CommonTextField(
                 hintText: "Type Here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
@@ -165,7 +162,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               CommonTextField(
                 controller: qualificationController,
                 hintText: "Type Here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 mexLength: 500,
                 keyboardType: TextInputType.multiline,
@@ -174,7 +171,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               SizedBox(height: 8.h),
               CommonTextField(
                 hintText: "Type Here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
@@ -182,7 +179,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               SizedBox(height: 8.h),
               CommonTextField(
                 hintText: "Type Here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
@@ -195,7 +192,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               CommonTextField(
                 controller: aboutOurselfController,
                 hintText: "Type here...",
-                fillColor: AppColors.background,
+                fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 mexLength: 500,
                 keyboardType: TextInputType.multiline,
@@ -238,7 +235,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(color: AppColors.background),
       ),
@@ -256,10 +253,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
             );
           }).toList(),
           onChanged: onChanged,
-          icon: Icon(
-            Icons.keyboard_arrow_down,
-            color: AppColors.textFiledColor,
-          ),
+          icon: Icon(Icons.keyboard_arrow_down, color: AppColors.black),
           isExpanded: true,
           style: TextStyle(fontSize: 14.sp, color: AppColors.black),
         ),

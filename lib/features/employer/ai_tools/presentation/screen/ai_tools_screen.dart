@@ -32,7 +32,6 @@ class _AiToolsScreenState extends State<AiToolsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: CommonAppBar(title: AppString.aiTools, isBackButton: true),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
@@ -41,15 +40,8 @@ class _AiToolsScreenState extends State<AiToolsScreen> {
             // AI Tools List
             Container(
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: AppColors.transparent,
                 borderRadius: BorderRadius.circular(16.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
               ),
               child: Column(
                 children: _aiToolsStatus.entries.map((entry) {
@@ -78,14 +70,12 @@ class _AiToolsScreenState extends State<AiToolsScreen> {
     required ValueChanged<bool> onToggle,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+      margin: EdgeInsets.only(bottom: 16.h),
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: AppColors.filledColor.withOpacity(0.5),
-            width: 0.5,
-          ),
-        ),
+        color: AppColors.white,
+        border: Border.all(color: AppColors.blue500, width: 1),
+        borderRadius: BorderRadius.circular(4.r),
       ),
       child: Row(
         children: [

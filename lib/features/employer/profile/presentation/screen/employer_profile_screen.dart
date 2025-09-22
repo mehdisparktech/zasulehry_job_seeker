@@ -71,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                       child: CommonText(
                         text: (LocalStorage.myName.isNotEmpty
                             ? LocalStorage.myName
-                            : "Example Name"),
+                            : "Google"),
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                         color: AppColors.blue500,
@@ -158,12 +158,13 @@ class ProfileScreen extends StatelessWidget {
                   right: 0,
                   child: Center(
                     child: CircleAvatar(
+                      backgroundColor: AppColors.transparent,
                       radius: 52.r,
                       child: const ClipOval(
                         child: CommonImage(
-                          imageSrc: AppImages.profile,
+                          imageSrc: AppImages.google,
                           size: 125,
-                          defaultImage: AppImages.profile,
+                          defaultImage: AppImages.google,
                           fill: BoxFit.cover,
                         ),
                       ),

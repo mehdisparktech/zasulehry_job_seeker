@@ -20,7 +20,9 @@ class AppColors {
   static const Color red = Colors.red;
   static const Color filledColor = Color(0xFFe7e7e7);
   static const Color textFiledColor = Color(0xFF979797);
+  static const Color textSecondary = Color(0xFF555555);
   static const blueLight = Color(0xFFe8e8f5);
   static const blue500 = Color(0xFF056B82);
   static const Color blue100 = Color(0xFFB2D1D8);
+  static const Color blue200 = Color(0xFFB2D1D8);
 }

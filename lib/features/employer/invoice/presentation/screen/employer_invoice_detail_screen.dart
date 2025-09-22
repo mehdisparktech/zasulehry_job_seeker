@@ -41,7 +41,7 @@ class _EmployerInvoiceDetailScreenState
 
             // Pricing Summary
             _buildPricingSummary(),
-            SizedBox(height: 32.h),
+            SizedBox(height: 48.h),
 
             // Contact Details
             _buildContactDetails(),

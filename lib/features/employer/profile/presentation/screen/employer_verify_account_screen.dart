@@ -23,6 +23,7 @@ class _EmployerVerifyAccountScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: CommonAppBar(
         title: AppString.verifyAccount,
         isBackButton: true,
@@ -50,10 +51,10 @@ class _EmployerVerifyAccountScreenState
               onTap: _pickDocument,
               child: Container(
                 width: double.infinity,
-                height: 120.h,
+                height: 80.h,
                 decoration: BoxDecoration(
-                  color: AppColors.white,
-                  border: Border.all(color: AppColors.primaryColor, width: 1.5),
+                  color: AppColors.transparent,
+                  border: Border.all(color: AppColors.blue500, width: 1.5),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Column(
@@ -65,13 +66,13 @@ class _EmployerVerifyAccountScreenState
                       color: AppColors.primaryColor,
                     ),
                     SizedBox(height: 8.h),
-                    CommonText(
-                      text: selectedDocumentPath != null
-                          ? "Document Selected"
-                          : "Tap to upload document",
-                      fontSize: 14.sp,
-                      color: AppColors.textFiledColor,
-                    ),
+                    // CommonText(
+                    //   text: selectedDocumentPath != null
+                    //       ? "Document Selected"
+                    //       : "Tap to upload document",
+                    //   fontSize: 14.sp,
+                    //   color: AppColors.textFiledColor,
+                    // ),
                   ],
                 ),
               ),
@@ -467,7 +468,6 @@ class _EmployerVerifyAccountScreenState
       return;
     }
 
-    // TODO: Implement document verification logic
     Get.snackbar(
       "Success",
       "Account verification request submitted successfully",

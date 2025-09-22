@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 
@@ -21,7 +23,6 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: AppString.appointments),
       body: Column(
         children: [
@@ -49,12 +50,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                             ? AppColors.blue500
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(20.r),
-                        border: Border.all(
-                          color: selectedTabIndex == index
-                              ? AppColors.blue500
-                              : AppColors.textFiledColor,
-                          width: 1,
-                        ),
+                        border: Border.all(color: AppColors.blue500, width: 2),
                       ),
                       child: Center(
                         child: CommonText(
@@ -63,7 +59,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                           fontWeight: FontWeight.w500,
                           color: isSelected
                               ? AppColors.white
-                              : AppColors.textFiledColor,
+                              : AppColors.blue500,
                         ),
                       ),
                     ),
@@ -92,12 +88,28 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           Container(
             padding: EdgeInsets.all(16.w),
             child: CommonButton(
-              titleText: 'Ask For Appointment',
+              titleText: 'Cancel',
+              onTap: () {
+                // Handle ask for appointment action
+              },
+              titleColor: AppColors.white,
+              buttonColor: AppColors.red,
+              borderColor: AppColors.red,
+              buttonRadius: 4.r,
+              isGradient: false,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(16.w),
+            margin: EdgeInsets.only(bottom: 16.h),
+            child: CommonButton(
+              titleText: 'Create New Appointment',
               onTap: () {
                 // Handle ask for appointment action
               },
               buttonColor: AppColors.blue500,
               titleColor: AppColors.white,
+              buttonRadius: 4.r,
             ),
           ),
         ],
@@ -187,11 +199,10 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
     required bool isConfirmed,
   }) {
     return Container(
-      padding: EdgeInsets.all(16.w),
+      padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: AppColors.textFiledColor),
       ),
       child: Column(
         children: [
@@ -199,17 +210,15 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           Row(
             children: [
               // Profile Avatar
-              Container(
-                width: 40.w,
-                height: 40.w,
-                decoration: BoxDecoration(
-                  color: AppColors.filledColor,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.person,
-                  color: AppColors.textFiledColor,
-                  size: 24.sp,
+              CircleAvatar(
+                radius: 20.r,
+                backgroundColor: AppColors.blue500,
+                child: ClipOval(
+                  child: CommonImage(
+                    imageSrc: AppImages.profile,
+                    size: 40,
+                    fill: BoxFit.cover,
+                  ),
                 ),
               ),
               12.width,
@@ -225,97 +234,42 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                       color: AppColors.black,
                     ),
                     4.height,
-                    Row(
-                      children: [
-                        CommonText(
-                          text: date,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textFiledColor,
-                        ),
-                        8.width,
-                        Icon(
-                          Icons.access_time,
-                          size: 16.sp,
-                          color: AppColors.textFiledColor,
-                        ),
-                        4.width,
-                        CommonText(
-                          text: time,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textFiledColor,
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
-              // Eye and Message Icons
-              Row(
-                children: [
-                  Icon(
-                    Icons.visibility_outlined,
-                    color: AppColors.textFiledColor,
-                    size: 20.sp,
-                  ),
-                  12.width,
-                  Icon(
-                    Icons.chat_bubble_outline,
-                    color: AppColors.textFiledColor,
-                    size: 20.sp,
-                  ),
-                ],
-              ),
             ],
           ),
 
-          // Status
-          12.height,
           Row(
             children: [
+              Icon(Icons.calendar_month, size: 16.sp, color: AppColors.blue500),
+              4.width,
               CommonText(
-                text: status,
+                text: date,
                 fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: statusColor,
+                fontWeight: FontWeight.w400,
+                color: AppColors.black,
               ),
+              8.width,
+              Icon(Icons.access_time, size: 16.sp, color: AppColors.blue500),
+              4.width,
+              CommonText(
+                text: time,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: AppColors.black,
+              ),
+              12.width,
+              Spacer(),
+              Icon(
+                Icons.visibility_outlined,
+                color: AppColors.blue500,
+                size: 24.sp,
+              ),
+              12.width,
+              Checkbox(value: true, onChanged: (value) {}),
             ],
           ),
-
-          // Action Buttons
-          if (showActions) ...[
-            16.height,
-            Row(
-              children: [
-                if (!isConfirmed) ...[
-                  Expanded(
-                    child: CommonButton(
-                      titleText: 'Confirm',
-                      onTap: () {
-                        // Handle confirm action
-                      },
-                      buttonColor: AppColors.blue500,
-                      titleColor: AppColors.white,
-                      buttonHeight: 40.h,
-                    ),
-                  ),
-                  12.width,
-                ],
-                Expanded(
-                  child: CommonButton(
-                    titleText: 'Cancel',
-                    onTap: () {
-                      // Handle cancel action
-                    },
-                    buttonColor: AppColors.red,
-                    titleColor: AppColors.white,
-                    buttonHeight: 40.h,
-                  ),
-                ),
-              ],
-            ),
-          ],
         ],
       ),
     );
