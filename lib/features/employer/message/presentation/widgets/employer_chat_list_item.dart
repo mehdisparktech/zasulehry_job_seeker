@@ -7,7 +7,7 @@ import '../../data/model/employer_chat_list_model.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 import '../../../../../core/constants/app_colors.dart';
 
-Widget chatListItem({required ChatModel item}) {
+Widget employerChatListItem({required EmployerChatListModel item}) {
   String time = DateFormat('hh:mm a').format(item.latestMessage.createdAt);
 
   return Container(
@@ -53,7 +53,11 @@ Widget chatListItem({required ChatModel item}) {
               /// Last message with small status icon
               Row(
                 children: [
-                  Icon(Icons.check_circle, size: 14.sp, color: AppColors.primaryColor),
+                  Icon(
+                    Icons.check_circle,
+                    size: 14.sp,
+                    color: AppColors.primaryColor,
+                  ),
                   6.width,
                   Expanded(
                     child: CommonText(

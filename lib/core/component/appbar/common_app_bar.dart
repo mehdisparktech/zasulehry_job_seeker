@@ -16,7 +16,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final bool isBackButton;
   final double? elevation;
-  final double? shapeRadius;
+  final double shapeRadius;
   final double? titleFontSize;
   final FontWeight? titleFontWeight;
   final bool? isCenterTitle;
@@ -54,8 +54,8 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: toolbarHeight,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(shapeRadius!),
-          bottomRight: Radius.circular(shapeRadius!),
+          bottomLeft: Radius.circular(shapeRadius),
+          bottomRight: Radius.circular(shapeRadius),
         ),
       ),
       flexibleSpace: Container(
@@ -71,8 +71,8 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
             stops: [0.0, 0.4, 1.0],
           ),
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(shapeRadius!),
-            bottomRight: Radius.circular(shapeRadius!),
+            bottomLeft: Radius.circular(shapeRadius),
+            bottomRight: Radius.circular(shapeRadius),
           ),
         ),
       ),
@@ -127,5 +127,5 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(toolbarHeight ?? kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(toolbarHeight ?? 80);
 }

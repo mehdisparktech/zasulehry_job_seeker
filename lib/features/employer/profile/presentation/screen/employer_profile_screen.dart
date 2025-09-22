@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // Custom gradient header inside body to match the design
-      body: GetBuilder<ProfileController>(
+      body: GetBuilder<EmployerProfileController>(
         builder: (controller) {
           return SingleChildScrollView(
             child: Stack(

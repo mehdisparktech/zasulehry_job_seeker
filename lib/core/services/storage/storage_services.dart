@@ -58,15 +58,16 @@ class LocalStorage {
 
   // Reset LocalStorage Data
   static void _resetLocalStorageData() {
-    final localStorage = preferences!;
-    localStorage.setString(LocalStorageKeys.token, "");
-    localStorage.setString(LocalStorageKeys.refreshToken, "");
-    localStorage.setString(LocalStorageKeys.userId, "");
-    localStorage.setString(LocalStorageKeys.myImage, "");
-    localStorage.setString(LocalStorageKeys.myName, "");
-    localStorage.setString(LocalStorageKeys.myEmail, "");
-    localStorage.setString(LocalStorageKeys.userRole, "jobSeeker");
-    localStorage.setBool(LocalStorageKeys.isLogIn, false);
+    if (preferences != null) {
+      preferences!.setString(LocalStorageKeys.token, "");
+      preferences!.setString(LocalStorageKeys.refreshToken, "");
+      preferences!.setString(LocalStorageKeys.userId, "");
+      preferences!.setString(LocalStorageKeys.myImage, "");
+      preferences!.setString(LocalStorageKeys.myName, "");
+      preferences!.setString(LocalStorageKeys.myEmail, "");
+      preferences!.setString(LocalStorageKeys.userRole, "jobSeeker");
+      preferences!.setBool(LocalStorageKeys.isLogIn, false);
+    }
   }
 
   // Save Data To SharedPreferences

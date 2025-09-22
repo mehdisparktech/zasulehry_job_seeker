@@ -1,17 +1,17 @@
-class ChatModel {
+class EmployerChatListModel {
   final String id;
   final Participant participant;
 
   final LatestMessage latestMessage;
 
-  ChatModel({
+  EmployerChatListModel({
     required this.id,
     required this.participant,
     required this.latestMessage,
   });
 
-  factory ChatModel.fromJson(Map<String, dynamic> json) {
-    return ChatModel(
+  factory EmployerChatListModel.fromJson(Map<String, dynamic> json) {
+    return EmployerChatListModel(
       id: json['_id'] ?? '',
       participant: Participant.fromJson(json['participant'] ?? {}),
       latestMessage: LatestMessage.fromJson(json['latestMessage'] ?? {}),

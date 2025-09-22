@@ -3,30 +3,22 @@ class Sender {
   final String fullName;
   final String image;
 
-  Sender({
-    required this.id,
-    required this.fullName,
-    required this.image,
-  });
+  Sender({required this.id, required this.fullName, required this.image});
 
   factory Sender.fromJson(Map<String, dynamic> json) {
     return Sender(
-      id: json['_id']  ?? '',
-      fullName: json['fullName']  ?? '',
-      image: json['image']  ?? '',
+      id: json['_id'] ?? '',
+      fullName: json['fullName'] ?? '',
+      image: json['image'] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      '_id': id,
-      'fullName': fullName,
-      'image': image,
-    };
+    return {'_id': id, 'fullName': fullName, 'image': image};
   }
 }
 
-class MessageModel {
+class EmployerMessageModel {
   final String id;
   final String chat;
   final String message;
@@ -36,7 +28,7 @@ class MessageModel {
   final DateTime updatedAt;
   final int version;
 
-  MessageModel({
+  EmployerMessageModel({
     required this.id,
     required this.chat,
     required this.message,
@@ -47,17 +39,19 @@ class MessageModel {
     required this.version,
   });
 
-  factory MessageModel.fromJson(Map<String, dynamic> json) {
-    return MessageModel(
+  factory EmployerMessageModel.fromJson(Map<String, dynamic> json) {
+    return EmployerMessageModel(
       id: json['_id'] ?? '',
       chat: json['chat'] ?? '',
       message: json['message'] ?? '',
       type: json['type'] as String? ?? 'general',
       sender: Sender.fromJson(json['sender'] ?? {}),
-      createdAt:
-          DateTime.parse(json['createdAt'] ?? DateTime.now().toIso8601String()),
-      updatedAt:
-          DateTime.parse(json['updatedAt'] ?? DateTime.now().toIso8601String()),
+      createdAt: DateTime.parse(
+        json['createdAt'] ?? DateTime.now().toIso8601String(),
+      ),
+      updatedAt: DateTime.parse(
+        json['updatedAt'] ?? DateTime.now().toIso8601String(),
+      ),
       version: json['__v'] ?? 0,
     );
   }

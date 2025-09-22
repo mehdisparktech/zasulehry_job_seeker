@@ -1,11 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/card/job_card.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/component/map/show_google_map.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/view_job_details_screen.dart';
@@ -23,13 +24,13 @@ class JobSeekerHomeScreen extends StatefulWidget {
 }
 
 class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
-  GoogleMapController? _mapController;
+  // GoogleMapController? _mapController;
 
   // Default location (Dhaka, Bangladesh - Central area)
-  static const CameraPosition _dhakaLocation = CameraPosition(
-    target: LatLng(23.8103, 90.4125), // Dhaka center coordinates
-    zoom: 12.0,
-  );
+  // static const CameraPosition _dhakaLocation = CameraPosition(
+  //   target: LatLng(23.8103, 90.4125), // Dhaka center coordinates
+  //   zoom: 12.0,
+  // );
 
   @override
   Widget build(BuildContext context) {
@@ -86,30 +87,16 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
             width: double.infinity,
             height: 200.h,
             decoration: BoxDecoration(
+              color: AppColors.transparent,
               borderRadius: BorderRadius.circular(15.r),
               border: Border.all(color: AppColors.background, width: 1),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15.r),
-              child: GoogleMap(
-                mapType: MapType.normal,
-                initialCameraPosition: _dhakaLocation,
-
-                onMapCreated: (GoogleMapController controller) {
-                  _mapController = controller;
-                  // Force camera to Dhaka location
-                  _moveToLocation();
-                },
-                zoomControlsEnabled: true,
-                mapToolbarEnabled: false,
-                myLocationButtonEnabled: true,
-                myLocationEnabled: false, // Disable to show Dhaka by default
-                compassEnabled: false,
-                rotateGesturesEnabled: true,
-                scrollGesturesEnabled: true,
-                zoomGesturesEnabled: true,
-                tiltGesturesEnabled: false,
-              ),
+            child: ShowGoogleMap(
+              onTapLatLong: (latLong) {
+                if (kDebugMode) {
+                  print('Tapped at: $latLong');
+                }
+              },
             ),
           ),
           16.height,
@@ -485,16 +472,16 @@ class _JobSeekerHomeScreenState extends State<JobSeekerHomeScreen> {
   }
 
   // Method to move camera to Dhaka location
-  void _moveToLocation() async {
-    if (_mapController != null) {
-      await _mapController!.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(
-            target: LatLng(23.8103, 90.4125), // Dhaka coordinates
-            zoom: 12.0,
-          ),
-        ),
-      );
-    }
-  }
+  // void _moveToLocation() async {
+  //   if (_mapController != null) {
+  //     await _mapController!.animateCamera(
+  //       CameraUpdate.newCameraPosition(
+  //         CameraPosition(
+  //           target: LatLng(23.8103, 90.4125), // Dhaka coordinates
+  //           zoom: 12.0,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
 }

@@ -219,7 +219,7 @@ class _EmployerCreateInvoiceScreenState
   }
 
   void _createInvoice() {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState?.validate() == true) {
       // Create invoice logic
       Get.snackbar(
         'Success',

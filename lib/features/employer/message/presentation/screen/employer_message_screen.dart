@@ -1,41 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:zasulehry_job_seeker/features/employer/message/data/model/employer_chat_message_model.dart';
-import 'package:zasulehry_job_seeker/features/employer/message/presentation/widgets/employer_chat_bubble_message.dart';
-import '../../../../../core/component/image/common_image.dart';
-import '../../../../../core/component/text/common_text.dart';
-import '../../../../../core/component/text_field/common_text_field.dart';
-
-import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../controller/employer_message_controller.dart';
-import '../../../../../core/constants/app_string.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
+import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/data/model/employer_chat_message_model.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/presentation/controller/employer_message_controller.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/presentation/widgets/employer_chat_bubble_message.dart';
 
-import '../../../../../core/constants/app_colors.dart';
-
-class MessageScreen extends StatefulWidget {
-  const MessageScreen({super.key});
+class EmployerMessageScreen extends StatefulWidget {
+  const EmployerMessageScreen({super.key});
 
   @override
-  State<MessageScreen> createState() => _MessageScreenState();
+  State<EmployerMessageScreen> createState() => _EmployerMessageScreenState();
 }
 
-class _MessageScreenState extends State<MessageScreen> {
+class _EmployerMessageScreenState extends State<EmployerMessageScreen> {
   String chatId = Get.parameters["chatId"] ?? "";
   String name = Get.parameters["name"] ?? "";
   String image = Get.parameters["image"] ?? "";
 
   @override
   void initState() {
-    MessageController.instance.name = name;
-    MessageController.instance.chatId = chatId;
-    MessageController.instance.getMessageRepo();
+    EmployerMessageController.instance.name = name;
+    EmployerMessageController.instance.chatId = chatId;
+    EmployerMessageController.instance.getMessageRepo();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MessageController>(
+    return GetBuilder<EmployerMessageController>(
       builder: (controller) {
         return Scaffold(
           backgroundColor: AppColors.white,
@@ -141,8 +139,9 @@ class _MessageScreenState extends State<MessageScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     /// Message item here
                     if (index < controller.messages.length) {
-                      ChatMessageModel message = controller.messages[index];
-                      return ChatBubbleMessage(
+                      EmployerChatMessageModel message =
+                          controller.messages[index];
+                      return EmployerChatBubbleMessage(
                         index: index,
                         image: message.image,
                         time: message.time,

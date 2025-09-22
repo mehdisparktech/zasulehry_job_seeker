@@ -1,21 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../data/model/employer_message_model.dart';
-import '../../data/model/employer_chat_message_model.dart';
+import 'package:zasulehry_job_seeker/core/services/socket/socket_service.dart';
+import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/data/model/employer_chat_message_model.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/data/model/employer_message_model.dart';
 
-// import '../../../../../core/services/api/api_service.dart'; // Uncomment for real API
-import '../../../../../core/services/socket/socket_service.dart';
-// import '../../../../../core/config/api/api_end_point.dart'; // Uncomment for real API
-// import '../../../../../core/utils/app_utils.dart'; // Uncomment for real API
-import '../../../../../core/utils/enum/enum.dart';
-
-class MessageController extends GetxController {
+class EmployerMessageController extends GetxController {
   bool isLoading = false;
   bool isMoreLoading = false;
   String? video;
 
-  List messages = [];
+  List<EmployerChatMessageModel> messages = [];
 
   String chatId = "";
   String name = "";
@@ -30,9 +26,10 @@ class MessageController extends GetxController {
   ScrollController scrollController = ScrollController();
   TextEditingController messageController = TextEditingController();
 
-  static MessageController get instance => Get.put(MessageController());
+  static EmployerMessageController get instance =>
+      Get.put(EmployerMessageController());
 
-  MessageModel messageModel = MessageModel.fromJson({});
+  EmployerMessageModel messageModel = EmployerMessageModel.fromJson({});
 
   Future<void> getMessageRepo() async {
     // Uncomment below code for real API implementation
@@ -51,7 +48,7 @@ class MessageController extends GetxController {
     if (page == 1) {
       messages.clear();
       // Adding demo message data based on chatId or default messages
-      List<ChatMessageModel> demoMessages = _getDemoMessages(chatId);
+      List<EmployerChatMessageModel> demoMessages = _getDemoMessages(chatId);
 
       for (var message in demoMessages.reversed) {
         messages.add(message);
@@ -75,7 +72,7 @@ class MessageController extends GetxController {
         messageModel = MessageModel.fromJson(messageData);
 
         messages.add(
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: messageModel.createdAt.toLocal(),
             text: messageModel.message,
             image: messageModel.sender.image,
@@ -97,11 +94,11 @@ class MessageController extends GetxController {
   }
 
   // Demo messages function
-  List<ChatMessageModel> _getDemoMessages(String chatId) {
+  List<EmployerChatMessageModel> _getDemoMessages(String chatId) {
     switch (chatId) {
       case 'chat_001': // Ahmed Rahman
         return [
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(hours: 1)),
             text:
                 "Hello! I saw your job posting for Flutter Developer position.",
@@ -109,14 +106,14 @@ class MessageController extends GetxController {
                 "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
             isMe: false,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 58)),
             text:
                 "Hi Ahmed! Thanks for your interest. Can you tell me about your experience?",
             image: "",
             isMe: true,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 55)),
             text:
                 "I have 3 years of experience with Flutter and have built several mobile apps.",
@@ -124,13 +121,13 @@ class MessageController extends GetxController {
                 "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
             isMe: false,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 52)),
             text: "That sounds great! Do you have any portfolio I can review?",
             image: "",
             isMe: true,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 15)),
             text:
                 "Thank you for considering my application. I'm very interested in this position.",
@@ -141,14 +138,14 @@ class MessageController extends GetxController {
         ];
       case 'chat_002': // Sarah Khan
         return [
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(hours: 3)),
             text: "Hi! I'm interested in the UI/UX Designer position.",
             image:
                 "https://images.unsplash.com/photo-1494790108755-2616b73b0a34?w=150",
             isMe: false,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(
               const Duration(hours: 2, minutes: 30),
             ),
@@ -157,7 +154,7 @@ class MessageController extends GetxController {
             image: "",
             isMe: true,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(hours: 2)),
             text:
                 "Could you please share more details about the job requirements?",
@@ -168,7 +165,7 @@ class MessageController extends GetxController {
         ];
       case 'chat_003': // Mohammad Ali
         return [
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(hours: 6)),
             text:
                 "Good morning! I'm a senior Flutter developer looking for new opportunities.",
@@ -176,7 +173,7 @@ class MessageController extends GetxController {
                 "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
             isMe: false,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(
               const Duration(hours: 5, minutes: 30),
             ),
@@ -184,7 +181,7 @@ class MessageController extends GetxController {
             image: "",
             isMe: true,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(hours: 5)),
             text: "I have 5 years of experience in Flutter development.",
             image:
@@ -194,7 +191,7 @@ class MessageController extends GetxController {
         ];
       case 'chat_004': // Fatima Ahmed
         return [
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
             text:
                 "Hello! I'm very interested in the marketing coordinator position.",
@@ -202,14 +199,14 @@ class MessageController extends GetxController {
                 "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
             isMe: false,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(days: 1, hours: 1)),
             text:
                 "Hi Fatima! Thanks for reaching out. Can you share your marketing experience?",
             image: "",
             isMe: true,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(days: 1)),
             text: "When can we schedule an interview?",
             image:
@@ -219,21 +216,21 @@ class MessageController extends GetxController {
         ];
       default:
         return [
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 30)),
             text: "Hello! How can I help you today?",
             image:
                 "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
             isMe: false,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 25)),
             text:
                 "Hi! I'm looking for job opportunities. Do you have any open positions?",
             image: "",
             isMe: true,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 20)),
             text:
                 "Yes, we have several positions available. What's your area of expertise?",
@@ -241,14 +238,14 @@ class MessageController extends GetxController {
                 "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
             isMe: false,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 15)),
             text:
                 "I'm a software developer with experience in mobile app development.",
             image: "",
             isMe: true,
           ),
-          ChatMessageModel(
+          EmployerChatMessageModel(
             time: DateTime.now().subtract(const Duration(minutes: 10)),
             text: "Perfect! Let me share some relevant positions with you.",
             image:
@@ -265,14 +262,14 @@ class MessageController extends GetxController {
 
     messages.insert(
       0,
-      ChatMessageModel(
+      EmployerChatMessageModel(
         time: DateTime.now(),
         text: messageController.text,
         image: "", // LocalStorage.myImage for real implementation
         isMe: true,
       ),
 
-      // ChatMessageModel(
+      // EmployerChatMessageModel(
       //     currentTime.format(context).toString(),
       //     controller.messageController.text,
       //     true),
@@ -312,7 +309,7 @@ class MessageController extends GetxController {
       var time = data['createdAt'].toLocal();
       messages.insert(
         0,
-        ChatMessageModel(
+        EmployerChatMessageModel(
           isNotice: data['messageType'] == "notice" ? true : false,
           time: time,
           text: data['message'],

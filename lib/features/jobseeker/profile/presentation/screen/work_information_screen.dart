@@ -162,7 +162,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                 //   backgroundColor: AppColors.primaryColor,
                 //   colorText: AppColors.white,
                 // );
-                Get.toNamed(AppRoutes.EditworkInformation);
+                Get.toNamed(AppRoutes.editWorkInformation);
               },
             ),
 

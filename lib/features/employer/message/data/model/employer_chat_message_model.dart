@@ -1,4 +1,4 @@
-class ChatMessageModel {
+class EmployerChatMessageModel {
   final DateTime time;
   final String text;
   final String image;
@@ -6,7 +6,7 @@ class ChatMessageModel {
   final bool isCall;
   final bool isNotice;
 
-  ChatMessageModel({
+  EmployerChatMessageModel({
     required this.time,
     required this.text,
     required this.image,

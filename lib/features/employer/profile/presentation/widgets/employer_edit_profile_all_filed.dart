@@ -11,7 +11,7 @@ import '../../../../../core/utils/log/app_log.dart';
 class EditProfileAllFiled extends StatelessWidget {
   const EditProfileAllFiled({super.key, required this.controller});
 
-  final ProfileController controller;
+  final EmployerProfileController controller;
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/features/common/auth/change_password/presentation/controller/change_password_controller.dart';
 import 'package:zasulehry_job_seeker/features/common/auth/forgot%20password/presentation/controller/forget_password_controller.dart';
 import 'package:zasulehry_job_seeker/features/common/auth/sign%20in/presentation/controller/sign_in_controller.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/presentation/controller/employer_message_controller.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_chat_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/notifications/presentation/controller/notifications_controller.dart';
 import 'package:zasulehry_job_seeker/features/common/auth/sign%20up/presentation/controller/sign_up_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/message/presentation/controller/chat_controller.dart';
@@ -10,6 +12,7 @@ import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/con
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/controller/privacy_policy_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/controller/setting_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/controller/terms_of_services_controller.dart';
+import 'package:zasulehry_job_seeker/features/employer/profile/presentation/controller/employer_profile_controller.dart';
 
 class DependencyInjection extends Bindings {
   @override
@@ -28,5 +31,8 @@ class DependencyInjection extends Bindings {
     Get.lazyPut(() => SettingController(), fenix: true);
     Get.lazyPut(() => PrivacyPolicyController(), fenix: true);
     Get.lazyPut(() => TermsOfServicesController(), fenix: true);
+    Get.lazyPut(() => EmployerMessageController(), fenix: true);
+    Get.lazyPut(() => EmployerChatListScreen(), fenix: true);
+    Get.lazyPut(() => EmployerProfileController(), fenix: true);
   }
 }

@@ -4,7 +4,7 @@ import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';
 
-class ChatBubbleMessage extends StatelessWidget {
+class EmployerChatBubbleMessage extends StatelessWidget {
   final DateTime time;
   final String text;
   final String image;
@@ -14,7 +14,7 @@ class ChatBubbleMessage extends StatelessWidget {
 
   final VoidCallback onTap;
 
-  const ChatBubbleMessage({
+  const EmployerChatBubbleMessage({
     super.key,
     required this.time,
     required this.text,

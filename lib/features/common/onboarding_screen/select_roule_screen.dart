@@ -81,6 +81,14 @@ class SelectRouleScreen extends StatelessWidget {
                 )
               : null,
           borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.15),
+              spreadRadius: 0,
+              blurRadius: 10,
+              offset: Offset(0, 8), // changes position of shadow
+            ),
+          ],
         ),
         child: Column(
           children: [

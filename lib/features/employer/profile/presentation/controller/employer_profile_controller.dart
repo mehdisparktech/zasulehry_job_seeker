@@ -8,7 +8,7 @@ import '../../../../../core/config/route/app_routes.dart';
 import '../../../../../core/services/api/api_service.dart';
 import '../../../../../core/utils/app_utils.dart';
 
-class ProfileController extends GetxController {
+class EmployerProfileController extends GetxController {
   /// Language List here
   List languages = ["English", "French", "Arabic"];
 
@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
 
   /// update profile function here
   Future<void> editProfileRepo() async {
-    if (!formKey.currentState!.validate()) return;
+    if (formKey.currentState?.validate() != true) return;
 
     if (!LocalStorage.isLogIn) return;
     isLoading = true;

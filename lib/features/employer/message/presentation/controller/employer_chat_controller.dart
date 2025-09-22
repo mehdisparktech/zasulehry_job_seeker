@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../data/model/employer_chat_list_model.dart';
-// import '../../../../../core/services/api/api_service.dart'; // Uncomment for real API
-import '../../../../../core/services/socket/socket_service.dart';
-// import '../../../../../core/config/api/api_end_point.dart'; // Uncomment for real API
-import '../../../../../core/services/storage/storage_services.dart';
-// import '../../../../../core/utils/app_utils.dart'; // Uncomment for real API
-import '../../../../../core/utils/enum/enum.dart';
+import 'package:zasulehry_job_seeker/core/services/socket/socket_service.dart';
+import 'package:zasulehry_job_seeker/core/services/storage/storage_services.dart';
+import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
+import 'package:zasulehry_job_seeker/features/employer/message/data/model/employer_chat_list_model.dart';
 
-class ChatController extends GetxController {
+class EmployerChatController extends GetxController {
   /// Api status check here
   Status status = Status.completed;
 
@@ -25,7 +22,8 @@ class ChatController extends GetxController {
   ScrollController scrollController = ScrollController();
 
   /// Chat Controller Instance create here
-  static ChatController get instance => Get.put(ChatController());
+  static EmployerChatController get instance =>
+      Get.put(EmployerChatController());
 
   /// Chat More data Loading function
   Future<void> moreChats() async {
@@ -160,7 +158,7 @@ class ChatController extends GetxController {
       ];
 
       for (var item in demoChats) {
-        chats.add(ChatModel.fromJson(item));
+        chats.add(EmployerChatListModel.fromJson(item));
       }
     }
 
@@ -197,7 +195,7 @@ class ChatController extends GetxController {
       chats.clear();
 
       for (var item in data) {
-        chats.add(ChatModel.fromJson(item));
+        chats.add(EmployerChatListModel.fromJson(item));
       }
 
       status = Status.completed;

@@ -16,7 +16,7 @@ class EditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ProfileController>(
+    return GetBuilder<EmployerProfileController>(
       builder: (controller) {
         return Scaffold(
           /// App Bar Sections Starts here
@@ -46,7 +46,7 @@ class EditProfile extends StatelessWidget {
                           child: ClipOval(
                             child: controller.image != null
                                 ? Image.file(
-                                    File(controller.image!),
+                                    File(controller.image ?? ''),
                                     width: 170,
                                     height: 170,
                                     fit: BoxFit.fill,

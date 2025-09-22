@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 
@@ -108,6 +109,7 @@ class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: CommonBottomNavBar(currentIndex: 2),
     );
   }
 
