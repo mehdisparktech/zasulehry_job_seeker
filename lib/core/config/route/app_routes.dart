@@ -48,8 +48,8 @@ import 'package:zasulehry_job_seeker/features/employer/feedback/presentation/scr
     as employer_feedback;
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_my_applied_jobs_screen.dart'
     as employer_my_applied_jobs;
-import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_approved_jobs_screen.dart'
-    as employer_approved_jobs;
+import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_posted_jobs_screen.dart'
+    as employer_posted_jobs;
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_pending_jobs_screen.dart'
     as employer_pending_jobs;
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_canceled_jobs_screen.dart'
@@ -136,8 +136,7 @@ class AppRoutes {
   // Employer Job Management Routes
   static const String employerMyAppliedJobs =
       "/employer_my_applied_jobs_screen.dart";
-  static const String employerApprovedJobs =
-      "/employer_approved_jobs_screen.dart";
+  static const String employerPostedJobs = "/employer_posted_jobs_screen.dart";
   static const String employerPendingJobs =
       "/employer_pending_jobs_screen.dart";
   static const String employerCanceledJobs =
@@ -305,8 +304,8 @@ class AppRoutes {
       page: () => employer_my_applied_jobs.MyAppliedJobsScreen(),
     ),
     GetPage(
-      name: employerApprovedJobs,
-      page: () => employer_approved_jobs.ApprovedJobsScreen(),
+      name: employerPostedJobs,
+      page: () => employer_posted_jobs.EmployerPostedJobsScreen(),
     ),
     GetPage(
       name: employerPendingJobs,

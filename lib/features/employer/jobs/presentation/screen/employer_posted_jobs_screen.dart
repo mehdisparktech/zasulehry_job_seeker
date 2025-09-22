@@ -6,15 +6,15 @@ import 'package:zasulehry_job_seeker/core/component/card/job_card.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
-import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/view_job_details_screen.dart';
+import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_posted_jobs_details_screen.dart';
 
-class ApprovedJobsScreen extends StatelessWidget {
-  const ApprovedJobsScreen({super.key});
+class EmployerPostedJobsScreen extends StatelessWidget {
+  const EmployerPostedJobsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CommonAppBar(title: AppString.approvedJobs),
+      appBar: const CommonAppBar(title: AppString.myPostedJobs),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -30,7 +30,7 @@ class ApprovedJobsScreen extends StatelessWidget {
               timePosted: '2 Days Ago',
               isFullTime: true,
               companyLogo: AppImages.google,
-              onTap: () => Get.to(() => ViewJobDetailsScreen()),
+              onTap: () => Get.to(() => EmployerPostedJobsDetailsScreen()),
             ),
             separatorBuilder: (context, index) => 16.height,
           ),

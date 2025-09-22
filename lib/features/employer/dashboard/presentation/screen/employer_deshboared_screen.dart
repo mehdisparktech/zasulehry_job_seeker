@@ -50,8 +50,7 @@ class EmployerDeshboaredScreen extends StatelessWidget {
               Item(
                 icon: Icons.assignment,
                 title: AppString.myPostedJobs,
-                // TODO: Wire to employer posted jobs screen when available
-                onTap: null,
+                onTap: () => Get.toNamed(AppRoutes.employerPostedJobs),
               ),
 
               // Post Job
