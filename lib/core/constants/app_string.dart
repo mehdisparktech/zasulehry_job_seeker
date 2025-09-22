@@ -82,10 +82,14 @@ class AppString {
   static const String country = "Country";
   static const String connectedAccounts = "Connected Accounts";
   static const String impressum = "Impressum";
-  static const String employersCanSeeYourProfile = "Employers Can See Your Profile";
-  static const String employersCannotSeeYourProfile = "Employers Can not See Your Profile";
-  static const String onJobsinAppPlatformWeTryToHideIdentityDetails = "On JobsinApp Platform,We Try To Hide Identity Details, Unless You Respond To Employers";
-  static const String theEmployersYouHaveAppliedToCanSeeYourProfile = "the employers you have applied to can See Your Profile And Employers Can Not See Your Profile Or Reach You.";
+  static const String employersCanSeeYourProfile =
+      "Employers Can See Your Profile";
+  static const String employersCannotSeeYourProfile =
+      "Employers Can not See Your Profile";
+  static const String onJobsinAppPlatformWeTryToHideIdentityDetails =
+      "On JobsinApp Platform,We Try To Hide Identity Details, Unless You Respond To Employers";
+  static const String theEmployersYouHaveAppliedToCanSeeYourProfile =
+      "the employers you have applied to can See Your Profile And Employers Can Not See Your Profile Or Reach You.";
   static const String dashboard = "Dashboard";
   static const String myAppliedJobs = "My Applied Jobs";
   static const String approvedJobs = "Approved Jobs";
@@ -115,4 +119,5 @@ class AppString {
   static const String addWhatsappLink = "Add WhatsApp Link";
   static const String downloadCenter = "Download Center";
   static const String verifyAccount = "Verify Account";
+  static const String twoStepVerification = "Two Step Verification";
 }

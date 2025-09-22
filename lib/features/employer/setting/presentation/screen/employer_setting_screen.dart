@@ -27,6 +27,16 @@ class EmployerSettingScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
               child: Column(
                 children: [
+                  // 2 step verification item
+                  InkWell(
+                    onTap: () =>
+                        Get.toNamed(AppRoutes.employerTwoStepVerification),
+                    child: const SettingItem(
+                      title: AppString.twoStepVerification,
+                      iconDate: Icons.security,
+                    ),
+                  ),
+
                   /// Language Item
                   InkWell(
                     onTap: () => Get.toNamed(AppRoutes.languageSelection),
@@ -51,42 +61,6 @@ class EmployerSettingScreen extends StatelessWidget {
                     child: const SettingItem(
                       title: AppString.changePassword,
                       iconDate: Icons.lock_outline,
-                    ),
-                  ),
-
-                  /// Connected Accounts Item
-                  InkWell(
-                    onTap: () => Get.toNamed(AppRoutes.connectedAccounts),
-                    child: const SettingItem(
-                      title: AppString.connectedAccounts,
-                      iconDate: Icons.account_circle_outlined,
-                    ),
-                  ),
-
-                  /// Privacy Policy Item
-                  InkWell(
-                    onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
-                    child: const SettingItem(
-                      title: AppString.privacyPolicy,
-                      iconDate: Icons.privacy_tip_outlined,
-                    ),
-                  ),
-
-                  /// Terms & Condition Item
-                  InkWell(
-                    onTap: () => Get.toNamed(AppRoutes.termsOfServices),
-                    child: const SettingItem(
-                      title: AppString.termsOfServices,
-                      iconDate: Icons.description_outlined,
-                    ),
-                  ),
-
-                  /// Impressum Item
-                  InkWell(
-                    onTap: () => Get.toNamed(AppRoutes.impressum),
-                    child: const SettingItem(
-                      title: AppString.impressum,
-                      iconDate: Icons.info_outline,
                     ),
                   ),
                 ],

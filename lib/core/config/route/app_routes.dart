@@ -96,6 +96,8 @@ import 'package:zasulehry_job_seeker/features/employer/setting/presentation/scre
     as employer_connected;
 import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/employer_impressum_screen.dart'
     as employer_impressum;
+import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/two_step_verification.dart'
+    as employer_two_step_verification;
 
 // Employer invoice imports
 import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_list_screen.dart'
@@ -216,6 +218,8 @@ class AppRoutes {
   static const String employerInvoiceList = "/employer_invoice_list";
   static const String employerCreateInvoice = "/employer_create_invoice";
   static const String employerInvoiceDetail = "/employer_invoice_detail";
+  static const String employerTwoStepVerification =
+      "/employer_two_step_verification";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -409,6 +413,10 @@ class AppRoutes {
     GetPage(
       name: employerInvoiceDetail,
       page: () => employer_invoice_detail.EmployerInvoiceDetailScreen(),
+    ),
+    GetPage(
+      name: employerTwoStepVerification,
+      page: () => employer_two_step_verification.TwoStepVerificationScreen(),
     ),
   ];
 }
