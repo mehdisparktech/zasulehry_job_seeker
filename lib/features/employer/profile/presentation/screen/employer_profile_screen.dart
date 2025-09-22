@@ -102,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
                           Item(
                             icon: Icons.settings,
                             title: AppString.settings,
-                            onTap: () => Get.toNamed(AppRoutes.setting),
+                            onTap: () => Get.toNamed(AppRoutes.employerSetting),
                           ),
 
                           // Contact & Support

@@ -370,7 +370,7 @@ class AppRoutes {
     ),
     GetPage(
       name: employerSetting,
-      page: () => employer_setting.SettingScreen(),
+      page: () => employer_setting.EmployerSettingScreen(),
     ),
     GetPage(
       name: employerPrivacyPolicy,

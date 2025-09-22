@@ -106,4 +106,13 @@ class AppString {
   static const String contactAndSupport = "Contact & Support";
   static const String shareApp = "Share App";
   static const String review = "Review";
+
+  // Employer Dashboard specific (new)
+  static const String myPostedJobs = "My Posted Jobs";
+  static const String postJob = "Post Job";
+  static const String aiTools = "AI Tools";
+  static const String whatsappSupport = "WhatsApp Support";
+  static const String addWhatsappLink = "Add WhatsApp Link";
+  static const String downloadCenter = "Download Center";
+  static const String verifyAccount = "Verify Account";
 }

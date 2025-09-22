@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
-import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
-import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 
 class EmployerInvoiceDetailScreen extends StatefulWidget {
   const EmployerInvoiceDetailScreen({super.key});
@@ -16,238 +13,114 @@ class EmployerInvoiceDetailScreen extends StatefulWidget {
 
 class _EmployerInvoiceDetailScreenState
     extends State<EmployerInvoiceDetailScreen> {
-  // Mock invoice data - in real app this would come from parameters or API
-  final Map<String, dynamic> invoiceData = {
-    'invoiceNumber': 'INV-001',
-    'clientName': 'John Doe',
-    'clientEmail': 'john.doe@example.com',
-    'description': 'Web Development Services',
-    'amount': 2500.00,
-    'dueDate': '15/02/2024',
-    'status': 'Pending',
-    'createdDate': '01/02/2024',
-  };
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: CommonAppBar(
-        title: 'Invoice ${invoiceData['invoiceNumber']}',
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () => _showMoreOptions(),
-          ),
-        ],
-      ),
+      backgroundColor: Colors.white,
+      appBar: const CommonAppBar(title: 'View Invoice', shapeRadius: 24),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Status Badge
-            _buildStatusBadge(),
+            // Company Information
+            _buildCompanyInfo(),
             SizedBox(height: 24.h),
 
-            // Invoice Information Card
-            _buildInformationCard(),
+            // Invoice Header
+            _buildInvoiceHeader(),
+            SizedBox(height: 16.h),
+
+            // Invoice Details Table
+            _buildInvoiceTable(),
             SizedBox(height: 24.h),
 
-            // Client Information Card
-            _buildClientCard(),
+            // Items Table
+            _buildItemsTable(),
             SizedBox(height: 24.h),
 
-            // Amount Card
-            _buildAmountCard(),
+            // Pricing Summary
+            _buildPricingSummary(),
             SizedBox(height: 32.h),
 
-            // Action Buttons
-            _buildActionButtons(),
+            // Contact Details
+            _buildContactDetails(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildStatusBadge() {
-    Color statusColor;
-    switch (invoiceData['status']) {
-      case 'Paid':
-        statusColor = Colors.green;
-        break;
-      case 'Overdue':
-        statusColor = Colors.red;
-        break;
-      default:
-        statusColor = Colors.orange;
-    }
-
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-      decoration: BoxDecoration(
-        color: statusColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: statusColor),
-      ),
-      child: CommonText(
-        text: invoiceData['status'],
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w600,
-        color: statusColor,
-      ),
-    );
-  }
-
-  Widget _buildInformationCard() {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CommonText(
-            text: 'Invoice Information',
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.black,
-          ),
-          SizedBox(height: 16.h),
-          _buildInfoRow('Invoice Number', invoiceData['invoiceNumber']),
-          _buildInfoRow('Created Date', invoiceData['createdDate']),
-          _buildInfoRow('Due Date', invoiceData['dueDate']),
-          _buildInfoRow('Description', invoiceData['description']),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildClientCard() {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CommonText(
-            text: 'Client Information',
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.black,
-          ),
-          SizedBox(height: 16.h),
-          _buildInfoRow('Client Name', invoiceData['clientName']),
-          _buildInfoRow('Email', invoiceData['clientEmail']),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildAmountCard() {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment(-0.9, 0),
-          end: Alignment(1.0, 0),
-          colors: [Color(0xFF083E4B), Color(0xFF074E5E), Color(0xFF0288A6)],
-          stops: [0.0, 0.4, 1.0],
-        ),
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CommonText(
-            text: 'Amount',
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
-            color: AppColors.white,
-          ),
-          SizedBox(height: 8.h),
-          CommonText(
-            text: '\$${invoiceData['amount'].toStringAsFixed(2)}',
-            fontSize: 32.sp,
-            fontWeight: FontWeight.w700,
-            color: AppColors.white,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInfoRow(String label, String value) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            flex: 2,
-            child: CommonText(
-              text: label,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: AppColors.textFiledColor,
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: CommonText(
-              text: value,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.black,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildActionButtons() {
+  Widget _buildCompanyInfo() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (invoiceData['status'] == 'Pending') ...[
-          CommonButton(titleText: 'Mark as Paid', onTap: () => _markAsPaid()),
-          SizedBox(height: 12.h),
-        ],
+        CommonText(
+          text: 'Percenter Germany,2541,House,20',
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
+        SizedBox(height: 4.h),
+        CommonText(
+          text: 'Zisan',
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          color: Colors.black,
+        ),
+        SizedBox(height: 16.h),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: CommonButton(
-                titleText: 'Edit Invoice',
-                buttonColor: AppColors.transparent,
-                titleColor: AppColors.primaryColor,
-                borderColor: AppColors.primaryColor,
-                onTap: () => _editInvoice(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: 'Street,House No,',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade600,
+                  ),
+                  CommonText(
+                    text: '1234 Dhaka',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                  CommonText(
+                    text: 'Bangladesh',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 8.h),
+                  CommonText(
+                    text: 'Customer ID  24513',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade600,
+                  ),
+                ],
               ),
             ),
-            SizedBox(width: 16.w),
             Expanded(
-              child: CommonButton(
-                titleText: 'Send Invoice',
-                onTap: () => _sendInvoice(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: 'Tax No 1234',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade600,
+                  ),
+                  CommonText(
+                    text: 'DE No 1234',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade600,
+                  ),
+                ],
               ),
             ),
           ],
@@ -256,122 +129,219 @@ class _EmployerInvoiceDetailScreenState
     );
   }
 
-  void _showMoreOptions() {
-    showModalBottomSheet(
-      context: context,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
-      ),
-      builder: (context) => Container(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+  Widget _buildInvoiceHeader() {
+    return CommonText(
+      text: 'Invoice',
+      fontSize: 20.sp,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    );
+  }
+
+  Widget _buildInvoiceTable() {
+    return Table(
+      columnWidths: const {
+        0: FlexColumnWidth(1),
+        1: FlexColumnWidth(1),
+        2: FlexColumnWidth(1),
+        3: FlexColumnWidth(1),
+      },
+      children: [
+        // Header Row
+        TableRow(
+          decoration: BoxDecoration(color: Colors.grey.shade100),
           children: [
-            ListTile(
-              leading: const Icon(Icons.download),
-              title: const CommonText(text: 'Download PDF'),
-              onTap: () {
-                Get.back();
-                _downloadPDF();
-              },
+            _buildTableCell('Invoice No.', isHeader: true),
+            _buildTableCell('Invoice Date', isHeader: true),
+            _buildTableCell('Delivery Date', isHeader: true),
+            _buildTableCell('Order No:', isHeader: true),
+          ],
+        ),
+        // Data Row
+        TableRow(
+          children: [
+            _buildTableCell('025463212'),
+            _buildTableCell('01.02.2025'),
+            _buildTableCell('08.02.2025'),
+            _buildTableCell('150369'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildItemsTable() {
+    return Table(
+      columnWidths: const {
+        0: FlexColumnWidth(0.5),
+        1: FlexColumnWidth(2),
+        2: FlexColumnWidth(1),
+        3: FlexColumnWidth(1),
+      },
+      children: [
+        // Header Row
+        TableRow(
+          decoration: BoxDecoration(color: Colors.grey.shade100),
+          children: [
+            _buildTableCell('Pos.', isHeader: true),
+            _buildTableCell('Details', isHeader: true),
+            _buildTableCell('Quantity', isHeader: true),
+            _buildTableCell('Price', isHeader: true),
+          ],
+        ),
+        // Data Row
+        TableRow(
+          children: [
+            _buildTableCell('1'),
+            _buildTableCell('Standard Subscription'),
+            _buildTableCell('12'),
+            _buildTableCell('250'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPricingSummary() {
+    return Column(
+      children: [
+        // Netto Price
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CommonText(
+              text: 'Netto Price',
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
             ),
-            ListTile(
-              leading: const Icon(Icons.share),
-              title: const CommonText(text: 'Share Invoice'),
-              onTap: () {
-                Get.back();
-                _shareInvoice();
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.delete, color: Colors.red),
-              title: const CommonText(
-                text: 'Delete Invoice',
-                color: Colors.red,
-              ),
-              onTap: () {
-                Get.back();
-                _deleteInvoice();
-              },
+            CommonText(
+              text: '250',
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  void _markAsPaid() {
-    Get.snackbar(
-      'Success',
-      'Invoice marked as paid',
-      backgroundColor: AppColors.primaryColor,
-      colorText: AppColors.white,
-    );
-  }
-
-  void _editInvoice() {
-    // Navigate to edit invoice screen
-    Get.snackbar(
-      'Info',
-      'Edit invoice functionality',
-      backgroundColor: AppColors.primaryColor,
-      colorText: AppColors.white,
-    );
-  }
-
-  void _sendInvoice() {
-    Get.snackbar(
-      'Success',
-      'Invoice sent to client',
-      backgroundColor: AppColors.primaryColor,
-      colorText: AppColors.white,
-    );
-  }
-
-  void _downloadPDF() {
-    Get.snackbar(
-      'Success',
-      'Invoice PDF downloaded',
-      backgroundColor: AppColors.primaryColor,
-      colorText: AppColors.white,
-    );
-  }
-
-  void _shareInvoice() {
-    Get.snackbar(
-      'Info',
-      'Share invoice functionality',
-      backgroundColor: AppColors.primaryColor,
-      colorText: AppColors.white,
-    );
-  }
-
-  void _deleteInvoice() {
-    Get.dialog(
-      AlertDialog(
-        title: const CommonText(text: 'Delete Invoice'),
-        content: const CommonText(
-          text: 'Are you sure you want to delete this invoice?',
+        SizedBox(height: 8.h),
+        // Sales Tax
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CommonText(
+              text: 'Sales Tax 19%',
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+            CommonText(
+              text: '60',
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const CommonText(text: 'Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              Get.back();
-              Get.back();
-              Get.snackbar(
-                'Success',
-                'Invoice deleted successfully',
-                backgroundColor: Colors.red,
-                colorText: AppColors.white,
-              );
-            },
-            child: const CommonText(text: 'Delete', color: Colors.red),
-          ),
-        ],
+        SizedBox(height: 8.h),
+        Divider(color: Colors.grey.shade300),
+        SizedBox(height: 8.h),
+        // Total
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CommonText(
+              text: 'Total',
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+            CommonText(
+              text: '300€',
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildContactDetails() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: 'Contact Details',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 8.h),
+                  CommonText(
+                    text: 'Telephone Number',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade600,
+                  ),
+                  SizedBox(height: 4.h),
+                  CommonText(
+                    text: 'Email Address',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade600,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: 'Account Number',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 8.h),
+                  CommonText(
+                    text: 'DE 1234 5678 9123 4567 89',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 4.h),
+                  CommonText(
+                    text: 'Bic 12345656',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTableCell(String text, {bool isHeader = false}) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
+      child: CommonText(
+        text: text,
+        fontSize: isHeader ? 12.sp : 14.sp,
+        fontWeight: isHeader ? FontWeight.w600 : FontWeight.w400,
+        color: isHeader ? Colors.grey.shade600 : Colors.black,
       ),
     );
   }

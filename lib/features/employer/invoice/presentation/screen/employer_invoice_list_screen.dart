@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
-import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
-import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_detail_screen.dart';
 
 class EmployerInvoiceListScreen extends StatefulWidget {
   const EmployerInvoiceListScreen({super.key});
@@ -15,258 +16,88 @@ class EmployerInvoiceListScreen extends StatefulWidget {
 
 class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
   final List<Map<String, dynamic>> invoices = [
-    {
-      'id': 'INV-001',
-      'clientName': 'Tech Solutions Inc.',
-      'amount': 2500.00,
-      'date': '2024-01-15',
-      'status': 'Paid',
-      'dueDate': '2024-01-30',
-    },
-    {
-      'id': 'INV-002',
-      'clientName': 'Digital Marketing Co.',
-      'amount': 1800.00,
-      'date': '2024-01-20',
-      'status': 'Pending',
-      'dueDate': '2024-02-05',
-    },
-    {
-      'id': 'INV-003',
-      'clientName': 'StartUp Ventures',
-      'amount': 3200.00,
-      'date': '2024-01-25',
-      'status': 'Overdue',
-      'dueDate': '2024-02-10',
-    },
+    {'number': '25635556', 'date': '05.01.2022'},
+    {'number': '25635556', 'date': '05.01.2022'},
+    {'number': '25635556', 'date': '05.01.2022'},
+    {'number': '25635556', 'date': '05.01.2022'},
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const CommonAppBar(title: 'Invoices'),
+      backgroundColor: const Color(0xFFE6E6E6),
+      appBar: const CommonAppBar(title: 'Invoices', shapeRadius: 24),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            // Summary Cards
-            Row(
-              children: [
-                Expanded(
-                  child: _buildSummaryCard(
-                    'Total Invoices',
-                    invoices.length.toString(),
-                    AppColors.primaryColor,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _buildSummaryCard(
-                    'Pending',
-                    invoices
-                        .where((inv) => inv['status'] == 'Pending')
-                        .length
-                        .toString(),
-                    Colors.orange,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _buildSummaryCard(
-                    'Overdue',
-                    invoices
-                        .where((inv) => inv['status'] == 'Overdue')
-                        .length
-                        .toString(),
-                    Colors.red,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-
-            // Create Invoice Button
-            CommonButton(
-              titleText: 'Create New Invoice',
-              onTap: () {
-                // Navigate to create invoice screen
-                // Get.toNamed(AppRoutes.employerCreateInvoice);
-              },
-            ),
-            const SizedBox(height: 20),
-
-            // Invoice List
-            Expanded(
-              child: ListView.builder(
-                itemCount: invoices.length,
-                itemBuilder: (context, index) {
-                  final invoice = invoices[index];
-                  return _buildInvoiceCard(invoice);
-                },
-              ),
-            ),
-          ],
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+        child: ListView.separated(
+          itemCount: invoices.length,
+          separatorBuilder: (context, index) => SizedBox(height: 12.h),
+          itemBuilder: (context, index) {
+            final invoice = invoices[index];
+            return _buildInvoiceCard(invoice);
+          },
         ),
       ),
-      bottomNavigationBar: CommonBottomNavBar(currentIndex: 2),
-    );
-  }
-
-  Widget _buildSummaryCard(String title, String value, Color color) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Colors.grey,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
-          ),
-        ],
-      ),
+      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 2),
     );
   }
 
   Widget _buildInvoiceCard(Map<String, dynamic> invoice) {
-    Color statusColor;
-    switch (invoice['status']) {
-      case 'Paid':
-        statusColor = Colors.green;
-        break;
-      case 'Pending':
-        statusColor = Colors.orange;
-        break;
-      case 'Overdue':
-        statusColor = Colors.red;
-        break;
-      default:
-        statusColor = Colors.grey;
-    }
-
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12.r),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                invoice['id'],
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CommonText(
+                  text: invoice['number'],
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 4,
+                SizedBox(height: 4.h),
+                CommonText(
+                  text: invoice['date'],
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.grey,
                 ),
-                decoration: BoxDecoration(
-                  color: statusColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  invoice['status'],
-                  style: TextStyle(
-                    color: statusColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-          const SizedBox(height: 8),
-          Text(
-            invoice['clientName'],
-            style: const TextStyle(fontSize: 14, color: Colors.grey),
-          ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '\$${invoice['amount'].toStringAsFixed(2)}',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor,
-                ),
-              ),
-              Text(
-                'Due: ${invoice['dueDate']}',
-                style: const TextStyle(fontSize: 12, color: Colors.grey),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
           Row(
             children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () {
-                    // Navigate to invoice details
-                    Get.toNamed(
-                      '/employer_invoice_details',
-                      arguments: invoice,
-                    );
-                  },
-                  child: const Text('View Details'),
+              IconButton(
+                onPressed: () {
+                  // View invoice action
+                  Get.to(() => EmployerInvoiceDetailScreen());
+                },
+                icon: Icon(
+                  Icons.visibility_outlined,
+                  color: Colors.grey.shade600,
+                  size: 20.sp,
                 ),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate to edit invoice
-                    Get.toNamed('/employer_edit_invoice', arguments: invoice);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
-                  ),
-                  child: const Text('Edit'),
+              SizedBox(width: 12.w),
+              IconButton(
+                onPressed: () {
+                  // Download invoice action
+                },
+                icon: Icon(
+                  Icons.download_outlined,
+                  color: Colors.grey.shade600,
+                  size: 20.sp,
                 ),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
               ),
             ],
           ),

@@ -17,8 +17,8 @@ class EmployerDeshboaredScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(
-        title: 'Welcome To Percenter',
-        subtitle: 'Example Name',
+        title: 'Welcome To JobsinApp',
+        subtitle: 'Google',
         isCenterTitle: false,
         leading: Padding(
           padding: EdgeInsets.only(left: 10.w),
@@ -46,68 +46,78 @@ class EmployerDeshboaredScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
+              // My Posted Jobs
               Item(
-                icon: Icons.person,
-                title: AppString.myAppliedJobs,
-                onTap: () => Get.toNamed(AppRoutes.myAppliedJobs),
+                icon: Icons.assignment,
+                title: AppString.myPostedJobs,
+                // TODO: Wire to employer posted jobs screen when available
+                onTap: null,
               ),
 
-              /// Approved Jobs Item here
+              // Post Job
               Item(
-                title: AppString.approvedJobs,
-                icon: Icons.check_circle_outline,
-                onTap: () => Get.toNamed(AppRoutes.approvedJobs),
+                icon: Icons.add_box_outlined,
+                title: AppString.postJob,
+                // TODO: Wire to employer post job screen when available
+                onTap: null,
               ),
 
-              /// Pending Jobs Item here
+              // AI Tools
               Item(
-                title: AppString.pendingJobs,
-                icon: Icons.pending,
-                onTap: () => Get.toNamed(AppRoutes.pendingJobs),
+                icon: Icons.auto_awesome,
+                title: AppString.aiTools,
+                onTap: null,
               ),
 
-              /// Canceled Jobs Item here
-              Item(
-                onTap: () => Get.toNamed(AppRoutes.canceledJobs),
-                title: AppString.canceledJobs,
-                icon: Icons.cancel,
-              ),
-
-              /// Saved Jobs Item here
-              Item(
-                title: AppString.savedJobs,
-                icon: Icons.favorite,
-                onTap: () => Get.toNamed(AppRoutes.savedJobs),
-              ),
-
-              Item(
-                icon: Icons.feedback,
-                title: AppString.feedback,
-                onTap: () => Get.toNamed(AppRoutes.feedback),
-              ),
-
-              /// Appointments Item here
+              // Appointments
               Item(
                 icon: Icons.calendar_today,
                 title: AppString.appointments,
-                onTap: () => Get.toNamed(AppRoutes.appointments),
+                onTap: () => Get.toNamed(AppRoutes.employerAppointments),
               ),
 
-              /// Resume Creation Item here
+              // WhatsApp Support
               Item(
-                icon: Icons.document_scanner_outlined,
-                title: AppString.jobsinAppResumeCreation,
-                onTap: () => Get.toNamed(AppRoutes.resumeCreation),
+                icon: Icons.chat,
+                title: AppString.whatsappSupport,
+                // If there is a chat/message route for employer, navigate there
+                onTap: () => Get.toNamed(AppRoutes.employerMessage),
               ),
+
+              // Add WhatsApp Link
+              Item(
+                icon: Icons.link,
+                title: AppString.addWhatsappLink,
+                onTap: null,
+              ),
+
+              // Contact & Support
+              Item(
+                icon: Icons.support_agent,
+                title: AppString.contactAndSupport,
+                onTap: () => Get.toNamed(AppRoutes.employerContactSupport),
+              ),
+
+              // Download Center
+              Item(
+                icon: Icons.download,
+                title: AppString.downloadCenter,
+                // Closest available related feature: Work Information / Invoice
+                onTap: () => Get.toNamed(AppRoutes.employerInvoiceList),
+              ),
+
+              // Verify Account
+              Item(
+                icon: Icons.verified_user,
+                title: AppString.verifyAccount,
+                onTap: () => Get.toNamed(AppRoutes.verifyUser),
+              ),
+
+              // Salary Calculator
               Item(
                 icon: Icons.calculate,
                 title: AppString.salaryCalculator,
-                onTap: () => Get.toNamed(AppRoutes.salaryCalculator),
-              ),
-              Item(
-                icon: Icons.compare,
-                title: AppString.salaryComparison,
-                onTap: () => Get.toNamed(AppRoutes.salaryComparison),
+                onTap: () => Get.toNamed(AppRoutes.employerSalaryCalculator),
               ),
             ],
           ),

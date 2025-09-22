@@ -6,19 +6,21 @@ import 'package:get/get.dart';
 import '../controller/employer_setting_controller.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../widgets/employer_setting_item.dart';
-import '../widgets/employer_profile_visibility_option.dart';
 
-class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+class EmployerSettingScreen extends StatelessWidget {
+  const EmployerSettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Initialize the controller
+    Get.put(EmployerSettingController());
+
     return Scaffold(
       /// App Bar Section starts here
-      appBar: CommonAppBar(title: AppString.settings),
+      appBar: const CommonAppBar(title: AppString.settings),
 
       /// Body Section starts here
-      body: GetBuilder<SettingController>(
+      body: GetBuilder<EmployerSettingController>(
         builder: (controller) {
           return SingleChildScrollView(
             child: Padding(
@@ -86,29 +88,6 @@ class SettingScreen extends StatelessWidget {
                       title: AppString.impressum,
                       iconDate: Icons.info_outline,
                     ),
-                  ),
-
-                  SizedBox(height: 20.h),
-
-                  /// Profile Visibility Section
-                  ProfileVisibilityOption(
-                    title: AppString.employersCanSeeYourProfile,
-                    description:
-                        AppString.onJobsinAppPlatformWeTryToHideIdentityDetails,
-                    isSelected: true,
-                    onTap: () {
-                      // Handle profile visibility selection
-                    },
-                  ),
-
-                  ProfileVisibilityOption(
-                    title: AppString.employersCannotSeeYourProfile,
-                    description:
-                        AppString.theEmployersYouHaveAppliedToCanSeeYourProfile,
-                    isSelected: false,
-                    onTap: () {
-                      // Handle profile visibility selection
-                    },
                   ),
                 ],
               ),
