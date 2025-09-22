@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/features/employer/profile/presentation/widgets/employer_review_bottom_sheet.dart';
 import '../../../../../core/config/route/app_routes.dart';
 import '../../../../../core/component/bottom_nav_bar/common_bottom_bar.dart';
 import '../../../../../core/component/image/common_image.dart';
@@ -119,11 +118,18 @@ class ProfileScreen extends StatelessWidget {
                             onTap: () => Get.toNamed(AppRoutes.shareApp),
                           ),
 
-                          // Review
+                          // privacy policy
                           Item(
-                            icon: Icons.star_rate_rounded,
-                            title: AppString.review,
-                            onTap: () => showReviewBottomSheet(context),
+                            icon: Icons.privacy_tip,
+                            title: AppString.privacyPolicy,
+                            onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
+                          ),
+
+                          // terms of service
+                          Item(
+                            icon: Icons.description,
+                            title: AppString.termsOfServices,
+                            onTap: () => Get.toNamed(AppRoutes.termsOfServices),
                           ),
 
                           // Log Out

@@ -9,6 +9,8 @@ import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+import 'package:zasulehry_job_seeker/core/component/pop_up/whatsapp_support_popup.dart';
+import 'package:zasulehry_job_seeker/core/component/pop_up/add_whatsapp_link_popup.dart';
 
 class EmployerDeshboaredScreen extends StatelessWidget {
   const EmployerDeshboaredScreen({super.key});
@@ -78,15 +80,47 @@ class EmployerDeshboaredScreen extends StatelessWidget {
               Item(
                 icon: Icons.chat,
                 title: AppString.whatsappSupport,
-                // If there is a chat/message route for employer, navigate there
-                onTap: () => Get.toNamed(AppRoutes.employerMessage),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => WhatsappSupportPopup(
+                      onSubmit: () {
+                        // Handle the WhatsApp link submission here
+                        print('WhatsApp link submitted');
+                      },
+                    ),
+                  );
+                },
               ),
 
               // Add WhatsApp Link
               Item(
                 icon: Icons.link,
                 title: AppString.addWhatsappLink,
-                onTap: null,
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AddWhatsappLinkPopup(
+                      currentLink:
+                          'https://wa.me/1234567890?text=Hello%20I%20am%20interested%20in%20your%20job%20posting',
+                      onEdit: () {
+                        // Show edit dialog (can reuse WhatsappSupportPopup)
+                        showDialog(
+                          context: context,
+                          builder: (context) => WhatsappSupportPopup(
+                            onSubmit: () {
+                              print('WhatsApp link updated');
+                            },
+                          ),
+                        );
+                      },
+                      onDelete: () {
+                        // Handle WhatsApp link deletion
+                        print('WhatsApp link deleted');
+                      },
+                    ),
+                  );
+                },
               ),
 
               // Contact & Support
