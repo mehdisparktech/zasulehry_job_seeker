@@ -311,7 +311,7 @@ class AppRoutes {
     ),
     GetPage(
       name: employerAppointments,
-      page: () => employer_appointments.AppointmentsScreen(),
+      page: () => employer_appointments.EmployerAppointmentsScreen(),
     ),
     GetPage(
       name: employerFeedback,

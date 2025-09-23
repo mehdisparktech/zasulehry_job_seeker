@@ -11,14 +11,16 @@ import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 
-class AppointmentsScreen extends StatefulWidget {
-  const AppointmentsScreen({super.key});
+class EmployerAppointmentsScreen extends StatefulWidget {
+  const EmployerAppointmentsScreen({super.key});
 
   @override
-  State<AppointmentsScreen> createState() => _AppointmentsScreenState();
+  State<EmployerAppointmentsScreen> createState() =>
+      _EmployerAppointmentsScreenState();
 }
 
-class _AppointmentsScreenState extends State<AppointmentsScreen> {
+class _EmployerAppointmentsScreenState
+    extends State<EmployerAppointmentsScreen> {
   int selectedTabIndex = 0;
   final List<String> tabs = ['Confirmed', 'Pending', 'Cancelled'];
 
