@@ -175,6 +175,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
         statusColor: AppColors.red,
         showActions: false,
         isConfirmed: false,
+        isCancelled: true,
       ),
       16.height,
       _buildAppointmentCard(
@@ -185,6 +186,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
         statusColor: AppColors.red,
         showActions: false,
         isConfirmed: false,
+        isCancelled: true,
       ),
     ];
   }
@@ -197,6 +199,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
     required Color statusColor,
     required bool showActions,
     required bool isConfirmed,
+    bool isCancelled = false,
   }) {
     return Container(
       padding: EdgeInsets.all(8.w),
@@ -270,6 +273,20 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
               Checkbox(value: true, onChanged: (value) {}),
             ],
           ),
+          if (isCancelled) ...[
+            Row(
+              children: [
+                Icon(Icons.info, size: 16.sp, color: AppColors.blue500),
+                4.width,
+                CommonText(
+                  text: status,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  textAlign: TextAlign.start,
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );
