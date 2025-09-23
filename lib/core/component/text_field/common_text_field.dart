@@ -63,9 +63,17 @@ class CommonTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Automatically set keyboardType to multiline when using newline action with multiline fields
+    final effectiveKeyboardType =
+        (textInputAction == TextInputAction.newline &&
+            maxLines != null &&
+            maxLines! > 1)
+        ? TextInputType.multiline
+        : keyboardType;
+
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUnfocus,
-      keyboardType: keyboardType,
+      keyboardType: effectiveKeyboardType,
       controller: controller,
       obscureText: obscureText.value,
       textInputAction: textInputAction,

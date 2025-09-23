@@ -102,6 +102,8 @@ import 'package:zasulehry_job_seeker/features/employer/profile/presentation/scre
     as employer_verify_account;
 import 'package:zasulehry_job_seeker/features/employer/download_center/presentation/screen/employer_download_center_screen.dart'
     as employer_download_center;
+import 'package:zasulehry_job_seeker/features/employer/appointments/presentation/screen/create_appointment_screen.dart'
+    as employer_create_appointment;
 
 // Employer invoice imports
 import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_list_screen.dart'
@@ -227,6 +229,8 @@ class AppRoutes {
   static const String employerAiTools = "/employer_ai_tools";
   static const String employerVerifyAccount = "/employer_verify_account";
   static const String employerDownloadCenter = "/employer_download_center";
+  static const String employerCreateAppointment =
+      "/employer_create_appointment";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -433,6 +437,10 @@ class AppRoutes {
     GetPage(
       name: employerDownloadCenter,
       page: () => employer_download_center.EmployerDownloadCenterScreen(),
+    ),
+    GetPage(
+      name: employerCreateAppointment,
+      page: () => const employer_create_appointment.CreateAppointmentScreen(),
     ),
   ];
 }
