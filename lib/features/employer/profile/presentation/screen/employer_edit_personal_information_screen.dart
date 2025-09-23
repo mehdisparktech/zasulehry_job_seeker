@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
-import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import '../../../../../core/component/text/common_text.dart';
+import '../../../../../core/component/text_field/common_text_field.dart';
 import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/constants/app_colors.dart';
@@ -11,16 +10,20 @@ import '../../../../../core/constants/app_images.dart';
 import '../../../../../core/services/storage/storage_services.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 
-class EmployerPersonalInformationScreen extends StatefulWidget {
-  const EmployerPersonalInformationScreen({super.key});
+class EditEmployerPersonalInformationScreen extends StatefulWidget {
+  final String appTitle;
+  const EditEmployerPersonalInformationScreen({
+    super.key,
+    required this.appTitle,
+  });
 
   @override
-  State<EmployerPersonalInformationScreen> createState() =>
+  State<EditEmployerPersonalInformationScreen> createState() =>
       _EmployerPersonalInformationScreenState();
 }
 
 class _EmployerPersonalInformationScreenState
-    extends State<EmployerPersonalInformationScreen> {
+    extends State<EditEmployerPersonalInformationScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
@@ -82,13 +85,13 @@ class _EmployerPersonalInformationScreenState
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const CommonText(
-                          text: AppString.personalInformation,
+                        CommonText(
+                          text: widget.appTitle,
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
                           color: Colors.white,
                         ),
-                        SizedBox(height: 64.h), // Space for avatar
+                        SizedBox(height: 60.h), // Space for avatar
                       ],
                     ),
                   ),
@@ -109,44 +112,85 @@ class _EmployerPersonalInformationScreenState
                     ),
                   ),
                 ),
-
-                _buildPersonalInformationRow(),
-
-                40.height,
-
                 // Name Field
+                _buildFormField(
+                  controller: nameController,
+                  hintText: "company name",
+                ),
+
+                16.height,
+
+                // Email Field
+                _buildFormField(
+                  controller: emailController,
+                  hintText: "legal form",
+                  keyboardType: TextInputType.emailAddress,
+                ),
+
+                16.height,
+
+                // Contact Field
+                _buildFormField(
+                  controller: contactController,
+                  hintText: "Enter your contact number",
+                  keyboardType: TextInputType.phone,
+                ),
+
+                16.height,
+
+                // Location Field
+                _buildFormField(
+                  controller: locationController,
+                  hintText: "Enter your location",
+                ),
+
+                16.height,
+
+                // Role Field
+                _buildFormField(
+                  controller: roleController,
+                  hintText: "Enter your role",
+                ),
+                16.height,
+                _buildFormField(
+                  controller: contactController,
+                  hintText: "Enter your contact number",
+                  keyboardType: TextInputType.phone,
+                ),
+
+                16.height,
+
+                // Location Field
+                _buildFormField(
+                  controller: locationController,
+                  hintText: "Enter your location",
+                ),
+
+                16.height,
+
+                // Role Field
+                _buildFormField(
+                  controller: roleController,
+                  hintText: "Enter your role",
+                ),
 
                 // Edit Profile Button
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: CommonButton(
-                          titleText: "Edit Profile",
-                          onTap: () {
-                            Get.toNamed(
-                              AppRoutes.employerEditPersonalInformation,
-                              arguments: {"appTitle": "Edit Profile"},
-                            );
-                            // Navigate to edit profile or handle edit functionality
-                          },
-                        ),
-                      ),
-                      16.width,
-                      Expanded(
-                        child: CommonButton(
-                          titleText: "Complete Profile",
-                          onTap: () {
-                            Get.toNamed(
-                              AppRoutes.employerEditPersonalInformation,
-                              arguments: {"appTitle": "Complete Profile"},
-                            );
-                            // Navigate to edit profile or handle edit functionality
-                          },
-                        ),
-                      ),
-                    ],
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 20.0,
+                  ),
+                  child: CommonButton(
+                    titleText: "Confirm",
+                    onTap: () {
+                      // Navigate to edit profile or handle edit functionality
+                      Get.snackbar(
+                        "Success",
+                        "Personal information updated successfully",
+                        backgroundColor: AppColors.primaryColor,
+                        colorText: AppColors.white,
+                      );
+                    },
                   ),
                 ),
               ],
@@ -177,64 +221,21 @@ class _EmployerPersonalInformationScreenState
     );
   }
 
-  Widget _buildPersonalInformationRow() {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      margin: EdgeInsets.symmetric(horizontal: 16.w),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        border: Border.all(color: AppColors.blue100, width: 1),
-        borderRadius: BorderRadius.circular(12.r),
+  Widget _buildFormField({
+    required TextEditingController controller,
+    required String hintText,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: CommonTextField(
+        controller: controller,
+        hintText: hintText,
+        keyboardType: keyboardType,
+        fillColor: AppColors.white,
+        borderColor: AppColors.background,
+        textColor: AppColors.black,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          _buildInfoRow("Name", nameController.text),
-          16.height,
-          _buildInfoRow("Email", emailController.text),
-          16.height,
-          _buildInfoRow("Contact", contactController.text),
-          16.height,
-          _buildInfoRow("Location", locationController.text),
-          16.height,
-          _buildInfoRow("Role", roleController.text),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInfoRow(String label, String value) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 80.w,
-          child: CommonText(
-            text: label,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w500,
-            color: AppColors.black,
-            textAlign: TextAlign.start,
-          ),
-        ),
-        CommonText(
-          text: ': ',
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w500,
-          color: AppColors.black,
-        ),
-        Expanded(
-          child: CommonText(
-            text: value,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w400,
-            color: AppColors.black,
-            textAlign: TextAlign.start,
-          ),
-        ),
-      ],
     );
   }
 }

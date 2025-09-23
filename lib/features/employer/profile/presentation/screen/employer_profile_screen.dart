@@ -86,15 +86,9 @@ class ProfileScreen extends StatelessWidget {
                           Item(
                             icon: Icons.person,
                             title: AppString.personalInformation,
-                            onTap: () =>
-                                Get.toNamed(AppRoutes.personalInformation),
-                          ),
-
-                          // Work Information
-                          Item(
-                            icon: Icons.work_outline,
-                            title: AppString.workInformation,
-                            onTap: () => Get.toNamed(AppRoutes.workInformation),
+                            onTap: () => Get.toNamed(
+                              AppRoutes.employerPersonalInformation,
+                            ),
                           ),
 
                           // Settings

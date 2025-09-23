@@ -127,4 +127,5 @@ class AppString {
       "By Continuing, You Accepted The";
   static const String privacyPolicyAnd = "Privacy Policy And";
   static const String termsAndCondition = "Terms & Condition";
+  static const String deviceManagement = "Device Management";
 }
