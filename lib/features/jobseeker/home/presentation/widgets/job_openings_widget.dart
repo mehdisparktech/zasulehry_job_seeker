@@ -5,6 +5,7 @@ import 'package:zasulehry_job_seeker/core/component/card/job_card.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/controller/job_seeker_home_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/view_job_details_screen.dart';
@@ -55,7 +56,9 @@ class JobOpeningsWidget extends StatelessWidget {
         timePosted: '2 Days Ago',
         isFullTime: true,
         companyLogo: AppImages.google,
-        onTap: () => Get.to(() => const ViewJobDetailsScreen()),
+        onTap: () => Get.to(
+          () => const ViewJobDetailsScreen(applyJobStatus: ApplyJobStatus.none),
+        ),
       ),
       separatorBuilder: (context, index) => 16.height,
     );

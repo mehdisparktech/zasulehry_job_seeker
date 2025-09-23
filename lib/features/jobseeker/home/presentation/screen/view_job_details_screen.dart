@@ -5,9 +5,11 @@ import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/job_application_popup.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 
 class ViewJobDetailsScreen extends StatelessWidget {
-  const ViewJobDetailsScreen({super.key});
+  final ApplyJobStatus applyJobStatus;
+  const ViewJobDetailsScreen({super.key, required this.applyJobStatus});
 
   @override
   Widget build(BuildContext context) {
@@ -243,23 +245,52 @@ class ViewJobDetailsScreen extends StatelessWidget {
   Widget _buildActionButtons() {
     return Row(
       children: [
-        Expanded(
-          child: _buildButton('Save', () {
-            // Handle save action
-          }),
-        ),
+        if (applyJobStatus == ApplyJobStatus.none)
+          Expanded(
+            child: _buildButton('Save', () {
+              // Handle save action
+            }),
+          ),
         SizedBox(width: 24.w),
-        Expanded(
-          child: _buildButton('Apply Now', () {
-            // Show job application popup
-            Get.dialog(
-              const JobApplicationPopup(
-                jobTitle: 'Senior Business Analytics',
-                companyName: 'Google',
-              ),
-            );
-          }, isGradient: true),
-        ),
+        if (applyJobStatus != ApplyJobStatus.rejected)
+          Expanded(
+            child: applyJobStatus == ApplyJobStatus.none
+                ? _buildButton('Apply Now', () {
+                    // Show job application popup
+                    Get.dialog(
+                      const JobApplicationPopup(
+                        jobTitle: 'Senior Business Analytics',
+                        companyName: 'Google',
+                      ),
+                    );
+                  }, isGradient: true)
+                : _buildButton(
+                    applyJobStatus == ApplyJobStatus.applied
+                        ? 'Cancel'
+                        : applyJobStatus == ApplyJobStatus.pending
+                        ? 'Cancel'
+                        : applyJobStatus == ApplyJobStatus.approved
+                        ? 'Contact Now'
+                        : applyJobStatus == ApplyJobStatus.saved
+                        ? 'Apply Now'
+                        : 'Cancel',
+                    () {
+                      // Handle applied action
+                      if (applyJobStatus == ApplyJobStatus.applied) {
+                        // Handle applied action
+                      } else if (applyJobStatus == ApplyJobStatus.pending) {
+                        // Handle pending action
+                      } else if (applyJobStatus == ApplyJobStatus.approved) {
+                        // Handle approved action
+                      } else {
+                        // Handle rejected action
+                      }
+                    },
+                    isGradient:
+                        applyJobStatus == ApplyJobStatus.approved ||
+                        applyJobStatus == ApplyJobStatus.saved,
+                  ),
+          ),
       ],
     );
   }
@@ -285,7 +316,16 @@ class ViewJobDetailsScreen extends StatelessWidget {
               )
             : null,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.primaryColor, width: 2),
+        border: Border.all(
+          color: applyJobStatus != ApplyJobStatus.applied
+              ? applyJobStatus == ApplyJobStatus.approved ||
+                        applyJobStatus == ApplyJobStatus.none ||
+                        applyJobStatus == ApplyJobStatus.saved
+                    ? AppColors.primaryColor
+                    : AppColors.red2
+              : AppColors.red,
+          width: 2,
+        ),
       ),
       child: Material(
         color: Colors.transparent,
@@ -298,9 +338,15 @@ class ViewJobDetailsScreen extends StatelessWidget {
             alignment: Alignment.center,
             child: CommonText(
               text: text,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-              color: isGradient ? AppColors.white : AppColors.primaryColor,
+              fontSize: 20.sp,
+              fontWeight: FontWeight.w500,
+              color: isGradient
+                  ? AppColors.white
+                  : applyJobStatus == ApplyJobStatus.approved
+                  ? AppColors.white
+                  : applyJobStatus == ApplyJobStatus.none
+                  ? AppColors.primaryColor
+                  : AppColors.red2,
             ),
           ),
         ),

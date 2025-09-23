@@ -46,12 +46,8 @@ import 'package:zasulehry_job_seeker/features/employer/appointments/presentation
     as employer_appointments;
 import 'package:zasulehry_job_seeker/features/employer/feedback/presentation/screen/employer_feedback_screen.dart'
     as employer_feedback;
-import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_my_applied_jobs_screen.dart'
-    as employer_my_applied_jobs;
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_posted_jobs_screen.dart'
     as employer_posted_jobs;
-import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_saved_jobs_screen.dart'
-    as employer_saved_jobs;
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_chat_screen.dart'
     as employer_chat;
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_message_screen.dart'
@@ -317,19 +313,12 @@ class AppRoutes {
       name: employerFeedback,
       page: () => employer_feedback.FeedbackScreen(),
     ),
-    GetPage(
-      name: employerMyAppliedJobs,
-      page: () => employer_my_applied_jobs.MyAppliedJobsScreen(),
-    ),
+
     GetPage(
       name: employerPostedJobs,
       page: () => employer_posted_jobs.EmployerPostedJobsScreen(),
     ),
 
-    GetPage(
-      name: employerSavedJobs,
-      page: () => employer_saved_jobs.SavedJobsScreen(),
-    ),
     GetPage(
       name: employerChat,
       page: () => employer_chat.EmployerChatListScreen(),
