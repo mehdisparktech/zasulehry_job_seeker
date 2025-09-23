@@ -102,11 +102,31 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: AppColors.blue500,
             ),
-            CommonText(
-              text: '20 Likes',
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w400,
-              color: AppColors.textSecondary,
+            Column(
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: AppColors.blue500,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Icon(
+                      Icons.favorite_border,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 4.h),
+                CommonText(
+                  text: '20 Likes',
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
+              ],
             ),
           ],
         ),
@@ -123,15 +143,14 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
                     size: 16.sp,
                     color: AppColors.blue500,
                   ),
-                  Expanded(
-                    child: CommonText(
-                      text: 'XYZ Hospital, 123 Main Street',
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textSecondary,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  SizedBox(width: 4.w),
+                  CommonText(
+                    text: 'XYZ Hospital, 123 Main Street',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
@@ -147,7 +166,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
                 SizedBox(width: 4.w),
                 CommonText(
                   text: '20 Jan 2025',
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textSecondary,
                 ),

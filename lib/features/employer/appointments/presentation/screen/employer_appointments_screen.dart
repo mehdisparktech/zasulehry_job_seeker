@@ -88,21 +88,31 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
 
           // Bottom Action Button
           Container(
-            padding: EdgeInsets.all(16.w),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: CommonButton(
               titleText: 'Cancel',
               onTap: () {
                 // Handle ask for appointment action
+                showConfirmationDialog(
+                  message: 'Are You Sure You Want To Cancel The Appointment',
+                  onConfirm: () {
+                    // Handle cancel appointment action
+                  },
+                  onCancel: () {
+                    // Handle cancel appointment action
+                  },
+                );
               },
               titleColor: AppColors.white,
-              buttonColor: AppColors.red,
-              borderColor: AppColors.red,
+              buttonColor: AppColors.red2,
+              borderColor: AppColors.red2,
               buttonRadius: 4.r,
               isGradient: false,
             ),
           ),
+          16.height,
           Container(
-            padding: EdgeInsets.all(16.w),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             margin: EdgeInsets.only(bottom: 16.h),
             child: CommonButton(
               titleText: 'Create New Appointment',
@@ -114,6 +124,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
               buttonRadius: 4.r,
             ),
           ),
+          40.height,
         ],
       ),
     );
@@ -191,6 +202,43 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
         isCancelled: true,
       ),
     ];
+  }
+
+  void showConfirmationDialog({
+    required String message,
+    required VoidCallback onConfirm,
+    required VoidCallback onCancel,
+  }) {
+    Get.dialog(
+      AlertDialog(
+        backgroundColor: AppColors.white,
+        content: CommonText(text: message, fontSize: 18.sp, maxLines: 2),
+        actions: [
+          Row(
+            children: [
+              Expanded(
+                child: CommonButton(
+                  onTap: onCancel,
+                  titleText: 'No',
+                  titleColor: AppColors.white,
+                  buttonColor: AppColors.red2,
+                  borderColor: AppColors.red2,
+                  isGradient: false,
+                ),
+              ),
+              SizedBox(width: 16.w),
+              Expanded(
+                child: CommonButton(
+                  onTap: onConfirm,
+                  titleText: 'Yes',
+                  titleColor: AppColors.white,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildAppointmentCard({
