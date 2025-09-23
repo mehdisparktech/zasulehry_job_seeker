@@ -1,10 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/other_widgets/item.dart';
+import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
@@ -18,31 +19,7 @@ class EmployerDeshboaredScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(
-        title: 'Welcome To JobsinApp',
-        subtitle: 'Google',
-        isCenterTitle: false,
-        leading: Padding(
-          padding: EdgeInsets.only(left: 10.w),
-          child: CircleAvatar(
-            backgroundColor: AppColors.white,
-            radius: 24.r,
-            child: CommonImage(
-              imageSrc: AppImages.google,
-              width: 30.w,
-              height: 30.h,
-            ),
-          ),
-        ),
-        isBackButton: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications, color: AppColors.white),
-            color: AppColors.white,
-          ),
-        ],
-      ),
+      appBar: _buildAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -86,7 +63,9 @@ class EmployerDeshboaredScreen extends StatelessWidget {
                     builder: (context) => WhatsappSupportPopup(
                       onSubmit: () {
                         // Handle the WhatsApp link submission here
-                        print('WhatsApp link submitted');
+                        if (kDebugMode) {
+                          print('WhatsApp link submitted');
+                        }
                       },
                     ),
                   );
@@ -109,14 +88,18 @@ class EmployerDeshboaredScreen extends StatelessWidget {
                           context: context,
                           builder: (context) => WhatsappSupportPopup(
                             onSubmit: () {
-                              print('WhatsApp link updated');
+                              if (kDebugMode) {
+                                print('WhatsApp link updated');
+                              }
                             },
                           ),
                         );
                       },
                       onDelete: () {
                         // Handle WhatsApp link deletion
-                        print('WhatsApp link deleted');
+                        if (kDebugMode) {
+                          print('WhatsApp link deleted');
+                        }
                       },
                     ),
                   );
@@ -155,6 +138,78 @@ class EmployerDeshboaredScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: CommonBottomNavBar(currentIndex: 0),
+    );
+  }
+
+  PreferredSizeWidget _buildAppBar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      toolbarHeight: 80,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
+        ),
+      ),
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment(-0.9, 0),
+            end: Alignment(1.0, 0),
+            colors: [
+              Color(0xFF083E4B), // #083E4B
+              Color(0xFF074E5E), // #074E5E
+              Color(0xFF0288A6), // #0288A6
+            ],
+            stops: [0.0, 0.4, 1.0],
+          ),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          ),
+        ),
+      ),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CommonText(
+            text: AppString.dashboard,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+            color: AppColors.white,
+            // Changed to white for better contrast
+          ),
+          CommonText(
+            text: 'Google',
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: AppColors.white,
+            // Changed to white for better contrast
+          ),
+        ],
+      ),
+      centerTitle: false,
+      leading: Padding(
+        padding: EdgeInsets.only(left: 14.w),
+        child: CommonImage(
+          imageSrc: AppImages.google,
+          width: 32.w,
+          height: 32.h,
+        ),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.phone, color: AppColors.white),
+          color: AppColors.red,
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.notifications, color: AppColors.white),
+          color: AppColors.red,
+        ),
+      ],
     );
   }
 }

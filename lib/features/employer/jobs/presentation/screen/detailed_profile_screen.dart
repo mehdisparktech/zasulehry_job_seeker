@@ -39,7 +39,7 @@ class DetailedProfileScreen extends StatelessWidget {
           _buildWorkInformation(),
           SizedBox(height: 24.h),
           _buildAttachmentImages(),
-          SizedBox(height: 24.h),
+          SizedBox(height: 10.h),
           _buildWorkOverview(),
           SizedBox(height: 30.h),
         ],

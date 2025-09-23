@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/component/review/review_bottom_sheet.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
@@ -24,11 +25,11 @@ class SeekerProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: CommonAppBar(title: seekerName),
-      body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -47,7 +48,7 @@ class SeekerProfileScreen extends StatelessWidget {
           SizedBox(height: 24.h),
           _buildExpectedSalary(),
           SizedBox(height: 40.h),
-          _buildActionButtons(),
+          _buildActionButtons(context),
           SizedBox(height: 30.h),
         ],
       ),
@@ -425,10 +426,10 @@ class SeekerProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButtons() {
+  Widget _buildActionButtons(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: _buildFeedbackButton()),
+        Expanded(child: _buildFeedbackButton(context)),
         SizedBox(width: 16.w),
         Expanded(
           child: CommonButton(
@@ -444,7 +445,7 @@ class SeekerProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeedbackButton() {
+  Widget _buildFeedbackButton(BuildContext context) {
     return Container(
       height: 48.h,
       decoration: BoxDecoration(
@@ -457,7 +458,7 @@ class SeekerProfileScreen extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(24.r),
           onTap: () {
-            _showFeedbackDialog();
+            showReviewBottomSheet(context);
           },
           child: Center(
             child: CommonText(
@@ -506,67 +507,6 @@ class SeekerProfileScreen extends StatelessWidget {
             },
             child: CommonText(
               text: 'Approve',
-              fontSize: 14.sp,
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showFeedbackDialog() {
-    TextEditingController feedbackController = TextEditingController();
-
-    Get.dialog(
-      AlertDialog(
-        title: CommonText(
-          text: 'Provide Feedback',
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w600,
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CommonText(
-              text: 'Please provide feedback for $seekerName:',
-              fontSize: 14.sp,
-            ),
-            SizedBox(height: 16.h),
-            TextField(
-              controller: feedbackController,
-              maxLines: 4,
-              decoration: InputDecoration(
-                hintText: 'Enter your feedback here...',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: CommonText(
-              text: 'Cancel',
-              fontSize: 14.sp,
-              color: AppColors.textFiledColor,
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Get.back();
-              Get.snackbar(
-                'Success',
-                'Feedback sent to $seekerName',
-                backgroundColor: AppColors.primaryColor,
-                colorText: Colors.white,
-              );
-            },
-            child: CommonText(
-              text: 'Send',
               fontSize: 14.sp,
               color: AppColors.primaryColor,
               fontWeight: FontWeight.w600,

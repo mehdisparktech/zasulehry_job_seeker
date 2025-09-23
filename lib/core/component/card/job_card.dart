@@ -7,9 +7,11 @@ class JobCard extends StatefulWidget {
   final String location;
   final String jobTitle;
   final String salaryRange;
-  final String timePosted;
+  final String? timePosted;
   final bool isFullTime;
   final String companyLogo;
+  final String? totalapply;
+  final bool isApplied;
   final VoidCallback onTap;
   const JobCard({
     super.key,
@@ -17,9 +19,11 @@ class JobCard extends StatefulWidget {
     required this.location,
     required this.jobTitle,
     required this.salaryRange,
-    required this.timePosted,
+    this.timePosted = '',
     required this.isFullTime,
     required this.companyLogo,
+    this.totalapply = '',
+    this.isApplied = false,
     required this.onTap,
   });
 
@@ -167,7 +171,9 @@ class JobCardState extends State<JobCard> {
                 const Spacer(),
                 // Time Posted
                 Text(
-                  widget.timePosted,
+                  widget.isApplied
+                      ? widget.totalapply ?? ''
+                      : widget.timePosted ?? '',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],

@@ -129,6 +129,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
                 fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 mexLength: 500,
+                maxLines: 8,
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
               ),
@@ -154,10 +155,15 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
               ),
+              SizedBox(height: 10.h),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Icon(Icons.add_circle, color: AppColors.primaryColor),
+              ),
               SizedBox(height: 20.h),
 
               // Qualification Section
-              _buildSectionTitle("Qualification"),
+              _buildSectionTitle("Required Qualification"),
               SizedBox(height: 8.h),
               CommonTextField(
                 controller: qualificationController,
@@ -184,6 +190,11 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
               ),
+              SizedBox(height: 10.h),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Icon(Icons.add_circle, color: AppColors.primaryColor),
+              ),
               SizedBox(height: 20.h),
 
               // About Ourself Section
@@ -195,6 +206,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
                 fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 mexLength: 500,
+                maxLines: 5,
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
               ),
@@ -283,7 +295,6 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
       return;
     }
 
-    // TODO: Implement API call to post job
     Get.snackbar(
       "Success",
       "Job posted successfully!",
