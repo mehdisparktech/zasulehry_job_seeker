@@ -9,4 +9,5 @@ class AppImages {
   static const String google = "$baseurl/google.png";
   static const String facebook = "$baseurl/facebook.png";
   static const String apple = "$baseurl/apple.png";
+  static const String map = "$baseurl/map.png";
 }
