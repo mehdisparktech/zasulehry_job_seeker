@@ -76,6 +76,18 @@ class ChatBubbleMessage extends StatelessWidget {
                       bottomRight: Radius.circular(isMe ? 4.r : 12.r),
                     ),
                     color: isMe ? AppColors.primaryColor : AppColors.blue100,
+                    gradient: isMe
+                        ? LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              Color(0xFF083E4B),
+                              Color(0xFF074E5E),
+                              Color(0xFF0288A6),
+                            ],
+                            stops: [0.0, 0.5, 1.0],
+                          )
+                        : null,
                     border: !isMe
                         ? Border.all(
                             color: AppColors.primaryColor.withOpacity(0.2),

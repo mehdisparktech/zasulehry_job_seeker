@@ -221,6 +221,18 @@ class FilterBottomSheetWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
           decoration: BoxDecoration(
             color: selected ? AppColors.primaryColor : Colors.white,
+            gradient: selected
+                ? LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color(0xFF083E4B),
+                      Color(0xFF074E5E),
+                      Color(0xFF0288A6),
+                    ],
+                    stops: [0.0, 0.5, 1.0],
+                  )
+                : null,
             borderRadius: BorderRadius.circular(6.r),
             border: Border.all(color: AppColors.primaryColor),
           ),

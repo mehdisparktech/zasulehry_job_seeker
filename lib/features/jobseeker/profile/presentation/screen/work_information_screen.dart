@@ -62,7 +62,6 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: "Work Information"),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.w),
@@ -104,7 +103,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
             CommonTextField(
               controller: experienceController,
               hintText: "12 Years",
-              fillColor: AppColors.filledColor,
+              fillColor: AppColors.white,
               borderColor: AppColors.background,
               textColor: AppColors.black,
             ),
@@ -117,7 +116,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
               controller: salaryController,
               hintText: "\$250",
               keyboardType: TextInputType.number,
-              fillColor: AppColors.filledColor,
+              fillColor: AppColors.white,
               borderColor: AppColors.background,
               textColor: AppColors.black,
             ),
@@ -176,7 +175,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
   Widget _buildSectionLabel(String label) {
     return CommonText(
       text: label,
-      fontSize: 14,
+      fontSize: 18.sp,
       fontWeight: FontWeight.w500,
       color: AppColors.black,
       bottom: 8,
@@ -193,7 +192,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
       height: 50.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
-        color: AppColors.filledColor,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(color: AppColors.background),
       ),
@@ -234,54 +233,12 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
     return Column(
       children: [
         // Upload Resume Button
-        GestureDetector(
-          onTap: () {
-            // Handle resume upload
-            Get.snackbar(
-              "Info",
-              "Resume upload functionality will be implemented",
-              backgroundColor: AppColors.primaryColor,
-              colorText: AppColors.white,
-            );
-          },
-          child: Container(
-            width: double.infinity,
-            height: 50.h,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: AppColors.textFiledColor.withOpacity(0.3),
-              ),
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.upload_file,
-                  color: AppColors.primaryColor,
-                  size: 20.sp,
-                ),
-                SizedBox(width: 8.w),
-                CommonText(
-                  text: 'Upload Resume',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.primaryColor,
-                ),
-              ],
-            ),
-          ),
-        ),
-
         SizedBox(height: 12.h),
 
         // Example PDF Display
         Container(
           padding: EdgeInsets.all(12.w),
-          decoration: BoxDecoration(
-            color: AppColors.textFiledColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(10.r),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
           child: Row(
             children: [
               Container(
@@ -368,7 +325,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: AppColors.filledColor,
+                color: AppColors.white,
                 borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(
                   color: AppColors.textFiledColor.withOpacity(0.3),
@@ -395,7 +352,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
     return Container(
       height: 100.h,
       decoration: BoxDecoration(
-        color: AppColors.filledColor,
+        color: AppColors.white,
         border: Border.all(color: AppColors.textFiledColor.withOpacity(0.3)),
         borderRadius: BorderRadius.circular(10.r),
       ),

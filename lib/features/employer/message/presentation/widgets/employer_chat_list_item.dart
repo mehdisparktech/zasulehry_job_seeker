@@ -91,8 +91,17 @@ Widget employerChatListItem({required EmployerChatListModel item}) {
               width: 20.r,
               height: 20.r,
               alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                color: AppColors.primaryColor,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF083E4B),
+                    Color(0xFF074E5E),
+                    Color(0xFF0288A6),
+                  ],
+                  stops: [0.0, 0.5, 1.0],
+                ),
                 shape: BoxShape.circle,
               ),
               child: const CommonText(

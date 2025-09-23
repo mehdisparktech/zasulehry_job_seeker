@@ -53,7 +53,11 @@ Widget chatListItem({required ChatModel item}) {
               /// Last message with small status icon
               Row(
                 children: [
-                  Icon(Icons.check_circle, size: 14.sp, color: AppColors.primaryColor),
+                  Icon(
+                    Icons.check_circle,
+                    size: 14.sp,
+                    color: AppColors.primaryColor,
+                  ),
                   6.width,
                   Expanded(
                     child: CommonText(
@@ -88,7 +92,16 @@ Widget chatListItem({required ChatModel item}) {
               height: 20.r,
               alignment: Alignment.center,
               decoration: const BoxDecoration(
-                color: AppColors.primaryColor,
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF083E4B),
+                    Color(0xFF074E5E),
+                    Color(0xFF0288A6),
+                  ],
+                  stops: [0.0, 0.5, 1.0],
+                ),
                 shape: BoxShape.circle,
               ),
               child: const CommonText(
