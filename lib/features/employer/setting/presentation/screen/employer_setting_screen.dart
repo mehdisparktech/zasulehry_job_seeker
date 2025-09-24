@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
-import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/config/route/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,11 @@ class EmployerSettingScreen extends StatelessWidget {
               onTap: () {
                 Get.toNamed(AppRoutes.deviceManagementSettings);
               },
-              child: Icon(Icons.mobile_friendly, color: AppColors.white),
+              child: GlassEffectIcon(
+                icon: AppImages.mobile,
+                width: 24.w,
+                height: 24.h,
+              ),
             ),
           ),
         ],

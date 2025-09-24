@@ -37,7 +37,7 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
     CommonImage(imageSrc: AppImages.profileActive, width: 24, height: 24),
   ];
 
-  List<String> jobseekerText = ["Home", "Dashboard", "Chat", "Profile"];
+  List<String> jobseekerText = ["Home", "Dashboard", "Message", "Profile"];
 
   // Employer bottom nav bar icons
 
@@ -55,7 +55,7 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
     CommonImage(imageSrc: AppImages.profileActive, width: 24, height: 24),
   ];
 
-  List<String> employerText = ["Dashboard", "Chat", "Invoice", "Profile"];
+  List<String> employerText = ["Dashboard", "Message", "Invoice", "Profile"];
 
   List<Widget> get unselectedIcons =>
       LocalStorage.userRole == UserRole.jobSeeker

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/personals_information_screen.dart';
 import '../../../../../core/config/route/app_routes.dart';
 import '../../../../../core/component/bottom_nav_bar/common_bottom_bar.dart';
 import '../../../../../core/component/image/common_image.dart';
@@ -88,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
                             image: AppImages.person2,
                             title: AppString.personalInformation,
                             onTap: () =>
-                                Get.toNamed(AppRoutes.personalInformation),
+                                Get.to(() => const PersonalInformationScreen()),
                           ),
 
                           // Work Information

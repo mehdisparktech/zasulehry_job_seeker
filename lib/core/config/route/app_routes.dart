@@ -354,7 +354,7 @@ class AppRoutes {
     ),
     GetPage(
       name: employerContactSupport,
-      page: () => employer_contact_support.ContactSupportScreen(),
+      page: () => employer_contact_support.EmployerContactSupportScreen(),
     ),
     GetPage(
       name: employerShareApp,

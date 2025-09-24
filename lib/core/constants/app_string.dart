@@ -119,7 +119,7 @@ class AppString {
   static const String addWhatsappLink = "Add WhatsApp Link";
   static const String downloadCenter = "Download Center";
   static const String verifyAccount = "Verify Account";
-  static const String twoStepVerification = "Two Step Verification";
+  static const String twoStepVerification = "2-Factor Authentication";
   static const String uploadBusinessDocuments = "Upload Business Documents";
   static const String businessDocumentExamples =
       "Examples of Business Documents";
