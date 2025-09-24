@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/app_colors.dart';
@@ -58,13 +60,34 @@ class Item extends StatelessWidget {
         child: Row(
           children: [
             /// show icon here
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: AppColors.white.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(20),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Color(0x30FFFFFF), Color(0x10FFFFFF)],
+                    ),
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.25),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 15,
+                        offset: Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Icon(icon, color: AppColors.white),
+                ),
               ),
-              child: Icon(icon, color: AppColors.white),
             ),
 
             /// show Title here
