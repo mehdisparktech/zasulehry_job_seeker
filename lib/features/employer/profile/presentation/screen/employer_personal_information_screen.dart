@@ -78,15 +78,29 @@ class _EmployerPersonalInformationScreenState
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 64),
+                    padding: const EdgeInsets.only(top: 60),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const CommonText(
-                          text: AppString.personalInformation,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                          color: Colors.white,
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () => Get.back(),
+                              icon: Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.15,
+                            ),
+                            const CommonText(
+                              text: AppString.personalInformation,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ],
                         ),
                         SizedBox(height: 64.h), // Space for avatar
                       ],
@@ -153,7 +167,7 @@ class _EmployerPersonalInformationScreenState
             ),
             // Positioned CircleAvatar to overlap header container
             Positioned(
-              top: 140.h, // Adjust this value to position avatar correctly
+              top: 160.h, // Adjust this value to position avatar correctly
               left: 0,
               right: 0,
               child: Center(
@@ -163,7 +177,7 @@ class _EmployerPersonalInformationScreenState
                   child: const ClipOval(
                     child: CommonImage(
                       imageSrc: AppImages.google,
-                      size: 125,
+                      size: 120,
                       defaultImage: AppImages.google,
                       fill: BoxFit.cover,
                     ),

@@ -24,32 +24,31 @@ class EditEmployerPersonalInformationScreen extends StatefulWidget {
 
 class _EmployerPersonalInformationScreenState
     extends State<EditEmployerPersonalInformationScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController companyNameController = TextEditingController();
+  final TextEditingController legalFormController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
-  final TextEditingController locationController = TextEditingController();
-  final TextEditingController roleController = TextEditingController();
+  final TextEditingController companyTypeController = TextEditingController();
+  final TextEditingController taxNumberController = TextEditingController();
+  final TextEditingController denumberController = TextEditingController();
+  final TextEditingController typeOfBusinessController =
+      TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    // Initialize with stored data or example data
-    nameController.text = LocalStorage.myName.isNotEmpty
-        ? LocalStorage.myName
-        : "Example Name";
-    emailController.text = "Example@Gmail.Com";
-    contactController.text = "+8801234567890";
-    locationController.text = "Dhaka Bangladesh";
-    roleController.text = "Job Seeker";
   }
 
   @override
   void dispose() {
-    nameController.dispose();
-    emailController.dispose();
+    companyNameController.dispose();
+    legalFormController.dispose();
     contactController.dispose();
-    locationController.dispose();
-    roleController.dispose();
+    addressController.dispose();
+    companyTypeController.dispose();
+    taxNumberController.dispose();
+    denumberController.dispose();
+    typeOfBusinessController.dispose();
     super.dispose();
   }
 
@@ -81,17 +80,32 @@ class _EmployerPersonalInformationScreenState
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 64),
+                    padding: const EdgeInsets.only(top: 60),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CommonText(
-                          text: widget.appTitle,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                          color: Colors.white,
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () => Get.back(),
+                              icon: Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.2,
+                            ),
+                            CommonText(
+                              text: widget.appTitle,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: Colors.white,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 60.h), // Space for avatar
+                        SizedBox(height: 50.h), // Space for avatar
                       ],
                     ),
                   ),
@@ -114,15 +128,16 @@ class _EmployerPersonalInformationScreenState
                 ),
                 // Name Field
                 _buildFormField(
-                  controller: nameController,
+                  controller: companyNameController,
                   hintText: "company name",
+                  keyboardType: TextInputType.text,
                 ),
 
                 16.height,
 
                 // Email Field
                 _buildFormField(
-                  controller: emailController,
+                  controller: legalFormController,
                   hintText: "legal form",
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -131,47 +146,50 @@ class _EmployerPersonalInformationScreenState
 
                 // Contact Field
                 _buildFormField(
-                  controller: contactController,
-                  hintText: "Enter your contact number",
-                  keyboardType: TextInputType.phone,
+                  controller: addressController,
+                  hintText: "Address",
+                  keyboardType: TextInputType.text,
                 ),
 
                 16.height,
 
                 // Location Field
                 _buildFormField(
-                  controller: locationController,
-                  hintText: "Enter your location",
+                  controller: addressController,
+                  hintText: "contact number",
+                  keyboardType: TextInputType.phone,
                 ),
 
                 16.height,
 
                 // Role Field
                 _buildFormField(
-                  controller: roleController,
-                  hintText: "Enter your role",
+                  controller: companyTypeController,
+                  hintText: "company Category",
+                  keyboardType: TextInputType.text,
                 ),
                 16.height,
                 _buildFormField(
-                  controller: contactController,
-                  hintText: "Enter your contact number",
-                  keyboardType: TextInputType.phone,
+                  controller: taxNumberController,
+                  hintText: "tax No.",
+                  keyboardType: TextInputType.number,
                 ),
 
                 16.height,
 
                 // Location Field
                 _buildFormField(
-                  controller: locationController,
-                  hintText: "Enter your location",
+                  controller: denumberController,
+                  hintText: "DE No.",
                 ),
 
                 16.height,
 
                 // Role Field
                 _buildFormField(
-                  controller: roleController,
-                  hintText: "Enter your role",
+                  controller: typeOfBusinessController,
+                  hintText: "type of business",
+                  keyboardType: TextInputType.text,
                 ),
 
                 // Edit Profile Button
@@ -197,7 +215,7 @@ class _EmployerPersonalInformationScreenState
             ),
             // Positioned CircleAvatar to overlap header container
             Positioned(
-              top: 140.h, // Adjust this value to position avatar correctly
+              top: 150.h, // Adjust this value to position avatar correctly
               left: 0,
               right: 0,
               child: Center(
@@ -207,7 +225,7 @@ class _EmployerPersonalInformationScreenState
                   child: const ClipOval(
                     child: CommonImage(
                       imageSrc: AppImages.google,
-                      size: 125,
+                      size: 120,
                       defaultImage: AppImages.google,
                       fill: BoxFit.cover,
                     ),
@@ -235,6 +253,7 @@ class _EmployerPersonalInformationScreenState
         fillColor: AppColors.white,
         borderColor: AppColors.background,
         textColor: AppColors.black,
+        hintTextColor: AppColors.textSecondary,
       ),
     );
   }
