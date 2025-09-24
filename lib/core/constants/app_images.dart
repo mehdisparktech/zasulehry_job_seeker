@@ -27,7 +27,8 @@ class AppImages {
   static const String contactSupport = "$baseurl/contact&support.png";
   static const String delete = "$baseurl/delete.png";
   static const String deleteAccount = "$baseurl/deleteaccount.png";
-  static const String deshboard = "$baseurl/deshboard.png";
+  static const String deshboardActive = "$baseurl/deshboard.png";
+  static const String deshboard = "$baseurl/deshboard2.png";
   static const String download = "$baseurl/download.png";
   static const String download2 = "$baseurl/download2.png";
   static const String edit = "$baseurl/edit.png";
@@ -60,4 +61,5 @@ class AppImages {
   static const String verify = "$baseurl/verify.png";
   static const String view = "$baseurl/view.png";
   static const String whatsapp = "$baseurl/whatsapp.png";
+  static const String home = "$baseurl/home.png";
 }

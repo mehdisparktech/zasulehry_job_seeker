@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/services/storage/storage_services.dart';
 import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 import '../../constants/app_colors.dart';
@@ -22,17 +24,17 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
 
   // Jobseeker bottom nav bar icons
   List<Widget> jobseekerUnselectedIcons = [
-    const Icon(Icons.home_outlined, color: AppColors.black),
-    const Icon(Icons.dashboard_outlined, color: AppColors.black),
-    const Icon(Icons.chat, color: AppColors.black),
-    const Icon(Icons.person_2_outlined, color: AppColors.black),
+    CommonImage(imageSrc: AppImages.home, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.deshboard, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.massage, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.profileDeactive, width: 24, height: 24),
   ];
 
   List<Widget> jobseekerSelectedIcons = [
-    const Icon(Icons.home_outlined, color: AppColors.primaryColor),
-    const Icon(Icons.dashboard_outlined, color: AppColors.primaryColor),
-    const Icon(Icons.chat, color: AppColors.primaryColor),
-    const Icon(Icons.person, color: AppColors.primaryColor),
+    CommonImage(imageSrc: AppImages.homeActive, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.deshboardActive, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.massageActive, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.profileActive, width: 24, height: 24),
   ];
 
   List<String> jobseekerText = ["Home", "Dashboard", "Chat", "Profile"];
@@ -40,17 +42,17 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
   // Employer bottom nav bar icons
 
   List<Widget> employerUnselectedIcons = [
-    const Icon(Icons.dashboard_outlined, color: AppColors.black),
-    const Icon(Icons.chat, color: AppColors.black),
-    const Icon(Icons.file_copy, color: AppColors.black),
-    const Icon(Icons.person_2_outlined, color: AppColors.black),
+    CommonImage(imageSrc: AppImages.deshboard, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.massage, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.invoice2, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.profileDeactive, width: 24, height: 24),
   ];
 
   List<Widget> employerSelectedIcons = [
-    const Icon(Icons.dashboard_outlined, color: AppColors.primaryColor),
-    const Icon(Icons.chat, color: AppColors.primaryColor),
-    const Icon(Icons.file_copy, color: AppColors.primaryColor),
-    const Icon(Icons.person, color: AppColors.primaryColor),
+    CommonImage(imageSrc: AppImages.deshboardActive, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.massageActive, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.invoiceActive, width: 24, height: 24),
+    CommonImage(imageSrc: AppImages.profileActive, width: 24, height: 24),
   ];
 
   List<String> employerText = ["Dashboard", "Chat", "Invoice", "Profile"];
