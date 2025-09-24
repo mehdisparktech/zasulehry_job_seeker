@@ -31,6 +31,7 @@ class AppString {
   static const String continues = "Continue";
   static const String email = "Email";
   static const String codeHasBeenSendTo = "Code has been send to";
+  static const String verifyotp = "Verify OTP";
   static const String otpIsInValid = "Otp is inValid";
   static const String resendCode = "Resend Code";
   static const String resendCodeIn = "Resend code in";
@@ -75,7 +76,7 @@ class AppString {
   static const String startServer = "Please, start the Server";
   static const String unknownError = "Unknown Error";
   static const String welcometitle = "JobsinApp";
-  static const String welcomesubtitle = "Welcome to job finder";
+  static const String welcomesubtitle = "Welcome To Job Finder";
   static const String getStarted = "Get Started";
   static const String forgotPasswordSubtitle = "enter your email address";
   static const String language = "Language";

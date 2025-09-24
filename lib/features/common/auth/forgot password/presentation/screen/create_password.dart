@@ -55,7 +55,6 @@ class CreatePassword extends StatelessWidget {
                       const CommonText(text: AppString.password, bottom: 8),
                       CommonTextField(
                         controller: controller.passwordController,
-                        prefixIcon: const Icon(Icons.lock),
                         hintText: AppString.password,
                         isPassword: true,
                         validator: OtherHelper.passwordValidator,
@@ -69,7 +68,6 @@ class CreatePassword extends StatelessWidget {
                       ),
                       CommonTextField(
                         controller: controller.confirmPasswordController,
-                        prefixIcon: const Icon(Icons.lock),
                         hintText: AppString.confirmPassword,
                         validator: (value) =>
                             OtherHelper.confirmPasswordValidator(
@@ -78,7 +76,7 @@ class CreatePassword extends StatelessWidget {
                             ),
                         isPassword: true,
                       ),
-                      64.height,
+                      20.height,
 
                       /// Submit Button here
                       CommonButton(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../../../core/component/button/common_button.dart';
 import '../../../../../../core/component/text/common_text.dart';
 import '../controller/forget_password_controller.dart';
@@ -49,7 +50,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const CommonText(
-                      text: AppString.verify,
+                      text: AppString.verifyotp,
                       fontWeight: FontWeight.w500,
                       fontSize: 24,
                       bottom: 10,
@@ -62,7 +63,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       fontSize: 12,
                       bottom: 20,
                       maxLines: 2,
-                      color: AppColors.textFiledColor,
+                      color: AppColors.textSecondary,
                     ),
 
                     /// OTP Filed here
@@ -79,6 +80,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         },
                         autoDisposeControllers: false,
                         cursorColor: AppColors.black,
+                        textStyle: GoogleFonts.poppins(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.blue500,
+                        ),
                         appContext: (context),
                         autoFocus: true,
                         pinTheme: PinTheme(
@@ -121,13 +127,15 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
                     ///  Submit Button here
                     CommonButton(
-                      titleText: AppString.verify,
+                      titleText: AppString.continues,
                       isLoading: controller.isLoadingVerify,
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           controller.verifyOtpRepo();
                         }
                       },
+                      titleSize: 22.sp,
+                      titleWeight: FontWeight.w500,
                     ),
                   ],
                 ),

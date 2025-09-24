@@ -38,11 +38,35 @@ class SignInScreen extends StatelessWidget {
                 spacing: 10,
                 children: [
                   /// Log In Instruction here
-                  CommonImage(imageSrc: AppImages.noImage, size: 70).center,
-                  10.height,
+                  Center(
+                    child: Container(
+                      width: 100.w,
+                      height: 100.h,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFF083E4B),
+                            Color(0xFF074E5E),
+                            Color(0xFF0288A6),
+                          ],
+                          stops: [0.0, 0.4, 1.0],
+                        ),
+                      ),
+                      child: Center(
+                        child: CommonText(
+                          text: 'P',
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.white,
+                        ),
+                      ),
+                    ),
+                  ),
                   CommonText(
                     text: AppString.welcomeBack,
-                    fontSize: 24,
+                    fontSize: 32.sp,
                     fontWeight: FontWeight.w700,
                     color: AppColors.blue500,
                   ).center,
@@ -73,8 +97,8 @@ class SignInScreen extends StatelessWidget {
                         top: 10,
                         bottom: 20,
                         color: AppColors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -84,8 +108,10 @@ class SignInScreen extends StatelessWidget {
                     titleText: AppString.logIn,
                     isLoading: controller.isLoading,
                     onTap: controller.signInUser,
+                    titleSize: 24.sp,
+                    titleWeight: FontWeight.w500,
                   ),
-                  20.height,
+                  8.height,
 
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
