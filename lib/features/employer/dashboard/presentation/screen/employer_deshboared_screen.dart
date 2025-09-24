@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
 import 'package:zasulehry_job_seeker/core/component/other_widgets/item.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
@@ -12,6 +13,7 @@ import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/whatsapp_support_popup.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/add_whatsapp_link_popup.dart';
+import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 
 class EmployerDeshboaredScreen extends StatelessWidget {
   const EmployerDeshboaredScreen({super.key});
@@ -27,35 +29,35 @@ class EmployerDeshboaredScreen extends StatelessWidget {
             children: [
               // My Posted Jobs
               Item(
-                icon: Icons.assignment,
+                image: AppImages.postJob,
                 title: AppString.myPostedJobs,
                 onTap: () => Get.toNamed(AppRoutes.employerPostedJobs),
               ),
 
               // Post Job
               Item(
-                icon: Icons.add_box_outlined,
+                image: AppImages.add2,
                 title: AppString.postJob,
                 onTap: () => Get.toNamed(AppRoutes.employerPostJob),
               ),
 
               // AI Tools
               Item(
-                icon: Icons.auto_awesome,
+                image: AppImages.setting,
                 title: AppString.aiTools,
                 onTap: () => Get.toNamed(AppRoutes.employerAiTools),
               ),
 
               // Appointments
               Item(
-                icon: Icons.calendar_today,
+                image: AppImages.appointments,
                 title: AppString.appointments,
                 onTap: () => Get.toNamed(AppRoutes.employerAppointments),
               ),
 
               // WhatsApp Support
               Item(
-                icon: Icons.chat,
+                image: AppImages.whatsapp,
                 title: AppString.whatsappSupport,
                 onTap: () {
                   showDialog(
@@ -74,7 +76,7 @@ class EmployerDeshboaredScreen extends StatelessWidget {
 
               // Add WhatsApp Link
               Item(
-                icon: Icons.link,
+                image: AppImages.whatsapp,
                 title: AppString.addWhatsappLink,
                 onTap: () {
                   showDialog(
@@ -108,28 +110,28 @@ class EmployerDeshboaredScreen extends StatelessWidget {
 
               // Contact & Support
               Item(
-                icon: Icons.support_agent,
+                image: AppImages.contactSupport,
                 title: AppString.contactAndSupport,
                 onTap: () => Get.toNamed(AppRoutes.employerContactSupport),
               ),
 
               // Download Center
               Item(
-                icon: Icons.download,
+                image: AppImages.download2,
                 title: AppString.downloadCenter,
                 onTap: () => Get.toNamed(AppRoutes.employerDownloadCenter),
               ),
 
               // Verify Account
               Item(
-                icon: Icons.verified_user,
+                image: AppImages.verify,
                 title: AppString.verifyAccount,
                 onTap: () => Get.toNamed(AppRoutes.employerVerifyAccount),
               ),
 
               // Salary Calculator
               Item(
-                icon: Icons.calculate,
+                image: AppImages.calculator,
                 title: AppString.salaryCalculator,
                 onTap: () => Get.toNamed(AppRoutes.employerSalaryCalculator),
               ),
@@ -174,15 +176,15 @@ class EmployerDeshboaredScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CommonText(
-            text: AppString.dashboard,
-            fontSize: 14.sp,
+            text: "welcome to JobsinApp",
+            fontSize: 16.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.white,
             // Changed to white for better contrast
           ),
           CommonText(
             text: 'Google',
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.w600,
             color: AppColors.white,
             // Changed to white for better contrast
@@ -199,16 +201,10 @@ class EmployerDeshboaredScreen extends StatelessWidget {
         ),
       ),
       actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.phone, color: AppColors.white),
-          color: AppColors.red,
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.notifications, color: AppColors.white),
-          color: AppColors.red,
-        ),
+        GlassEffectIcon(icon: AppImages.phone),
+        8.width,
+        GlassEffectIcon(icon: AppImages.notification),
+        8.width,
       ],
     );
   }

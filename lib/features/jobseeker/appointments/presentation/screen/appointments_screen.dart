@@ -30,6 +30,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           // Filter Tabs
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+
             child: Row(
               children: tabs.asMap().entries.map((entry) {
                 int index = entry.key;
@@ -50,6 +51,18 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                         color: isSelected
                             ? AppColors.blue500
                             : Colors.transparent,
+                        gradient: isSelected
+                            ? LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color(0xFF083E4B),
+                                  Color(0xFF074E5E),
+                                  Color(0xFF0288A6),
+                                ],
+                                stops: [0.0, 0.5, 1.0],
+                              )
+                            : null,
                         borderRadius: BorderRadius.circular(20.r),
                         border: Border.all(color: AppColors.blue500, width: 2),
                       ),
@@ -311,13 +324,20 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
               ),
               12.width,
               Spacer(),
-              Icon(
-                Icons.visibility_outlined,
-                color: AppColors.blue500,
-                size: 24.sp,
-              ),
+              CommonImage(imageSrc: AppImages.view, size: 28),
               12.width,
-              Checkbox(value: true, onChanged: (value) {}),
+              Container(
+                width: 24.r,
+                height: 24.r,
+                decoration: BoxDecoration(
+                  color: AppColors.transparent,
+                  borderRadius: BorderRadius.circular(100),
+                  border: Border.all(color: AppColors.blue500, width: 2),
+                ),
+                child: Center(
+                  child: Icon(Icons.check, size: 16, color: AppColors.blue500),
+                ),
+              ),
             ],
           ),
           if (isCancelled) ...[

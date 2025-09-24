@@ -94,13 +94,13 @@ class Item extends StatelessWidget {
             ),
 
             /// show Title here
-            Expanded(
-              child: CommonText(
-                text: title,
-                color: AppColors.white,
-                left: 12,
-                fontSize: 20.sp,
-              ),
+            CommonText(
+              text: title,
+              color: AppColors.white,
+              left: 12,
+              fontSize: 18.sp,
+              textAlign: TextAlign.start,
+              overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),
 
