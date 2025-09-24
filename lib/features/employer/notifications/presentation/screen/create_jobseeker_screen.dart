@@ -22,7 +22,7 @@ class CreateJobseekerAlertScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: const CommonAppBar(title: 'Create Jobseeker Alert'),
+      appBar: const CommonAppBar(title: 'Settings'),
       body: Form(
         key: controller.formKey,
         child: SingleChildScrollView(

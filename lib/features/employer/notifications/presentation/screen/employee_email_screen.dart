@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/create_jobseeker_screen.dart';
 import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/widgets/email_dialog.dart';
-
 import '../../../../../core/component/appbar/common_app_bar.dart';
-import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../controller/employer_notifications_controller.dart';
 
@@ -18,7 +15,7 @@ class EmployeeEmailScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: const CommonAppBar(title: 'Notification'),
+      appBar: const CommonAppBar(title: 'Email Settings'),
       body: Column(
         children: [
           // Tab Header
@@ -60,16 +57,16 @@ class EmployeeEmailScreen extends StatelessWidget {
           ),
 
           // Create Jobseeker Alert Button
-          Container(
-            padding: EdgeInsets.all(16.w),
-            child: CommonButton(
-              titleText: 'Create Jobseeker Alert',
-              onTap: () {
-                // Handle create jobseeker alert
-                Get.to(CreateJobseekerAlertScreen());
-              },
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.all(16.w),
+          //   child: CommonButton(
+          //     titleText: 'Create Jobseeker Alert',
+          //     onTap: () {
+          //       // Handle create jobseeker alert
+          //       Get.to(CreateJobseekerAlertScreen());
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );
@@ -138,7 +135,7 @@ class EmployeeEmailScreen extends StatelessWidget {
                       size: 20.w,
                     ),
                     title: Text(
-                      'E-Mail Einstellungen',
+                      'E-Mail Settings',
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,

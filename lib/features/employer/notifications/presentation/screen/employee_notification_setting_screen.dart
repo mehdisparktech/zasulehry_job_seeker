@@ -18,7 +18,7 @@ class EmployeeNotificationSettingScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xffE6E6E6),
       appBar: CommonAppBar(
-        title: "Job Seekers Alert",
+        title: "Job Alerts",
         actions: [
           IconButton(
             onPressed: () {
