@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:zasulehry_job_seeker/features/employer/appointments/presentation/screen/view_appointment_screen.dart';
 
 class CreateAppointmentController extends GetxController {
   // Form Controllers
@@ -161,6 +162,8 @@ class CreateAppointmentController extends GetxController {
 
   // Confirm Appointment
   Future<void> confirmAppointment() async {
+    Get.to(() => const ViewAppointmentScreen());
+    return;
     if (!validateForm()) return;
 
     try {

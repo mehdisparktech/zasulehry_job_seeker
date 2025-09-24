@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -60,11 +62,7 @@ class _EmployerVerifyAccountScreenState
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.cloud_upload_outlined,
-                      size: 40.sp,
-                      color: AppColors.primaryColor,
-                    ),
+                    CommonImage(imageSrc: AppImages.upload),
                     SizedBox(height: 8.h),
                     // CommonText(
                     //   text: selectedDocumentPath != null
@@ -90,28 +88,29 @@ class _EmployerVerifyAccountScreenState
 
             SizedBox(height: 15.h),
 
-            // First Business Card Example
-            _buildBusinessCardExample(
-              website: "www.example.com",
-              brandName: "BRAND NAME",
-              slogan: "YOUR SLOGAN HERE",
-              isFirstCard: true,
-            ),
+            CommonImage(imageSrc: AppImages.card),
 
-            SizedBox(height: 15.h),
+            // // First Business Card Example
+            // _buildBusinessCardExample(
+            //   website: "www.example.com",
+            //   brandName: "BRAND NAME",
+            //   slogan: "YOUR SLOGAN HERE",
+            //   isFirstCard: true,
+            // ),
 
-            // Second Business Card Example
-            _buildBusinessCardExample(
-              name: "YOUR NAME",
-              designation: "GRAPHIC DESIGN",
-              phone1: "+000 123 456 789",
-              phone2: "+000 123 456 785",
-              email: "mail address here",
-              website: "Address here",
-              address: "Address Here 0123",
-              isFirstCard: false,
-            ),
+            // SizedBox(height: 15.h),
 
+            // // Second Business Card Example
+            // _buildBusinessCardExample(
+            //   name: "YOUR NAME",
+            //   designation: "GRAPHIC DESIGN",
+            //   phone1: "+000 123 456 789",
+            //   phone2: "+000 123 456 785",
+            //   email: "mail address here",
+            //   website: "Address here",
+            //   address: "Address Here 0123",
+            //   isFirstCard: false,
+            // ),
             SizedBox(height: 30.h),
 
             // Terms and Conditions Checkbox
@@ -194,6 +193,7 @@ class _EmployerVerifyAccountScreenState
     );
   }
 
+  // ignore: unused_element
   Widget _buildBusinessCardExample({
     String? website,
     String? brandName,

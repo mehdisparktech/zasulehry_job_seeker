@@ -22,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
 
     return Scaffold(
       /// App Bar Section Starts Here
-      appBar: AppBar(title: CommonText(text: AppString.signUp)),
+      appBar: AppBar(),
 
       /// Body Section Starts Here
       body: GetBuilder<SignUpController>(
@@ -110,6 +110,7 @@ class SignUpScreen extends StatelessWidget {
 
                   ///  Sign In Instruction here
                   const AlreadyAccountRichText(),
+                  30.height,
                 ],
               ),
             ),

@@ -103,6 +103,7 @@ class SignInScreen extends StatelessWidget {
 
                   ///  Sign In Instruction here
                   const DoNotHaveAccount().center,
+                  30.height,
                 ],
               ),
             ),

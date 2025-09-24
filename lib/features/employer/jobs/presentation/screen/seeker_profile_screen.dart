@@ -122,17 +122,20 @@ class SeekerProfileScreen extends StatelessWidget {
                           color: AppColors.blue500,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
-                          Icons.chat_bubble_outline,
-                          color: Colors.white,
-                          size: 20.sp,
+                        child: Container(
+                          padding: EdgeInsets.all(10.w),
+                          decoration: BoxDecoration(shape: BoxShape.circle),
+                          child: CommonImage(
+                            imageSrc: AppImages.contact,
+                            size: 20,
+                          ),
                         ),
                       ),
-                      SizedBox(height: 12.h),
+                      SizedBox(height: 4.h),
                       // Contact Button
                       CommonText(
                         text: 'Contact',
-                        fontSize: 12.sp,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.blue500,
                       ),
@@ -199,22 +202,7 @@ class SeekerProfileScreen extends StatelessWidget {
         Row(
           children: [
             // PDF Icon
-            Container(
-              width: 40.w,
-              height: 40.h,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Center(
-                child: CommonText(
-                  text: 'PDF',
-                  fontSize: 10.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            CommonImage(imageSrc: AppImages.pdf, size: 32),
             SizedBox(width: 12.w),
 
             // File Info
@@ -224,14 +212,14 @@ class SeekerProfileScreen extends StatelessWidget {
                 children: [
                   CommonText(
                     text: 'Example.pdf',
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
                     color: AppColors.black,
                   ),
                   SizedBox(height: 2.h),
                   CommonText(
                     text: '01.02.2024',
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
                   ),
@@ -242,17 +230,9 @@ class SeekerProfileScreen extends StatelessWidget {
             // Action Icons
             Row(
               children: [
-                Icon(
-                  Icons.visibility_outlined,
-                  color: AppColors.blue500,
-                  size: 20.sp,
-                ),
+                CommonImage(imageSrc: AppImages.view, size: 24),
                 SizedBox(width: 12.w),
-                Icon(
-                  Icons.download_outlined,
-                  color: AppColors.blue500,
-                  size: 20.sp,
-                ),
+                CommonImage(imageSrc: AppImages.download, size: 24),
               ],
             ),
           ],
@@ -476,6 +456,7 @@ class SeekerProfileScreen extends StatelessWidget {
   void _showApprovalDialog() {
     Get.dialog(
       AlertDialog(
+        backgroundColor: AppColors.white,
         title: CommonText(
           text: 'Approve Application',
           fontSize: 18.sp,
@@ -485,32 +466,42 @@ class SeekerProfileScreen extends StatelessWidget {
           text:
               'Are you sure you want to approve $seekerName for this position?',
           fontSize: 14.sp,
+          color: AppColors.textSecondary,
+          textAlign: TextAlign.start,
+          maxLines: 2,
         ),
         actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: CommonText(
-              text: 'Cancel',
-              fontSize: 14.sp,
-              color: AppColors.textFiledColor,
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Get.back();
-              Get.snackbar(
-                'Success',
-                '$seekerName has been approved for the position',
-                backgroundColor: AppColors.primaryColor,
-                colorText: Colors.white,
-              );
-            },
-            child: CommonText(
-              text: 'Approve',
-              fontSize: 14.sp,
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.w600,
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: CommonButton(
+                  onTap: () {
+                    Get.back();
+                  },
+                  titleText: 'Cancel',
+                  titleColor: AppColors.white,
+                  buttonColor: AppColors.red2,
+                  borderColor: AppColors.red2,
+                  isGradient: false,
+                ),
+              ),
+              SizedBox(width: 16.w),
+              Expanded(
+                child: CommonButton(
+                  onTap: () {
+                    Get.back();
+                    Get.snackbar(
+                      'Success',
+                      '$seekerName has been approved for the position',
+                      backgroundColor: AppColors.primaryColor,
+                      colorText: Colors.white,
+                    );
+                  },
+                  titleText: 'Approve',
+                  titleColor: AppColors.white,
+                ),
+              ),
+            ],
           ),
         ],
       ),

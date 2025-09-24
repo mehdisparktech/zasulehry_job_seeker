@@ -84,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           // Personal Information
                           Item(
-                            icon: Icons.person,
+                            image: AppImages.person2,
                             title: AppString.personalInformation,
                             onTap: () => Get.toNamed(
                               AppRoutes.employerPersonalInformation,
@@ -93,42 +93,42 @@ class ProfileScreen extends StatelessWidget {
 
                           // Settings
                           Item(
-                            icon: Icons.settings,
+                            image: AppImages.ai,
                             title: AppString.settings,
                             onTap: () => Get.toNamed(AppRoutes.employerSetting),
                           ),
 
                           // Contact & Support
                           Item(
-                            icon: Icons.contact_support,
+                            image: AppImages.contactSupport,
                             title: AppString.contactAndSupport,
                             onTap: () => Get.toNamed(AppRoutes.contactSupport),
                           ),
 
                           // Share App
                           Item(
-                            icon: Icons.share,
+                            image: AppImages.shareApp,
                             title: AppString.shareApp,
                             onTap: () => Get.toNamed(AppRoutes.shareApp),
                           ),
 
                           // privacy policy
                           Item(
-                            icon: Icons.privacy_tip,
+                            image: AppImages.privacy,
                             title: AppString.privacyPolicy,
                             onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
                           ),
 
                           // terms of service
                           Item(
-                            icon: Icons.description,
+                            image: AppImages.file,
                             title: AppString.termsOfServices,
                             onTap: () => Get.toNamed(AppRoutes.termsOfServices),
                           ),
 
                           // Log Out
                           Item(
-                            icon: Icons.logout,
+                            image: AppImages.logout2,
                             title: AppString.logOut,
                             onTap: logOutPopUp,
                           ),
@@ -136,7 +136,7 @@ class ProfileScreen extends StatelessWidget {
                           // Delete Account
                           Item(
                             title: AppString.deleteAccount,
-                            icon: Icons.delete_outline_rounded,
+                            image: AppImages.deleteAccount,
                             onTap: () => deletePopUp(
                               controller: controller.passwordController,
                               onTap: controller.deleteAccountRepo,

@@ -102,14 +102,14 @@ class _AiToolsScreenState extends State<AiToolsScreen> {
           ),
           // Toggle switch
           Transform.scale(
-            scale: 0.8,
+            scale: 0.9,
             child: Switch(
               value: isEnabled,
               onChanged: onToggle,
-              activeColor: AppColors.white,
-              activeTrackColor: AppColors.primaryColor,
-              inactiveThumbColor: AppColors.white,
-              inactiveTrackColor: AppColors.textFiledColor.withOpacity(0.5),
+              activeColor: AppColors.blue500,
+              activeTrackColor: AppColors.activeTrackColor,
+              inactiveThumbColor: AppColors.blue500,
+              inactiveTrackColor: AppColors.activeTrackColor,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
           ),
