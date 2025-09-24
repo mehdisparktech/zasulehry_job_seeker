@@ -329,7 +329,7 @@ class AppRoutes {
     ),
     GetPage(
       name: employerNotifications,
-      page: () => employer_notifications.NotificationScreen(),
+      page: () => employer_notifications.EmployerNotificationsScreen(),
     ),
     GetPage(
       name: employerProfile,
