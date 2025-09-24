@@ -62,4 +62,16 @@ class AppImages {
   static const String view = "$baseurl/view.png";
   static const String whatsapp = "$baseurl/whatsapp.png";
   static const String home = "$baseurl/home.png";
+
+  // Additional new images
+  static const String approvedJob = "$baseurl/approvedjob.png";
+  static const String cancelledJob = "$baseurl/cancelledjob.png";
+  static const String changePassword = "$baseurl/changepassword.png";
+  static const String comparison = "$baseurl/comparison.png";
+  static const String connectedAccounts = "$baseurl/connectedaccounts.png";
+  static const String impressum = "$baseurl/impressum.png";
+  static const String language = "$baseurl/language.png";
+  static const String mobile = "$baseurl/mobile.png";
+  static const String pendingJob = "$baseurl/pendingjob.png";
+  static const String resume = "$baseurl/resume.png";
 }

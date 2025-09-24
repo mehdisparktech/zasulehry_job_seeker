@@ -100,7 +100,7 @@ class ProfileScreen extends StatelessWidget {
 
                           // Settings
                           Item(
-                            icon: Icons.settings,
+                            image: AppImages.ai,
                             title: AppString.settings,
                             onTap: () => Get.toNamed(AppRoutes.setting),
                           ),

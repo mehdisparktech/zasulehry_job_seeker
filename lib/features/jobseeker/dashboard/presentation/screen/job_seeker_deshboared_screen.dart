@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/other_widgets/item.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 
@@ -19,7 +20,7 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
           child: Column(
             children: [
               Item(
-                icon: Icons.person,
+                image: AppImages.person2,
                 title: AppString.myAppliedJobs,
                 onTap: () => Get.toNamed(AppRoutes.myAppliedJobs),
               ),
@@ -27,14 +28,14 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
               /// Approved Jobs Item here
               Item(
                 title: AppString.approvedJobs,
-                icon: Icons.check_circle_outline,
+                image: AppImages.approvedJob,
                 onTap: () => Get.toNamed(AppRoutes.approvedJobs),
               ),
 
               /// Pending Jobs Item here
               Item(
                 title: AppString.pendingJobs,
-                icon: Icons.pending,
+                image: AppImages.pendingJob,
                 onTap: () => Get.toNamed(AppRoutes.pendingJobs),
               ),
 
@@ -42,7 +43,7 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
               Item(
                 onTap: () => Get.toNamed(AppRoutes.canceledJobs),
                 title: AppString.canceledJobs,
-                icon: Icons.cancel,
+                image: AppImages.cancelledJob,
               ),
 
               /// Saved Jobs Item here
@@ -53,31 +54,31 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
               ),
 
               Item(
-                icon: Icons.feedback,
+                image: AppImages.feedback,
                 title: AppString.feedback,
                 onTap: () => Get.toNamed(AppRoutes.feedback),
               ),
 
               /// Appointments Item here
               Item(
-                icon: Icons.calendar_today,
+                image: AppImages.appointments,
                 title: AppString.appointments,
                 onTap: () => Get.toNamed(AppRoutes.appointments),
               ),
 
               /// Resume Creation Item here
               Item(
-                icon: Icons.document_scanner_outlined,
+                image: AppImages.resume,
                 title: AppString.jobsinAppResumeCreation,
                 onTap: () => Get.toNamed(AppRoutes.resumeCreation),
               ),
               Item(
-                icon: Icons.calculate,
+                image: AppImages.calculator,
                 title: AppString.salaryCalculator,
-                onTap: () => Get.toNamed(AppRoutes.salaryCalculator),
+                onTap: () => Get.toNamed(AppRoutes.salaryCalculatorScreen),
               ),
               Item(
-                icon: Icons.compare,
+                image: AppImages.comparison,
                 title: AppString.salaryComparison,
                 onTap: () => Get.toNamed(AppRoutes.salaryComparison),
               ),

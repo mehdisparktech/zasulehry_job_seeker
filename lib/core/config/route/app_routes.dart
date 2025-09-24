@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/employee_notification_setting_screen.dart';
 import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/device_management_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/dashboard/presentation/screen/job_seeker_deshboared_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/job_seeker_home_screen.dart';
@@ -233,6 +234,10 @@ class AppRoutes {
   static const String employerDownloadCenter = "/employer_download_center";
   static const String employerCreateAppointment =
       "/employer_create_appointment";
+  static const String employerEmployeeNotificationSetting =
+      "/employer_employee_notification_setting";
+  static const String salaryCalculatorScreen =
+      "/employer_salary_calculator_screen";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -446,6 +451,14 @@ class AppRoutes {
     GetPage(
       name: deviceManagementSettings,
       page: () => const DeviceManagementScreen(),
+    ),
+    GetPage(
+      name: employerEmployeeNotificationSetting,
+      page: () => EmployeeNotificationSettingScreen(),
+    ),
+    GetPage(
+      name: salaryCalculatorScreen,
+      page: () => const employer_salary_calc.SalaryCalculatorScreen(),
     ),
   ];
 }
