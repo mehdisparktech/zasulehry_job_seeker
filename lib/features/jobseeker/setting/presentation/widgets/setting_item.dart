@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/component/text/common_text.dart';
 
 class SettingItem extends StatelessWidget {
-  const SettingItem({super.key, required this.title, required this.iconDate});
+  const SettingItem({
+    super.key,
+    required this.title,
+    required this.iconDate,
+    this.image,
+  });
 
   final String title;
-  final IconData iconDate;
+  final IconData? iconDate;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +47,9 @@ class SettingItem extends StatelessWidget {
               color: AppColors.white.withOpacity(0.1),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Icon(iconDate, color: AppColors.white),
+            child: iconDate != null
+                ? Icon(iconDate, color: AppColors.white)
+                : CommonImage(imageSrc: image ?? "", width: 24.w, height: 24.h),
           ),
 
           /// show Title here

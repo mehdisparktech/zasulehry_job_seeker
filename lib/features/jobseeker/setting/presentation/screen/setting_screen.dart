@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/config/route/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -15,7 +17,20 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       /// App Bar Section starts here
-      appBar: CommonAppBar(title: AppString.settings),
+      appBar: CommonAppBar(
+        title: AppString.settings,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 16.w),
+            child: GlassEffectIcon(
+              icon: AppImages.phone,
+              width: 24.w,
+              height: 24.h,
+              onTap: () => Get.toNamed(AppRoutes.deviceManagementSettings),
+            ),
+          ),
+        ],
+      ),
 
       /// Body Section starts here
       body: GetBuilder<SettingController>(

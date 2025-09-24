@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
@@ -79,7 +81,11 @@ class _MessageScreenState extends State<MessageScreen> {
                     radius: 20.r,
                     backgroundColor: Colors.transparent,
                     child: ClipOval(
-                      child: CommonImage(imageSrc: image, size: 40),
+                      child: CommonImage(
+                        imageSrc: image,
+                        size: 40,
+                        fill: BoxFit.cover,
+                      ),
                     ),
                   ),
                   10.width,
@@ -102,18 +108,10 @@ class _MessageScreenState extends State<MessageScreen> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: 34.r,
-                    height: 34.r,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.call,
-                      color: Colors.white,
-                      size: 18,
-                    ),
+                  GlassEffectIcon(
+                    icon: AppImages.whatsapp,
+                    width: 24.w,
+                    height: 24.h,
                   ),
                   8.width,
                 ],
@@ -186,33 +184,14 @@ class _MessageScreenState extends State<MessageScreen> {
                       paddingVertical: 12,
                       controller: controller.messageController,
                       onSubmitted: (p0) => controller.addNewMessage(),
-                      suffixIcon: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.image_outlined),
-                          ),
-                        ],
-                      ),
                     ),
                   ),
+                  10.width,
+                  _buildButtonIcon(onTap: () {}, image: AppImages.image),
                   8.width,
-                  GestureDetector(
+                  _buildButtonIcon(
                     onTap: controller.addNewMessage,
-                    child: Container(
-                      width: 44.r,
-                      height: 44.r,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.white,
-                      ),
-                      child: const Icon(
-                        Icons.send,
-                        color: AppColors.primaryColor,
-                        size: 20,
-                      ),
-                    ),
+                    image: AppImages.send,
                   ),
                 ],
               ),
@@ -220,6 +199,32 @@ class _MessageScreenState extends State<MessageScreen> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildButtonIcon({
+    required VoidCallback onTap,
+    required String image,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 44.r,
+        height: 44.r,
+        padding: EdgeInsets.all(10.w),
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: AppColors.white,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.filledColor,
+              blurRadius: 10,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        child: CommonImage(imageSrc: image, size: 20),
+      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/card/job_card.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
+import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/view_job_details_screen.dart';
 
@@ -29,7 +30,10 @@ class SavedJobsScreen extends StatelessWidget {
               timePosted: '2 Days Ago',
               isFullTime: true,
               companyLogo: AppImages.google,
-              onTap: () => Get.to(() => ViewJobDetailsScreen()),
+              onTap: () => Get.to(
+                () =>
+                    ViewJobDetailsScreen(applyJobStatus: ApplyJobStatus.saved),
+              ),
             ),
             separatorBuilder: (context, index) => 16.height,
           ),

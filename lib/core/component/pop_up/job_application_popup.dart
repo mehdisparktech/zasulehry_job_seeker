@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 
 class JobApplicationPopup extends StatefulWidget {
   final String jobTitle;
@@ -60,7 +62,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                 children: [
                   CommonText(
                     text: 'Apply To ${widget.companyName}',
-                    fontSize: 18,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.black,
                   ),
@@ -68,7 +70,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     onTap: () => Get.back(),
                     child: Icon(
                       Icons.close,
-                      color: AppColors.black,
+                      color: AppColors.red2,
                       size: 24.sp,
                     ),
                   ),
@@ -92,7 +94,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     // Tell Us About Yourself section
                     CommonText(
                       text: 'Tell Us About Yourself ?',
-                      fontSize: 14,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.black,
                     ),
@@ -100,9 +102,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     Container(
                       height: 100.h,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textFiledColor.withOpacity(0.3),
-                        ),
+                        border: Border.all(color: AppColors.textSecondary),
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: TextField(
@@ -113,7 +113,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                         decoration: InputDecoration(
                           hintText: 'Type ...',
                           hintStyle: TextStyle(
-                            color: AppColors.textFiledColor,
+                            color: AppColors.textSecondary,
                             fontSize: 14.sp,
                           ),
                           border: InputBorder.none,
@@ -127,27 +127,25 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     // Upload Resume section
                     Container(
                       width: double.infinity,
-                      height: 50.h,
+                      height: 80.h,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textFiledColor.withOpacity(0.3),
-                        ),
+                        border: Border.all(color: AppColors.textSecondary),
                         borderRadius: BorderRadius.circular(8.r),
                       ),
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.upload_file,
-                            color: AppColors.primaryColor,
-                            size: 20.sp,
+                          CommonImage(
+                            imageSrc: AppImages.upload,
+                            width: 24.w,
+                            height: 24.h,
                           ),
-                          SizedBox(width: 8.w),
+                          SizedBox(height: 8.h),
                           CommonText(
                             text: 'Upload Resume',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.primaryColor,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.textSecondary,
                           ),
                         ],
                       ),
@@ -156,29 +154,14 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     SizedBox(height: 16.h),
 
                     // Example PDF section
-                    Container(
+                    Padding(
                       padding: EdgeInsets.all(12.w),
-                      decoration: BoxDecoration(
-                        color: AppColors.textFiledColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
                       child: Row(
                         children: [
-                          Container(
+                          CommonImage(
+                            imageSrc: AppImages.pdf,
                             width: 32.w,
                             height: 32.h,
-                            decoration: BoxDecoration(
-                              color: AppColors.primaryColor,
-                              borderRadius: BorderRadius.circular(4.r),
-                            ),
-                            child: Center(
-                              child: CommonText(
-                                text: 'PDF',
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.white,
-                              ),
-                            ),
                           ),
                           SizedBox(width: 12.w),
                           Expanded(
@@ -187,22 +170,29 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                               children: [
                                 CommonText(
                                   text: 'Example Pdf',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
                                   color: AppColors.black,
                                 ),
                                 CommonText(
                                   text: '01.02.2024',
-                                  fontSize: 12,
-                                  color: AppColors.textFiledColor,
+                                  fontSize: 12.sp,
+                                  color: AppColors.textSecondary,
                                 ),
                               ],
                             ),
                           ),
-                          Icon(
-                            Icons.download,
-                            color: AppColors.primaryColor,
-                            size: 20.sp,
+                          SizedBox(width: 12.w),
+                          CommonImage(
+                            imageSrc: AppImages.view,
+                            width: 24.w,
+                            height: 24.h,
+                          ),
+                          SizedBox(width: 12.w),
+                          CommonImage(
+                            imageSrc: AppImages.download,
+                            width: 24.w,
+                            height: 24.h,
                           ),
                         ],
                       ),
@@ -215,8 +205,17 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                       width: double.infinity,
                       height: 50.h,
                       decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
                         borderRadius: BorderRadius.circular(8.r),
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF083E4B),
+                            Color(0xFF074E5E),
+                            Color(0xFF0288A6),
+                          ],
+                          stops: [0.0, 0.5, 1.0],
+                        ),
                       ),
                       child: Center(
                         child: CommonText(
@@ -233,17 +232,15 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     // Qualification section
                     CommonText(
                       text: 'Qualification',
-                      fontSize: 14,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.black,
                     ),
                     SizedBox(height: 8.h),
                     Container(
-                      height: 50.h,
+                      height: 100.h,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textFiledColor.withOpacity(0.3),
-                        ),
+                        border: Border.all(color: AppColors.textSecondary),
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: TextField(
@@ -251,7 +248,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                         decoration: InputDecoration(
                           hintText: 'Type ...',
                           hintStyle: TextStyle(
-                            color: AppColors.textFiledColor,
+                            color: AppColors.textSecondary,
                             fontSize: 14.sp,
                           ),
                           border: InputBorder.none,
@@ -265,7 +262,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     // Availability section
                     CommonText(
                       text: 'Availability',
-                      fontSize: 14,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.black,
                     ),
@@ -273,9 +270,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     Container(
                       height: 50.h,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textFiledColor.withOpacity(0.3),
-                        ),
+                        border: Border.all(color: AppColors.textSecondary),
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: TextField(
@@ -283,7 +278,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                         decoration: InputDecoration(
                           hintText: 'Type ...',
                           hintStyle: TextStyle(
-                            color: AppColors.textFiledColor,
+                            color: AppColors.textSecondary,
                             fontSize: 14.sp,
                           ),
                           border: InputBorder.none,
@@ -297,7 +292,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     // Expected Salary section
                     CommonText(
                       text: 'Your Expected Salary ?',
-                      fontSize: 14,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.black,
                     ),
@@ -305,9 +300,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     Container(
                       height: 50.h,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.textFiledColor.withOpacity(0.3),
-                        ),
+                        border: Border.all(color: AppColors.textSecondary),
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: TextField(
@@ -315,7 +308,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                         decoration: InputDecoration(
                           hintText: 'Type ...',
                           hintStyle: TextStyle(
-                            color: AppColors.textFiledColor,
+                            color: AppColors.textSecondary,
                             fontSize: 14.sp,
                           ),
                           border: InputBorder.none,
@@ -332,19 +325,21 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                       height: 50.h,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [
-                            AppColors.primaryColor,
-                            AppColors.primaryColor.withOpacity(0.8),
-                          ],
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF083E4B),
+                            Color(0xFF074E5E),
+                            Color(0xFF0288A6),
+                          ],
+                          stops: [0.0, 0.5, 1.0],
                         ),
-                        borderRadius: BorderRadius.circular(8.r),
+                        borderRadius: BorderRadius.circular(30.r),
                       ),
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          borderRadius: BorderRadius.circular(8.r),
+                          borderRadius: BorderRadius.circular(30.r),
                           onTap: () {
                             Get.back();
                             if (widget.onSubmit != null) {
@@ -360,7 +355,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                           child: Center(
                             child: CommonText(
                               text: 'Submit Now',
-                              fontSize: 16,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.white,
                             ),

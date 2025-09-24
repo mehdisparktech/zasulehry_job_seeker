@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
@@ -7,9 +9,11 @@ class JobCard extends StatefulWidget {
   final String location;
   final String jobTitle;
   final String salaryRange;
-  final String timePosted;
+  final String? timePosted;
   final bool isFullTime;
   final String companyLogo;
+  final String? totalapply;
+  final bool isApplied;
   final VoidCallback onTap;
   const JobCard({
     super.key,
@@ -17,9 +21,11 @@ class JobCard extends StatefulWidget {
     required this.location,
     required this.jobTitle,
     required this.salaryRange,
-    required this.timePosted,
+    this.timePosted = '',
     required this.isFullTime,
     required this.companyLogo,
+    this.totalapply = '',
+    this.isApplied = false,
     required this.onTap,
   });
 
@@ -102,16 +108,37 @@ class JobCardState extends State<JobCard> {
                       isFavorited = !isFavorited;
                     });
                   },
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Icon(
-                      isFavorited ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorited ? Colors.red : Colors.white,
-                      size: 20,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [Color(0x30FFFFFF), Color(0x10FFFFFF)],
+                          ),
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.25),
+                            width: 1,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              blurRadius: 15,
+                              offset: Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          isFavorited ? Icons.favorite : Icons.favorite_border,
+                          color: isFavorited ? Colors.red : Colors.white,
+                          size: 20,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -167,7 +194,9 @@ class JobCardState extends State<JobCard> {
                 const Spacer(),
                 // Time Posted
                 Text(
-                  widget.timePosted,
+                  widget.isApplied
+                      ? widget.totalapply ?? ''
+                      : widget.timePosted ?? '',
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ],

@@ -19,6 +19,7 @@ class CommonTextField extends StatelessWidget {
     this.textInputAction = TextInputAction.next,
     this.keyboardType = TextInputType.text,
     this.mexLength,
+    this.maxLines,
     this.validator,
     this.prefixText,
     this.paddingHorizontal = 16,
@@ -49,6 +50,7 @@ class CommonTextField extends StatelessWidget {
   final double paddingVertical;
   final double borderRadius;
   final int? mexLength;
+  final int? maxLines;
   final bool isPassword;
   RxBool obscureText = false.obs;
   final Function(String)? onSubmitted;
@@ -61,13 +63,22 @@ class CommonTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Automatically set keyboardType to multiline when using newline action with multiline fields
+    final effectiveKeyboardType =
+        (textInputAction == TextInputAction.newline &&
+            maxLines != null &&
+            maxLines! > 1)
+        ? TextInputType.multiline
+        : keyboardType;
+
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUnfocus,
-      keyboardType: keyboardType,
+      keyboardType: effectiveKeyboardType,
       controller: controller,
       obscureText: obscureText.value,
       textInputAction: textInputAction,
       maxLength: mexLength,
+      maxLines: maxLines,
       cursorColor: AppColors.white,
       inputFormatters: inputFormatters,
       style: TextStyle(fontSize: 14, color: textColor),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/device_management_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/dashboard/presentation/screen/job_seeker_deshboared_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:zasulehry_job_seeker/features/common/onboarding_screen/select_roule_screen.dart';
@@ -38,7 +39,6 @@ import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/scr
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/share_app_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/personal_information_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/screen/appointments_screen.dart';
-
 // Employer imports with prefixes to avoid conflicts
 import 'package:zasulehry_job_seeker/features/employer/dashboard/presentation/screen/employer_deshboared_screen.dart'
     as employer_dashboard;
@@ -46,12 +46,8 @@ import 'package:zasulehry_job_seeker/features/employer/appointments/presentation
     as employer_appointments;
 import 'package:zasulehry_job_seeker/features/employer/feedback/presentation/screen/employer_feedback_screen.dart'
     as employer_feedback;
-import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_my_applied_jobs_screen.dart'
-    as employer_my_applied_jobs;
 import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_posted_jobs_screen.dart'
     as employer_posted_jobs;
-import 'package:zasulehry_job_seeker/features/employer/jobs/presentation/screen/employer_saved_jobs_screen.dart'
-    as employer_saved_jobs;
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_chat_screen.dart'
     as employer_chat;
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_message_screen.dart'
@@ -102,6 +98,8 @@ import 'package:zasulehry_job_seeker/features/employer/profile/presentation/scre
     as employer_verify_account;
 import 'package:zasulehry_job_seeker/features/employer/download_center/presentation/screen/employer_download_center_screen.dart'
     as employer_download_center;
+import 'package:zasulehry_job_seeker/features/employer/appointments/presentation/screen/create_appointment_screen.dart'
+    as employer_create_appointment;
 
 // Employer invoice imports
 import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_list_screen.dart'
@@ -110,6 +108,8 @@ import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/scre
     as employer_create_invoice;
 import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_detail_screen.dart'
     as employer_invoice_detail;
+import 'package:zasulehry_job_seeker/features/employer/profile/presentation/screen/employer_edit_personal_information_screen.dart'
+    as employer_edit_personal_info;
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -181,6 +181,8 @@ class AppRoutes {
   static const String connectedAccounts = "/connected_accounts_screen.dart";
   static const String impressum = "/impressum_screen.dart";
   static const String selectRole = "/select_role_screen.dart";
+  static const String deviceManagementSettings =
+      "/device_management_settings_screen.dart";
 
   // Employer Common Routes
   static const String employerNotifications =
@@ -201,6 +203,8 @@ class AppRoutes {
   static const String employerConnectedAccounts =
       "/employer_connected_accounts_screen.dart";
   static const String employerImpressum = "/employer_impressum_screen.dart";
+  static const String employerEditPersonalInformation =
+      "/employer_edit_personal_information_screen.dart";
 
   // Profile Routes
   static const String personalInformation = "/personal_information_screen.dart";
@@ -227,6 +231,8 @@ class AppRoutes {
   static const String employerAiTools = "/employer_ai_tools";
   static const String employerVerifyAccount = "/employer_verify_account";
   static const String employerDownloadCenter = "/employer_download_center";
+  static const String employerCreateAppointment =
+      "/employer_create_appointment";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -301,25 +307,18 @@ class AppRoutes {
     ),
     GetPage(
       name: employerAppointments,
-      page: () => employer_appointments.AppointmentsScreen(),
+      page: () => employer_appointments.EmployerAppointmentsScreen(),
     ),
     GetPage(
       name: employerFeedback,
       page: () => employer_feedback.FeedbackScreen(),
     ),
-    GetPage(
-      name: employerMyAppliedJobs,
-      page: () => employer_my_applied_jobs.MyAppliedJobsScreen(),
-    ),
+
     GetPage(
       name: employerPostedJobs,
       page: () => employer_posted_jobs.EmployerPostedJobsScreen(),
     ),
 
-    GetPage(
-      name: employerSavedJobs,
-      page: () => employer_saved_jobs.SavedJobsScreen(),
-    ),
     GetPage(
       name: employerChat,
       page: () => employer_chat.EmployerChatListScreen(),
@@ -358,7 +357,7 @@ class AppRoutes {
     ),
     GetPage(
       name: employerPersonalInformation,
-      page: () => employer_personal_info.PersonalInformationScreen(),
+      page: () => employer_personal_info.EmployerPersonalInformationScreen(),
     ),
     GetPage(
       name: employerResumeCreation,
@@ -400,7 +399,13 @@ class AppRoutes {
       name: employerImpressum,
       page: () => employer_impressum.ImpressumScreen(),
     ),
-
+    GetPage(
+      name: employerEditPersonalInformation,
+      page: () =>
+          employer_edit_personal_info.EditEmployerPersonalInformationScreen(
+            appTitle: Get.arguments["appTitle"],
+          ),
+    ),
     // Employer Invoice Routes
     GetPage(
       name: employerInvoiceList,
@@ -433,6 +438,14 @@ class AppRoutes {
     GetPage(
       name: employerDownloadCenter,
       page: () => employer_download_center.EmployerDownloadCenterScreen(),
+    ),
+    GetPage(
+      name: employerCreateAppointment,
+      page: () => const employer_create_appointment.CreateAppointmentScreen(),
+    ),
+    GetPage(
+      name: deviceManagementSettings,
+      page: () => const DeviceManagementScreen(),
     ),
   ];
 }

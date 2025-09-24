@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import '../../../../../core/config/route/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,20 @@ class EmployerSettingScreen extends StatelessWidget {
 
     return Scaffold(
       /// App Bar Section starts here
-      appBar: const CommonAppBar(title: AppString.settings),
+      appBar: CommonAppBar(
+        title: AppString.settings,
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.deviceManagementSettings);
+              },
+              child: Icon(Icons.mobile_friendly, color: AppColors.white),
+            ),
+          ),
+        ],
+      ),
 
       /// Body Section starts here
       body: GetBuilder<EmployerSettingController>(

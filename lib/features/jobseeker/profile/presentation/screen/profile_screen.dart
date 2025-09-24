@@ -85,9 +85,10 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           // Personal Information
                           Item(
-                            icon: Icons.person,
+                            image: AppImages.person2,
                             title: AppString.personalInformation,
-                            onTap: () => Get.toNamed(AppRoutes.personalInformation),
+                            onTap: () =>
+                                Get.toNamed(AppRoutes.personalInformation),
                           ),
 
                           // Work Information
@@ -106,14 +107,14 @@ class ProfileScreen extends StatelessWidget {
 
                           // Contact & Support
                           Item(
-                            icon: Icons.contact_support,
+                            image: AppImages.contactSupport,
                             title: AppString.contactAndSupport,
                             onTap: () => Get.toNamed(AppRoutes.contactSupport),
                           ),
 
                           // Share App
                           Item(
-                            icon: Icons.share, 
+                            image: AppImages.shareApp,
                             title: AppString.shareApp,
                             onTap: () => Get.toNamed(AppRoutes.shareApp),
                           ),
@@ -127,7 +128,7 @@ class ProfileScreen extends StatelessWidget {
 
                           // Log Out
                           Item(
-                            icon: Icons.logout,
+                            image: AppImages.logout2,
                             title: AppString.logOut,
                             onTap: logOutPopUp,
                           ),
@@ -135,7 +136,7 @@ class ProfileScreen extends StatelessWidget {
                           // Delete Account
                           Item(
                             title: AppString.deleteAccount,
-                            icon: Icons.delete_outline_rounded,
+                            image: AppImages.deleteAccount,
                             onTap: () => deletePopUp(
                               controller: controller.passwordController,
                               onTap: controller.deleteAccountRepo,

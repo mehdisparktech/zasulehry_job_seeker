@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 
-class AppointmentsScreen extends StatefulWidget {
-  const AppointmentsScreen({super.key});
+class EmployerAppointmentsScreen extends StatefulWidget {
+  const EmployerAppointmentsScreen({super.key});
 
   @override
-  State<AppointmentsScreen> createState() => _AppointmentsScreenState();
+  State<EmployerAppointmentsScreen> createState() =>
+      _EmployerAppointmentsScreenState();
 }
 
-class _AppointmentsScreenState extends State<AppointmentsScreen> {
+class _EmployerAppointmentsScreenState
+    extends State<EmployerAppointmentsScreen> {
   int selectedTabIndex = 0;
   final List<String> tabs = ['Confirmed', 'Pending', 'Cancelled'];
 
@@ -86,32 +90,43 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
 
           // Bottom Action Button
           Container(
-            padding: EdgeInsets.all(16.w),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: CommonButton(
               titleText: 'Cancel',
               onTap: () {
                 // Handle ask for appointment action
+                showConfirmationDialog(
+                  message: 'Are You Sure You Want To Cancel The Appointment',
+                  onConfirm: () {
+                    // Handle cancel appointment action
+                  },
+                  onCancel: () {
+                    // Handle cancel appointment action
+                  },
+                );
               },
               titleColor: AppColors.white,
-              buttonColor: AppColors.red,
-              borderColor: AppColors.red,
+              buttonColor: AppColors.red2,
+              borderColor: AppColors.red2,
               buttonRadius: 4.r,
               isGradient: false,
             ),
           ),
+          16.height,
           Container(
-            padding: EdgeInsets.all(16.w),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             margin: EdgeInsets.only(bottom: 16.h),
             child: CommonButton(
               titleText: 'Create New Appointment',
               onTap: () {
-                // Handle ask for appointment action
+                Get.toNamed(AppRoutes.employerCreateAppointment);
               },
               buttonColor: AppColors.blue500,
               titleColor: AppColors.white,
               buttonRadius: 4.r,
             ),
           ),
+          40.height,
         ],
       ),
     );
@@ -175,6 +190,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
         statusColor: AppColors.red,
         showActions: false,
         isConfirmed: false,
+        isCancelled: true,
       ),
       16.height,
       _buildAppointmentCard(
@@ -185,8 +201,46 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
         statusColor: AppColors.red,
         showActions: false,
         isConfirmed: false,
+        isCancelled: true,
       ),
     ];
+  }
+
+  void showConfirmationDialog({
+    required String message,
+    required VoidCallback onConfirm,
+    required VoidCallback onCancel,
+  }) {
+    Get.dialog(
+      AlertDialog(
+        backgroundColor: AppColors.white,
+        content: CommonText(text: message, fontSize: 18.sp, maxLines: 2),
+        actions: [
+          Row(
+            children: [
+              Expanded(
+                child: CommonButton(
+                  onTap: onCancel,
+                  titleText: 'No',
+                  titleColor: AppColors.white,
+                  buttonColor: AppColors.red2,
+                  borderColor: AppColors.red2,
+                  isGradient: false,
+                ),
+              ),
+              SizedBox(width: 16.w),
+              Expanded(
+                child: CommonButton(
+                  onTap: onConfirm,
+                  titleText: 'Yes',
+                  titleColor: AppColors.white,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildAppointmentCard({
@@ -197,6 +251,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
     required Color statusColor,
     required bool showActions,
     required bool isConfirmed,
+    bool isCancelled = false,
   }) {
     return Container(
       padding: EdgeInsets.all(8.w),
@@ -270,6 +325,20 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
               Checkbox(value: true, onChanged: (value) {}),
             ],
           ),
+          if (isCancelled) ...[
+            Row(
+              children: [
+                Icon(Icons.info, size: 16.sp, color: AppColors.blue500),
+                4.width,
+                CommonText(
+                  text: status,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  textAlign: TextAlign.start,
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );
