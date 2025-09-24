@@ -11,6 +11,8 @@ import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/whatsapp_support_popup.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/add_whatsapp_link_popup.dart';
+import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/controller/employee_notification_setting_controller.dart';
+import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/employee_notification_setting_screen.dart';
 
 class EmployerDeshboaredScreen extends StatelessWidget {
   const EmployerDeshboaredScreen({super.key});
@@ -18,6 +20,7 @@ class EmployerDeshboaredScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: CommonAppBar(
         title: 'Welcome To JobsinApp',
         subtitle: 'Google',
@@ -25,7 +28,7 @@ class EmployerDeshboaredScreen extends StatelessWidget {
         leading: Padding(
           padding: EdgeInsets.only(left: 10.w),
           child: CircleAvatar(
-            backgroundColor: AppColors.white,
+            backgroundColor: AppColors.background,
             radius: 24.r,
             child: CommonImage(
               imageSrc: AppImages.google,
@@ -37,7 +40,10 @@ class EmployerDeshboaredScreen extends StatelessWidget {
         isBackButton: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //Get.toNamed(AppRoutes.employerNotifications);
+              Get.to(EmployeeNotificationSettingScreen());
+            },
             icon: Icon(Icons.notifications, color: AppColors.white),
             color: AppColors.white,
           ),
