@@ -71,7 +71,7 @@ class SignInScreen extends StatelessWidget {
                       child: const CommonText(
                         text: AppString.forgotThePassword,
                         top: 10,
-                        bottom: 30,
+                        bottom: 20,
                         color: AppColors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -85,17 +85,64 @@ class SignInScreen extends StatelessWidget {
                     isLoading: controller.isLoading,
                     onTap: controller.signInUser,
                   ),
+                  20.height,
+
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const CommonText(text: "Sign in with"),
+                  ).center,
+                  10.height,
+
+                  /// Social Icon here
+                  _buildSocialIcon(),
                   30.height,
 
-                  /// Account Creating Instruction here
+                  ///  Sign In Instruction here
                   const DoNotHaveAccount().center,
-                  30.height,
                 ],
               ),
             ),
           );
         },
       ),
+    );
+  }
+
+  Widget _buildSocialIcon() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: 12,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: CommonImage(imageSrc: AppImages.google, size: 24),
+        ),
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: CommonImage(imageSrc: AppImages.facebook, size: 24),
+        ),
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: CommonImage(imageSrc: AppImages.apple, size: 24),
+        ),
+      ],
     );
   }
 }

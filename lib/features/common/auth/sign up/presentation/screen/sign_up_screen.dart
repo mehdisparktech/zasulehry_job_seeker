@@ -32,6 +32,9 @@ class SignUpScreen extends StatelessWidget {
             child: Form(
               key: signUpFormKey,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
                 children: [
                   /// Sign UP Instructions here
                   CommonImage(imageSrc: AppImages.noImage, size: 70),
@@ -46,7 +49,6 @@ class SignUpScreen extends StatelessWidget {
 
                   /// All Text Filed here
                   SignUpAllField(controller: controller),
-                  10.height,
 
                   Row(
                     children: [
@@ -80,7 +82,7 @@ class SignUpScreen extends StatelessWidget {
                     ],
                   ),
 
-                  16.height,
+                  10.height,
 
                   /// Submit Button Here
                   CommonButton(
@@ -88,17 +90,66 @@ class SignUpScreen extends StatelessWidget {
                     isLoading: controller.isLoading,
                     onTap: controller.signUpUser,
                   ),
-                  24.height,
+
+                  10.height,
+
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const CommonText(text: "Sign up with"),
+                  ).center,
+                  10.height,
+
+                  /// Social Icon here
+                  _buildSocialIcon(),
+
+                  10.height,
 
                   ///  Sign In Instruction here
                   const AlreadyAccountRichText(),
-                  30.height,
                 ],
               ),
             ),
           );
         },
       ),
+    );
+  }
+
+  Widget _buildSocialIcon() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: 12,
+      children: [
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: CommonImage(imageSrc: AppImages.google, size: 24),
+        ),
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: CommonImage(imageSrc: AppImages.facebook, size: 24),
+        ),
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: CommonImage(imageSrc: AppImages.apple, size: 24),
+        ),
+      ],
     );
   }
 }
