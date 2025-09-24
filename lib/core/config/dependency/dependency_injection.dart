@@ -4,6 +4,7 @@ import 'package:zasulehry_job_seeker/features/common/auth/forgot%20password/pres
 import 'package:zasulehry_job_seeker/features/common/auth/sign%20in/presentation/controller/sign_in_controller.dart';
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/controller/employer_message_controller.dart';
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_chat_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/controller/appointments_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/controller/job_seeker_home_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/notifications/presentation/controller/notifications_controller.dart';
 import 'package:zasulehry_job_seeker/features/common/auth/sign%20up/presentation/controller/sign_up_controller.dart';
@@ -36,5 +37,6 @@ class DependencyInjection extends Bindings {
     Get.lazyPut(() => EmployerChatListScreen(), fenix: true);
     Get.lazyPut(() => EmployerProfileController(), fenix: true);
     Get.lazyPut(() => JobSeekerHomeController(), fenix: true);
+    Get.lazyPut(() => AppointmentsController(), fenix: true);
   }
 }
