@@ -11,8 +11,8 @@ import '../../../../../core/constants/app_images.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../widgets/edit_profile_all_filed.dart';
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
+class CreateProfile extends StatelessWidget {
+  const CreateProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class EditProfile extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: const CommonText(
-              text: AppString.profile,
+              text: AppString.createProfile,
               fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
@@ -83,9 +83,11 @@ class EditProfile extends StatelessWidget {
 
                   /// Submit Button here
                   CommonButton(
-                    titleText: AppString.saveAndChanges,
+                    titleText: AppString.continues,
                     isLoading: controller.isLoading,
                     onTap: controller.editProfileRepo,
+                    titleSize: 24.sp,
+                    titleWeight: FontWeight.w500,
                   ),
                 ],
               ),

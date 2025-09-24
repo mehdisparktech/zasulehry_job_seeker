@@ -25,7 +25,7 @@ import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/scr
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/country_selection_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/connected_accounts_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/impressum_screen.dart';
-import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/edit_profile.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/create_profile.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/my_applied_jobs_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/approved_jobs_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/pending_jobs_screen.dart';
@@ -254,7 +254,7 @@ class AppRoutes {
     GetPage(name: chat, page: () => const ChatListScreen()),
     GetPage(name: message, page: () => const MessageScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
-    GetPage(name: editProfile, page: () => EditProfile()),
+    GetPage(name: editProfile, page: () => CreateProfile()),
     GetPage(name: privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: termsOfServices, page: () => const TermsOfServicesScreen()),
     GetPage(name: setting, page: () => const SettingScreen()),
