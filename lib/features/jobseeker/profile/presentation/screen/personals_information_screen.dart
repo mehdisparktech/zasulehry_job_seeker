@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/edit_personal_information_screen.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/component/image/common_image.dart';
@@ -81,11 +82,26 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const CommonText(
-                          text: AppString.personalInformation,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                          color: Colors.white,
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () => Get.back(),
+                              icon: Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.15,
+                            ),
+                            const CommonText(
+                              text: AppString.personalInformation,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: Colors.white,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
                         SizedBox(height: 64.h), // Space for avatar
                       ],
@@ -100,7 +116,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                     child: CommonText(
                       text: (LocalStorage.myName.isNotEmpty
                           ? LocalStorage.myName
-                          : "Google"),
+                          : "John Doe"),
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: AppColors.blue500,
@@ -124,9 +140,10 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                         child: CommonButton(
                           titleText: "Edit Profile",
                           onTap: () {
-                            Get.toNamed(
-                              AppRoutes.employerPersonalInformation,
-                              arguments: {"appTitle": "Edit Profile"},
+                            Get.to(
+                              () => const EditPersonalInformationScreen(
+                                appTitle: "Edit Profile",
+                              ),
                             );
                             // Navigate to edit profile or handle edit functionality
                           },
@@ -152,7 +169,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
             ),
             // Positioned CircleAvatar to overlap header container
             Positioned(
-              top: 140.h, // Adjust this value to position avatar correctly
+              top: 160.h, // Adjust this value to position avatar correctly
               left: 0,
               right: 0,
               child: Center(
@@ -161,9 +178,9 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                   radius: 52.r,
                   child: const ClipOval(
                     child: CommonImage(
-                      imageSrc: AppImages.google,
+                      imageSrc: AppImages.profile,
                       size: 125,
-                      defaultImage: AppImages.google,
+                      defaultImage: AppImages.profile,
                       fill: BoxFit.cover,
                     ),
                   ),

@@ -10,16 +10,17 @@ import '../../../../../core/constants/app_images.dart';
 import '../../../../../core/services/storage/storage_services.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 
-class PersonalInformationScreen extends StatefulWidget {
+class EditPersonalInformationScreen extends StatefulWidget {
   final String appTitle;
-  const PersonalInformationScreen({super.key, required this.appTitle});
+  const EditPersonalInformationScreen({super.key, required this.appTitle});
 
   @override
-  State<PersonalInformationScreen> createState() =>
-      _PersonalInformationScreenState();
+  State<EditPersonalInformationScreen> createState() =>
+      _EditPersonalInformationScreenState();
 }
 
-class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
+class _EditPersonalInformationScreenState
+    extends State<EditPersonalInformationScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
@@ -81,11 +82,25 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CommonText(
-                          text: widget.appTitle,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                          color: Colors.white,
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () => Get.back(),
+                              icon: Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.25,
+                            ),
+                            CommonText(
+                              text: widget.appTitle,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ],
                         ),
                         SizedBox(height: 60.h), // Space for avatar
                       ],
@@ -100,7 +115,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                     child: CommonText(
                       text: (LocalStorage.myName.isNotEmpty
                           ? LocalStorage.myName
-                          : "Google"),
+                          : "John Doe"),
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: AppColors.blue500,
@@ -202,9 +217,9 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                   radius: 52.r,
                   child: const ClipOval(
                     child: CommonImage(
-                      imageSrc: AppImages.google,
+                      imageSrc: AppImages.profile,
                       size: 125,
-                      defaultImage: AppImages.google,
+                      defaultImage: AppImages.profile,
                       fill: BoxFit.cover,
                     ),
                   ),
