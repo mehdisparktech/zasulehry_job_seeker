@@ -1,33 +1,14 @@
 import 'package:get/get.dart';
 
 class EmployeeNotificationSettingController extends GetxController {
-
   // Sample alert data
   RxList<JobAlert> alerts = <JobAlert>[
-    JobAlert(
-      name: "Kamran Is Ux Ui Designer",
-      time: "12:00 Pm",
-    ),
-    JobAlert(
-      name: "Kamran Is Ux Ui Designer",
-      time: "12:00 Pm",
-    ),
-    JobAlert(
-      name: "Kamran Is Ux Ui Designer",
-      time: "12:00 Pm",
-    ),
-    JobAlert(
-      name: "Kamran Is Ux Ui Designer",
-      time: "12:00 Pm",
-    ),
-    JobAlert(
-      name: "Kamran Is Ux Ui Designer",
-      time: "12:00 Pm",
-    ),
-    JobAlert(
-      name: "Kamran Is Ux Ui Designer",
-      time: "12:00 Pm",
-    ),
+    JobAlert(name: "Kamran Is Ux Ui Designer", time: "12:00 Pm"),
+    JobAlert(name: "Kamran Is Ux Ui Designer", time: "12:00 Pm"),
+    JobAlert(name: "Kamran Is Ux Ui Designer", time: "12:00 Pm"),
+    JobAlert(name: "Kamran Is Ux Ui Designer", time: "12:00 Pm"),
+    JobAlert(name: "Kamran Is Ux Ui Designer", time: "12:00 Pm"),
+    JobAlert(name: "Kamran Is Ux Ui Designer", time: "12:00 Pm"),
   ].obs;
 
   // Method to add new alert
@@ -50,8 +31,5 @@ class JobAlert {
   final String name;
   final String time;
 
-  JobAlert({
-    required this.name,
-    required this.time,
-  });
+  JobAlert({required this.name, required this.time});
 }

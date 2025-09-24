@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/create_jobseeker_screen.dart';
 import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/widgets/email_dialog.dart';
-import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/widgets/email_update.dart';
 
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/button/common_button.dart';
@@ -19,35 +18,37 @@ class EmployeeEmailScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: const CommonAppBar(
-        title: 'Notification',
-      ),
+      appBar: const CommonAppBar(title: 'Notification'),
       body: Column(
         children: [
           // Tab Header
           Container(
             margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
             decoration: BoxDecoration(
-                color: AppColors.background,
-                borderRadius: BorderRadius.circular(8.r)
+              color: AppColors.background,
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: Row(
               children: [
                 Expanded(
-                  child: Obx(() => _buildTabItem(
-                    'E-Mail',
-                    0,
-                    controller.selectedTab.value == 0,
-                        () => controller.changeTab(0),
-                  )),
+                  child: Obx(
+                    () => _buildTabItem(
+                      'E-Mail',
+                      0,
+                      controller.selectedTab.value == 0,
+                      () => controller.changeTab(0),
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: Obx(() => _buildTabItem(
-                    'Push Message',
-                    1,
-                    controller.selectedTab.value == 1,
-                        () => controller.changeTab(1),
-                  )),
+                  child: Obx(
+                    () => _buildTabItem(
+                      'Push Message',
+                      1,
+                      controller.selectedTab.value == 1,
+                      () => controller.changeTab(1),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -74,7 +75,12 @@ class EmployeeEmailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTabItem(String title, int index, bool isSelected, VoidCallback onTap) {
+  Widget _buildTabItem(
+    String title,
+    int index,
+    bool isSelected,
+    VoidCallback onTap,
+  ) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -124,8 +130,7 @@ class EmployeeEmailScreen extends StatelessWidget {
                   ],
                 ),
                 child: GestureDetector(
-                  onTap: (){
-                  },
+                  onTap: () {},
                   child: ListTile(
                     leading: Icon(
                       Icons.settings,
@@ -187,10 +192,7 @@ class EmployeeEmailScreen extends StatelessWidget {
                   SizedBox(height: 8.h),
                   Text(
                     'Configure your push notification preferences',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      color: Colors.grey,
-                    ),
+                    style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -198,8 +200,7 @@ class EmployeeEmailScreen extends StatelessWidget {
             ),
 
           // Empty space if no content
-          if (selectedTab == 0)
-            SizedBox(height: 16.h),
+          if (selectedTab == 0) SizedBox(height: 16.h),
         ],
       ),
     );

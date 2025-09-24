@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
@@ -32,14 +31,10 @@ void showEmailDialog(BuildContext context) {
         actions: [
           SizedBox(
             width: dialogWidth,
-              child: CommonButton(
-                  titleText: "Submit")
-          )
-        ]
-        ,
+            child: CommonButton(titleText: "Submit"),
+          ),
+        ],
       );
     },
   );
 }
-
-
