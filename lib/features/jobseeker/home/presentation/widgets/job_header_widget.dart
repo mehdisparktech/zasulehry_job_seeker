@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/data/model/job_details_model.dart';
 
 class JobHeaderWidget extends StatelessWidget {
@@ -28,8 +30,8 @@ class JobHeaderWidget extends StatelessWidget {
   Widget _buildCompanyAndSalaryRow() {
     return Row(
       children: [
-        Icon(Icons.business, color: AppColors.black, size: 24.sp),
-        SizedBox(width: 16.w),
+        CommonImage(imageSrc: AppImages.google, width: 28.w, height: 28.h),
+        SizedBox(width: 8.w),
         Expanded(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,7 +79,7 @@ class JobHeaderWidget extends StatelessWidget {
   Widget _buildLocationInfo() {
     return Row(
       children: [
-        Icon(Icons.location_on_outlined, size: 16.sp),
+        CommonImage(imageSrc: AppImages.location, width: 16.w, height: 16.h),
         SizedBox(width: 6.w),
         CommonText(
           text: jobDetails.address,
@@ -93,7 +95,7 @@ class JobHeaderWidget extends StatelessWidget {
   Widget _buildDateInfo() {
     return Row(
       children: [
-        Icon(Icons.access_time_outlined, size: 16.sp),
+        CommonImage(imageSrc: AppImages.clock, width: 16.w, height: 16.h),
         SizedBox(width: 6.w),
         CommonText(
           text: jobDetails.postedDate,
@@ -109,7 +111,7 @@ class JobHeaderWidget extends StatelessWidget {
   Widget _buildDistanceRow() {
     return Row(
       children: [
-        Icon(Icons.place_outlined, size: 16.sp),
+        CommonImage(imageSrc: AppImages.location, width: 16.w, height: 16.h),
         SizedBox(width: 6.w),
         CommonText(
           text: 'Distance : ${jobDetails.distance}',

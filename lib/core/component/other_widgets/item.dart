@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import '../../constants/app_colors.dart';
 import '../text/common_text.dart';
 
@@ -85,13 +86,20 @@ class Item extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Icon(icon, color: AppColors.white),
+                  child: icon != null
+                      ? Icon(icon, color: AppColors.white)
+                      : CommonImage(imageSrc: image, width: 24.w, height: 24.h),
                 ),
               ),
             ),
 
             /// show Title here
-            CommonText(text: title, color: AppColors.white, left: 12),
+            CommonText(
+              text: title,
+              color: AppColors.white,
+              left: 12,
+              fontSize: 20.sp,
+            ),
             const Spacer(),
 
             /// show Icon here

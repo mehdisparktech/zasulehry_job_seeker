@@ -32,7 +32,11 @@ Widget employerChatListItem({required EmployerChatListModel item}) {
           radius: 22.r,
           backgroundColor: Colors.transparent,
           child: ClipOval(
-            child: CommonImage(imageSrc: item.participant.image, size: 44),
+            child: CommonImage(
+              imageSrc: item.participant.image,
+              size: 44,
+              fill: BoxFit.cover,
+            ),
           ),
         ),
         12.width,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 
@@ -84,12 +87,14 @@ class CustomAppBarWidget extends StatelessWidget
   }
 
   Widget _buildNotificationButton() {
-    return IconButton(
-      onPressed: () {
-        // TODO: Implement notification functionality
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(AppRoutes.notifications);
       },
-      icon: Icon(Icons.notifications, color: AppColors.white),
-      color: AppColors.red,
+      child: Padding(
+        padding: EdgeInsets.only(right: 14.w),
+        child: GlassEffectIcon(icon: AppImages.notification),
+      ),
     );
   }
 
