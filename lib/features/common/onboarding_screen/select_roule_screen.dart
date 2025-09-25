@@ -24,7 +24,7 @@ class SelectRouleScreen extends StatelessWidget {
             children: [
               CommonText(
                 text: "Are You",
-                color: AppColors.primaryColor,
+                color: AppColors.blue500,
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
               ),

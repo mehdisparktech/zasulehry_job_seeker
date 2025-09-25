@@ -49,16 +49,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                       text: AppString.forgotPasswordSubtitle,
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
-                      color: AppColors.textFiledColor,
-                      bottom: 8,
+                      color: AppColors.textSecondary,
+                      bottom: 20,
                       top: 4,
                     ).center,
 
                     /// forget password take email for reset Password
-                    const CommonText(text: AppString.email, bottom: 8, top: 10),
                     CommonTextField(
                       controller: controller.emailController,
-                      prefixIcon: const Icon(Icons.mail),
                       hintText: AppString.email,
                       validator: OtherHelper.emailValidator,
                     ),

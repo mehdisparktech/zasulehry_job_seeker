@@ -107,7 +107,7 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
                       fontWeight: FontWeight.w600,
                       color: index == bottomNavIndex
                           ? AppColors.primaryColor
-                          : AppColors.black,
+                          : Colors.grey,
                     ),
                   ],
                 ),

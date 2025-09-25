@@ -69,6 +69,7 @@ class SignInScreen extends StatelessWidget {
                     fontSize: 32.sp,
                     fontWeight: FontWeight.w700,
                     color: AppColors.blue500,
+                    fontStyle: FontStyle.italic,
                   ).center,
                   20.height,
 

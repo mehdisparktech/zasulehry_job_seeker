@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/services/storage/storage_services.dart';
 import 'package:zasulehry_job_seeker/core/utils/helpers/other_helper.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/create_profile_secound.dart';
 
 import '../../../../../core/config/api/api_end_point.dart';
 import '../../../../../core/config/route/app_routes.dart';
@@ -29,6 +30,27 @@ class ProfileController extends GetxController {
   TextEditingController numberController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  /// Profile form controllers
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController subCategoryController = TextEditingController();
+  TextEditingController salaryController = TextEditingController();
+
+  /// Profile creation second screen controllers
+  TextEditingController aboutYourselfController = TextEditingController();
+  TextEditingController workOverviewController = TextEditingController();
+
+  /// Add Other popup controllers
+  TextEditingController titleController = TextEditingController();
+  TextEditingController featuresController = TextEditingController();
+
+  /// Selected values
+  String selectedCategory = "";
+  String selectedSubCategory = "";
+  String selectedSalaryType = "Hourly";
+
   /// select image function here
   getProfileImage() async {
     image = await OtherHelper.openGalleryForProfile();
@@ -44,9 +66,11 @@ class ProfileController extends GetxController {
 
   /// update profile function here
   Future<void> editProfileRepo() async {
-    if (!formKey.currentState!.validate()) return;
+    Get.to(() => const CreateProfileSecound());
+    return;
+    //if (!formKey.currentState!.validate()) return;
 
-    if (!LocalStorage.isLogIn) return;
+    //if (!LocalStorage.isLogIn) return;
     isLoading = true;
     update();
 

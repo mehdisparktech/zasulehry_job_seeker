@@ -41,11 +41,12 @@ class SignUpScreen extends StatelessWidget {
                   10.height,
                   CommonText(
                     text: AppString.welcomeBack,
-                    fontSize: 24,
+                    fontSize: 28.sp,
                     fontWeight: FontWeight.w700,
                     color: AppColors.blue500,
+                    fontStyle: FontStyle.italic,
                   ),
-                  20.height,
+                  8.height,
 
                   /// All Text Filed here
                   SignUpAllField(controller: controller),
@@ -66,14 +67,28 @@ class SignUpScreen extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "By signing up, you agree to our ",
+                                text: "By Continuing, you Accept the ",
                                 style: TextStyle(
-                                  color: AppColors.textFiledColor,
+                                  color: AppColors.textSecondary,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                               TextSpan(
-                                text: "Terms of Service",
-                                style: TextStyle(color: AppColors.primaryColor),
+                                text: "terms & conditions",
+                                style: TextStyle(
+                                  color: AppColors.blue500,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              TextSpan(
+                                text: " of JobsInApp.",
+                                style: TextStyle(
+                                  color: AppColors.textSecondary,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ],
                           ),
@@ -99,7 +114,11 @@ class SignUpScreen extends StatelessWidget {
                       color: AppColors.white,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: const CommonText(text: "Sign up with"),
+                    child: CommonText(
+                      text: "Sign up with",
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ).center,
                   10.height,
 

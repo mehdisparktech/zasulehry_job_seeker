@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -55,6 +56,7 @@ class CreateProfile extends StatelessWidget {
                                     imageSrc: AppImages.profile,
                                     height: 170,
                                     width: 170,
+                                    fill: BoxFit.cover,
                                   ),
                           ),
                         ),
@@ -67,18 +69,32 @@ class CreateProfile extends StatelessWidget {
                         child: IconButton(
                           style: ButtonStyle(
                             backgroundColor: WidgetStateColor.resolveWith(
-                              (states) => Colors.black,
+                              (states) => AppColors.blue500,
                             ),
                           ),
                           onPressed: controller.getProfileImage,
-                          icon: const Icon(Icons.edit, color: Colors.white),
+                          icon: const Icon(
+                            Icons.camera_alt_outlined,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                     ],
                   ),
+                  30.height,
 
                   /// user all information filed here
                   EditProfileAllFiled(controller: controller),
+                  30.height,
+
+                  CommonButton(
+                    titleText: "inApp cv/resume creation",
+                    onTap: () {},
+                    buttonRadius: 8.r,
+                    buttonHeight: 32.h,
+                    titleSize: 12.sp,
+                    titleWeight: FontWeight.w500,
+                  ),
                   30.height,
 
                   /// Submit Button here
