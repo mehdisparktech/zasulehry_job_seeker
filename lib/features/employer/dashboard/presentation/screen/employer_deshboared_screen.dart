@@ -14,6 +14,7 @@ import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/whatsapp_support_popup.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/add_whatsapp_link_popup.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
+import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/employee_notification_setting_screen.dart';
 
 class EmployerDeshboaredScreen extends StatelessWidget {
   const EmployerDeshboaredScreen({super.key});
@@ -203,7 +204,9 @@ class EmployerDeshboaredScreen extends StatelessWidget {
       actions: [
         GlassEffectIcon(icon: AppImages.phone),
         8.width,
-        GlassEffectIcon(icon: AppImages.notification),
+        GlassEffectIcon(icon: AppImages.notification,onTap: (){
+          Get.to(EmployeeNotificationSettingScreen());
+        },),
         8.width,
       ],
     );
