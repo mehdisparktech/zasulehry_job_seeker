@@ -108,7 +108,7 @@ class FilterBottomSheetWidget extends StatelessWidget {
   }) {
     return Container(
       height: 48.h,
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.r),

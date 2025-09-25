@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
@@ -241,22 +243,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
           child: Row(
             children: [
-              Container(
-                width: 32.w,
-                height: 32.h,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(4.r),
-                ),
-                child: Center(
-                  child: CommonText(
-                    text: 'PDF',
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.white,
-                  ),
-                ),
-              ),
+              CommonImage(imageSrc: AppImages.pdf),
               SizedBox(width: 12.w),
               Expanded(
                 child: Column(
@@ -287,11 +274,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                     colorText: AppColors.white,
                   );
                 },
-                child: Icon(
-                  Icons.download,
-                  color: AppColors.primaryColor,
-                  size: 20.sp,
-                ),
+                child: CommonImage(imageSrc: AppImages.download),
               ),
             ],
           ),
@@ -301,47 +284,32 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
   }
 
   Widget _buildImageAttachmentSection() {
-    return Container(
-      height: 120.h,
-      child: GridView.builder(
-        scrollDirection: Axis.horizontal,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 8.w,
-          mainAxisSpacing: 8.w,
-          childAspectRatio: 1,
-        ),
-        itemCount: 6, // 6 placeholder boxes as shown in image
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              // Handle image upload
-              Get.snackbar(
-                "Info",
-                "Image upload functionality will be implemented",
-                backgroundColor: AppColors.primaryColor,
-                colorText: AppColors.white,
-              );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(8.r),
-                border: Border.all(
-                  color: AppColors.textFiledColor.withOpacity(0.3),
-                ),
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.add_photo_alternate_outlined,
-                  color: AppColors.textFiledColor,
-                  size: 24.sp,
-                ),
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+        crossAxisSpacing: 8.w,
+        mainAxisSpacing: 8.w,
+        childAspectRatio: 1,
+      ),
+      itemCount: 8, // 6 placeholder boxes as shown in image
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {},
+          child: Container(
+            height: 20,
+            width: 40.w,
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(8.r),
+              border: Border.all(
+                color: AppColors.textFiledColor.withOpacity(0.3),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 

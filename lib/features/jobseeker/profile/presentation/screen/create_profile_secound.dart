@@ -32,7 +32,7 @@ class CreateProfileSecound extends StatelessWidget {
             title: const CommonText(
               text: AppString.createProfile,
               fontSize: 20,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               color: AppColors.black,
             ),
           ),
@@ -53,7 +53,7 @@ class CreateProfileSecound extends StatelessWidget {
 
                 /// Grid of placeholder cards
                 _buildPlaceholderGrid(),
-                SizedBox(height: 16.h),
+                SizedBox(height: 8.h),
 
                 /// Add More Button
                 _buildAddMoreButton(),
@@ -170,14 +170,6 @@ class CreateProfileSecound extends StatelessWidget {
                   offset: const Offset(0, 1),
                 ),
               ],
-            ),
-            child: const Center(
-              child: CommonImage(
-                imageSrc: AppImages.file,
-                width: 24,
-                height: 24,
-                imageColor: AppColors.textSecondary,
-              ),
             ),
           ),
         );
@@ -314,9 +306,8 @@ class CreateProfileSecound extends StatelessWidget {
             return Dialog(
               backgroundColor: Colors.transparent,
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
                 decoration: BoxDecoration(
-                  color: AppColors.background,
+                  color: AppColors.white,
                   borderRadius: BorderRadius.circular(16.r),
                 ),
                 child: Padding(
@@ -338,7 +329,7 @@ class CreateProfileSecound extends StatelessWidget {
                       /// Title Input Field
                       Container(
                         decoration: BoxDecoration(
-                          color: AppColors.background,
+                          color: AppColors.white,
                           borderRadius: BorderRadius.circular(8.r),
                           border: Border.all(color: AppColors.textSecondary),
                         ),
@@ -375,7 +366,7 @@ class CreateProfileSecound extends StatelessWidget {
                       /// Features Input Field with Add Button
                       Container(
                         decoration: BoxDecoration(
-                          color: AppColors.background,
+                          color: AppColors.white,
                           borderRadius: BorderRadius.circular(8.r),
                           border: Border.all(color: AppColors.textSecondary),
                         ),
@@ -403,19 +394,9 @@ class CreateProfileSecound extends StatelessWidget {
                             /// Add Button
                             GestureDetector(
                               onTap: () => _addFeature(controller),
-                              child: Container(
-                                margin: EdgeInsets.only(right: 12.w),
-                                width: 32.w,
-                                height: 32.h,
-                                decoration: const BoxDecoration(
-                                  color: AppColors.blue100,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: AppColors.white,
-                                  size: 20,
-                                ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: CommonImage(imageSrc: AppImages.add),
                               ),
                             ),
                           ],

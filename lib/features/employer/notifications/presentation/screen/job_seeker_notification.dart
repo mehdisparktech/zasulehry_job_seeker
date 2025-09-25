@@ -31,7 +31,7 @@ class JobSeekersScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CommonAppBar(
-        title: 'Job Seekers',
+        title: 'Job Alerts',
         actions: [
           IconButton(
             icon: Icon(Icons.settings, color: AppColors.white, size: 35.w),

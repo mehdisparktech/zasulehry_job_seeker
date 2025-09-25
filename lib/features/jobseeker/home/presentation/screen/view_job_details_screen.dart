@@ -24,7 +24,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: CommonAppBar(title: 'Job Details'),
+      appBar: CommonAppBar(title: 'View Details'),
       body: _buildBody(controller),
     );
   }

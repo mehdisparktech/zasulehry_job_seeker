@@ -60,12 +60,39 @@ class JobHeaderWidget extends StatelessWidget {
   }
 
   Widget _buildJobTitle() {
-    return CommonText(
-      text: jobDetails.jobTitle,
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-      color: AppColors.blue500,
-      textAlign: TextAlign.left,
+    return Row(
+      children: [
+        CommonText(
+          text: jobDetails.jobTitle,
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blue500,
+          textAlign: TextAlign.left,
+        ),
+        Spacer(),
+        Container(
+          padding: EdgeInsets.all(8.r),
+          decoration: BoxDecoration(
+            color: AppColors.blue500,
+            borderRadius: BorderRadius.circular(100.r),
+            gradient: LinearGradient(
+              begin: Alignment(-0.9, 0),
+              end: Alignment(1.0, 0),
+              colors: [
+                Color(0xFF083E4B), // #083E4B
+                Color(0xFF074E5E), // #074E5E
+                Color(0xFF0288A6), // #0288A6
+              ],
+              stops: [0.0, 0.4, 1.0],
+            ),
+          ),
+          child: Icon(
+            Icons.favorite_border,
+            size: 24.sp,
+            color: AppColors.white,
+          ),
+        ),
+      ],
     );
   }
 
@@ -86,7 +113,7 @@ class JobHeaderWidget extends StatelessWidget {
           fontSize: 14,
           fontWeight: FontWeight.w400,
           textAlign: TextAlign.left,
-          color: AppColors.textFiledColor,
+          color: AppColors.textSecondary,
         ),
       ],
     );
@@ -102,7 +129,7 @@ class JobHeaderWidget extends StatelessWidget {
           fontSize: 14,
           fontWeight: FontWeight.w400,
           textAlign: TextAlign.left,
-          color: AppColors.textFiledColor,
+          color: AppColors.textSecondary,
         ),
       ],
     );

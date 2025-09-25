@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/edit_personal_information_screen.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -154,11 +153,12 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                         child: CommonButton(
                           titleText: "Complete Profile",
                           onTap: () {
-                            Get.toNamed(
-                              AppRoutes.personalInformation,
-                              arguments: {"appTitle": "Complete Profile"},
-                            );
+                            // Get.toNamed(
+                            //   AppRoutes.personalInformation,
+                            //   arguments: {"appTitle": "Complete Profile"},
+                            // );
                             // Navigate to edit profile or handle edit functionality
+                            Get.back();
                           },
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/utils/helpers/other_helper.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/widgets/appointment_request_dialog.dart';
 
 class AppointmentsController extends GetxController {
   // Observable variables
@@ -113,19 +114,17 @@ class AppointmentsController extends GetxController {
   // Action methods
   void confirmAppointment() {
     // Handle confirm appointment logic
-    Get.back();
+    AppointmentRequestDialog.show(isConfirm: false);
   }
 
   void cancelAppointment() {
     // Handle cancel appointment logic
-    print('Appointment cancelled');
+    AppointmentRequestDialog.show(isConfirm: true);
   }
 
   void sendAppointmentRequest() {
     if (messageController.text.trim().isNotEmpty) {
       // Handle send appointment request logic
-      print('Appointment request sent: ${messageController.text}');
-      print('Appointment type: ${selectedAppointmentType.value}');
       messageController.clear();
       Get.back();
     }

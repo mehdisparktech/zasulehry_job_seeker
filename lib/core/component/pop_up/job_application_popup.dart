@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
@@ -351,11 +353,73 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                             if (widget.onSubmit != null) {
                               widget.onSubmit!();
                             }
-                            Get.snackbar(
-                              'Success',
-                              'Application submitted successfully!',
-                              backgroundColor: AppColors.primaryColor,
-                              colorText: AppColors.white,
+                            // Get.snackbar(
+                            //   'Success',
+                            //   'Application submitted successfully!',
+                            //   backgroundColor: AppColors.primaryColor,
+                            //   colorText: AppColors.white,
+                            // );
+                            Get.dialog(
+                              Dialog(
+                                backgroundColor: AppColors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.r),
+                                ),
+                                child: Container(
+                                  padding: EdgeInsets.all(24.w),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      // Checkmark icon with circular background
+                                      Container(
+                                        width: 80.w,
+                                        height: 80.h,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          gradient: const LinearGradient(
+                                            begin: Alignment(-0.9, 0),
+                                            end: Alignment(1.0, 0),
+                                            colors: [
+                                              Color(0xFF083E4B), // #083E4B
+                                              Color(0xFF074E5E), // #074E5E
+                                              Color(0xFF0288A6), // #0288A6
+                                            ],
+                                            stops: [0.0, 0.4, 1.0],
+                                          ),
+                                        ),
+                                        child: Icon(
+                                          Icons.check,
+                                          color: AppColors.white,
+                                          size: 40.sp,
+                                        ),
+                                      ),
+                                      SizedBox(height: 24.h),
+
+                                      // Success message
+                                      CommonText(
+                                        text:
+                                            'Your application has been submitted',
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.black,
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                      ),
+                                      SizedBox(height: 32.h),
+
+                                      // Back to Home button
+                                      CommonButton(
+                                        titleText: "Back to Home",
+                                        onTap: () {
+                                          Get.offAllNamed(
+                                            AppRoutes.jobSeekerHome,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             );
                           },
                           child: Center(

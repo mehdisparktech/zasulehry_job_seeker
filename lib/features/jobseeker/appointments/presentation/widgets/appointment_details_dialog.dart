@@ -45,143 +45,144 @@ class AppointmentDetailsDialog extends StatelessWidget {
 
     return Dialog(
       backgroundColor: Colors.transparent,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.w),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(16.r),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              offset: const Offset(0, 5),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Content
-            Padding(
-              padding: EdgeInsets.all(20.w),
-              child: Column(
-                children: [
-                  // Profile Section
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 30.r,
-                        backgroundColor: AppColors.blue500,
-                        child: ClipOval(
-                          child: CommonImage(
-                            imageSrc: AppImages.profile,
-                            size: 60,
-                            fill: BoxFit.cover,
+      child: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(16.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 5),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Content
+              Padding(
+                padding: EdgeInsets.all(20.w),
+                child: Column(
+                  children: [
+                    // Profile Section
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 30.r,
+                          backgroundColor: AppColors.blue500,
+                          child: ClipOval(
+                            child: CommonImage(
+                              imageSrc: AppImages.profile,
+                              size: 60,
+                              fill: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      16.width,
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        16.width,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CommonText(
+                                text: '$name (Employer)',
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.black,
+                              ),
+                              4.height,
+                              CommonText(
+                                text: "$date/$time",
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    24.height,
+
+                    // Message Section
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CommonText(
+                          text:
+                              'Lorem Ipsum Dolor Sit Amet Consectetur. Tempor Et Eget Ipsum Donec Fames Et Gravida Non Est. Vel Et In Ut Egestas Fermentum Ut Tincidunt. Viverra Sem Nisl Elit In Ut At Tristique Aliquam. Tincidunt Urna Congue Et Penatibus Mattis A Eu Sodales. Leo Sed Tristique At Imperdiet',
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.black,
+                          maxLines: 10,
+                          textAlign: TextAlign.start,
+                        ),
+                        8.height,
+                        Divider(color: AppColors.blue500, height: 8.h),
+                        8.height,
+                        Row(
                           children: [
-                            CommonText(
-                              text: '$name (Employer)',
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.black,
+                            CircleAvatar(
+                              radius: 30.r,
+                              backgroundColor: AppColors.blue500,
+                              child: ClipOval(
+                                child: CommonImage(
+                                  imageSrc: AppImages.profile,
+                                  size: 60,
+                                  fill: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                            4.height,
-                            CommonText(
-                              text: "$date/$time",
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500,
+                            16.width,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CommonText(
+                                    text: '$name (Employer)',
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.black,
+                                  ),
+                                  4.height,
+                                  CommonText(
+                                    text: "$date/$time",
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
+                        8.height,
+                        CommonText(
+                          text:
+                              'Lorem Ipsum Dolor Sit Amet Consectetur. Tempor Et Eget Ipsum Donec Fames Et Gravida Non Est. Vel Et In Ut Egestas Fermentum Ut Tincidunt. Viverra Sem Nisl Elit In Ut At Tristique Aliquam. Tincidunt Urna Congue Et Penatibus Mattis A Eu Sodales. Leo Sed Tristique At Imperdiet',
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.black,
+                          maxLines: 10,
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
 
-                  24.height,
+                    24.height,
 
-                  // Message Section
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CommonText(
-                        text:
-                            'Lorem Ipsum Dolor Sit Amet Consectetur. Tempor Et Eget Ipsum Donec Fames Et Gravida Non Est. Vel Et In Ut Egestas Fermentum Ut Tincidunt. Viverra Sem Nisl Elit In Ut At Tristique Aliquam. Tincidunt Urna Congue Et Penatibus Mattis A Eu Sodales. Leo Sed Tristique At Imperdiet',
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.black,
-                        maxLines: 10,
-                        textAlign: TextAlign.start,
-                      ),
-                      8.height,
-                      Divider(color: AppColors.blue500, height: 8.h),
-                      8.height,
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 30.r,
-                            backgroundColor: AppColors.blue500,
-                            child: ClipOval(
-                              child: CommonImage(
-                                imageSrc: AppImages.profile,
-                                size: 60,
-                                fill: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          16.width,
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CommonText(
-                                  text: '$name (Employer)',
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.black,
-                                ),
-                                4.height,
-                                CommonText(
-                                  text: "$date/$time",
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      8.height,
-                      CommonText(
-                        text:
-                            'Lorem Ipsum Dolor Sit Amet Consectetur. Tempor Et Eget Ipsum Donec Fames Et Gravida Non Est. Vel Et In Ut Egestas Fermentum Ut Tincidunt. Viverra Sem Nisl Elit In Ut At Tristique Aliquam. Tincidunt Urna Congue Et Penatibus Mattis A Eu Sodales. Leo Sed Tristique At Imperdiet',
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.black,
-                        maxLines: 10,
-                        textAlign: TextAlign.start,
-                      ),
-                    ],
-                  ),
-
-                  24.height,
-
-                  // Reply Button
-                  CommonButton(
-                    titleText: 'Reply',
-                    onTap: controller.replyToAppointment,
-                    buttonColor: AppColors.blue500,
-                    titleColor: AppColors.white,
-                  ),
-                ],
+                    // Reply Button
+                    CommonButton(
+                      titleText: 'Reply',
+                      onTap: controller.replyToAppointment,
+                      buttonColor: AppColors.blue500,
+                      titleColor: AppColors.white,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

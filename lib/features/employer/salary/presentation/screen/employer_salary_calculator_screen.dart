@@ -237,10 +237,11 @@ class SalaryCalculatorScreen extends StatelessWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: CommonButton(
-                    titleText: "\$45678455",
+                    titleText: "\$456784",
                     buttonColor: Colors.transparent,
                     titleColor: Colors.black,
-                    borderColor: Colors.black,
+                    borderColor: AppColors.blue500,
+                    titleSize: 20,
                   ),
                 ),
               ],
@@ -385,7 +386,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        fontSize: 12.sp,
+        fontSize: 14.sp,
         fontWeight: FontWeight.w500,
         color: AppColors.black,
       ),
@@ -411,7 +412,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 12.h),
                   decoration: BoxDecoration(
                     color: controller.selectedTaxClass.value == taxClass
-                        ? AppColors.primaryColor
+                        ? AppColors.blue500
                         : Colors.transparent,
                     borderRadius: BorderRadius.only(
                       topLeft: index == 0 ? Radius.circular(23.r) : Radius.zero,
@@ -487,7 +488,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 12.sp, color: AppColors.black),
+            style: TextStyle(fontSize: 14.sp, color: AppColors.black),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
