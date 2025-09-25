@@ -111,7 +111,7 @@ class _EditPersonalInformationScreenState
                 // Name text with extra top padding to accommodate avatar
                 Align(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 64.h, bottom: 16.h),
+                    padding: EdgeInsets.only(top: 30.h, bottom: 16.h),
                     child: CommonText(
                       text: (LocalStorage.myName.isNotEmpty
                           ? LocalStorage.myName
@@ -124,9 +124,22 @@ class _EditPersonalInformationScreenState
                   ),
                 ),
                 // Name Field
-                _buildFormField(
-                  controller: nameController,
-                  hintText: "company name",
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildFormField(
+                        controller: nameController,
+                        hintText: "company name",
+                      ),
+                    ),
+                    16.width,
+                    Expanded(
+                      child: _buildFormField(
+                        controller: roleController,
+                        hintText: "Name",
+                      ),
+                    ),
+                  ],
                 ),
 
                 16.height,
@@ -157,33 +170,33 @@ class _EditPersonalInformationScreenState
 
                 16.height,
 
-                // Role Field
-                _buildFormField(
-                  controller: roleController,
-                  hintText: "Enter your role",
-                ),
-                16.height,
-                _buildFormField(
-                  controller: contactController,
-                  hintText: "Enter your contact number",
-                  keyboardType: TextInputType.phone,
-                ),
+                // // Role Field
+                // _buildFormField(
+                //   controller: roleController,
+                //   hintText: "Enter your role",
+                // ),
+                // 16.height,
+                // _buildFormField(
+                //   controller: contactController,
+                //   hintText: "Enter your contact number",
+                //   keyboardType: TextInputType.phone,
+                // ),
 
-                16.height,
+                // 16.height,
 
-                // Location Field
-                _buildFormField(
-                  controller: locationController,
-                  hintText: "Enter your location",
-                ),
+                // // Location Field
+                // _buildFormField(
+                //   controller: locationController,
+                //   hintText: "Enter your location",
+                // ),
 
-                16.height,
+                // 16.height,
 
-                // Role Field
-                _buildFormField(
-                  controller: roleController,
-                  hintText: "Enter your role",
-                ),
+                // // Role Field
+                // _buildFormField(
+                //   controller: roleController,
+                //   hintText: "Enter your role",
+                // ),
 
                 // Edit Profile Button
                 Padding(

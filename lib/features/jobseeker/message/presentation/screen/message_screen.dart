@@ -187,7 +187,12 @@ class _MessageScreenState extends State<MessageScreen> {
                     ),
                   ),
                   10.width,
-                  _buildButtonIcon(onTap: () {}, image: AppImages.image),
+                  _buildButtonIcon(
+                    onTap: () {
+                      controller.pickImage();
+                    },
+                    image: AppImages.image,
+                  ),
                   8.width,
                   _buildButtonIcon(
                     onTap: controller.addNewMessage,

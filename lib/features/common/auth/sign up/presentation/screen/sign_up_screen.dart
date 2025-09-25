@@ -67,7 +67,23 @@ class SignUpScreen extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "By Continuing, you Accept the ",
+                                text: "By Continuing, You Accept the ",
+                                style: TextStyle(
+                                  color: AppColors.textSecondary,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Privacy Policy ",
+                                style: TextStyle(
+                                  color: AppColors.blue500,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "And ",
                                 style: TextStyle(
                                   color: AppColors.textSecondary,
                                   fontSize: 14.sp,

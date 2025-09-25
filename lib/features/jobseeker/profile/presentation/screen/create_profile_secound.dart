@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+import 'package:zasulehry_job_seeker/core/utils/helpers/other_helper.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/image/common_image.dart';
 import '../../../../../core/constants/app_images.dart';
@@ -102,37 +103,42 @@ class CreateProfileSecound extends StatelessWidget {
   }
 
   Widget _buildUploadDocumentsCard() {
-    return Container(
-      width: double.infinity,
-      height: 100.h,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const CommonImage(
-            imageSrc: AppImages.upload,
-            width: 32,
-            height: 32,
-            imageColor: AppColors.primaryColor,
-          ),
-          SizedBox(height: 8.h),
-          CommonText(
-            text: "Upload Documents",
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: AppColors.black,
-          ),
-        ],
+    return GestureDetector(
+      onTap: () {
+        OtherHelper.openGalleryForProfile();
+      },
+      child: Container(
+        width: double.infinity,
+        height: 100.h,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(12.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const CommonImage(
+              imageSrc: AppImages.upload,
+              width: 32,
+              height: 32,
+              imageColor: AppColors.primaryColor,
+            ),
+            SizedBox(height: 8.h),
+            CommonText(
+              text: "Upload Documents",
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.black,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -149,24 +155,29 @@ class CreateProfileSecound extends StatelessWidget {
       ),
       itemCount: 8,
       itemBuilder: (context, index) {
-        return Container(
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(8.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 5,
-                offset: const Offset(0, 1),
+        return GestureDetector(
+          onTap: () {
+            OtherHelper.openGalleryForProfile();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(8.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 5,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: const Center(
+              child: CommonImage(
+                imageSrc: AppImages.file,
+                width: 24,
+                height: 24,
+                imageColor: AppColors.textSecondary,
               ),
-            ],
-          ),
-          child: const Center(
-            child: CommonImage(
-              imageSrc: AppImages.file,
-              width: 24,
-              height: 24,
-              imageColor: AppColors.textSecondary,
             ),
           ),
         );
@@ -177,22 +188,27 @@ class CreateProfileSecound extends StatelessWidget {
   Widget _buildAddMoreButton() {
     return Align(
       alignment: Alignment.centerRight,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-          gradient: LinearGradient(
-            begin: Alignment(-0.9, 0),
-            end: Alignment(1.0, 0),
-            colors: [Color(0xFF083E4B), Color(0xFF074E5E), Color(0xFF0288A6)],
-            stops: [0.0, 0.4, 1.0],
+      child: GestureDetector(
+        onTap: () {
+          OtherHelper.openGalleryForProfile();
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.r),
+            gradient: LinearGradient(
+              begin: Alignment(-0.9, 0),
+              end: Alignment(1.0, 0),
+              colors: [Color(0xFF083E4B), Color(0xFF074E5E), Color(0xFF0288A6)],
+              stops: [0.0, 0.4, 1.0],
+            ),
           ),
-        ),
-        child: CommonText(
-          text: "Add More",
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: AppColors.white,
+          child: CommonText(
+            text: "Add More",
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: AppColors.white,
+          ),
         ),
       ),
     );

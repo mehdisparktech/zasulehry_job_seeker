@@ -328,11 +328,12 @@ class EditProfileAllFiled extends StatelessWidget {
   }
 
   void _uploadResume(BuildContext context) {
+    OtherHelper.openGalleryForProfile();
     // Implement resume upload functionality
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Resume upload functionality to be implemented"),
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   const SnackBar(
+    //     content: Text("Resume upload functionality to be implemented"),
+    //   ),
+    // );
   }
 }

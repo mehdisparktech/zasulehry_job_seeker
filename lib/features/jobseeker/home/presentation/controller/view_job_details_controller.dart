@@ -38,7 +38,6 @@ class ViewJobDetailsController extends GetxController {
   void saveJob() {
     if (applyJobStatus.value == ApplyJobStatus.none) {
       applyJobStatus.value = ApplyJobStatus.saved;
-      // TODO: Implement API call to save job
       _showSuccessMessage('Job saved successfully');
     }
   }
@@ -56,7 +55,6 @@ class ViewJobDetailsController extends GetxController {
     if (applyJobStatus.value == ApplyJobStatus.applied ||
         applyJobStatus.value == ApplyJobStatus.pending) {
       applyJobStatus.value = ApplyJobStatus.none;
-      // TODO: Implement API call to cancel application
       _showSuccessMessage('Application cancelled');
     }
   }
@@ -129,7 +127,7 @@ class ViewJobDetailsController extends GetxController {
     if (applyJobStatus.value == ApplyJobStatus.approved) {
       return 'white';
     } else if (applyJobStatus.value == ApplyJobStatus.none) {
-      return 'primary';
+      return 'white';
     } else if (applyJobStatus.value == ApplyJobStatus.saved) {
       return 'white';
     } else {

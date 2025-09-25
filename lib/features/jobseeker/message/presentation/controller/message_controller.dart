@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../data/model/chat_message_model.dart';
 import '../../data/model/message_model.dart';
 
@@ -302,6 +303,25 @@ class MessageController extends GetxController {
       }
     });
     */
+  }
+
+  pickImage() async {
+    final XFile? image = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    if (image != null) {
+      // Uncomment for real implementation
+      /*
+      var body = {
+        "chat": chatId,
+        "message": "",
+        "sender": "", // LocalStorage.userId for real implementation
+        "image": image.path,
+      };
+      */
+
+      // Comment out for demo - uncomment for real implementation
+    }
   }
 
   listenMessage(String chatId) async {
