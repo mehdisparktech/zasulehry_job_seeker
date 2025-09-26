@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 
 class EmployerPostJobScreen extends StatefulWidget {
@@ -158,7 +160,11 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               SizedBox(height: 10.h),
               Align(
                 alignment: Alignment.centerRight,
-                child: Icon(Icons.add_circle, color: AppColors.primaryColor),
+                child: CommonImage(
+                  imageSrc: AppImages.add,
+                  width: 24.w,
+                  height: 24.h,
+                ),
               ),
               SizedBox(height: 20.h),
 
@@ -193,7 +199,11 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               SizedBox(height: 10.h),
               Align(
                 alignment: Alignment.centerRight,
-                child: Icon(Icons.add_circle, color: AppColors.primaryColor),
+                child: CommonImage(
+                  imageSrc: AppImages.add,
+                  width: 24.w,
+                  height: 24.h,
+                ),
               ),
               SizedBox(height: 20.h),
 
@@ -220,6 +230,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
                 },
                 buttonHeight: 48.h,
                 titleSize: 16.sp,
+                titleWeight: FontWeight.w500,
               ),
               SizedBox(height: 20.h),
             ],

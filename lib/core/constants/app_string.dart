@@ -22,6 +22,7 @@ class AppString {
   static const String currentPassword = "Current Password";
   static const String newPassword = "New Password";
   static const String confirmPassword = "Confirm Password";
+  static const String repeatPassword = "Repeat Password";
   static const String forgotPassword = "Forgot Password";
   static const String confirm = "Confirm";
   static const String createNewPassword = "Create New Password";
@@ -65,7 +66,7 @@ class AppString {
   static const String logOut = "Log Out";
   static const String privacyPolicy = "Privacy Policy";
   static const String deleteAccount = "Delete account";
-  static const String termsOfServices = "Terms of Services";
+  static const String termsOfServices = "Terms & Conditions";
   static const String noInternetConnection = "No internet connection";
   static const String badResponseRequest = "Bad Response Request";
   static const String requestTimeOut = "Request Time Out";
@@ -79,7 +80,7 @@ class AppString {
   static const String welcometitle = "JobsinApp";
   static const String welcomesubtitle = "Welcome To Job Finder";
   static const String getStarted = "Get Started";
-  static const String forgotPasswordSubtitle = "enter your email address";
+  static const String forgotPasswordSubtitle = "Enter Your Email Address";
   static const String language = "Language";
   static const String country = "Country";
   static const String connectedAccounts = "Connected Accounts";
@@ -96,10 +97,10 @@ class AppString {
   static const String myAppliedJobs = "My Applied Jobs";
   static const String approvedJobs = "Approved Jobs";
   static const String pendingJobs = "Pending Jobs";
-  static const String canceledJobs = "Canceled Jobs";
+  static const String canceledJobs = "Cancelled Jobs";
   static const String savedJobs = "Saved Jobs";
   static const String feedback = "Feedback";
-  static const String jobsinAppResumeCreation = "JobsinApp Resume Creation";
+  static const String jobsinAppResumeCreation = "InApp Resume Creation";
   static const String salaryCalculator = "Salary Calculator";
   static const String salaryComparison = "Salary Comparison";
   static const String appointments = "Appointments";

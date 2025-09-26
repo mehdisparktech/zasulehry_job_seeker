@@ -101,41 +101,76 @@ class _TwoStepVerificationScreenState extends State<TwoStepVerificationScreen> {
             Row(
               children: [
                 Expanded(
-                  child: Row(
-                    children: [
-                      CommonText(
-                        text: "Online",
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.black,
-                      ),
-                      SizedBox(width: 12.w),
-                      Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            isOnlineEnabled.value = true;
-                            isOfflineEnabled.value = false;
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(4.r),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.w,
+                      vertical: 6.h,
+                    ),
+                    child: Row(
+                      children: [
+                        Switch(
+                          value: isOnlineEnabled.value,
+                          onChanged: (value) {
+                            isOnlineEnabled.value = value;
                           },
-                          child: Container(
-                            width: 24.w,
-                            height: 24.w,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: isOnlineEnabled.value
-                                  ? AppColors.primaryColor
-                                  : AppColors.textFiledColor.withOpacity(0.3),
-                            ),
-                            child: isOnlineEnabled.value
-                                ? Icon(
-                                    Icons.check,
-                                    color: AppColors.white,
-                                    size: 16.w,
-                                  )
-                                : null,
-                          ),
+                          activeColor: AppColors.primaryColor,
+                          activeTrackColor: AppColors.activeTrackColor,
+                          inactiveThumbColor: AppColors.primaryColor,
+                          inactiveTrackColor: AppColors.activeTrackColor,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
                         ),
-                      ),
-                    ],
+                        SizedBox(width: 12.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CommonText(
+                              text: "Active",
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.backgroundGradient2,
+                            ),
+                            CommonText(
+                              text: "01324567890",
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.backgroundGradient2,
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: 12.w),
+                        // Obx(
+                        //   () => GestureDetector(
+                        //     onTap: () {
+                        //       isOnlineEnabled.value = true;
+                        //       isOfflineEnabled.value = false;
+                        //     },
+                        //     child: Container(
+                        //       width: 24.w,
+                        //       height: 24.w,
+                        //       decoration: BoxDecoration(
+                        //         shape: BoxShape.circle,
+                        //         color: isOnlineEnabled.value
+                        //             ? AppColors.primaryColor
+                        //             : AppColors.textFiledColor.withOpacity(0.3),
+                        //       ),
+                        //       child: isOnlineEnabled.value
+                        //           ? Icon(
+                        //               Icons.check,
+                        //               color: AppColors.white,
+                        //               size: 16.w,
+                        //             )
+                        //           : null,
+                        //     ),
+                        //   ),
+                        // ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -143,47 +178,83 @@ class _TwoStepVerificationScreenState extends State<TwoStepVerificationScreen> {
 
             SizedBox(height: 16.h),
 
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      CommonText(
-                        text: "Offline",
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.black,
-                      ),
-                      SizedBox(width: 12.w),
-                      Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            isOfflineEnabled.value = true;
-                            isOnlineEnabled.value = false;
-                          },
-                          child: Container(
-                            width: 24.w,
-                            height: 24.w,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: isOfflineEnabled.value
-                                  ? AppColors.primaryColor
-                                  : AppColors.textFiledColor.withOpacity(0.3),
-                            ),
-                            child: isOfflineEnabled.value
-                                ? Icon(
-                                    Icons.check,
-                                    color: AppColors.white,
-                                    size: 16.w,
-                                  )
-                                : null,
-                          ),
-                        ),
-                      ),
-                    ],
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(4.r),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+              child: Row(
+                children: [
+                  Switch(
+                    value: isOfflineEnabled.value,
+                    onChanged: (value) {
+                      isOfflineEnabled.value = value;
+                    },
+                    activeColor: AppColors.primaryColor,
+                    activeTrackColor: AppColors.activeTrackColor,
+                    inactiveThumbColor: AppColors.primaryColor,
+                    inactiveTrackColor: AppColors.activeTrackColor,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                ),
-              ],
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            CommonText(
+                              text: "Inactive",
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.backgroundGradient2,
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 4.h),
+                        CommonText(
+                          text: "Google Authenticator App",
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.backgroundGradient2,
+                        ),
+                        SizedBox(width: 12.w),
+                        // Obx(
+                        //   () => GestureDetector(
+                        //     onTap: () {
+                        //       isOfflineEnabled.value = true;
+                        //       isOnlineEnabled.value = false;
+                        //     },
+                        //     child: Container(
+                        //       width: 24.w,
+                        //       height: 24.w,
+                        //       decoration: BoxDecoration(
+                        //         shape: BoxShape.circle,
+                        //         color: isOfflineEnabled.value
+                        //             ? AppColors.primaryColor
+                        //             : AppColors.textFiledColor.withOpacity(0.3),
+                        //       ),
+                        //       child: isOfflineEnabled.value
+                        //           ? Icon(
+                        //               Icons.check,
+                        //               color: AppColors.white,
+                        //               size: 16.w,
+                        //             )
+                        //           : null,
+                        //     ),
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
 
             SizedBox(height: 40.h),
@@ -211,9 +282,9 @@ class _TwoStepVerificationScreenState extends State<TwoStepVerificationScreen> {
                 Expanded(
                   child: CommonText(
                     text: "Third Party Apps",
-                    fontSize: 16,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.primaryColor,
+                    color: AppColors.backgroundGradient2,
                     textAlign: TextAlign.left,
                   ),
                 ),

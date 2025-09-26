@@ -149,19 +149,19 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                         ),
                       ),
                       16.width,
-                      Expanded(
-                        child: CommonButton(
-                          titleText: "Complete Profile",
-                          onTap: () {
-                            // Get.toNamed(
-                            //   AppRoutes.personalInformation,
-                            //   arguments: {"appTitle": "Complete Profile"},
-                            // );
-                            // Navigate to edit profile or handle edit functionality
-                            Get.back();
-                          },
-                        ),
-                      ),
+                      // Expanded(
+                      //   child: CommonButton(
+                      //     titleText: "Complete Profile",
+                      //     onTap: () {
+                      //       // Get.toNamed(
+                      //       //   AppRoutes.personalInformation,
+                      //       //   arguments: {"appTitle": "Complete Profile"},
+                      //       // );
+                      //       // Navigate to edit profile or handle edit functionality
+                      //       Get.back();
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

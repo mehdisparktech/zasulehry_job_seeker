@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/controller/view_job_details_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/widgets/job_header_widget.dart';
@@ -24,7 +26,20 @@ class ViewJobDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: CommonAppBar(title: 'View Details'),
+      appBar: CommonAppBar(
+        title: 'View Details',
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 16.w),
+            child: GlassEffectIcon(
+              icon: AppImages.whatsapp,
+              onTap: () {},
+              width: 24.w,
+              height: 24.h,
+            ),
+          ),
+        ],
+      ),
       body: _buildBody(controller),
     );
   }

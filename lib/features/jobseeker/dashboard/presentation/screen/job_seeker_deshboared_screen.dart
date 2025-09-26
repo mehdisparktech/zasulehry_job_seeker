@@ -49,7 +49,7 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
               /// Saved Jobs Item here
               Item(
                 title: AppString.savedJobs,
-                icon: Icons.favorite,
+                icon: Icons.favorite_border_outlined,
                 onTap: () => Get.toNamed(AppRoutes.savedJobs),
               ),
 

@@ -52,20 +52,21 @@ class SalaryComparisonScreen extends StatelessWidget {
             ),
             24.height,
 
-            // Job 1 Section
-            _buildJobSection(controller.job1TitleController, 'Enter job title'),
-            16.height,
-
             _buildJobSection(controller.job1CompanyController, 'Key Words'),
             16.height,
 
-            _buildJobSection(controller.job1LocationController, 'Category'),
+            _buildJobSection(
+              controller.job1LocationController,
+              'Category',
+              isDropdown: true,
+            ),
             16.height,
 
             _buildJobSection(
               controller.job1SalaryController,
               'Sub Category',
               isNumber: true,
+              isDropdown: true,
             ),
             16.height,
 
@@ -114,6 +115,7 @@ class SalaryComparisonScreen extends StatelessWidget {
     TextEditingController controller,
     String hint, {
     bool isNumber = false,
+    bool isDropdown = false,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,6 +126,9 @@ class SalaryComparisonScreen extends StatelessWidget {
           keyboardType: isNumber ? TextInputType.number : TextInputType.text,
           fillColor: AppColors.white,
           borderColor: AppColors.background,
+          suffixIcon: isDropdown
+              ? Icon(Icons.keyboard_arrow_down_outlined)
+              : null,
         ),
       ],
     );

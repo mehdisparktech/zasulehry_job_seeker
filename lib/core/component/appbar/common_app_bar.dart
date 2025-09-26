@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -113,12 +116,9 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
               : null),
       actions: actions?.map((action) {
         if (action is IconButton) {
-          return IconButton(
-            onPressed: action.onPressed,
-            icon: action.icon,
-            color:
-                actionsColor ??
-                AppColors.white, // Changed to white for better contrast
+          return Padding(
+            padding: EdgeInsets.only(right: 12.w),
+            child: GlassEffectIcon(icon: AppImages.ai, onTap: action.onPressed),
           );
         }
         return action;

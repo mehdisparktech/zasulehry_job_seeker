@@ -10,6 +10,8 @@ import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/widgets/appointment_details_dialog.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/widgets/appointment_request_dialog.dart';
 
 class EmployerAppointmentsScreen extends StatefulWidget {
   const EmployerAppointmentsScreen({super.key});
@@ -89,44 +91,49 @@ class _EmployerAppointmentsScreenState
           ),
 
           // Bottom Action Button
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: CommonButton(
-              titleText: 'Cancel',
-              onTap: () {
-                // Handle ask for appointment action
-                showConfirmationDialog(
-                  message: 'Are You Sure You Want To Cancel The Appointment',
-                  onConfirm: () {
-                    // Handle cancel appointment action
-                  },
-                  onCancel: () {
-                    // Handle cancel appointment action
-                  },
-                );
-              },
-              titleColor: AppColors.white,
-              buttonColor: AppColors.red2,
-              borderColor: AppColors.red2,
-              buttonRadius: 4.r,
-              isGradient: false,
+          if (selectedTabIndex == 0 || selectedTabIndex == 1) ...[
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: CommonButton(
+                titleText: 'Cancel',
+                onTap: () {
+                  // Handle ask for appointment action
+                  showConfirmationDialog(
+                    message: 'Are You Sure You Want To Cancel The Appointment',
+                    onConfirm: () {
+                      // Handle cancel appointment action
+                      AppointmentRequestDialog.show(isConfirm: true);
+                    },
+                    onCancel: () {
+                      // Handle cancel appointment action
+                      Get.back();
+                    },
+                  );
+                },
+                titleColor: AppColors.white,
+                buttonColor: AppColors.red2,
+                borderColor: AppColors.red2,
+                buttonRadius: 4.r,
+                isGradient: false,
+              ),
             ),
-          ),
-          16.height,
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            margin: EdgeInsets.only(bottom: 16.h),
-            child: CommonButton(
-              titleText: 'Create New Appointment',
-              onTap: () {
-                Get.toNamed(AppRoutes.employerCreateAppointment);
-              },
-              buttonColor: AppColors.blue500,
-              titleColor: AppColors.white,
-              buttonRadius: 4.r,
+            16.height,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              margin: EdgeInsets.only(bottom: 16.h),
+              child: CommonButton(
+                titleText: 'Create New Appointment',
+                onTap: () {
+                  Get.toNamed(AppRoutes.employerCreateAppointment);
+                },
+                buttonColor: AppColors.blue500,
+                titleColor: AppColors.white,
+                buttonRadius: 4.r,
+                titleWeight: FontWeight.w500,
+              ),
             ),
-          ),
-          40.height,
+            40.height,
+          ],
         ],
       ),
     );
@@ -297,7 +304,11 @@ class _EmployerAppointmentsScreenState
 
           Row(
             children: [
-              Icon(Icons.calendar_month, size: 16.sp, color: AppColors.blue500),
+              CommonImage(
+                imageSrc: AppImages.calender,
+                width: 16.w,
+                height: 16.h,
+              ),
               4.width,
               CommonText(
                 text: date,
@@ -306,7 +317,12 @@ class _EmployerAppointmentsScreenState
                 color: AppColors.black,
               ),
               8.width,
-              Icon(Icons.access_time, size: 16.sp, color: AppColors.blue500),
+              CommonImage(
+                imageSrc: AppImages.clock,
+                width: 24.w,
+                height: 24.h,
+                imageColor: AppColors.blue500,
+              ),
               4.width,
               CommonText(
                 text: time,
@@ -316,19 +332,41 @@ class _EmployerAppointmentsScreenState
               ),
               12.width,
               Spacer(),
-              Icon(
-                Icons.visibility_outlined,
-                color: AppColors.blue500,
-                size: 24.sp,
+              GestureDetector(
+                onTap: () {
+                  AppointmentDetailsDialog.show(
+                    name: name,
+                    date: date,
+                    time: time,
+                    status: status,
+                  );
+                },
+                child: CommonImage(
+                  imageSrc: AppImages.view,
+                  width: 24.w,
+                  height: 24.h,
+                  imageColor: AppColors.blue500,
+                ),
               ),
+
               12.width,
-              Checkbox(value: true, onChanged: (value) {}),
+              // Checkbox(value: true, onChanged: (value) {}),
+              Container(
+                width: 20.w,
+                height: 20.h,
+                decoration: BoxDecoration(
+                  color: AppColors.transparent,
+                  border: Border.all(color: AppColors.blue500, width: 2),
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
+                child: Icon(Icons.check, size: 16.sp, color: AppColors.blue500),
+              ),
             ],
           ),
           if (isCancelled) ...[
             Row(
               children: [
-                Icon(Icons.info, size: 16.sp, color: AppColors.blue500),
+                Icon(Icons.info_outline, size: 16.sp, color: AppColors.blue500),
                 4.width,
                 CommonText(
                   text: status,

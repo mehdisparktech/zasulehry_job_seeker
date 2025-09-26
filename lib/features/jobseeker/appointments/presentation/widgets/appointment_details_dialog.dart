@@ -140,7 +140,7 @@ class AppointmentDetailsDialog extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CommonText(
-                                    text: '$name (Employer)',
+                                    text: '$name (Employee)',
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.black,

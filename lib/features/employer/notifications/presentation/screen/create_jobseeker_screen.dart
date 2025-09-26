@@ -200,10 +200,11 @@ class CreateJobseekerAlertScreen extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: IntrinsicWidth(
                   child: CommonButton(
-                    titleText: 'Email Setting',
+                    titleText: 'Email Settings',
                     buttonColor: AppColors.backgroundGradient,
                     onTap: () => Get.to(() => EmployeeEmailScreen()),
                     buttonWidth: 150,
+                    titleWeight: FontWeight.w500,
                   ),
                 ),
               ),

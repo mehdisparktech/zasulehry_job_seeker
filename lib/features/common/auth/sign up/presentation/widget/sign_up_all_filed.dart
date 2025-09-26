@@ -54,7 +54,7 @@ class SignUpAllField extends StatelessWidget {
         CommonTextField(
           controller: controller.confirmPasswordController,
           isPassword: true,
-          hintText: AppString.confirmPassword,
+          hintText: AppString.repeatPassword,
           validator: (value) => OtherHelper.confirmPasswordValidator(
             value,
             controller.passwordController,

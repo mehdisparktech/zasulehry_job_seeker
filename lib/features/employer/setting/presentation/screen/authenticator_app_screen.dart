@@ -30,8 +30,8 @@ class _AuthenticatorAppScreenState extends State<AuthenticatorAppScreen> {
             // Header Section
             CommonText(
               text: "Set Your Authentication App",
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
               color: AppColors.black,
               textAlign: TextAlign.left,
             ),
@@ -43,7 +43,7 @@ class _AuthenticatorAppScreenState extends State<AuthenticatorAppScreen> {
                   "Authenticator App provides you a Security Code,with that Code you can secure your Account.",
               fontSize: 14,
               fontWeight: FontWeight.w400,
-              color: AppColors.textFiledColor,
+              color: AppColors.textSecondary,
               textAlign: TextAlign.left,
               maxLines: 3,
             ),
@@ -69,8 +69,8 @@ class _AuthenticatorAppScreenState extends State<AuthenticatorAppScreen> {
             // QR Code Section
             Center(
               child: Container(
-                width: 200.w,
-                height: 200.w,
+                width: 120.w,
+                height: 120.w,
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12.r),
@@ -82,7 +82,7 @@ class _AuthenticatorAppScreenState extends State<AuthenticatorAppScreen> {
                   child: Icon(
                     Icons.qr_code,
                     size: 120.w,
-                    color: AppColors.textFiledColor,
+                    color: AppColors.textSecondary,
                   ),
                 ),
               ),
@@ -140,17 +140,17 @@ class _AuthenticatorAppScreenState extends State<AuthenticatorAppScreen> {
       children: [
         CommonText(
           text: title,
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
           color: AppColors.black,
           textAlign: TextAlign.left,
         ),
         SizedBox(height: 8.h),
         CommonText(
           text: description,
-          fontSize: 14,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: AppColors.textFiledColor,
+          color: AppColors.textSecondary,
           textAlign: TextAlign.left,
           maxLines: 3,
         ),
