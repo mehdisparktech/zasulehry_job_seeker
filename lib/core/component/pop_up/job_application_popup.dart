@@ -209,28 +209,33 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     SizedBox(height: 16.h),
 
                     // CV Creation button
-                    Container(
-                      width: double.infinity,
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            Color(0xFF083E4B),
-                            Color(0xFF074E5E),
-                            Color(0xFF0288A6),
-                          ],
-                          stops: [0.0, 0.5, 1.0],
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.cvCreateStep1);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              Color(0xFF083E4B),
+                              Color(0xFF074E5E),
+                              Color(0xFF0288A6),
+                            ],
+                            stops: [0.0, 0.5, 1.0],
+                          ),
                         ),
-                      ),
-                      child: Center(
-                        child: CommonText(
-                          text: 'Percenter Cv/Resume Creation',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.white,
+                        child: Center(
+                          child: CommonText(
+                            text: 'InApp Cv/Resume Creation',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                     ),

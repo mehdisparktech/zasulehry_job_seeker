@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -429,10 +430,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
         CommonButton(
           titleText: 'InApp CV/Resume Creation',
           onTap: () {
-            Get.snackbar(
-              "Info",
-              "Add other resume functionality will be implemented",
-            );
+            Get.toNamed(AppRoutes.cvCreateStep1);
           },
           buttonRadius: 8.r,
           buttonHeight: 40.h,

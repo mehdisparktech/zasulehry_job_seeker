@@ -35,6 +35,13 @@ class CvCreateController extends GetxController {
   final certificateNameController = TextEditingController();
   final certificateOrgController = TextEditingController();
   final certificateYearController = TextEditingController();
+  final certificateUrlController = TextEditingController();
+  final certificateImageUrlController = TextEditingController();
+  final certificateImageUrl = TextEditingController();
+  final certificateImage = TextEditingController();
+  final certificateImagePath = TextEditingController();
+  final dobController = TextEditingController();
+  final phoneController = TextEditingController();
 
   // Observable variables
   final selectedProfileImage = Rx<String?>(null);
