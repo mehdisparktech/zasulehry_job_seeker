@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
-import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/controller/cv_create_controller.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_complete_screen.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/button/common_button.dart';
 
@@ -18,7 +20,7 @@ class CvCreateStep2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: CommonAppBar(title: "CV/Resume Creation - Step 2"),
+      appBar: CommonAppBar(title: "InApp CV/Resume Creation"),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.w),
         child: Column(
@@ -61,16 +63,24 @@ class CvCreateStep2Screen extends StatelessWidget {
       height: 40.h,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isActive ? AppColors.primaryColor : Colors.grey[300],
-        border: Border.all(
-          color: isActive ? AppColors.primaryColor : Colors.grey[300]!,
-          width: 2.w,
-        ),
+        color: isActive ? AppColors.primaryColor : AppColors.blue200,
+        gradient: isActive
+            ? LinearGradient(
+                begin: Alignment(-0.9, 0),
+                end: Alignment(1.0, 0),
+                colors: [
+                  Color(0xFF083E4B),
+                  Color(0xFF074E5E),
+                  Color(0xFF0288A6),
+                ],
+                stops: [0.0, 0.5, 1.0],
+              )
+            : null,
       ),
       child: Center(
         child: isActive
             ? Icon(
-                stepIndex == 2 ? Icons.edit : Icons.check,
+                stepIndex == 0 ? Icons.arrow_forward : Icons.check,
                 color: Colors.white,
                 size: 20.w,
               )
@@ -79,7 +89,7 @@ class CvCreateStep2Screen extends StatelessWidget {
                 height: 16.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.grey[500],
+                  color: AppColors.blue200,
                 ),
               ),
       ),
@@ -90,9 +100,20 @@ class CvCreateStep2Screen extends StatelessWidget {
     return Expanded(
       child: Container(
         height: 4.h,
-        margin: EdgeInsets.symmetric(horizontal: 8.w),
         decoration: BoxDecoration(
-          color: isActive ? AppColors.primaryColor : Colors.grey[300],
+          color: isActive ? AppColors.primaryColor : AppColors.blue200,
+          gradient: isActive
+              ? LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF083E4B),
+                    Color(0xFF074E5E),
+                    Color(0xFF0288A6),
+                  ],
+                  stops: [0.0, 0.5, 1.0],
+                )
+              : null,
           borderRadius: BorderRadius.circular(2.r),
         ),
       ),
@@ -106,13 +127,13 @@ class CvCreateStep2Screen extends StatelessWidget {
         // Work Experience Section
         _buildWorkExperienceSection(),
         SizedBox(height: 24.h),
+        // Portfolio Section
+        _buildPortfolioSection(),
+        SizedBox(height: 24.h),
 
         // Skills & Activities Section
         _buildSkillsSection(),
         SizedBox(height: 24.h),
-
-        // Portfolio Section
-        _buildPortfolioSection(),
       ],
     );
   }
@@ -121,20 +142,28 @@ class CvCreateStep2Screen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CommonText(
-          text: "Work Experience",
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: AppColors.primaryColor,
-        ),
-        SizedBox(height: 16.h),
-
-        Obx(
-          () => _buildDropdownField(
-            controller.selectedPersonalInfoType.value,
-            controller.personalInfoOptions,
-            Icons.keyboard_arrow_down,
-            onChanged: (value) => controller.updatePersonalInfoType(value),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          decoration: BoxDecoration(
+            color: AppColors.transparent,
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(color: AppColors.backgroundGradient2, width: 1),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CommonText(
+                text: "Work Experience",
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.blue500,
+              ),
+              Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.blue500,
+                size: 24.w,
+              ),
+            ],
           ),
         ),
 
@@ -162,7 +191,8 @@ class CvCreateStep2Screen extends StatelessWidget {
           children: [
             CommonText(
               text: "Current Working : ",
-              color: AppColors.primaryColor,
+              color: AppColors.blue500,
+              fontSize: 18.sp,
             ),
             SizedBox(width: 12.w),
             CommonButton(
@@ -197,11 +227,12 @@ class CvCreateStep2Screen extends StatelessWidget {
           'Enter Date To',
           isDate: true,
         ),
+
         SizedBox(height: 14.h),
 
         CommonText(text: "Work Details"),
         SizedBox(height: 8.h),
-        CommonTextField(hintText: "Enter Work Details", maxLines: 3),
+        CommonTextField(hintText: "Enter Work Details", maxLines: 6),
       ],
     );
   }
@@ -210,20 +241,28 @@ class CvCreateStep2Screen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CommonText(
-          text: "Skills & Activities",
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: AppColors.primaryColor,
-        ),
-        SizedBox(height: 16.h),
-
-        Obx(
-          () => _buildDropdownField(
-            controller.skillActivity.value,
-            controller.personalInfoOptions,
-            Icons.keyboard_arrow_down,
-            onChanged: (value) => controller.updatePersonalInfoType(value),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          decoration: BoxDecoration(
+            color: AppColors.transparent,
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(color: AppColors.backgroundGradient2, width: 1),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CommonText(
+                text: "Skills & Activities",
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.blue500,
+              ),
+              Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.blue500,
+                size: 24.w,
+              ),
+            ],
           ),
         ),
         SizedBox(height: 16.h),
@@ -253,21 +292,22 @@ class CvCreateStep2Screen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CommonText(
-          text: "Portfolio",
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: AppColors.primaryColor,
+          text: "Portfolio Url : ",
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
         ),
         SizedBox(height: 16.h),
-
-        CommonText(text: "Portfolio Url : "),
-        SizedBox(height: 12.h),
-        Obx(
-          () => _buildDropdownField(
-            controller.portfolioUrl.value,
-            controller.personalInfoOptions,
-            Icons.keyboard_arrow_down,
-            onChanged: (value) => controller.updatePersonalInfoType(value),
+        CommonTextField(
+          hintText: "Enter Portfolio Url",
+          maxLines: 1,
+          suffixIcon: Padding(
+            padding: EdgeInsets.all(12.w),
+            child: CommonImage(
+              imageSrc: AppImages.add,
+              width: 20.w,
+              height: 20.h,
+            ),
           ),
         ),
         SizedBox(height: 12.h),
@@ -275,7 +315,7 @@ class CvCreateStep2Screen extends StatelessWidget {
           alignment: Alignment.topRight,
           child: CommonButton(
             titleText: "Add More",
-            buttonWidth: 150.w,
+            buttonWidth: 100.w,
             buttonHeight: 38.h,
             titleSize: 12,
           ),
@@ -285,31 +325,10 @@ class CvCreateStep2Screen extends StatelessWidget {
   }
 
   Widget _buildNavigationButtons() {
-    return Row(
-      children: [
-        // Back Button
-        Expanded(
-          child: CommonButton(
-            titleText: 'Back',
-            onTap: () => _navigateBack(),
-            // You can add different styling for back button if needed
-          ),
-        ),
-        SizedBox(width: 16.w),
-        // Finish Button
-        Expanded(
-          child: CommonButton(
-            titleText: 'Finish & Save',
-            onTap: () => _finishAndSave(),
-          ),
-        ),
-      ],
+    return SizedBox(
+      width: double.infinity,
+      child: CommonButton(titleText: 'Confirm', onTap: () => _finishAndSave()),
     );
-  }
-
-  void _navigateBack() {
-    controller.currentStep.value = 0;
-    Get.back();
   }
 
   void _finishAndSave() {
@@ -318,7 +337,7 @@ class CvCreateStep2Screen extends StatelessWidget {
       controller.saveResume();
       // Get.back();
       // Get.back(); // Go back to the original screen or dashboard
-      Get.toNamed(AppRoutes.jobSeekerDashboard);
+      Get.to(() => CvCreateCompleteScreen());
       Get.snackbar(
         'Success',
         'CV/Resume created successfully!',
@@ -334,66 +353,6 @@ class CvCreateStep2Screen extends StatelessWidget {
     return true;
   }
 
-  Widget _buildDropdownField(
-    String value,
-    List<String> items,
-    IconData icon, {
-    required Function(String) onChanged,
-  }) {
-    return GestureDetector(
-      onTap: () => _showDropdownModal(items, onChanged),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-        decoration: BoxDecoration(
-          color: AppColors.transparent,
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(
-            color: AppColors.primaryColor.withOpacity(0.3),
-            width: 2,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              value,
-              style: TextStyle(fontSize: 16.sp, color: AppColors.black),
-            ),
-            Icon(icon, color: Colors.grey, size: 20.w),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _showDropdownModal(List<String> items, Function(String) onChanged) {
-    Get.bottomSheet(
-      Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
-          ),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: items
-              .map(
-                (item) => ListTile(
-                  title: Text(item),
-                  onTap: () {
-                    onChanged(item);
-                    Get.back();
-                  },
-                ),
-              )
-              .toList(),
-        ),
-      ),
-    );
-  }
-
   Widget _buildTextField(
     String label,
     TextEditingController textController,
@@ -406,7 +365,7 @@ class CvCreateStep2Screen extends StatelessWidget {
       children: [
         CommonText(
           text: label,
-          fontSize: 14,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.black,
         ),
@@ -416,7 +375,7 @@ class CvCreateStep2Screen extends StatelessWidget {
           hintText: hintText,
           maxLines: maxLines,
           suffixIcon: isDate
-              ? Icon(Icons.calendar_today, size: 20, color: Colors.grey[600])
+              ? Icon(Icons.calendar_today, size: 24.w, color: Colors.grey[600])
               : null,
           onTap: isDate ? () => _showDatePicker(textController) : null,
         ),

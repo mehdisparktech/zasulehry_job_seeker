@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_step1_screen.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -89,10 +90,12 @@ class CreateProfile extends StatelessWidget {
 
                   CommonButton(
                     titleText: "inApp cv/resume creation",
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => CvCreateStep1Screen());
+                    },
                     buttonRadius: 8.r,
-                    buttonHeight: 32.h,
-                    titleSize: 12.sp,
+                    buttonHeight: 38.h,
+                    titleSize: 14.sp,
                     titleWeight: FontWeight.w500,
                   ),
                   30.height,

@@ -18,7 +18,7 @@ class CvCreateStep1Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: CommonAppBar(title: "CV/Resume Creation - Step 1"),
+      appBar: CommonAppBar(title: "InApp CV/Resume Creation"),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.w),
         child: Column(
@@ -77,7 +77,7 @@ class CvCreateStep1Screen extends StatelessWidget {
       ),
       child: Center(
         child: Icon(
-          stepIndex == 0 ? Icons.edit : Icons.check,
+          stepIndex == 0 ? Icons.arrow_forward : Icons.check,
           color: Colors.white,
           size: 20.w,
         ),
@@ -88,11 +88,22 @@ class CvCreateStep1Screen extends StatelessWidget {
   Widget _buildProgressLine(bool isActive) {
     return Expanded(
       child: Container(
-        height: 4.h,
-        margin: EdgeInsets.symmetric(horizontal: 8.w),
+        height: 6.h,
         decoration: BoxDecoration(
-          color: isActive ? AppColors.primaryColor : Colors.grey[300],
+          color: isActive ? AppColors.primaryColor : AppColors.blue200,
           borderRadius: BorderRadius.circular(2.r),
+          gradient: isActive
+              ? LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF083E4B),
+                    Color(0xFF074E5E),
+                    Color(0xFF0288A6),
+                  ],
+                  stops: [0.0, 0.5, 1.0],
+                )
+              : null,
         ),
       ),
     );
@@ -113,10 +124,7 @@ class CvCreateStep1Screen extends StatelessWidget {
   }
 
   Widget _buildNavigationButton() {
-    return CommonButton(
-      titleText: 'Continue to Step 2',
-      onTap: () => _navigateToStep2(),
-    );
+    return CommonButton(titleText: 'Continue', onTap: () => _navigateToStep2());
   }
 
   void _navigateToStep2() {
@@ -208,12 +216,28 @@ class CvCreateStep1Screen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Obx(
-          () => _buildDropdownField(
-            controller.selectedPersonalInfoType.value,
-            controller.personalInfoOptions,
-            Icons.keyboard_arrow_down,
-            onChanged: (value) => controller.updatePersonalInfoType(value),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          decoration: BoxDecoration(
+            color: AppColors.transparent,
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(color: AppColors.backgroundGradient2, width: 1),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CommonText(
+                text: "Personal Information",
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.backgroundGradient2,
+              ),
+              Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.backgroundGradient2,
+                size: 20.w,
+              ),
+            ],
           ),
         ),
         SizedBox(height: 16.h),
@@ -262,11 +286,11 @@ class CvCreateStep1Screen extends StatelessWidget {
           "Enter Your Present Address",
         ),
         SizedBox(height: 12.h),
-        CommonText(text: "Driving License"),
+        CommonText(text: "Motorcycles/Cars", fontSize: 16.sp),
         SizedBox(height: 12.h),
         _buildTaxClassSelection(),
         SizedBox(height: 12.h),
-        CommonText(text: "Buses/Agricultural"),
+        CommonText(text: "Buses/Agricultural", fontSize: 16.sp),
         SizedBox(height: 12.h),
         _buildBusSelection(controller),
         SizedBox(height: 12.h),
@@ -274,17 +298,32 @@ class CvCreateStep1Screen extends StatelessWidget {
         SizedBox(height: 12.h),
         _buildTrack(controller),
         SizedBox(height: 12.h),
-        CommonText(text: "Languages"),
+        CommonText(text: "About Yourself", fontSize: 16.sp),
         SizedBox(height: 12.h),
         CommonTextField(hintText: "Enter about your self", maxLines: 3),
         SizedBox(height: 12.h),
-        Obx(
-          () => _buildDropdownField(
-            controller.selectedEducationalInformation.value,
-            controller.educationalInfoOption,
-            Icons.keyboard_arrow_down,
-            onChanged: (value) =>
-                controller.updateEducationalInformation(value),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          decoration: BoxDecoration(
+            color: AppColors.transparent,
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(color: AppColors.backgroundGradient2, width: 1),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CommonText(
+                text: "Educational Information",
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.backgroundGradient2,
+              ),
+              Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.backgroundGradient2,
+                size: 20.w,
+              ),
+            ],
           ),
         ),
         SizedBox(height: 12.h),
@@ -397,7 +436,7 @@ class CvCreateStep1Screen extends StatelessWidget {
       children: [
         CommonText(
           text: label,
-          fontSize: 14,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.black,
         ),
@@ -438,7 +477,12 @@ class CvCreateStep1Screen extends StatelessWidget {
   Widget _buildTaxClassSelection() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.r),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25.r),
+          bottomLeft: Radius.circular(25.r),
+          topRight: Radius.circular(0.r),
+          bottomRight: Radius.circular(0.r),
+        ),
         border: Border.all(color: AppColors.primaryColor, width: 2.w),
       ),
       child: Obx(
@@ -455,6 +499,14 @@ class CvCreateStep1Screen extends StatelessWidget {
                     color: controller.selectedTaxClass.value == taxClass
                         ? AppColors.primaryColor
                         : Colors.transparent,
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.backgroundGradient,
+                        AppColors.backgroundGradient2,
+                        AppColors.backgroundGradient3,
+                      ],
+                      stops: [0.0, 0.5, 1.0],
+                    ),
                     borderRadius: BorderRadius.only(
                       topLeft: index == 0 ? Radius.circular(23.r) : Radius.zero,
                       bottomLeft: index == 0
@@ -493,7 +545,12 @@ class CvCreateStep1Screen extends StatelessWidget {
     return Obx(() {
       return Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.r),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25.r),
+            bottomLeft: Radius.circular(25.r),
+            topRight: Radius.circular(0.r),
+            bottomRight: Radius.circular(0.r),
+          ),
           border: Border.all(color: AppColors.primaryColor, width: 2.w),
         ),
         child: Row(
@@ -502,9 +559,9 @@ class CvCreateStep1Screen extends StatelessWidget {
             (i) {
               if (i.isOdd) {
                 return Container(
-                  width: 1.w,
-                  height: 35.h,
-                  color: AppColors.primaryColor,
+                  width: 2.w,
+                  height: 45.h,
+                  color: AppColors.backgroundGradient2,
                 );
               }
 
@@ -521,6 +578,14 @@ class CvCreateStep1Screen extends StatelessWidget {
                       color: controller.selectedBusAgricalrure.value == busClass
                           ? AppColors.primaryColor
                           : Colors.transparent,
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF083E4B),
+                          Color(0xFF074E5E),
+                          Color(0xFF0288A6),
+                        ],
+                        stops: [0.0, 0.5, 1.0],
+                      ),
                       borderRadius: BorderRadius.only(
                         topLeft: index == 0
                             ? Radius.circular(23.r)
@@ -564,7 +629,12 @@ class CvCreateStep1Screen extends StatelessWidget {
     return Obx(() {
       return Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.r),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25.r),
+            bottomLeft: Radius.circular(25.r),
+            topRight: Radius.circular(0.r),
+            bottomRight: Radius.circular(0.r),
+          ),
           border: Border.all(color: AppColors.primaryColor, width: 2.w),
         ),
         child: Row(
@@ -589,6 +659,14 @@ class CvCreateStep1Screen extends StatelessWidget {
                     color: controller.selectedTruckMoney.value == busClass
                         ? AppColors.primaryColor
                         : Colors.transparent,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFF083E4B),
+                        Color(0xFF074E5E),
+                        Color(0xFF0288A6),
+                      ],
+                      stops: [0.0, 0.5, 1.0],
+                    ),
                     borderRadius: BorderRadius.only(
                       topLeft: index == 0 ? Radius.circular(23.r) : Radius.zero,
                       bottomLeft: index == 0

@@ -6,8 +6,9 @@ class CvCreateController extends GetxController {
   // Text Controllers
   final nameController = TextEditingController();
   final professionController = TextEditingController();
-  final emailController = TextEditingController();
-  final contactController = TextEditingController();
+  final emailController = TextEditingController()
+    ..text = "developernaimul00@gmail.com";
+  final contactController = TextEditingController()..text = "1865965581";
   final ageController = TextEditingController();
   final birthDateController = TextEditingController();
   final addressController = TextEditingController();
@@ -57,9 +58,18 @@ class CvCreateController extends GetxController {
   final selectedYear = "2022".obs;
 
   // Options
-  final List<String> taxClassOptions = ["Am", "A1", "A2", "C1", "E1"];
-  final List<String> busAgricalrureOptions = ["C1", "CI1", "C2e", "C2", "E2"];
-  final List<String> truckMoney = ["C1", "CI1", "C2", "E2"];
+  final List<String> taxClassOptions = [
+    "Am",
+    "A1",
+    "A2",
+    "A",
+    "B",
+    "B17",
+    "BE",
+    "E96",
+  ];
+  final List<String> busAgricalrureOptions = ["D", "DIE", "D", "DE", "L", "I"];
+  final List<String> truckMoney = ["C1", "CIE", "C", "CE"];
   final List<String> languageOptions = [
     'English',
     'Spanish',
