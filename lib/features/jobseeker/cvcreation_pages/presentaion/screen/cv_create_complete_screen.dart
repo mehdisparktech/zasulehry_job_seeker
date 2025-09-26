@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
@@ -91,7 +93,12 @@ class CvCreateCompleteScreen extends StatelessWidget {
             Positioned(
               top: 0,
               right: 0,
-              child: GlassEffectIcon(icon: AppImages.editFile),
+              child: GlassEffectIcon(
+                icon: AppImages.editFile,
+                onTap: () {
+                  Get.toNamed(AppRoutes.cvCreateStep1);
+                },
+              ),
             ),
           ],
         ),
