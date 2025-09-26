@@ -47,9 +47,9 @@ class CvCreateStep1Screen extends StatelessWidget {
     return Row(
       children: [
         _buildProgressStep(0, true), // Current step (active)
-        _buildProgressLine(false), // Not completed yet
-        _buildProgressStep(1, false), // Next step (inactive)
-        _buildProgressLine(false), // Not completed yet
+        _buildProgressLine(true), // Active line
+        _buildProgressStep(1, true), // Next step also active
+        _buildProgressLine(false), // Inactive line
         _buildProgressStep(2, false), // Final step (inactive)
       ],
     );
@@ -57,20 +57,29 @@ class CvCreateStep1Screen extends StatelessWidget {
 
   Widget _buildProgressStep(int stepIndex, bool isActive) {
     return Container(
-      width: 24.w,
-      height: 24.h,
+      width: 40.w,
+      height: 40.h,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isActive ? AppColors.primaryColor : Colors.grey[300],
+        color: isActive ? AppColors.primaryColor : AppColors.blue200,
+
+        gradient: isActive
+            ? LinearGradient(
+                begin: Alignment(-0.9, 0),
+                end: Alignment(1.0, 0),
+                colors: [
+                  Color(0xFF083E4B),
+                  Color(0xFF074E5E),
+                  Color(0xFF0288A6),
+                ],
+              )
+            : null,
       ),
       child: Center(
-        child: Container(
-          width: 12.w,
-          height: 12.h,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: isActive ? Colors.white : Colors.grey[500],
-          ),
+        child: Icon(
+          stepIndex == 0 ? Icons.edit : Icons.check,
+          color: Colors.white,
+          size: 20.w,
         ),
       ),
     );
@@ -79,8 +88,12 @@ class CvCreateStep1Screen extends StatelessWidget {
   Widget _buildProgressLine(bool isActive) {
     return Expanded(
       child: Container(
-        height: 2.h,
-        color: isActive ? AppColors.primaryColor : Colors.grey[300],
+        height: 4.h,
+        margin: EdgeInsets.symmetric(horizontal: 8.w),
+        decoration: BoxDecoration(
+          color: isActive ? AppColors.primaryColor : Colors.grey[300],
+          borderRadius: BorderRadius.circular(2.r),
+        ),
       ),
     );
   }
@@ -160,9 +173,9 @@ class CvCreateStep1Screen extends StatelessWidget {
                     radius: 50.r,
                     backgroundImage:
                         controller.selectedProfileImage.value != null
-                            ? NetworkImage(controller.selectedProfileImage.value!)
-                            : AssetImage("assets/images/profile.png")
-                                as ImageProvider,
+                        ? NetworkImage(controller.selectedProfileImage.value!)
+                        : AssetImage("assets/images/profile.png")
+                              as ImageProvider,
                   ),
                 ),
                 Positioned(
@@ -452,8 +465,8 @@ class CvCreateStep1Screen extends StatelessWidget {
                           : Radius.zero,
                       bottomRight:
                           index == (controller.taxClassOptions.length - 1)
-                              ? Radius.circular(23.r)
-                              : Radius.zero,
+                          ? Radius.circular(23.r)
+                          : Radius.zero,
                     ),
                   ),
                   child: Text(
@@ -517,12 +530,12 @@ class CvCreateStep1Screen extends StatelessWidget {
                             : Radius.zero,
                         topRight:
                             index == controller.busAgricalrureOptions.length - 1
-                                ? Radius.circular(23.r)
-                                : Radius.zero,
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
                         bottomRight:
                             index == controller.busAgricalrureOptions.length - 1
-                                ? Radius.circular(23.r)
-                                : Radius.zero,
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
                       ),
                     ),
                     child: Text(
@@ -533,8 +546,8 @@ class CvCreateStep1Screen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color:
                             controller.selectedBusAgricalrure.value == busClass
-                                ? AppColors.white
-                                : AppColors.primaryColor,
+                            ? AppColors.white
+                            : AppColors.primaryColor,
                       ),
                     ),
                   ),

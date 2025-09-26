@@ -48,30 +48,40 @@ class CvCreateStep2Screen extends StatelessWidget {
       children: [
         _buildProgressStep(0, true), // First step (completed)
         _buildProgressLine(true), // Completed line
-        _buildProgressStep(1, true), // Current step (active)
-        _buildProgressLine(false), // Not completed yet
-        _buildProgressStep(2, false), // Final step (inactive)
+        _buildProgressStep(1, true), // Second step (completed)
+        _buildProgressLine(true), // Completed line
+        _buildProgressStep(2, true), // Current step (active)
       ],
     );
   }
 
   Widget _buildProgressStep(int stepIndex, bool isActive) {
     return Container(
-      width: 24.w,
-      height: 24.h,
+      width: 40.w,
+      height: 40.h,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: isActive ? AppColors.primaryColor : Colors.grey[300],
+        border: Border.all(
+          color: isActive ? AppColors.primaryColor : Colors.grey[300]!,
+          width: 2.w,
+        ),
       ),
       child: Center(
-        child: Container(
-          width: 12.w,
-          height: 12.h,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: isActive ? Colors.white : Colors.grey[500],
-          ),
-        ),
+        child: isActive
+            ? Icon(
+                stepIndex == 2 ? Icons.edit : Icons.check,
+                color: Colors.white,
+                size: 20.w,
+              )
+            : Container(
+                width: 16.w,
+                height: 16.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.grey[500],
+                ),
+              ),
       ),
     );
   }
@@ -79,8 +89,12 @@ class CvCreateStep2Screen extends StatelessWidget {
   Widget _buildProgressLine(bool isActive) {
     return Expanded(
       child: Container(
-        height: 2.h,
-        color: isActive ? AppColors.primaryColor : Colors.grey[300],
+        height: 4.h,
+        margin: EdgeInsets.symmetric(horizontal: 8.w),
+        decoration: BoxDecoration(
+          color: isActive ? AppColors.primaryColor : Colors.grey[300],
+          borderRadius: BorderRadius.circular(2.r),
+        ),
       ),
     );
   }
