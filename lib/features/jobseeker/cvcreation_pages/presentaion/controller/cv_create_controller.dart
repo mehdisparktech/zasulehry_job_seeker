@@ -85,9 +85,7 @@ class CvCreateController extends GetxController {
 
   final currentStep = 0.obs;
 
-  // ... your existing code ...
-
-  // ADD THESE NEW METHODS FOR 2-STEP PROCESS
+  // Navigation methods for 2-step process
   void nextStep() {
     if (currentStep.value < 1) { // Only 2 steps (0 and 1)
       // Validate current step before moving to next
@@ -109,6 +107,11 @@ class CvCreateController extends GetxController {
     if (currentStep.value > 0) {
       currentStep.value--;
     }
+  }
+
+  // Reset step when starting CV creation
+  void resetStep() {
+    currentStep.value = 0;
   }
 
   bool _validateCurrentStep() {
@@ -361,7 +364,7 @@ class CvCreateController extends GetxController {
     selectedLanguages.clear();
     selectedSkillLevels.clear();
     selectedPersonalInfoType.value = personalInfoOptions.first;
-    currentStep.value=0;
+    currentStep.value=0; // Reset to step 0
   }
 
   @override

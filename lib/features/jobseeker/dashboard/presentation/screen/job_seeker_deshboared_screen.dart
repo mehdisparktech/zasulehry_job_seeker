@@ -70,7 +70,7 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
               Item(
                 image: AppImages.resume,
                 title: AppString.jobsinAppResumeCreation,
-                onTap: () => Get.toNamed(AppRoutes.resumeCreation),
+                onTap: () => Get.toNamed(AppRoutes.cvCreateStep1),
               ),
               Item(
                 image: AppImages.calculator,

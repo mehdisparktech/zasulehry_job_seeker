@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/employee_notification_setting_screen.dart';
 import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/device_management_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_step1_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_step2_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/dashboard/presentation/screen/job_seeker_deshboared_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:zasulehry_job_seeker/features/common/onboarding_screen/select_roule_screen.dart';
@@ -184,7 +186,8 @@ class AppRoutes {
   static const String selectRole = "/select_role_screen.dart";
   static const String deviceManagementSettings =
       "/device_management_settings_screen.dart";
-
+  static const String cvCreateStep1 = "/cv_create_step1_screen.dart";
+  static const String cvCreateStep2 = "/cv_create_step2_screen.dart";
   // Employer Common Routes
   static const String employerNotifications =
       "/employer_notifications_screen.dart";
@@ -460,5 +463,7 @@ class AppRoutes {
       name: salaryCalculatorScreen,
       page: () => const employer_salary_calc.SalaryCalculatorScreen(),
     ),
+    GetPage(name: cvCreateStep1, page: () => CvCreateStep1Screen()),
+    GetPage(name: cvCreateStep2, page: () => CvCreateStep2Screen()),
   ];
 }

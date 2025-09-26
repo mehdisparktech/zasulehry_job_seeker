@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cvcreate_screen.dart';
 
 import 'core/config/route/app_routes.dart';
 import 'core/config/theme/light_theme.dart';
@@ -22,9 +21,8 @@ class MyApp extends StatelessWidget {
         defaultTransition: Transition.fadeIn,
         theme: themeData,
         transitionDuration: const Duration(milliseconds: 300),
-        //initialRoute: AppRoutes.splash,
-        ///getPages: AppRoutes.routes,
-        home: CvCreateScreen(),
+        initialRoute: AppRoutes.splash,
+        getPages: AppRoutes.routes,
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:zasulehry_job_seeker/features/employer/message/presentation/cont
 import 'package:zasulehry_job_seeker/features/employer/message/presentation/screen/employer_chat_screen.dart';
 import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/controller/employee_notification_setting_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentation/controller/appointments_controller.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/controller/cv_create_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/controller/job_seeker_home_controller.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/notifications/presentation/controller/notifications_controller.dart';
 import 'package:zasulehry_job_seeker/features/common/auth/sign%20up/presentation/controller/sign_up_controller.dart';
@@ -40,5 +41,6 @@ class DependencyInjection extends Bindings {
     Get.lazyPut(() => JobSeekerHomeController(), fenix: true);
     Get.lazyPut(() => AppointmentsController(), fenix: true);
     Get.lazyPut(() => EmployeeNotificationSettingController(), fenix: true);
+    Get.lazyPut(() => CvCreateController(), fenix: true);
   }
 }
