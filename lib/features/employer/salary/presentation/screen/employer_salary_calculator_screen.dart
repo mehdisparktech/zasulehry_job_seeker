@@ -491,7 +491,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
             style: TextStyle(fontSize: 14.sp, color: AppColors.black),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30.r),
               color: Colors.transparent,

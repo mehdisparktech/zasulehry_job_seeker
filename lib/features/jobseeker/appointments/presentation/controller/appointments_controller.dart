@@ -114,12 +114,12 @@ class AppointmentsController extends GetxController {
   // Action methods
   void confirmAppointment() {
     // Handle confirm appointment logic
-    AppointmentRequestDialog.show(isConfirm: false);
+    AppointmentRequestDialog.show(isConfirm: false, isReply: false);
   }
 
   void cancelAppointment() {
     // Handle cancel appointment logic
-    AppointmentRequestDialog.show(isConfirm: true);
+    AppointmentRequestDialog.show(isConfirm: true, isReply: false);
   }
 
   void sendAppointmentRequest() {
@@ -139,7 +139,7 @@ class AppointmentsController extends GetxController {
 
   void replyToAppointment() {
     // Handle reply to appointment logic
-    Get.back();
+    AppointmentRequestDialog.show(isConfirm: true, isReply: true);
   }
 
   // Validation

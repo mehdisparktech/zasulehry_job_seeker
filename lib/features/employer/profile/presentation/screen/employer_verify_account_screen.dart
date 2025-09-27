@@ -77,17 +77,6 @@ class _EmployerVerifyAccountScreenState
             ),
 
             SizedBox(height: 30.h),
-
-            // Business Card Examples Title
-            CommonText(
-              text: AppString.businessDocumentExamples,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.black,
-            ),
-
-            SizedBox(height: 15.h),
-
             CommonImage(imageSrc: AppImages.card),
 
             // // First Business Card Example
@@ -155,7 +144,7 @@ class _EmployerVerifyAccountScreenState
                         TextSpan(
                           text: AppString.privacyPolicy,
                           style: TextStyle(
-                            color: AppColors.primaryColor,
+                            color: AppColors.blue500,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                           ),
@@ -164,7 +153,7 @@ class _EmployerVerifyAccountScreenState
                         TextSpan(
                           text: AppString.termsAndCondition,
                           style: TextStyle(
-                            color: AppColors.primaryColor,
+                            color: AppColors.blue500,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                           ),

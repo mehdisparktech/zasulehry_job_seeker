@@ -9,10 +9,17 @@ import 'package:zasulehry_job_seeker/features/jobseeker/appointments/presentatio
 
 class AppointmentRequestDialog extends StatelessWidget {
   final bool isConfirm;
-  const AppointmentRequestDialog({super.key, this.isConfirm = false});
+  final bool isReply;
+  const AppointmentRequestDialog({
+    super.key,
+    this.isConfirm = false,
+    this.isReply = false,
+  });
 
-  static void show({required bool isConfirm}) {
-    Get.dialog(AppointmentRequestDialog(isConfirm: isConfirm));
+  static void show({required bool isConfirm, required bool isReply}) {
+    Get.dialog(
+      AppointmentRequestDialog(isConfirm: isConfirm, isReply: isReply),
+    );
   }
 
   @override
@@ -22,46 +29,25 @@ class AppointmentRequestDialog extends StatelessWidget {
     return AlertDialog(
       backgroundColor: AppColors.white,
       content: SizedBox(
-        width: MediaQuery.of(context).size.width, // 80% of screen width
+        width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            10.height,
+            if (isReply) ...[
+              CommonTextField(
+                hintText: 'Type Contact Number',
+                borderRadius: 8.r,
+                paddingVertical: 12,
+                paddingHorizontal: 16,
+                borderColor: AppColors.textSecondary,
+                fillColor: AppColors.white,
+                textColor: AppColors.black,
+              ),
+              16.height,
+            ],
             if (!isConfirm) ...[
-              // Obx(
-              //   () => DropdownMenu<String>(
-              //     dropdownMenuEntries: controller.appointmentTypes
-              //         .map(
-              //           (type) =>
-              //               DropdownMenuEntry<String>(value: type, label: type),
-              //         )
-              //         .toList(),
-              //     onSelected: controller.updateSelectedAppointmentType,
-              //     initialSelection: controller.selectedAppointmentType.value,
-              //     width: MediaQuery.of(context).size.width,
-              //     inputDecorationTheme: InputDecorationTheme(
-              //       border: OutlineInputBorder(
-              //         borderRadius: BorderRadius.circular(20),
-              //         borderSide: BorderSide(color: AppColors.textSecondary),
-              //       ),
-              //       enabledBorder: OutlineInputBorder(
-              //         borderRadius: BorderRadius.circular(30.r),
-              //         borderSide: BorderSide(color: AppColors.textSecondary),
-              //       ),
-              //       focusedBorder: OutlineInputBorder(
-              //         borderRadius: BorderRadius.circular(30.r),
-              //         borderSide: BorderSide(color: AppColors.primaryColor),
-              //       ),
-              //       filled: true,
-              //       fillColor: AppColors.white,
-              //       contentPadding: const EdgeInsets.symmetric(
-              //         horizontal: 16,
-              //         vertical: 12,
-              //       ),
-              //     ),
-              //     textStyle: TextStyle(color: AppColors.black, fontSize: 16),
-              //   ),
-              // ),
               CommonTextField(
                 hintText: 'Search Employer',
                 borderRadius: 30.r,

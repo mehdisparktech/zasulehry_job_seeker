@@ -22,7 +22,13 @@ class SignUpScreen extends StatelessWidget {
 
     return Scaffold(
       /// App Bar Section Starts Here
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: CommonText(
+          text: 'Sign Up',
+          fontSize: 20.sp,
+          color: Colors.black87,
+        ),
+      ),
 
       /// Body Section Starts Here
       body: GetBuilder<SignUpController>(

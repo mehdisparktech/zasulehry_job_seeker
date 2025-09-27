@@ -26,7 +26,7 @@ class _ViewAppointmentScreenState extends State<ViewAppointmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CommonAppBar(title: 'View Appointment'),
+      appBar: const CommonAppBar(title: 'View'),
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(16.w),

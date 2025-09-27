@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 
 class EmployerInvoiceDetailScreen extends StatefulWidget {
   const EmployerInvoiceDetailScreen({super.key});
@@ -41,8 +43,8 @@ class _EmployerInvoiceDetailScreenState
 
             // Pricing Summary
             _buildPricingSummary(),
-            SizedBox(height: 48.h),
-
+            SizedBox(height: 80.h),
+            Divider(color: AppColors.blue500),
             // Contact Details
             _buildContactDetails(),
           ],
@@ -57,18 +59,18 @@ class _EmployerInvoiceDetailScreenState
       children: [
         CommonText(
           text: 'Percenter Germany,2541,House,20',
-          fontSize: 16.sp,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w600,
           color: Colors.black,
         ),
-        SizedBox(height: 4.h),
+        SizedBox(height: 8.h),
         CommonText(
           text: 'Zisan',
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
           color: Colors.black,
         ),
-        SizedBox(height: 16.h),
+        SizedBox(height: 4.h),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -79,27 +81,29 @@ class _EmployerInvoiceDetailScreenState
                   CommonText(
                     text: 'Street,House No,',
                     fontSize: 12.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade600,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black,
                   ),
+                  4.height,
                   CommonText(
                     text: '1234 Dhaka',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.black,
                   ),
+                  4.height,
                   CommonText(
                     text: 'Bangladesh',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.black,
                   ),
-                  SizedBox(height: 8.h),
+                  4.height,
                   CommonText(
                     text: 'Customer ID  24513',
                     fontSize: 12.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade600,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black,
                   ),
                 ],
               ),
@@ -112,13 +116,13 @@ class _EmployerInvoiceDetailScreenState
                     text: 'Tax No 1234',
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade600,
+                    color: AppColors.black,
                   ),
                   CommonText(
                     text: 'DE No 1234',
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade600,
+                    color: AppColors.black,
                   ),
                 ],
               ),
@@ -134,7 +138,7 @@ class _EmployerInvoiceDetailScreenState
       text: 'Invoice',
       fontSize: 20.sp,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: AppColors.blue500,
     );
   }
 
@@ -181,14 +185,15 @@ class _EmployerInvoiceDetailScreenState
       children: [
         // Header Row
         TableRow(
-          decoration: BoxDecoration(color: Colors.grey.shade100),
+          decoration: BoxDecoration(color: Colors.white),
           children: [
-            _buildTableCell('Pos.', isHeader: true),
-            _buildTableCell('Details', isHeader: true),
-            _buildTableCell('Quantity', isHeader: true),
-            _buildTableCell('Price', isHeader: true),
+            _buildTableCell('Pos.', isHeader: true, isBorder: true),
+            _buildTableCell('Details', isHeader: true, isBorder: true),
+            _buildTableCell('Quantity', isHeader: true, isBorder: true),
+            _buildTableCell('Price', isHeader: true, isBorder: true),
           ],
         ),
+
         // Data Row
         TableRow(
           children: [
@@ -203,67 +208,71 @@ class _EmployerInvoiceDetailScreenState
   }
 
   Widget _buildPricingSummary() {
-    return Column(
-      children: [
-        // Netto Price
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CommonText(
-              text: 'Netto Price',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-            CommonText(
-              text: '250',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ],
-        ),
-        SizedBox(height: 8.h),
-        // Sales Tax
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CommonText(
-              text: 'Sales Tax 19%',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-            CommonText(
-              text: '60',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ],
-        ),
-        SizedBox(height: 8.h),
-        Divider(color: Colors.grey.shade300),
-        SizedBox(height: 8.h),
-        // Total
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CommonText(
-              text: 'Total',
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
-            CommonText(
-              text: '300€',
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.40),
+      child: Column(
+        children: [
+          // Netto Price
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CommonText(
+                text: 'Netto Price',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+              CommonText(
+                text: '250',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+            ],
+          ),
+          Divider(color: AppColors.blue500),
+
+          // Sales Tax
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CommonText(
+                text: 'Sales Tax 19%',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+              CommonText(
+                text: '60',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+            ],
+          ),
+
+          Divider(color: AppColors.blue500),
+          // Total
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CommonText(
+                text: 'Total',
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+              CommonText(
+                text: '300€',
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ],
+          ),
+          Divider(color: AppColors.blue500),
+        ],
+      ),
     );
   }
 
@@ -273,6 +282,7 @@ class _EmployerInvoiceDetailScreenState
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: Column(
@@ -281,20 +291,20 @@ class _EmployerInvoiceDetailScreenState
                   CommonText(
                     text: 'Contact Details',
                     fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                     color: Colors.black,
                   ),
                   SizedBox(height: 8.h),
                   CommonText(
                     text: 'Telephone Number',
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey.shade600,
                   ),
                   SizedBox(height: 4.h),
                   CommonText(
                     text: 'Email Address',
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey.shade600,
                   ),
@@ -308,20 +318,20 @@ class _EmployerInvoiceDetailScreenState
                   CommonText(
                     text: 'Account Number',
                     fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                     color: Colors.black,
                   ),
                   SizedBox(height: 8.h),
                   CommonText(
                     text: 'DE 1234 5678 9123 4567 89',
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                     color: Colors.black,
                   ),
                   SizedBox(height: 4.h),
                   CommonText(
                     text: 'Bic 12345656',
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                     color: Colors.black,
                   ),
@@ -334,9 +344,20 @@ class _EmployerInvoiceDetailScreenState
     );
   }
 
-  Widget _buildTableCell(String text, {bool isHeader = false}) {
+  Widget _buildTableCell(
+    String text, {
+    bool isHeader = false,
+    bool isBorder = false,
+  }) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
+      decoration: isBorder
+          ? BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: AppColors.blue500, width: 1),
+              ),
+            )
+          : null,
       child: CommonText(
         text: text,
         fontSize: isHeader ? 12.sp : 14.sp,

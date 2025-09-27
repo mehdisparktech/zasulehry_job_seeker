@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import 'package:zasulehry_job_seeker/features/employer/appointments/presentation/controller/create_appointment_controller.dart';
 
@@ -126,18 +128,20 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
           border: Border.all(color: AppColors.background),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.calendar_today, color: AppColors.blue500, size: 20.sp),
             8.width,
             CommonText(
               text: controller.selectedDate.isEmpty
                   ? 'Date'
                   : controller.selectedDate,
-              fontSize: 14,
+              fontSize: 18.sp,
               color: controller.selectedDate.isEmpty
-                  ? AppColors.textFiledColor
+                  ? AppColors.textSecondary
                   : AppColors.black,
             ),
+            8.width,
+            CommonImage(imageSrc: AppImages.calender),
           ],
         ),
       ),
@@ -155,17 +159,23 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
           border: Border.all(color: AppColors.background),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.access_time, color: AppColors.blue500, size: 20.sp),
             8.width,
             CommonText(
               text: controller.selectedTime.isEmpty
                   ? 'Time'
                   : controller.selectedTime,
-              fontSize: 14,
+              fontSize: 18.sp,
               color: controller.selectedTime.isEmpty
-                  ? AppColors.textFiledColor
+                  ? AppColors.textSecondary
                   : AppColors.black,
+            ),
+            8.width,
+            CommonImage(
+              imageSrc: AppImages.clock,
+              imageColor: AppColors.blue500,
+              size: 24,
             ),
           ],
         ),

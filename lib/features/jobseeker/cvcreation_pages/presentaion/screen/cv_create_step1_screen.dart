@@ -129,12 +129,14 @@ class CvCreateStep1Screen extends StatelessWidget {
 
   void _navigateToStep2() {
     // Validate step 1 data
-    if (_validateStep1()) {
-      controller.currentStep.value = 1;
-      Get.toNamed(AppRoutes.cvCreateStep2);
-    }
+    // if (_validateStep1()) {
+    //   controller.currentStep.value = 1;
+    //   Get.toNamed(AppRoutes.cvCreateStep2);
+    // }
+    Get.toNamed(AppRoutes.cvCreateStep2);
   }
 
+  // ignore: unused_element
   bool _validateStep1() {
     if (controller.nameController.text.isEmpty) {
       Get.snackbar(

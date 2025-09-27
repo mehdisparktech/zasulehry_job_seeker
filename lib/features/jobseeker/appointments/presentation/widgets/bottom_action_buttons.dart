@@ -62,7 +62,10 @@ class BottomActionButtons extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 16.h),
               child: CommonButton(
                 titleText: 'Ask For Appointment',
-                onTap: () => AppointmentRequestDialog.show(isConfirm: false),
+                onTap: () => AppointmentRequestDialog.show(
+                  isConfirm: false,
+                  isReply: false,
+                ),
                 buttonColor: AppColors.blue500,
                 titleColor: AppColors.white,
                 buttonRadius: 4.r,

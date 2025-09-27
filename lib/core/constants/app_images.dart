@@ -46,6 +46,7 @@ class AppImages {
   static const String massageActive = "$baseurl/massage_active.png";
   static const String mobileAppFrame = "$baseurl/Mobile App Frame (35).png";
   static const String notification = "$baseurl/notification.png";
+  static const String notification2 = "$baseurl/notification2.png";
   static const String pdf = "$baseurl/pdf.png";
   static const String person2 = "$baseurl/person2.png";
   static const String phone = "$baseurl/phone.png";

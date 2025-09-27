@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/controller/employee_notification_setting_controller.dart';
 import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/create_jobseeker_screen.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -44,7 +46,7 @@ class EmployeeNotificationSettingScreen extends StatelessWidget {
   Widget _buildAlertItem(JobAlert alert, int index) {
     return Container(
       margin: EdgeInsets.only(bottom: 12),
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
@@ -60,18 +62,7 @@ class EmployeeNotificationSettingScreen extends StatelessWidget {
       child: Row(
         children: [
           // Bell Icon
-          Container(
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.notifications,
-              color: AppColors.primaryColor,
-              size: 20,
-            ),
-          ),
+          CommonImage(imageSrc: AppImages.notification2),
 
           SizedBox(width: 12),
 
@@ -83,7 +74,7 @@ class EmployeeNotificationSettingScreen extends StatelessWidget {
                 CommonText(
                   text: alert.name,
                   fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w400,
                   color: AppColors.black,
                   maxLines: 2,
                 ),
@@ -96,7 +87,7 @@ class EmployeeNotificationSettingScreen extends StatelessWidget {
             text: alert.time,
             fontSize: 12,
             fontWeight: FontWeight.w400,
-            color: Colors.grey[600]!,
+            color: Colors.black,
           ),
         ],
       ),

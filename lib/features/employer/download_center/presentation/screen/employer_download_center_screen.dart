@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 
 class EmployerDownloadCenterScreen extends StatelessWidget {
   const EmployerDownloadCenterScreen({super.key});
@@ -77,24 +79,13 @@ class EmployerDownloadCenterScreen extends StatelessWidget {
         children: [
           CommonText(
             text: title,
-            fontSize: 16.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w500,
             color: AppColors.black,
           ),
           GestureDetector(
             onTap: onDownload,
-            child: Container(
-              padding: EdgeInsets.all(8.w),
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Icon(
-                Icons.download,
-                color: AppColors.primaryColor,
-                size: 20.w,
-              ),
-            ),
+            child: CommonImage(imageSrc: AppImages.download),
           ),
         ],
       ),

@@ -29,6 +29,7 @@ class EmployerPostedJobsScreen extends StatelessWidget {
               salaryRange: '\$200-\$300/Month',
               isFullTime: true,
               isApplied: true,
+              isFavorite: false,
               totalapply: '4 Apply',
               companyLogo: AppImages.google,
               onTap: () => Get.to(() => EmployerPostedJobsDetailsScreen()),
