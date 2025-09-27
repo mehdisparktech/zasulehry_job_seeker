@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
-import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
@@ -10,7 +9,7 @@ import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/salary/presentation/controller/salary_comparison_controller.dart';
-import 'package:zasulehry_job_seeker/features/jobseeker/salary/presentation/screen/salary_comparison_details_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/salary/presentation/screen/impressum_screen_details.dart';
 
 class SalaryComparisonScreen extends StatelessWidget {
   const SalaryComparisonScreen({super.key});
@@ -100,14 +99,13 @@ class SalaryComparisonScreen extends StatelessWidget {
             CommonButton(
               titleText: 'Start',
               onTap: () {
-                Get.to(() => const SalaryComparisonDetailsScreen());
+                Get.to(() => ImpressumScreenDetails());
               },
               buttonHeight: 50.h,
             ),
           ],
         ),
       ),
-      bottomNavigationBar: const CommonBottomNavBar(currentIndex: 1),
     );
   }
 

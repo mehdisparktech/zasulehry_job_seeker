@@ -77,4 +77,5 @@ class AppImages {
   static const String resume = "$baseurl/resume.png";
   static const String editFile = "$baseurl/edit_file.png";
   static const String activeNotification = "$baseurl/active_notification.png";
+  static const String silder = "$baseurl/silder.png";
 }

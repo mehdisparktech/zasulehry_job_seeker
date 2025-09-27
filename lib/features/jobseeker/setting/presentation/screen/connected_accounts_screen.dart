@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -23,7 +25,7 @@ class _ConnectedAccountsScreenState extends State<ConnectedAccountsScreen> {
 
   final Map<String, Map<String, dynamic>> accountDetails = {
     'Google': {
-      'icon': Icons.email,
+      'icon': AppImages.google,
       'color': Colors.red,
       'description': 'Connect with your Google account for easy sign-in',
     },
@@ -68,11 +70,16 @@ class _ConnectedAccountsScreenState extends State<ConnectedAccountsScreen> {
                           width: 48.w,
                           height: 48.h,
 
-                          child: Icon(
-                            details['icon'],
-                            color: details['color'],
-                            size: 24.sp,
-                          ),
+                          child: index == 0
+                              ? Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: CommonImage(imageSrc: details['icon']),
+                                )
+                              : Icon(
+                                  details['icon'],
+                                  color: details['color'],
+                                  size: 24.sp,
+                                ),
                         ),
                         SizedBox(width: 16.w),
                         Expanded(
