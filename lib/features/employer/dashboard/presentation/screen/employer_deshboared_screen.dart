@@ -205,9 +205,12 @@ class EmployerDeshboaredScreen extends StatelessWidget {
         GlassEffectIcon(icon: AppImages.phone),
         8.width,
         GlassEffectIcon(
-          icon: AppImages.notification,
+          icon: AppImages.activeNotification,
           onTap: () {
-            Get.to(() => EmployeeNotificationSettingScreen());
+            Get.to(
+              () =>
+                  EmployeeNotificationSettingScreen(title: "Job Seekers Alert"),
+            );
           },
         ),
         8.width,

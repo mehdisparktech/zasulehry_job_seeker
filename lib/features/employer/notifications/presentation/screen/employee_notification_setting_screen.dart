@@ -9,18 +9,19 @@ import 'package:zasulehry_job_seeker/features/employer/notifications/presentatio
 import '../../../../../core/component/text/common_text.dart';
 
 class EmployeeNotificationSettingScreen extends StatelessWidget {
+  final String title;
   final EmployeeNotificationSettingController controller = Get.put(
     EmployeeNotificationSettingController(),
   );
 
-  EmployeeNotificationSettingScreen({super.key});
+  EmployeeNotificationSettingScreen({super.key, this.title = "Job Alerts"});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffE6E6E6),
       appBar: CommonAppBar(
-        title: "Job Alerts",
+        title: title,
         actions: [
           IconButton(
             onPressed: () {

@@ -22,7 +22,8 @@ class JobSeekerNotification {
 }
 
 class JobSeekersScreen extends StatelessWidget {
-  const JobSeekersScreen({super.key});
+  final String title;
+  const JobSeekersScreen({super.key, this.title = "'Job Alerts'"});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class JobSeekersScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CommonAppBar(
-        title: 'Job Alerts',
+        title: title,
         actions: [
           IconButton(
             icon: Icon(Icons.settings, color: AppColors.white, size: 35.w),
