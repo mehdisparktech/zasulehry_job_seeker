@@ -55,9 +55,8 @@ class FilterBottomSheetWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.redAccent),
             ),
-            child: Icon(Icons.close, color: Colors.redAccent, size: 18.sp),
+            child: Icon(Icons.close, color: AppColors.red2, size: 18.sp),
           ),
         ),
       ],
@@ -218,9 +217,11 @@ class FilterBottomSheetWidget extends StatelessWidget {
       return GestureDetector(
         onTap: () => controller.updateSalaryType(index),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
           decoration: BoxDecoration(
-            color: selected ? AppColors.primaryColor : Colors.white,
+            color: selected
+                ? AppColors.primaryColor
+                : AppColors.blue200.withOpacity(0.5),
             gradient: selected
                 ? LinearGradient(
                     begin: Alignment.centerLeft,
@@ -234,7 +235,6 @@ class FilterBottomSheetWidget extends StatelessWidget {
                   )
                 : null,
             borderRadius: BorderRadius.circular(6.r),
-            border: Border.all(color: AppColors.primaryColor),
           ),
           child: CommonText(
             text: text,

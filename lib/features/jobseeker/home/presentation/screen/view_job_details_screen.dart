@@ -28,17 +28,19 @@ class ViewJobDetailsScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       appBar: CommonAppBar(
         title: 'View Details',
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16.w),
-            child: GlassEffectIcon(
-              icon: AppImages.whatsapp,
-              onTap: () {},
-              width: 24.w,
-              height: 24.h,
-            ),
-          ),
-        ],
+        actions: applyJobStatus == ApplyJobStatus.approved
+            ? [
+                Padding(
+                  padding: EdgeInsets.only(right: 16.w),
+                  child: GlassEffectIcon(
+                    icon: AppImages.whatsapp,
+                    onTap: () {},
+                    width: 24.w,
+                    height: 24.h,
+                  ),
+                ),
+              ]
+            : [],
       ),
       body: _buildBody(controller),
     );

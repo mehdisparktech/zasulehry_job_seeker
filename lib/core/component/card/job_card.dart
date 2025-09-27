@@ -14,6 +14,7 @@ class JobCard extends StatefulWidget {
   final String companyLogo;
   final String? totalapply;
   final bool isApplied;
+  final bool isSaved;
   final VoidCallback onTap;
   const JobCard({
     super.key,
@@ -26,6 +27,7 @@ class JobCard extends StatefulWidget {
     required this.companyLogo,
     this.totalapply = '',
     this.isApplied = false,
+    this.isSaved = false,
     required this.onTap,
   });
 
@@ -34,7 +36,13 @@ class JobCard extends StatefulWidget {
 }
 
 class JobCardState extends State<JobCard> {
-  bool isFavorited = false;
+  bool isFavorited =
+      false; // Changed from false to widget.isSaved, but accessed using widget.isSaved
+  @override
+  void initState() {
+    super.initState();
+    isFavorited = widget.isSaved;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +97,7 @@ class JobCardState extends State<JobCard> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+
                       4.height,
                       Text(
                         widget.location,
@@ -135,7 +144,7 @@ class JobCardState extends State<JobCard> {
                         ),
                         child: Icon(
                           isFavorited ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorited ? Colors.red : Colors.white,
+                          color: isFavorited ? Colors.white : Colors.white,
                           size: 20,
                         ),
                       ),

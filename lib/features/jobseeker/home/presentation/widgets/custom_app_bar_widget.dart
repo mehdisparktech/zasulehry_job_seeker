@@ -93,7 +93,7 @@ class CustomAppBarWidget extends StatelessWidget
       },
       child: Padding(
         padding: EdgeInsets.only(right: 14.w),
-        child: GlassEffectIcon(icon: AppImages.notification),
+        child: GlassEffectIcon(icon: AppImages.activeNotification),
       ),
     );
   }

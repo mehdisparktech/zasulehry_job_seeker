@@ -157,10 +157,10 @@ class EditProfileAllFiled extends StatelessWidget {
               width: 32.w,
               height: 32.h,
               decoration: const BoxDecoration(
-                color: AppColors.primaryColor,
+                color: AppColors.transparent,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.add, color: AppColors.white, size: 20),
+              child: CommonImage(imageSrc: AppImages.add),
             ),
           ),
         ],

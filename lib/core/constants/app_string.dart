@@ -31,7 +31,7 @@ class AppString {
   static const String location = "Location";
   static const String continues = "Continue";
   static const String email = "Email";
-  static const String codeHasBeenSendTo = "Code has been send to";
+  static const String codeHasBeenSendTo = "We have sent the OTP to your";
   static const String verifyotp = "Verify OTP";
   static const String otpIsInValid = "Otp is inValid";
   static const String resendCode = "Resend Code";

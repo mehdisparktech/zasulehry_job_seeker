@@ -106,7 +106,12 @@ class JobHeaderWidget extends StatelessWidget {
   Widget _buildLocationInfo() {
     return Row(
       children: [
-        CommonImage(imageSrc: AppImages.location, width: 16.w, height: 16.h),
+        CommonImage(
+          imageSrc: AppImages.location,
+          width: 16.w,
+          height: 16.h,
+          imageColor: AppColors.black,
+        ),
         SizedBox(width: 6.w),
         CommonText(
           text: jobDetails.address,
@@ -122,7 +127,12 @@ class JobHeaderWidget extends StatelessWidget {
   Widget _buildDateInfo() {
     return Row(
       children: [
-        CommonImage(imageSrc: AppImages.clock, width: 16.w, height: 16.h),
+        CommonImage(
+          imageSrc: AppImages.clock,
+          width: 16.w,
+          height: 16.h,
+          imageColor: AppColors.black,
+        ),
         SizedBox(width: 6.w),
         CommonText(
           text: jobDetails.postedDate,
@@ -138,7 +148,12 @@ class JobHeaderWidget extends StatelessWidget {
   Widget _buildDistanceRow() {
     return Row(
       children: [
-        CommonImage(imageSrc: AppImages.location, width: 16.w, height: 16.h),
+        CommonImage(
+          imageSrc: AppImages.location,
+          width: 16.w,
+          height: 16.h,
+          imageColor: AppColors.black,
+        ),
         SizedBox(width: 6.w),
         CommonText(
           text: 'Distance : ${jobDetails.distance}',

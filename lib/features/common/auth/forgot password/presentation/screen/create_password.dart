@@ -45,8 +45,8 @@ class CreatePassword extends StatelessWidget {
                     children: [
                       /// Instruction of Creating New Password
                       const CommonText(
-                        text: AppString.createYourNewPassword,
-                        fontSize: 18,
+                        text: AppString.newPassword,
+                        fontSize: 24,
                         textAlign: TextAlign.start,
                         bottom: 24,
                       ).center,
