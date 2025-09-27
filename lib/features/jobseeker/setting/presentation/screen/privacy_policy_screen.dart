@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import '../../../../../core/component/other_widgets/common_loader.dart';
 import '../../../../../core/component/screen/error_screen.dart';
 import '../controller/privacy_policy_controller.dart';
@@ -34,6 +36,13 @@ class PrivacyPolicyScreen extends StatelessWidget {
             child: Html(data: controller.data.content),
           ),
         },
+      ),
+      bottomSheet: Container(
+        color: AppColors.background,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 250.0, right: 8.0, bottom: 40.0),
+          child: CommonButton(titleText: "Download Pdf.", onTap: () {}),
+        ),
       ),
     );
   }

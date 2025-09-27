@@ -66,7 +66,7 @@ class CvCreateController extends GetxController {
 
   // Options
   final List<String> taxClassOptions = [
-    "Am",
+    "AM",
     "A1",
     "A2",
     "A",

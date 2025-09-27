@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:flutter/material.dart';
+//import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
-import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
-import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+//import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+//import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+//import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/data/model/job_details_model.dart';
 import 'package:zasulehry_job_seeker/core/component/pop_up/job_application_popup.dart';
@@ -66,42 +67,43 @@ class ViewJobDetailsController extends GetxController {
 
   /// Handle contact now action
   void contactNow() {
-    if (applyJobStatus.value == ApplyJobStatus.approved) {
-      Get.dialog(
-        Dialog(
-          backgroundColor: AppColors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-          child: Container(
-            padding: EdgeInsets.all(24.w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Success message
-                CommonText(
-                  text: 'Employer hasn’t shared their Whatsapp Link.',
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.black,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                ),
-                SizedBox(height: 32.h),
+    Get.toNamed(AppRoutes.message);
+    // if (applyJobStatus.value == ApplyJobStatus.approved) {
+    //   Get.dialog(
+    //     Dialog(
+    //       backgroundColor: AppColors.white,
+    //       shape: RoundedRectangleBorder(
+    //         borderRadius: BorderRadius.circular(16.r),
+    //       ),
+    //       child: Container(
+    //         padding: EdgeInsets.all(24.w),
+    //         child: Column(
+    //           mainAxisSize: MainAxisSize.min,
+    //           children: [
+    //             // Success message
+    //             CommonText(
+    //               text: 'Employer hasn’t shared their Whatsapp Link.',
+    //               fontSize: 18.sp,
+    //               fontWeight: FontWeight.w600,
+    //               color: AppColors.black,
+    //               textAlign: TextAlign.center,
+    //               maxLines: 2,
+    //             ),
+    //             SizedBox(height: 32.h),
 
-                // Back to Home button
-                CommonButton(
-                  titleText: "Back",
-                  onTap: () {
-                    Get.back();
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
+    //             // Back to Home button
+    //             CommonButton(
+    //               titleText: "Back",
+    //               onTap: () {
+    //                 Get.back();
+    //               },
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
   }
 
   /// Show job application popup

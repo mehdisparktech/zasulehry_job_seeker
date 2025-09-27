@@ -114,7 +114,7 @@ class AppointmentsController extends GetxController {
   // Action methods
   void confirmAppointment() {
     // Handle confirm appointment logic
-    AppointmentRequestDialog.show(isConfirm: false, isReply: false);
+    AppointmentRequestDialog.show(isConfirm: true, isReply: true);
   }
 
   void cancelAppointment() {

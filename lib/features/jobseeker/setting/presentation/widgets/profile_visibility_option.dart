@@ -9,6 +9,7 @@ class ProfileVisibilityOption extends StatelessWidget {
     required this.title,
     required this.description,
     required this.isSelected,
+    required this.isVisiable,
     this.onTap,
   });
 
@@ -16,6 +17,7 @@ class ProfileVisibilityOption extends StatelessWidget {
   final String description;
   final bool isSelected;
   final VoidCallback? onTap;
+  final bool isVisiable;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,11 @@ class ProfileVisibilityOption extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.visibility, color: Colors.black87, size: 24.sp),
+                  Icon(
+                    isVisiable ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.black87,
+                    size: 24.sp,
+                  ),
                   SizedBox(width: 12.w),
                   Expanded(
                     child: Column(

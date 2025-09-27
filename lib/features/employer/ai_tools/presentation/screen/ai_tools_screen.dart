@@ -108,7 +108,7 @@ class _AiToolsScreenState extends State<AiToolsScreen> {
               onChanged: onToggle,
               activeColor: AppColors.blue500,
               activeTrackColor: AppColors.activeTrackColor,
-              inactiveThumbColor: AppColors.blue500,
+              inactiveThumbColor: Color(0xFF8CBBC6),
               inactiveTrackColor: AppColors.activeTrackColor,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),

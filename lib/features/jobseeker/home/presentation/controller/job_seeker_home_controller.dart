@@ -29,8 +29,9 @@ class JobSeekerHomeController extends GetxController {
   final List<String> employmentTypes = [
     'Full Time',
     'Part Time',
-    'Mini Job'
-        'Ausbildung',
+    'Mini Job',
+    'Ausbildung',
+    'Career changer',
     'Temporary Work',
   ];
 

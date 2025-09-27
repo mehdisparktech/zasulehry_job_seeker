@@ -114,6 +114,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () {
                       // Handle profile visibility selection
                     },
+                    isVisiable: true,
                   ),
 
                   ProfileVisibilityOption(
@@ -124,6 +125,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () {
                       // Handle profile visibility selection
                     },
+                    isVisiable: false,
                   ),
                 ],
               ),

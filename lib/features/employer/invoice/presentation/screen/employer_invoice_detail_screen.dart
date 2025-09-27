@@ -21,7 +21,7 @@ class _EmployerInvoiceDetailScreenState
       backgroundColor: Colors.white,
       appBar: const CommonAppBar(title: 'View Invoice', shapeRadius: 24),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
+        padding: EdgeInsets.all(24.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

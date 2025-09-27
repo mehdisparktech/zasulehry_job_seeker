@@ -145,7 +145,7 @@ class _EmployerAppointmentsScreenState
   List<Widget> _buildConfirmedAppointments() {
     return [
       _buildAppointmentCard(
-        name: 'Md Kamran',
+        name: 'Md Kamran      (+880123456789)',
         date: '10.02.2025',
         time: '17:26',
         status: 'Confirmed',

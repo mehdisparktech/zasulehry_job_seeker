@@ -138,7 +138,7 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
               SizedBox(height: 20.h),
 
               // Key Of Responsibilities Section
-              _buildSectionTitle("Key Of Responsibilities"),
+              _buildSectionTitle("Key Responsibilities"),
               SizedBox(height: 8.h),
               CommonTextField(
                 controller: keyResponsibilitiesController,

@@ -61,17 +61,17 @@ class EmployerDeshboaredScreen extends StatelessWidget {
                 image: AppImages.whatsapp,
                 title: AppString.whatsappSupport,
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => WhatsappSupportPopup(
-                      onSubmit: () {
-                        // Handle the WhatsApp link submission here
-                        if (kDebugMode) {
-                          print('WhatsApp link submitted');
-                        }
-                      },
-                    ),
-                  );
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (context) => WhatsappSupportPopup(
+                  //     onSubmit: () {
+                  //       // Handle the WhatsApp link submission here
+                  //       if (kDebugMode) {
+                  //         print('WhatsApp link submitted');
+                  //       }
+                  //     },
+                  //   ),
+                  // );
                 },
               ),
 

@@ -17,7 +17,7 @@ class CreateAppointmentController extends GetxController {
 
   // Job Seekers List (mock data)
   final List<String> jobSeekers = [
-    'Md Kamran',
+    'Md Kamran(+8801333327633)',
     'Sarah Ahmed',
     'John Smith',
     'Emily Johnson',

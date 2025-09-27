@@ -24,7 +24,7 @@ void showEmailEdit(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CommonText(
-                  text: "Your Email Link",
+                  text: "Your Email Address",
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

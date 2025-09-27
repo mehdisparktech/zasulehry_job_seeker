@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_step1_screen.dart';
 import '../../../../../core/utils/extensions/extension.dart';
@@ -29,6 +30,14 @@ class CreateProfile extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.toNamed(AppRoutes.jobSeekerHome);
+                },
+                child: const Text('Skip'),
+              ),
+            ],
           ),
 
           /// Body Sections Starts here
