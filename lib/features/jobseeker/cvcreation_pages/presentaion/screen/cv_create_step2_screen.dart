@@ -276,13 +276,13 @@ class CvCreateStep2Screen extends StatelessWidget {
         SizedBox(height: 16.h),
         _buildTextField(
           'Extra Curricular Activity :',
-          controller.nameController,
+          controller.nameController2,
           'Enter Your Extra Curricular Activity',
         ),
         SizedBox(height: 16.h),
         _buildTextField(
           'Hobbies :',
-          controller.nameController,
+          controller.nameController3,
           'Enter Your Hobbies',
         ),
       ],

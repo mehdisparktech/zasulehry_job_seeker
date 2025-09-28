@@ -95,17 +95,106 @@ class SalaryComparisonScreen extends StatelessWidget {
     bool isNumber = false,
     bool isDropdown = false,
   }) {
+    // Define sample dropdown items for categories
+    final List<String> categoryItems = [
+      'Technology',
+      'Healthcare',
+      'Finance',
+      'Education',
+      'Manufacturing',
+    ];
+
+    // Define sample dropdown items for subcategories
+    final List<String> subCategoryItems = [
+      'Software Development',
+      'Data Analysis',
+      'Cybersecurity',
+      'UI/UX Design',
+      'Product Management',
+    ];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CommonTextField(
-          hintText: hint,
-          keyboardType: isNumber ? TextInputType.number : TextInputType.text,
-          fillColor: AppColors.white,
-          borderColor: AppColors.background,
-          suffixIcon: isDropdown
-              ? Icon(Icons.keyboard_arrow_down_outlined)
-              : null,
+        if (isDropdown)
+          _DropdownField(
+            hint: hint,
+            items: hint == 'Category' ? categoryItems : subCategoryItems,
+          )
+        else
+          CommonTextField(
+            hintText: hint,
+            keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+            fillColor: AppColors.white,
+            borderColor: AppColors.background,
+          ),
+      ],
+    );
+  }
+}
+
+class _DropdownField extends StatefulWidget {
+  final String hint;
+  final List<String> items;
+
+  const _DropdownField({required this.hint, required this.items});
+
+  @override
+  State<_DropdownField> createState() => _DropdownFieldState();
+}
+
+class _DropdownFieldState extends State<_DropdownField> {
+  String? _selectedValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CommonText(
+          text: widget.hint,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.black,
+        ),
+        8.height,
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(10.r),
+            border: Border.all(color: AppColors.background),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              hint: CommonText(
+                text: 'Select ${widget.hint}',
+                fontSize: 14,
+                color: AppColors.textSecondary,
+              ),
+              value: _selectedValue,
+              isExpanded: true,
+              icon: Icon(
+                Icons.keyboard_arrow_down_outlined,
+                color: AppColors.textSecondary,
+              ),
+              items: widget.items.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: CommonText(
+                    text: value,
+                    fontSize: 14,
+                    color: AppColors.black,
+                  ),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedValue = newValue;
+                });
+              },
+            ),
+          ),
         ),
       ],
     );

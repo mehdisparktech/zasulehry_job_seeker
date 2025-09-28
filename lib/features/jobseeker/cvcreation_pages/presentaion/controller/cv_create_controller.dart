@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 class CvCreateController extends GetxController {
   // Text Controllers
   final nameController = TextEditingController();
+  final nameController2 = TextEditingController();
+  final nameController3 = TextEditingController();
   final professionController = TextEditingController();
   final emailController = TextEditingController()
     ..text = "developernaimul00@gmail.com";
@@ -42,6 +44,8 @@ class CvCreateController extends GetxController {
   final certificateImagePath = TextEditingController();
   final dobController = TextEditingController();
   final phoneController = TextEditingController();
+  final examController = TextEditingController();
+  final institutionNameController = TextEditingController();
 
   // Observable variables
   final selectedProfileImage = Rx<String?>(null);

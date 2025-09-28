@@ -61,13 +61,15 @@ class SalaryCalculatorScreen extends StatelessWidget {
                   SizedBox(height: 8.h),
                   SizedBox(
                     width: 200,
-                    child: Obx(() => _buildDropdownField(
-                      controller.selectedYear.value,
-                      ['2024', '2025', '2026'],
-                          (String newValue) {
-                        controller.selectedYear.value = newValue;
-                      },
-                    )),
+                    child: Obx(
+                      () => _buildDropdownField(
+                        controller.selectedYear.value,
+                        ['2024', '2025', '2026'],
+                        (String newValue) {
+                          controller.selectedYear.value = newValue;
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -98,13 +100,15 @@ class SalaryCalculatorScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildSectionTitle('Your State'),
-                  Obx(() => _buildDropdownField(
-                    controller.selectedState.value,
-                    ['Berlin', 'Munich', 'Hamburg'],
-                        (String newValue) {
-                      controller.selectedState.value = newValue;
-                    },
-                  )),
+                  Obx(
+                    () => _buildDropdownField(
+                      controller.selectedState.value,
+                      ['Berlin', 'Munich', 'Hamburg'],
+                      (String newValue) {
+                        controller.selectedState.value = newValue;
+                      },
+                    ),
+                  ),
                 ],
               ),
 
@@ -176,13 +180,15 @@ class SalaryCalculatorScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildSectionTitle('Child Tax Exemption'),
-                  Obx(() => _buildDropdownField(
-                    controller.selectedChildTaxExemption.value,
-                    ['Please Select', '1 Child', '2 Children'],
-                        (String newValue) {
-                      controller.selectedChildTaxExemption.value = newValue;
-                    },
-                  )),
+                  Obx(
+                    () => _buildDropdownField(
+                      controller.selectedChildTaxExemption.value,
+                      ['Please Select', '1 Child', '2 Children'],
+                      (String newValue) {
+                        controller.selectedChildTaxExemption.value = newValue;
+                      },
+                    ),
+                  ),
                 ],
               ),
 
@@ -195,13 +201,12 @@ class SalaryCalculatorScreen extends StatelessWidget {
                 children: [
                   _buildSectionTitle('Your Age'),
                   Container(
-                    child: Container(
-                      width: 200,
-                      child: CommonTextField(
-                        hintText: 'Type Here...',
-                      ),
+                    width: 200,
+                    child: CommonTextField(
+                      hintText: 'Type Here...',
+                      keyboardType: TextInputType.number,
                     ),
-                  )
+                  ),
                 ],
               ),
 
@@ -217,7 +222,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
                     child: CommonTextField(
                       controller: controller.professionController,
                       hintText: 'Type Here...',
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.text,
                     ),
                   ),
                 ],
@@ -462,7 +467,11 @@ class SalaryCalculatorScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDropdownField(String value, List<String> items, Function(String) onChanged) {
+  Widget _buildDropdownField(
+    String value,
+    List<String> items,
+    Function(String) onChanged,
+  ) {
     return Container(
       width: 200,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),

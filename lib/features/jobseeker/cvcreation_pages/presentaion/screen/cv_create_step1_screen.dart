@@ -257,7 +257,7 @@ class CvCreateStep1Screen extends StatelessWidget {
           'Contact Number :',
           controller.contactController,
           'Enter Your Contact Number',
-          isNumber: true
+          isNumber: true,
         ),
         SizedBox(height: 12.h),
         _buildTextField(
@@ -335,13 +335,13 @@ class CvCreateStep1Screen extends StatelessWidget {
         SizedBox(height: 12.h),
         _buildTextField(
           'Certificate/Exam/Degree :',
-          controller.ageController,
+          controller.examController,
           'Enter Your Certificate/Exam/Degree',
         ),
         SizedBox(height: 12.h),
         _buildTextField(
           'Institute Name :',
-          controller.ageController,
+          controller.institutionNameController,
           'Enter Your Institute Name',
         ),
         SizedBox(height: 12.h),
@@ -371,11 +371,11 @@ class CvCreateStep1Screen extends StatelessWidget {
   }
 
   Widget _buildDropdownField(
-      String value,
-      List<String> items,
-      IconData icon, {
-        required Function(String) onChanged,
-      }) {
+    String value,
+    List<String> items,
+    IconData icon, {
+    required Function(String) onChanged,
+  }) {
     // Ensure the current value exists in the items list
     String validValue = items.contains(value) ? value : items.first;
 
@@ -419,14 +419,13 @@ class CvCreateStep1Screen extends StatelessWidget {
     );
   }
 
-
   Widget _buildTextField(
     String label,
     TextEditingController textController,
     String hintText, {
     bool isDate = false,
     int maxLines = 1,
-        bool isNumber = false,
+    bool isNumber = false,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -552,63 +551,72 @@ class CvCreateStep1Screen extends StatelessWidget {
           border: Border.all(color: AppColors.primaryColor, width: 2.w),
         ),
         child: Row(
-          children: List.generate(controller.busAgricalrureOptions.length * 2 - 1, (i) {
-            if (i.isOdd) {
-              return Container(
-                width: 1.w,
-                height: 35.h,
-                color: AppColors.primaryColor,
-              );
-            }
+          children: List.generate(
+            controller.busAgricalrureOptions.length * 2 - 1,
+            (i) {
+              if (i.isOdd) {
+                return Container(
+                  width: 1.w,
+                  height: 35.h,
+                  color: AppColors.primaryColor,
+                );
+              }
 
-            int index = i ~/ 2;
-            String busClass = controller.busAgricalrureOptions[index];
+              int index = i ~/ 2;
+              String busClass = controller.busAgricalrureOptions[index];
 
-            return Expanded(
-              child: GestureDetector(
-                onTap: () => controller.selectedBusAgricalrure.value = busClass,
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 12.h),
-                  decoration: BoxDecoration(
-                    color: controller.selectedBusAgricalrure.value == busClass
-                        ? AppColors.primaryColor
-                        : Colors.transparent,
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xFF083E4B),
-                        Color(0xFF074E5E),
-                        Color(0xFF0288A6),
-                      ],
-                      stops: [0.0, 0.5, 1.0],
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topLeft: index == 0 ? Radius.circular(23.r) : Radius.zero,
-                      bottomLeft: index == 0
-                          ? Radius.circular(23.r)
-                          : Radius.zero,
-                      topRight: index == controller.busAgricalrureOptions.length - 1
-                          ? Radius.circular(23.r)
-                          : Radius.zero,
-                      bottomRight: index == controller.busAgricalrureOptions.length - 1
-                          ? Radius.circular(23.r)
-                          : Radius.zero,
-                    ),
-                  ),
-                  child: Text(
-                    busClass,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
+              return Expanded(
+                child: GestureDetector(
+                  onTap: () =>
+                      controller.selectedBusAgricalrure.value = busClass,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
+                    decoration: BoxDecoration(
                       color: controller.selectedBusAgricalrure.value == busClass
-                          ? AppColors.white
-                          : AppColors.primaryColor,
+                          ? AppColors.primaryColor
+                          : Colors.transparent,
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF083E4B),
+                          Color(0xFF074E5E),
+                          Color(0xFF0288A6),
+                        ],
+                        stops: [0.0, 0.5, 1.0],
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: index == 0
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                        bottomLeft: index == 0
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                        topRight:
+                            index == controller.busAgricalrureOptions.length - 1
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                        bottomRight:
+                            index == controller.busAgricalrureOptions.length - 1
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                      ),
+                    ),
+                    child: Text(
+                      busClass,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        color:
+                            controller.selectedBusAgricalrure.value == busClass
+                            ? AppColors.white
+                            : AppColors.primaryColor,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }),
+              );
+            },
+          ),
         ),
       );
     });
