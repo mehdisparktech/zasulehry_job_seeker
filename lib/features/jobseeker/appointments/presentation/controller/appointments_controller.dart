@@ -118,6 +118,8 @@ class AppointmentsController extends GetxController {
   }
 
   void cancelAppointment() {
+    // Close the confirmation dialog first
+    Get.back();
     // Handle cancel appointment logic
     AppointmentRequestDialog.show(isConfirm: true, isReply: false);
   }

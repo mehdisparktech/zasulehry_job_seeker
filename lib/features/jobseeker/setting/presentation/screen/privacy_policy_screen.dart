@@ -23,27 +23,33 @@ class PrivacyPolicyScreen extends StatelessWidget {
       body: SafeArea(
         child: GetBuilder<PrivacyPolicyController>(
           builder: (controller) => switch (controller.status) {
-          /// Loading bar here
-          Status.loading => const CommonLoader(),
+            /// Loading bar here
+            Status.loading => const CommonLoader(),
 
-          /// Error Handle here
-          Status.error => ErrorScreen(
-            onTap: PrivacyPolicyController.instance.getPrivacyPolicyRepo(),
-          ),
+            /// Error Handle here
+            Status.error => ErrorScreen(
+              onTap: PrivacyPolicyController.instance.getPrivacyPolicyRepo(),
+            ),
 
-          /// Show main data here
-          Status.completed => SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
-            child: Html(data: controller.data.content),
-          ),
-        },
+            /// Show main data here
+            Status.completed => SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+              child: Html(data: controller.data.content),
+            ),
+          },
         ),
       ),
-      bottomSheet: Container(
-        color: AppColors.background,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 250.0, right: 8.0, bottom: 40.0),
-          child: CommonButton(titleText: "Download Pdf.", onTap: () {}),
+      bottomSheet: SafeArea(
+        child: Container(
+          color: AppColors.background,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 220.0,
+              right: 25.0,
+              bottom: 60.0,
+            ),
+            child: CommonButton(titleText: "Download Pdf.", onTap: () {}),
+          ),
         ),
       ),
     );

@@ -80,34 +80,38 @@ class _EmployerPersonalInformationScreenState
                         bottomRight: Radius.circular(36.r),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Row(
-                            children: [
-                              IconButton(
-                                onPressed: () => Get.back(),
-                                icon: Icon(
-                                  Icons.arrow_back_ios_new_rounded,
-                                  color: Colors.white,
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.17,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () => Get.back(),
+                                  icon: Icon(
+                                    Icons.arrow_back_ios_new_rounded,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.2,
-                              ),
-                              CommonText(
-                                text: widget.appTitle,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors.white,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 50.h), // Space for avatar
-                        ],
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.25,
+                                ),
+                                CommonText(
+                                  text: widget.appTitle,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 50.h), // Space for avatar
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -129,7 +133,6 @@ class _EmployerPersonalInformationScreenState
                   ),
                   // Name Field
                   _buildFormField(
-                    controller: companyNameController,
                     hintText: "company name",
                     keyboardType: TextInputType.text,
                   ),
@@ -138,16 +141,14 @@ class _EmployerPersonalInformationScreenState
 
                   // Email Field
                   _buildFormField(
-                    controller: legalFormController,
                     hintText: "legal form",
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.text,
                   ),
 
                   16.height,
 
                   // Contact Field
                   _buildFormField(
-                    controller: addressController,
                     hintText: "Address",
                     keyboardType: TextInputType.text,
                   ),
@@ -156,22 +157,19 @@ class _EmployerPersonalInformationScreenState
 
                   // Location Field
                   _buildFormField(
-                    controller: addressController,
                     hintText: "contact number",
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.number,
                   ),
 
                   16.height,
 
                   // Role Field
                   _buildFormField(
-                    controller: companyTypeController,
                     hintText: "company Category",
                     keyboardType: TextInputType.text,
                   ),
                   16.height,
                   _buildFormField(
-                    controller: taxNumberController,
                     hintText: "tax No.",
                     keyboardType: TextInputType.number,
                   ),
@@ -180,15 +178,14 @@ class _EmployerPersonalInformationScreenState
 
                   // Location Field
                   _buildFormField(
-                    controller: denumberController,
                     hintText: "DE No.",
+                    keyboardType: TextInputType.number,
                   ),
 
                   16.height,
 
                   // Role Field
                   _buildFormField(
-                    controller: typeOfBusinessController,
                     hintText: "type of business",
                     keyboardType: TextInputType.text,
                   ),
@@ -216,7 +213,7 @@ class _EmployerPersonalInformationScreenState
               ),
               // Positioned CircleAvatar to overlap header container
               Positioned(
-                top: 150.h, // Adjust this value to position avatar correctly
+                top: 140.h, // Adjust this value to position avatar correctly
                 left: 0,
                 right: 0,
                 child: Center(
@@ -242,14 +239,13 @@ class _EmployerPersonalInformationScreenState
   }
 
   Widget _buildFormField({
-    required TextEditingController controller,
     required String hintText,
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: CommonTextField(
-        controller: controller,
+        //controller: controller,
         hintText: hintText,
         keyboardType: keyboardType,
         fillColor: AppColors.white,

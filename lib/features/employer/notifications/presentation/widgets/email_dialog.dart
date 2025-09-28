@@ -65,7 +65,7 @@ void showEmailEdit(BuildContext context) {
               width: dialogWidth,
               child: CommonButton(
                 titleText: "Add/Change",
-                onTap: () => Get.back(),
+                onTap: () => showEmailDialog(Get.context!),
               ),
             ),
           ),

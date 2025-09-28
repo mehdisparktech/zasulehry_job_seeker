@@ -11,11 +11,13 @@ class ResumeCreationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: AppString.jobsinAppResumeCreation),
-      body: const Center(
-        child: CommonText(
-          text: "Resume Creation Screen",
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
+      body: SafeArea(
+        child: const Center(
+          child: CommonText(
+            text: "Resume Creation Screen",
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       bottomNavigationBar: const CommonBottomNavBar(currentIndex: 1),

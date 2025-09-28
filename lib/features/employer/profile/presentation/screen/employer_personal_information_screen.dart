@@ -78,33 +78,37 @@ class _EmployerPersonalInformationScreenState
                         bottomRight: Radius.circular(36.r),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Row(
-                            children: [
-                              IconButton(
-                                onPressed: () => Get.back(),
-                                icon: Icon(
-                                  Icons.arrow_back_ios_new_rounded,
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.17,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () => Get.back(),
+                                  icon: Icon(
+                                    Icons.arrow_back_ios_new_rounded,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
+                                ),
+                                const CommonText(
+                                  text: AppString.personalInformation,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
                                   color: Colors.white,
                                 ),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.15,
-                              ),
-                              const CommonText(
-                                text: AppString.personalInformation,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 64.h), // Space for avatar
-                        ],
+                              ],
+                            ),
+                            SizedBox(height: 64.h), // Space for avatar
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -168,7 +172,7 @@ class _EmployerPersonalInformationScreenState
               ),
               // Positioned CircleAvatar to overlap header container
               Positioned(
-                top: 160.h, // Adjust this value to position avatar correctly
+                top: 140.h, // Adjust this value to position avatar correctly
                 left: 0,
                 right: 0,
                 child: Center(

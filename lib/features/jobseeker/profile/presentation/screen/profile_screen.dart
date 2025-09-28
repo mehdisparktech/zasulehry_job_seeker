@@ -50,19 +50,22 @@ class ProfileScreen extends StatelessWidget {
                             bottomRight: Radius.circular(36.r),
                           ),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 64),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const CommonText(
-                                text: AppString.profile,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(height: 64.h), // Space for avatar
-                            ],
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.16,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const CommonText(
+                                  text: AppString.profile,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 64.h), // Space for avatar
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -159,7 +162,7 @@ class ProfileScreen extends StatelessWidget {
                   // Positioned CircleAvatar to overlap header container
                   Positioned(
                     top:
-                        140.h, // Adjust this value to position avatar correctly
+                        130.h, // Adjust this value to position avatar correctly
                     left: 0,
                     right: 0,
                     child: Center(

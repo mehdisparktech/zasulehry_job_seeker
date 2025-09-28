@@ -39,11 +39,17 @@ class TermsOfServicesScreen extends StatelessWidget {
           },
         ),
       ),
-      bottomSheet: Container(
-        color: AppColors.background,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 250.0, right: 8.0, bottom: 40.0),
-          child: CommonButton(titleText: "Download Pdf.", onTap: () {}),
+      bottomSheet: SafeArea(
+        child: Container(
+          color: AppColors.background,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 220.0,
+              right: 25.0,
+              bottom: 60.0,
+            ),
+            child: CommonButton(titleText: "Download Pdf.", onTap: () {}),
+          ),
         ),
       ),
     );

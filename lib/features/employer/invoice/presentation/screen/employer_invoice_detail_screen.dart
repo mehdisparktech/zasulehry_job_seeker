@@ -301,14 +301,14 @@ class _EmployerInvoiceDetailScreenState
                     text: 'Telephone Number',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade600,
+                    color: Colors.black,
                   ),
                   SizedBox(height: 4.h),
                   CommonText(
                     text: 'Email Address',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade600,
+                    color: Colors.black,
                   ),
                 ],
               ),
@@ -318,14 +318,14 @@ class _EmployerInvoiceDetailScreenState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CommonText(
-                    text: 'Account Number',
+                    text: 'SCB bank',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.black,
                   ),
                   SizedBox(height: 8.h),
                   CommonText(
-                    text: 'DE 1234 5678 9123 4567 89',
+                    text: 'IBAN DE 1234 5678 9123 4567',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                     color: Colors.black,

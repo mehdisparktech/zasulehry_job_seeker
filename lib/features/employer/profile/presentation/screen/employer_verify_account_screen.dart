@@ -156,7 +156,7 @@ class _EmployerVerifyAccountScreenState
                               decoration: TextDecoration.underline,
                             ),
                           ),
-                          TextSpan(text: " ${AppString.privacyPolicyAnd} "),
+                          TextSpan(text: " And "),
                           TextSpan(
                             text: AppString.termsAndCondition,
                             style: TextStyle(

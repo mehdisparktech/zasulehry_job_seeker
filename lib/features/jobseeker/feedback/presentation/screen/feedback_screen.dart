@@ -16,37 +16,39 @@ class FeedbackScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: AppString.feedback),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          children: [
-            // First feedback card
-            _buildFeedbackCard(
-              companyName: 'Google',
-              timeAgo: '2 Month Ago',
-              reviewText:
-                  'Lorem Ipsum Dolor Sit Amet Consectetur. A Id Eu Turpis Amet Laoreet Aliquam. Vestibulum In Mattis Vitae Ipsum In Cras Nec Quis. Nisl Ullamcorper Urna Non Varius Egestas Tempor Leo. Turpis Risus Locus Molestudo Magna. Volutpat Pellentesque Quis Sit Rhoncus Vel Diam Ac Morbi. Etiam Facilisi Elit Pretium Nulla Dictum Ac Turpis Ac. Lacus Orci Massa Tellus Egestas Elementum Vulputate Dignissim Pretium. P',
-              rating: 5,
-            ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            children: [
+              // First feedback card
+              _buildFeedbackCard(
+                companyName: 'Google',
+                timeAgo: '2 Month Ago',
+                reviewText:
+                    'Lorem Ipsum Dolor Sit Amet Consectetur. A Id Eu Turpis Amet Laoreet Aliquam. Vestibulum In Mattis Vitae Ipsum In Cras Nec Quis. Nisl Ullamcorper Urna Non Varius Egestas Tempor Leo. Turpis Risus Locus Molestudo Magna. Volutpat Pellentesque Quis Sit Rhoncus Vel Diam Ac Morbi. Etiam Facilisi Elit Pretium Nulla Dictum Ac Turpis Ac. Lacus Orci Massa Tellus Egestas Elementum Vulputate Dignissim Pretium. P',
+                rating: 5,
+              ),
 
-            // Second feedback card
-            _buildFeedbackCard(
-              companyName: 'Google',
-              timeAgo: '2 Month Ago',
-              reviewText:
-                  'Lorem Ipsum Dolor Sit Amet Consectetur. A Id Eu Turpis Amet Laoreet Aliquam. Vestibulum In Mattis Vitae Ipsum In Cras Nec Quis. Nisl Ullamcorper Urna Non Varius Egestas Tempor Leo. Turpis Risus Locus Molestudo Magna. Volutpat Pellentesque Quis Sit Rhoncus Vel Diam Ac Morbi. Etiam Facilisi Elit Pretium Nulla Dictum Ac Turpis Ac. Lacus Orci Massa Tellus Egestas Elementum Vulputate Dignissim Pretium. P',
-              rating: 5,
-            ),
+              // Second feedback card
+              _buildFeedbackCard(
+                companyName: 'Google',
+                timeAgo: '2 Month Ago',
+                reviewText:
+                    'Lorem Ipsum Dolor Sit Amet Consectetur. A Id Eu Turpis Amet Laoreet Aliquam. Vestibulum In Mattis Vitae Ipsum In Cras Nec Quis. Nisl Ullamcorper Urna Non Varius Egestas Tempor Leo. Turpis Risus Locus Molestudo Magna. Volutpat Pellentesque Quis Sit Rhoncus Vel Diam Ac Morbi. Etiam Facilisi Elit Pretium Nulla Dictum Ac Turpis Ac. Lacus Orci Massa Tellus Egestas Elementum Vulputate Dignissim Pretium. P',
+                rating: 5,
+              ),
 
-            // Third feedback card
-            _buildFeedbackCard(
-              companyName: 'Google',
-              timeAgo: '2 Month Ago',
-              reviewText:
-                  'Lorem Ipsum Dolor Sit Amet Consectetur. A Id Eu Turpis Amet Laoreet Aliquam. Vestibulum In Mattis Vitae Ipsum In Cras Nec Quis. Nisl Ullamcorper Urna Non Varius Egestas Tempor Leo. Turpis Risus Locus Molestudo Magna. Volutpat Pellentesque Quis Sit Rhoncus Vel Diam Ac Morbi. Etiam Facilisi Elit Pretium Nulla Dictum Ac Turpis Ac. Lacus Orci Massa Tellus Egestas Elementum Vulputate Dignissim Pretium. P',
-              rating: 5,
-            ),
-          ],
+              // Third feedback card
+              _buildFeedbackCard(
+                companyName: 'Google',
+                timeAgo: '2 Month Ago',
+                reviewText:
+                    'Lorem Ipsum Dolor Sit Amet Consectetur. A Id Eu Turpis Amet Laoreet Aliquam. Vestibulum In Mattis Vitae Ipsum In Cras Nec Quis. Nisl Ullamcorper Urna Non Varius Egestas Tempor Leo. Turpis Risus Locus Molestudo Magna. Volutpat Pellentesque Quis Sit Rhoncus Vel Diam Ac Morbi. Etiam Facilisi Elit Pretium Nulla Dictum Ac Turpis Ac. Lacus Orci Massa Tellus Egestas Elementum Vulputate Dignissim Pretium. P',
+                rating: 5,
+              ),
+            ],
+          ),
         ),
       ),
     );

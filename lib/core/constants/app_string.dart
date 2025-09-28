@@ -130,6 +130,6 @@ class AppString {
   static const String byContinuingYouAccepted =
       "By Continuing, You Accepted The";
   static const String privacyPolicyAnd = "Privacy Policy And";
-  static const String termsAndCondition = "Terms & Condition";
+  static const String termsAndCondition = "Terms & Conditions";
   static const String deviceManagement = "Device Management";
 }

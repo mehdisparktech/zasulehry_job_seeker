@@ -49,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 64),
+                          padding: EdgeInsets.only(top: 40.h),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -158,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
                   // Positioned CircleAvatar to overlap header container
                   Positioned(
                     top:
-                        140.h, // Adjust this value to position avatar correctly
+                        120.h, // Adjust this value to position avatar correctly
                     left: 0,
                     right: 0,
                     child: Center(
