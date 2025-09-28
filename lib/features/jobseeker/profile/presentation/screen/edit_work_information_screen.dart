@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
@@ -62,110 +65,152 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: "Work Information"),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Category Dropdown
-            _buildSectionLabel("Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedCategory,
-              items: categories,
-              onChanged: (value) {
-                setState(() {
-                  selectedCategory = value;
-                });
-              },
-            ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Category Dropdown
+              _buildSectionLabel("Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedCategory,
+                items: categories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedCategory = value;
+                  });
+                },
+              ),
 
-            16.height,
+              16.height,
 
-            // Sub Category Dropdown
-            _buildSectionLabel("Sub Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedSubCategory,
-              items: subCategories,
-              onChanged: (value) {
-                setState(() {
-                  selectedSubCategory = value;
-                });
-              },
-            ),
+              // Sub Category Dropdown
+              _buildSectionLabel("Sub Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedSubCategory,
+                items: subCategories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedSubCategory = value;
+                  });
+                },
+              ),
 
-            16.height,
-            // Experience Field
-            _buildSectionLabel("Experience"),
-            CommonTextField(
-              controller: experienceController,
-              hintText: "12 Years",
-              fillColor: AppColors.filledColor,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
+              16.height,
+              // Experience Field
+              _buildSectionLabel("Experience"),
+              CommonTextField(
+                controller: experienceController,
+                hintText: "12 Years",
+                fillColor: AppColors.white,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
 
-            16.height,
+              16.height,
 
-            // Salary Field
-            _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
-            CommonTextField(
-              controller: salaryController,
-              hintText: "\$250",
-              keyboardType: TextInputType.number,
-              fillColor: AppColors.filledColor,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
+              // Salary Field
+              _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
+              CommonTextField(
+                controller: salaryController,
+                hintText: "\$250",
+                keyboardType: TextInputType.number,
+                fillColor: AppColors.white,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
+              24.height,
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.snackbar(
+                      "Info",
+                      "Add more images functionality will be implemented",
+                      backgroundColor: AppColors.primaryColor,
+                      colorText: AppColors.white,
+                    );
+                  },
+                  child: Container(
+                    height: 40.h,
+                    width: 100.w,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor,
+                      borderRadius: BorderRadius.circular(30.r),
+                      gradient: LinearGradient(
+                        begin: Alignment(-0.9, 0),
+                        end: Alignment(1.0, 0),
+                        colors: [
+                          Color(0xFF083E4B), // #083E4B
+                          Color(0xFF074E5E), // #074E5E
+                          Color(0xFF0288A6), // #0288A6
+                        ],
+                      ),
+                    ),
+                    child: Center(
+                      child: CommonText(
+                        text: 'Add Other',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
 
-            16.height,
+              16.height,
 
-            // Resume Section
-            _buildSectionLabel("Resume"),
-            _buildResumeUploadSection(),
+              // Resume Section
+              // _buildSectionLabel("Resume"),
+              _buildResumeUploadSection(),
 
-            16.height,
+              16.height,
 
-            // Attachment (Image) Section
-            _buildSectionLabel("Attachment (Image)"),
-            _buildImageAttachmentSection(),
+              // Attachment (Image) Section
+              _buildImageAttachmentSection(),
 
-            16.height,
+              16.height,
 
-            // About Myself Section
-            _buildSectionLabel("About Myself"),
-            _buildTextArea(controller: aboutController, hintText: "Type Here"),
+              // About Myself Section
+              _buildSectionLabel("About Myself"),
+              _buildTextArea(
+                controller: aboutController,
+                hintText: "Type Here",
+              ),
 
-            16.height,
+              16.height,
 
-            // Work Overview Section
-            _buildSectionLabel("Work Overview"),
-            _buildTextArea(
-              controller: workOverviewController,
-              hintText: "Type Here",
-            ),
+              // Work Overview Section
+              _buildSectionLabel("Work Overview"),
+              _buildTextArea(
+                controller: workOverviewController,
+                hintText: "Type Here",
+              ),
 
-            40.height,
+              40.height,
 
-            // Edit Information Button
-            CommonButton(
-              titleText: "Confirm",
-              onTap: () {
-                // Handle edit information
-                Get.snackbar(
-                  "Success",
-                  "Work information updated successfully",
-                  backgroundColor: AppColors.primaryColor,
-                  colorText: AppColors.white,
-                );
-              },
-            ),
+              // Edit Information Button
+              CommonButton(
+                titleText: "Confirm",
+                onTap: () {
+                  // Handle edit information
+                  Get.snackbar(
+                    "Success",
+                    "Work information updated successfully",
+                    backgroundColor: AppColors.primaryColor,
+                    colorText: AppColors.white,
+                  );
+                },
+              ),
 
-            20.height,
-          ],
+              20.height,
+            ],
+          ),
         ),
       ),
     );
@@ -191,7 +236,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
       height: 50.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
-        color: AppColors.filledColor,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(color: AppColors.background),
       ),
@@ -250,7 +295,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
         Container(
           height: 50.h,
           decoration: BoxDecoration(
-            color: AppColors.filledColor,
+            color: AppColors.white,
             border: Border.all(
               color: AppColors.textFiledColor.withOpacity(0.3),
             ),
@@ -322,125 +367,78 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
             );
           },
           child: Container(
-            height: 50.h,
+            height: 80.h,
+            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: AppColors.filledColor,
+              color: AppColors.white,
               border: Border.all(
                 color: AppColors.primaryColor.withOpacity(0.3),
                 style: BorderStyle.solid,
               ),
               borderRadius: BorderRadius.circular(8.r),
             ),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.cloud_upload_outlined,
-                  color: AppColors.primaryColor,
-                  size: 20.sp,
-                ),
+                CommonImage(imageSrc: AppImages.upload),
                 8.width,
                 CommonText(
                   text: 'Upload Resume',
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.primaryColor,
+                  color: AppColors.textSecondary,
                 ),
               ],
             ),
           ),
         ),
-        12.height,
+        24.height,
         // Existing PDF Display
-        Container(
-          padding: EdgeInsets.all(12.w),
-          decoration: BoxDecoration(
-            color: AppColors.textFiledColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(10.r),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 32.w,
-                height: 32.h,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(4.r),
-                ),
-                child: Center(
-                  child: CommonText(
-                    text: 'PDF',
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.white,
+        Row(
+          children: [
+            CommonImage(imageSrc: AppImages.pdf),
+            12.width,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CommonText(
+                    text: 'Example Pdf',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.black,
                   ),
-                ),
+                  CommonText(
+                    text: '01.12.2024',
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textFiledColor,
+                  ),
+                ],
               ),
-              12.width,
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CommonText(
-                      text: 'Example Pdf',
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                    CommonText(
-                      text: '01.12.2024',
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textFiledColor,
-                    ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.snackbar(
-                    "Info",
-                    "Download functionality will be implemented",
-                    backgroundColor: AppColors.primaryColor,
-                    colorText: AppColors.white,
-                  );
-                },
-                child: Icon(
-                  Icons.download_outlined,
-                  color: AppColors.primaryColor,
-                  size: 20.sp,
-                ),
-              ),
-            ],
-          ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.snackbar(
+                  "Info",
+                  "Download functionality will be implemented",
+                  backgroundColor: AppColors.primaryColor,
+                  colorText: AppColors.white,
+                );
+              },
+              child: CommonImage(imageSrc: AppImages.download),
+            ),
+          ],
         ),
-        12.height,
+        20.height,
         // Add Other Button
-        GestureDetector(
+        CommonButton(
+          titleText: 'InApp CV/Resume Creation',
           onTap: () {
-            Get.snackbar(
-              "Info",
-              "Add other resume functionality will be implemented",
-              backgroundColor: AppColors.primaryColor,
-              colorText: AppColors.white,
-            );
+            Get.toNamed(AppRoutes.cvCreateStep1);
           },
-          child: Container(
-            height: 40.h,
-            width: 100.w,
-            decoration: BoxDecoration(
-              color: AppColors.primaryColor,
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            child: Center(
-              child: CommonText(
-                text: 'Add Other',
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: AppColors.white,
-              ),
-            ),
-          ),
+          buttonRadius: 8.r,
+          buttonHeight: 40.h,
         ),
       ],
     );
@@ -451,8 +449,8 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CommonText(
-          text: 'Attachment (Maximum 8 Image)',
-          fontSize: 14,
+          text: 'Attachment',
+          fontSize: 18.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.black,
         ),
@@ -468,29 +466,30 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
             );
           },
           child: Container(
-            height: 50.h,
+            height: 80.h,
+            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: AppColors.filledColor,
+              color: AppColors.white,
               border: Border.all(
                 color: AppColors.primaryColor.withOpacity(0.3),
                 style: BorderStyle.solid,
               ),
               borderRadius: BorderRadius.circular(8.r),
             ),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.cloud_upload_outlined,
-                  color: AppColors.primaryColor,
-                  size: 20.sp,
+                CommonImage(
+                  imageSrc: AppImages.upload,
+                  width: 24.w,
+                  height: 24.h,
                 ),
                 8.width,
                 CommonText(
                   text: 'Upload Documents',
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: AppColors.primaryColor,
+                  color: AppColors.textSecondary,
                 ),
               ],
             ),
@@ -498,48 +497,40 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
         ),
         12.height,
         // Image Grid
-        Container(
-          height: 120.h,
-          child: GridView.builder(
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8.w,
-              mainAxisSpacing: 8.w,
-              childAspectRatio: 1,
-            ),
-            itemCount: 6,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Get.snackbar(
-                    "Info",
-                    "Image upload functionality will be implemented",
-                    backgroundColor: AppColors.primaryColor,
-                    colorText: AppColors.white,
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.filledColor,
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(
-                      color: AppColors.textFiledColor.withOpacity(0.3),
-                    ),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.add_photo_alternate_outlined,
-                      color: AppColors.textFiledColor,
-                      size: 24.sp,
-                    ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: 8.w,
+            mainAxisSpacing: 8.w,
+            childAspectRatio: 1,
+          ),
+          itemCount: 8,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                Get.snackbar(
+                  "Info",
+                  "Image upload functionality will be implemented",
+                  backgroundColor: AppColors.primaryColor,
+                  colorText: AppColors.white,
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(8.r),
+                  border: Border.all(
+                    color: AppColors.textFiledColor.withOpacity(0.3),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
-        12.height,
+        10.height,
         // Add More Button
         Align(
           alignment: Alignment.centerRight,
@@ -557,7 +548,16 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
               width: 100.w,
               decoration: BoxDecoration(
                 color: AppColors.primaryColor,
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(30.r),
+                gradient: LinearGradient(
+                  begin: Alignment(-0.9, 0),
+                  end: Alignment(1.0, 0),
+                  colors: [
+                    Color(0xFF083E4B), // #083E4B
+                    Color(0xFF074E5E), // #074E5E
+                    Color(0xFF0288A6), // #0288A6
+                  ],
+                ),
               ),
               child: Center(
                 child: CommonText(
@@ -579,9 +579,9 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
     required String hintText,
   }) {
     return Container(
-      height: 100.h,
+      height: 120.h,
       decoration: BoxDecoration(
-        color: AppColors.filledColor,
+        color: AppColors.white,
         border: Border.all(color: AppColors.textFiledColor.withOpacity(0.3)),
         borderRadius: BorderRadius.circular(10.r),
       ),

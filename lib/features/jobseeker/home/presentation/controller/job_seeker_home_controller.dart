@@ -26,9 +26,16 @@ class JobSeekerHomeController extends GetxController {
     'UI/UX',
   ];
 
-  final List<String> employmentTypes = ['Full Time', 'Part Time', 'Contract'];
+  final List<String> employmentTypes = [
+    'Full Time',
+    'Part Time',
+    'Mini Job',
+    'Ausbildung',
+    'Career changer',
+    'Temporary Work',
+  ];
 
-  final List<String> experiences = ['With Experience', 'Fresher'];
+  final List<String> experiences = ['With Experience', 'Without Experience'];
 
   @override
   void onInit() {

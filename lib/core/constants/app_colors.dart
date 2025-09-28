@@ -26,4 +26,6 @@ class AppColors {
   static const blue500 = Color(0xFF056B82);
   static const Color blue100 = Color(0xFFB2D1D8);
   static const Color blue200 = Color(0xFFB2D1D8);
+
+  static const Color activeTrackColor = Color(0xFFE6E6E6);
 }

@@ -23,7 +23,7 @@ class SettingScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(right: 16.w),
             child: GlassEffectIcon(
-              icon: AppImages.phone,
+              icon: AppImages.mobile,
               width: 24.w,
               height: 24.h,
               onTap: () => Get.toNamed(AppRoutes.deviceManagementSettings),
@@ -33,8 +33,9 @@ class SettingScreen extends StatelessWidget {
       ),
 
       /// Body Section starts here
-      body: GetBuilder<SettingController>(
-        builder: (controller) {
+      body: SafeArea(
+        child: GetBuilder<SettingController>(
+          builder: (controller) {
           return SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -45,7 +46,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(AppRoutes.languageSelection),
                     child: const SettingItem(
                       title: AppString.language,
-                      iconDate: Icons.language,
+                      image: AppImages.language,
                     ),
                   ),
 
@@ -63,7 +64,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(AppRoutes.changePassword),
                     child: const SettingItem(
                       title: AppString.changePassword,
-                      iconDate: Icons.lock_outline,
+                      image: AppImages.changePassword,
                     ),
                   ),
 
@@ -72,7 +73,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(AppRoutes.connectedAccounts),
                     child: const SettingItem(
                       title: AppString.connectedAccounts,
-                      iconDate: Icons.account_circle_outlined,
+                      image: AppImages.connectedAccounts,
                     ),
                   ),
 
@@ -81,7 +82,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
                     child: const SettingItem(
                       title: AppString.privacyPolicy,
-                      iconDate: Icons.privacy_tip_outlined,
+                      image: AppImages.privacy,
                     ),
                   ),
 
@@ -90,7 +91,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(AppRoutes.termsOfServices),
                     child: const SettingItem(
                       title: AppString.termsOfServices,
-                      iconDate: Icons.description_outlined,
+                      image: AppImages.file,
                     ),
                   ),
 
@@ -99,7 +100,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(AppRoutes.impressum),
                     child: const SettingItem(
                       title: AppString.impressum,
-                      iconDate: Icons.info_outline,
+                      image: AppImages.impressum,
                     ),
                   ),
 
@@ -114,6 +115,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () {
                       // Handle profile visibility selection
                     },
+                    isVisiable: true,
                   ),
 
                   ProfileVisibilityOption(
@@ -124,12 +126,14 @@ class SettingScreen extends StatelessWidget {
                     onTap: () {
                       // Handle profile visibility selection
                     },
+                    isVisiable: false,
                   ),
                 ],
               ),
             ),
           );
         },
+        ),
       ),
     );
   }

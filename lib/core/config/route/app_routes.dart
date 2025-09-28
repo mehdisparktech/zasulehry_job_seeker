@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/employee_notification_setting_screen.dart';
 import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/device_management_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_step1_screen.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_step2_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/dashboard/presentation/screen/job_seeker_deshboared_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/screen/job_seeker_home_screen.dart';
 import 'package:zasulehry_job_seeker/features/common/onboarding_screen/select_roule_screen.dart';
@@ -24,7 +27,7 @@ import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/scr
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/country_selection_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/connected_accounts_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/setting/presentation/screen/impressum_screen.dart';
-import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/edit_profile.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/profile/presentation/screen/create_profile.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/my_applied_jobs_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/approved_jobs_screen.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/jobs/presentation/screen/pending_jobs_screen.dart';
@@ -183,7 +186,8 @@ class AppRoutes {
   static const String selectRole = "/select_role_screen.dart";
   static const String deviceManagementSettings =
       "/device_management_settings_screen.dart";
-
+  static const String cvCreateStep1 = "/cv_create_step1_screen.dart";
+  static const String cvCreateStep2 = "/cv_create_step2_screen.dart";
   // Employer Common Routes
   static const String employerNotifications =
       "/employer_notifications_screen.dart";
@@ -233,6 +237,10 @@ class AppRoutes {
   static const String employerDownloadCenter = "/employer_download_center";
   static const String employerCreateAppointment =
       "/employer_create_appointment";
+  static const String employerEmployeeNotificationSetting =
+      "/employer_employee_notification_setting";
+  static const String salaryCalculatorScreen =
+      "/employer_salary_calculator_screen";
   static List<GetPage> routes = [
     GetPage(name: jobSeekerHome, page: () => const JobSeekerHomeScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -249,7 +257,7 @@ class AppRoutes {
     GetPage(name: chat, page: () => const ChatListScreen()),
     GetPage(name: message, page: () => const MessageScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
-    GetPage(name: editProfile, page: () => EditProfile()),
+    GetPage(name: editProfile, page: () => CreateProfile()),
     GetPage(name: privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: termsOfServices, page: () => const TermsOfServicesScreen()),
     GetPage(name: setting, page: () => const SettingScreen()),
@@ -349,7 +357,7 @@ class AppRoutes {
     ),
     GetPage(
       name: employerContactSupport,
-      page: () => employer_contact_support.ContactSupportScreen(),
+      page: () => employer_contact_support.EmployerContactSupportScreen(),
     ),
     GetPage(
       name: employerShareApp,
@@ -447,5 +455,15 @@ class AppRoutes {
       name: deviceManagementSettings,
       page: () => const DeviceManagementScreen(),
     ),
+    GetPage(
+      name: employerEmployeeNotificationSetting,
+      page: () => EmployeeNotificationSettingScreen(),
+    ),
+    GetPage(
+      name: salaryCalculatorScreen,
+      page: () => const employer_salary_calc.SalaryCalculatorScreen(),
+    ),
+    GetPage(name: cvCreateStep1, page: () => CvCreateStep1Screen()),
+    GetPage(name: cvCreateStep2, page: () => CvCreateStep2Screen()),
   ];
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/services/socket/socket_service.dart';
 import 'package:zasulehry_job_seeker/core/utils/enum/enum.dart';
+import 'package:zasulehry_job_seeker/core/utils/helpers/other_helper.dart';
 import 'package:zasulehry_job_seeker/features/employer/message/data/model/employer_chat_message_model.dart';
 import 'package:zasulehry_job_seeker/features/employer/message/data/model/employer_message_model.dart';
 
@@ -10,6 +11,7 @@ class EmployerMessageController extends GetxController {
   bool isLoading = false;
   bool isMoreLoading = false;
   String? video;
+  String? image;
 
   List<EmployerChatMessageModel> messages = [];
 
@@ -326,6 +328,11 @@ class EmployerMessageController extends GetxController {
   void isEmoji(int index) {
     currentIndex = index;
     isInputField = isInputField;
+    update();
+  }
+
+  pickImage() async {
+    image = await OtherHelper.openGallery();
     update();
   }
 }

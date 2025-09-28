@@ -19,7 +19,9 @@ class JobActionButtonsWidget extends StatelessWidget {
       () => Row(
         children: [
           if (controller.shouldShowSaveButton())
-            Expanded(child: _buildButton('Save', controller.saveJob)),
+            Expanded(
+              child: _buildButton('Save', controller.saveJob, isSave: true),
+            ),
           if (controller.shouldShowSaveButton()) SizedBox(width: 24.w),
           if (controller.shouldShowMainButton())
             Expanded(
@@ -38,6 +40,7 @@ class JobActionButtonsWidget extends StatelessWidget {
     String text,
     VoidCallback onTap, {
     bool isGradient = false,
+    bool isSave = false,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -70,7 +73,7 @@ class JobActionButtonsWidget extends StatelessWidget {
               text: text,
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
-              color: _getTextColor(),
+              color: !isSave ? _getTextColor() : AppColors.primaryColor,
             ),
           ),
         ),

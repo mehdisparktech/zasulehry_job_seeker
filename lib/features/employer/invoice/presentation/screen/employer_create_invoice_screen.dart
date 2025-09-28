@@ -41,143 +41,145 @@ class _EmployerCreateInvoiceScreenState
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: const CommonAppBar(title: 'Create Invoice'),
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Client Information Section
-              _buildSectionTitle('Client Information'),
-              SizedBox(height: 16.h),
+      body: SafeArea(
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Client Information Section
+                _buildSectionTitle('Client Information'),
+                SizedBox(height: 16.h),
 
-              CommonTextField(
-                controller: _clientNameController,
-                labelText: 'Client Name',
-                hintText: 'Enter client name',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter client name';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 16.h),
+                CommonTextField(
+                  controller: _clientNameController,
+                  labelText: 'Client Name',
+                  hintText: 'Enter client name',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter client name';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 16.h),
 
-              CommonTextField(
-                controller: _clientEmailController,
-                labelText: 'Client Email',
-                hintText: 'Enter client email',
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter client email';
-                  }
-                  if (!GetUtils.isEmail(value)) {
-                    return 'Please enter a valid email';
-                  }
-                  return null;
-                },
-              ),
+                CommonTextField(
+                  controller: _clientEmailController,
+                  labelText: 'Client Email',
+                  hintText: 'Enter client email',
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter client email';
+                    }
+                    if (!GetUtils.isEmail(value)) {
+                      return 'Please enter a valid email';
+                    }
+                    return null;
+                  },
+                ),
 
-              SizedBox(height: 24.h),
+                SizedBox(height: 24.h),
 
-              // Invoice Details Section
-              _buildSectionTitle('Invoice Details'),
-              SizedBox(height: 16.h),
+                // Invoice Details Section
+                _buildSectionTitle('Invoice Details'),
+                SizedBox(height: 16.h),
 
-              CommonTextField(
-                controller: _invoiceNumberController,
-                labelText: 'Invoice Number',
-                hintText: 'Enter invoice number',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter invoice number';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 16.h),
+                CommonTextField(
+                  controller: _invoiceNumberController,
+                  labelText: 'Invoice Number',
+                  hintText: 'Enter invoice number',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter invoice number';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 16.h),
 
-              CommonTextField(
-                controller: _descriptionController,
-                labelText: 'Description',
-                hintText: 'Enter service description',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter description';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 16.h),
+                CommonTextField(
+                  controller: _descriptionController,
+                  labelText: 'Description',
+                  hintText: 'Enter service description',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter description';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 16.h),
 
-              CommonTextField(
-                controller: _amountController,
-                labelText: 'Amount',
-                hintText: 'Enter amount',
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter amount';
-                  }
-                  if (double.tryParse(value) == null) {
-                    return 'Please enter a valid amount';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 16.h),
+                CommonTextField(
+                  controller: _amountController,
+                  labelText: 'Amount',
+                  hintText: 'Enter amount',
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter amount';
+                    }
+                    if (double.tryParse(value) == null) {
+                      return 'Please enter a valid amount';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 16.h),
 
-              GestureDetector(
-                onTap: () => _selectDueDate(context),
-                child: AbsorbPointer(
-                  child: CommonTextField(
-                    controller: _dueDateController,
-                    labelText: 'Due Date',
-                    hintText: 'Select due date',
-                    suffixIcon: const Icon(Icons.calendar_today),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please select due date';
-                      }
-                      return null;
-                    },
+                GestureDetector(
+                  onTap: () => _selectDueDate(context),
+                  child: AbsorbPointer(
+                    child: CommonTextField(
+                      controller: _dueDateController,
+                      labelText: 'Due Date',
+                      hintText: 'Select due date',
+                      suffixIcon: const Icon(Icons.calendar_today),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please select due date';
+                        }
+                        return null;
+                      },
+                    ),
                   ),
                 ),
-              ),
 
-              SizedBox(height: 32.h),
+                SizedBox(height: 32.h),
 
-              // Action Buttons
-              Row(
-                children: [
-                  Expanded(
-                    child: CommonButton(
-                      titleText: 'Save as Draft',
-                      buttonColor: AppColors.transparent,
-                      titleColor: AppColors.primaryColor,
-                      borderColor: AppColors.primaryColor,
-                      onTap: () {
-                        _saveDraft();
-                      },
+                // Action Buttons
+                Row(
+                  children: [
+                    Expanded(
+                      child: CommonButton(
+                        titleText: 'Save as Draft',
+                        buttonColor: AppColors.transparent,
+                        titleColor: AppColors.primaryColor,
+                        borderColor: AppColors.primaryColor,
+                        onTap: () {
+                          _saveDraft();
+                        },
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Expanded(
-                    child: CommonButton(
-                      titleText: 'Create Invoice',
-                      onTap: () {
-                        _createInvoice();
-                      },
+                    SizedBox(width: 16.w),
+                    Expanded(
+                      child: CommonButton(
+                        titleText: 'Create Invoice',
+                        onTap: () {
+                          _createInvoice();
+                        },
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
 
-              SizedBox(height: 16.h),
-            ],
+                SizedBox(height: 16.h),
+              ],
+            ),
           ),
         ),
       ),

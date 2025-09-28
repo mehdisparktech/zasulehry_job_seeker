@@ -21,144 +21,146 @@ class SalaryComparisonScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: AppString.salaryComparison),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.w),
-        child: Column(
-          children: [
-            // Company Logo
-            Container(
-              width: 80.w,
-              height: 80.h,
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: CommonText(
-                  text: 'P',
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(20.w),
+          child: Column(
+            children: [
+              // Company Logo
+              Container(
+                width: 80.w,
+                height: 80.h,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: CommonText(
+                    text: 'P',
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.white,
+                  ),
                 ),
               ),
-            ),
-            24.height,
+              24.height,
 
-            // Job 1 Section
-            _buildJobSection(
-              'Job Title',
-              controller.job1TitleController,
-              'Enter job title',
-            ),
-            16.height,
+              // Job 1 Section
+              _buildJobSection(
+                'Job Title',
+                controller.job1TitleController,
+                'Enter job title',
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Company',
-              controller.job1CompanyController,
-              'Enter company name',
-            ),
-            16.height,
+              _buildJobSection(
+                'Company',
+                controller.job1CompanyController,
+                'Enter company name',
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Location',
-              controller.job1LocationController,
-              'Enter location',
-            ),
-            16.height,
+              _buildJobSection(
+                'Location',
+                controller.job1LocationController,
+                'Enter location',
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Salary',
-              controller.job1SalaryController,
-              'Enter salary',
-              isNumber: true,
-            ),
-            16.height,
+              _buildJobSection(
+                'Salary',
+                controller.job1SalaryController,
+                'Enter salary',
+                isNumber: true,
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Bonus',
-              controller.job1BonusController,
-              'Enter bonus',
-              isNumber: true,
-            ),
-            32.height,
+              _buildJobSection(
+                'Bonus',
+                controller.job1BonusController,
+                'Enter bonus',
+                isNumber: true,
+              ),
+              32.height,
 
-            // Compare Button
-            CommonButton(
-              titleText: 'Compare',
-              onTap: () {
-                controller.calculateComparison();
-                _showComparisonResult(context, controller);
-              },
-              buttonHeight: 50.h,
-            ),
+              // Compare Button
+              CommonButton(
+                titleText: 'Compare',
+                onTap: () {
+                  controller.calculateComparison();
+                  _showComparisonResult(context, controller);
+                },
+                buttonHeight: 50.h,
+              ),
 
-            24.height,
+              24.height,
 
-            // Job 2 Section
-            CommonText(
-              text: 'Job 2 Details',
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: AppColors.black,
-            ),
-            16.height,
+              // Job 2 Section
+              CommonText(
+                text: 'Job 2 Details',
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: AppColors.black,
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Job Title',
-              controller.job2TitleController,
-              'Enter job title',
-            ),
-            16.height,
+              _buildJobSection(
+                'Job Title',
+                controller.job2TitleController,
+                'Enter job title',
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Company',
-              controller.job2CompanyController,
-              'Enter company name',
-            ),
-            16.height,
+              _buildJobSection(
+                'Company',
+                controller.job2CompanyController,
+                'Enter company name',
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Location',
-              controller.job2LocationController,
-              'Enter location',
-            ),
-            16.height,
+              _buildJobSection(
+                'Location',
+                controller.job2LocationController,
+                'Enter location',
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Salary',
-              controller.job2SalaryController,
-              'Enter salary',
-              isNumber: true,
-            ),
-            16.height,
+              _buildJobSection(
+                'Salary',
+                controller.job2SalaryController,
+                'Enter salary',
+                isNumber: true,
+              ),
+              16.height,
 
-            _buildJobSection(
-              'Bonus',
-              controller.job2BonusController,
-              'Enter bonus',
-              isNumber: true,
-            ),
-            32.height,
+              _buildJobSection(
+                'Bonus',
+                controller.job2BonusController,
+                'Enter bonus',
+                isNumber: true,
+              ),
+              32.height,
 
-            // Save Comparison Button
-            CommonButton(
-              titleText: 'Save Comparison',
-              onTap: () {
-                Get.snackbar(
-                  'Saved',
-                  'Comparison saved successfully',
-                  backgroundColor: AppColors.primaryColor,
-                  colorText: AppColors.white,
-                );
-              },
-              buttonColor: AppColors.white,
-              titleColor: AppColors.primaryColor,
-              borderColor: AppColors.primaryColor,
-              buttonHeight: 50.h,
-            ),
+              // Save Comparison Button
+              CommonButton(
+                titleText: 'Save Comparison',
+                onTap: () {
+                  Get.snackbar(
+                    'Saved',
+                    'Comparison saved successfully',
+                    backgroundColor: AppColors.primaryColor,
+                    colorText: AppColors.white,
+                  );
+                },
+                buttonColor: AppColors.white,
+                titleColor: AppColors.primaryColor,
+                borderColor: AppColors.primaryColor,
+                buttonHeight: 50.h,
+              ),
 
-            20.height,
-          ],
+              20.height,
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: const CommonBottomNavBar(currentIndex: 1),

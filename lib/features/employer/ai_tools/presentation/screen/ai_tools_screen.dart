@@ -33,31 +33,33 @@ class _AiToolsScreenState extends State<AiToolsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(title: AppString.aiTools, isBackButton: true),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-        child: Column(
-          children: [
-            // AI Tools List
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.transparent,
-                borderRadius: BorderRadius.circular(16.r),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+          child: Column(
+            children: [
+              // AI Tools List
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.transparent,
+                  borderRadius: BorderRadius.circular(16.r),
+                ),
+                child: Column(
+                  children: _aiToolsStatus.entries.map((entry) {
+                    return _buildAiToolItem(
+                      title: entry.key,
+                      isEnabled: entry.value,
+                      onToggle: (value) {
+                        setState(() {
+                          _aiToolsStatus[entry.key] = value;
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
               ),
-              child: Column(
-                children: _aiToolsStatus.entries.map((entry) {
-                  return _buildAiToolItem(
-                    title: entry.key,
-                    isEnabled: entry.value,
-                    onToggle: (value) {
-                      setState(() {
-                        _aiToolsStatus[entry.key] = value;
-                      });
-                    },
-                  );
-                }).toList(),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CommonBottomNavBar(currentIndex: 0),
@@ -102,14 +104,14 @@ class _AiToolsScreenState extends State<AiToolsScreen> {
           ),
           // Toggle switch
           Transform.scale(
-            scale: 0.8,
+            scale: 0.9,
             child: Switch(
               value: isEnabled,
               onChanged: onToggle,
-              activeColor: AppColors.white,
-              activeTrackColor: AppColors.primaryColor,
-              inactiveThumbColor: AppColors.white,
-              inactiveTrackColor: AppColors.textFiledColor.withOpacity(0.5),
+              activeColor: AppColors.blue500,
+              activeTrackColor: AppColors.activeTrackColor,
+              inactiveThumbColor: Color(0xFF8CBBC6),
+              inactiveTrackColor: AppColors.activeTrackColor,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
           ),

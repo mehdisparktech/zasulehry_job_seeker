@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:zasulehry_job_seeker/features/employer/appointments/presentation/screen/view_appointment_screen.dart';
+import 'package:zasulehry_job_seeker/core/component/pop_up/custom_time_picker_dialog.dart';
 
 class CreateAppointmentController extends GetxController {
   // Form Controllers
@@ -15,7 +17,7 @@ class CreateAppointmentController extends GetxController {
 
   // Job Seekers List (mock data)
   final List<String> jobSeekers = [
-    'Md Kamran',
+    'Md Kamran(+8801333327633)',
     'Sarah Ahmed',
     'John Smith',
     'Emily Johnson',
@@ -71,25 +73,14 @@ class CreateAppointmentController extends GetxController {
 
   // Time Selection
   Future<void> selectTime(BuildContext context) async {
-    final TimeOfDay? picked = await showTimePicker(
+    CustomTimePickerDialog.show(
       context: context,
       initialTime: TimeOfDay.now(),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: const Color(0xFF056B82), // AppColors.blue500
-            ),
-          ),
-          child: child!,
-        );
+      onTimeSelected: (TimeOfDay picked) {
+        selectedTime = picked.format(context);
+        update();
       },
     );
-
-    if (picked != null) {
-      selectedTime = picked.format(context);
-      update();
-    }
   }
 
   // Appointment Option Selection
@@ -161,6 +152,8 @@ class CreateAppointmentController extends GetxController {
 
   // Confirm Appointment
   Future<void> confirmAppointment() async {
+    Get.to(() => const ViewAppointmentScreen());
+    return;
     if (!validateForm()) return;
 
     try {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
-
 import 'app.dart';
 import 'core/config/dependency/dependency_injection.dart';
 import 'core/services/notification/notification_service.dart';

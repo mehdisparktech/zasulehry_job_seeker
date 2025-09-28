@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/pop_up/success_dialog.dart';
 
 import '../../../../../../core/config/route/app_routes.dart';
 import '../../../../../../core/services/api/api_service.dart';
@@ -127,7 +128,13 @@ class ForgetPasswordController extends GetxController {
   /// Create New Password Api Call
 
   Future<void> resetPasswordRepo() async {
-    Get.offAllNamed(AppRoutes.signIn);
+    //Get.offAllNamed(AppRoutes.signIn);
+    SuccessDialog.showWithNavigation(
+      message: 'Your Password Has Been Changed Successfully ',
+      buttonText: "back to log in",
+      routeName: AppRoutes.signIn,
+      offAllNamed: true,
+    );
     return;
     isLoadingReset = true;
     update();

@@ -17,7 +17,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: 'View Details'),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 

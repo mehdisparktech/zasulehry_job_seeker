@@ -6,8 +6,9 @@ class CvCreateController extends GetxController {
   // Text Controllers
   final nameController = TextEditingController();
   final professionController = TextEditingController();
-  final emailController = TextEditingController();
-  final contactController = TextEditingController();
+  final emailController = TextEditingController()
+    ..text = "developernaimul00@gmail.com";
+  final contactController = TextEditingController()..text = "1865965581";
   final ageController = TextEditingController();
   final birthDateController = TextEditingController();
   final addressController = TextEditingController();
@@ -34,6 +35,13 @@ class CvCreateController extends GetxController {
   final certificateNameController = TextEditingController();
   final certificateOrgController = TextEditingController();
   final certificateYearController = TextEditingController();
+  final certificateUrlController = TextEditingController();
+  final certificateImageUrlController = TextEditingController();
+  final certificateImageUrl = TextEditingController();
+  final certificateImage = TextEditingController();
+  final certificateImagePath = TextEditingController();
+  final dobController = TextEditingController();
+  final phoneController = TextEditingController();
 
   // Observable variables
   final selectedProfileImage = Rx<String?>(null);
@@ -55,21 +63,46 @@ class CvCreateController extends GetxController {
   final selectedEducationalInformation = "Educational Information".obs;
   final selectedGrade = "A Grade".obs;
   final selectedYear = "2022".obs;
+  List<String> gradeOptons = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C'];
+  List<String> yearOptions = ['2020', '2021', '2022', '2023', '2024'];
 
   // Options
-  final List<String> taxClassOptions = ["Am", "A1", "A2", "C1", "E1"];
-  final List<String> busAgricalrureOptions = ["C1", "CI1", "C2e","C2","E2"];
-  final List<String> truckMoney = ["C1", "CI1","C2","E2"];
-  final List<String> languageOptions = ['English', 'Spanish', 'French', 'German', 'Arabic', 'Urdu'];
-  final List<String> skillLevelOptions = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
-  final List<String> personalInfoOptions = ["Personal Information", "Professional Information"];
-  final List<String> educationalInfoOption = ["Personal Information", "Professional Information"];
-  final List<String> gradeOptons = ["Personal Information", "Professional Information"];
-  final List<String> yearOptions = ["Personal Information", "Professional Information"];
+  final List<String> taxClassOptions = [
+    "AM",
+    "A1",
+    "A2",
+    "A",
+    "B",
+    "B17",
+    "BE",
+    "E96",
+  ];
+  final List<String> busAgricalrureOptions = ["D1", "DIE", "D", "DE", "L", "I"];
+  final List<String> truckMoney = ["C1", "CIE", "C", "CE"];
+  final List<String> languageOptions = [
+    'English',
+    'Spanish',
+    'French',
+    'German',
+    'Arabic',
+    'Urdu',
+  ];
+  final List<String> skillLevelOptions = [
+    'Beginner',
+    'Intermediate',
+    'Advanced',
+    'Expert',
+  ];
+  final List<String> personalInfoOptions = [
+    "Personal Information",
+    "Professional Information",
+  ];
+  final List<String> educationalInfoOption = [
+    "Personal Information",
+    "Professional Information",
+  ];
 
   final ImagePicker _picker = ImagePicker();
-
-
 
   @override
   void onInit() {
@@ -85,11 +118,10 @@ class CvCreateController extends GetxController {
 
   final currentStep = 0.obs;
 
-  // ... your existing code ...
-
-  // ADD THESE NEW METHODS FOR 2-STEP PROCESS
+  // Navigation methods for 2-step process
   void nextStep() {
-    if (currentStep.value < 1) { // Only 2 steps (0 and 1)
+    if (currentStep.value < 1) {
+      // Only 2 steps (0 and 1)
       // Validate current step before moving to next
       if (_validateCurrentStep()) {
         currentStep.value++;
@@ -111,6 +143,11 @@ class CvCreateController extends GetxController {
     }
   }
 
+  // Reset step when starting CV creation
+  void resetStep() {
+    currentStep.value = 0;
+  }
+
   bool _validateCurrentStep() {
     switch (currentStep.value) {
       case 0: // Personal Information validation
@@ -124,13 +161,12 @@ class CvCreateController extends GetxController {
         }
         return true;
       case 1: // Step 2 validation
-      // Add your step 2 validation here when you design it
+        // Add your step 2 validation here when you design it
         return true;
       default:
         return true;
     }
   }
-
 
   // Profile Image
   Future<void> pickProfileImage() async {
@@ -153,6 +189,7 @@ class CvCreateController extends GetxController {
   void updatePersonalInfoType(String type) {
     selectedPersonalInfoType.value = type;
   }
+
   void updateEducationalInformation(String type) {
     selectedEducationalInformation.value = type;
   }
@@ -179,14 +216,17 @@ class CvCreateController extends GetxController {
 
   // Work Experience Methods
   void addWorkExperience() {
-    if (jobTitleController.text.isNotEmpty && companyController.text.isNotEmpty) {
-      workExperiences.add(WorkExperience(
-        jobTitle: jobTitleController.text,
-        company: companyController.text,
-        location: locationController.text,
-        fromDate: workFromController.text,
-        toDate: workToController.text,
-      ));
+    if (jobTitleController.text.isNotEmpty &&
+        companyController.text.isNotEmpty) {
+      workExperiences.add(
+        WorkExperience(
+          jobTitle: jobTitleController.text,
+          company: companyController.text,
+          location: locationController.text,
+          fromDate: workFromController.text,
+          toDate: workToController.text,
+        ),
+      );
       clearWorkExperienceFields();
       Get.snackbar('Success', 'Work experience added successfully!');
     } else {
@@ -232,14 +272,17 @@ class CvCreateController extends GetxController {
 
   // Education Methods
   void addEducation() {
-    if (institutionController.text.isNotEmpty && degreeController.text.isNotEmpty) {
-      educationList.add(Education(
-        institution: institutionController.text,
-        degree: degreeController.text,
-        field: fieldController.text,
-        fromDate: educationFromController.text,
-        toDate: educationToController.text,
-      ));
+    if (institutionController.text.isNotEmpty &&
+        degreeController.text.isNotEmpty) {
+      educationList.add(
+        Education(
+          institution: institutionController.text,
+          degree: degreeController.text,
+          field: fieldController.text,
+          fromDate: educationFromController.text,
+          toDate: educationToController.text,
+        ),
+      );
       clearEducationFields();
       Get.snackbar('Success', 'Education added successfully!');
     } else {
@@ -265,11 +308,13 @@ class CvCreateController extends GetxController {
   // Certificate Methods
   void addCertificate() {
     if (certificateNameController.text.isNotEmpty) {
-      certificates.add(Certificate(
-        name: certificateNameController.text,
-        organization: certificateOrgController.text,
-        year: certificateYearController.text,
-      ));
+      certificates.add(
+        Certificate(
+          name: certificateNameController.text,
+          organization: certificateOrgController.text,
+          year: certificateYearController.text,
+        ),
+      );
       clearCertificateFields();
       Get.snackbar('Success', 'Certificate added successfully!');
     } else {
@@ -332,7 +377,6 @@ class CvCreateController extends GetxController {
     }
   }
 
-
   void resetForm() {
     nameController.clear();
     professionController.clear();
@@ -361,7 +405,7 @@ class CvCreateController extends GetxController {
     selectedLanguages.clear();
     selectedSkillLevels.clear();
     selectedPersonalInfoType.value = personalInfoOptions.first;
-    currentStep.value=0;
+    currentStep.value = 0; // Reset to step 0
   }
 
   @override

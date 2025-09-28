@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
@@ -63,110 +65,115 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: "Work Information"),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Category Dropdown
-            _buildSectionLabel("Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedCategory,
-              items: categories,
-              onChanged: (value) {
-                setState(() {
-                  selectedCategory = value;
-                });
-              },
-            ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Category Dropdown
+              _buildSectionLabel("Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedCategory,
+                items: categories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedCategory = value;
+                  });
+                },
+              ),
 
-            16.height,
+              16.height,
 
-            // Sub Category Dropdown
-            _buildSectionLabel("Sub Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedSubCategory,
-              items: subCategories,
-              onChanged: (value) {
-                setState(() {
-                  selectedSubCategory = value;
-                });
-              },
-            ),
+              // Sub Category Dropdown
+              _buildSectionLabel("Sub Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedSubCategory,
+                items: subCategories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedSubCategory = value;
+                  });
+                },
+              ),
 
-            16.height,
+              16.height,
 
-            // Experience Field
-            _buildSectionLabel("Experience"),
-            CommonTextField(
-              controller: experienceController,
-              hintText: "12 Years",
-              fillColor: AppColors.white,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
+              // Experience Field
+              _buildSectionLabel("Experience"),
+              CommonTextField(
+                controller: experienceController,
+                hintText: "12 Years",
+                fillColor: AppColors.white,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
 
-            16.height,
+              16.height,
 
-            // Salary Field
-            _buildSectionLabel("Salary (Monthly)"),
-            CommonTextField(
-              controller: salaryController,
-              hintText: "\$250",
-              keyboardType: TextInputType.number,
-              fillColor: AppColors.white,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
+              // Salary Field
+              _buildSectionLabel("Salary (Monthly)"),
+              CommonTextField(
+                controller: salaryController,
+                hintText: "\$250",
+                keyboardType: TextInputType.number,
+                fillColor: AppColors.white,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
 
-            16.height,
+              16.height,
 
-            // Resume Section
-            _buildSectionLabel("Resume"),
-            _buildResumeSection(),
+              // Resume Section
+              _buildSectionLabel("Resume"),
+              _buildResumeSection(),
 
-            16.height,
+              16.height,
 
-            // Attachment (Image) Section
-            _buildSectionLabel("Attachment (Image)"),
-            _buildImageAttachmentSection(),
+              // Attachment (Image) Section
+              _buildSectionLabel("Attachment (Image)"),
+              _buildImageAttachmentSection(),
 
-            16.height,
+              16.height,
 
-            // About Myself Section
-            _buildSectionLabel("About Myself"),
-            _buildTextArea(controller: aboutController, hintText: "Type Here"),
+              // About Myself Section
+              _buildSectionLabel("About Myself"),
+              _buildTextArea(
+                controller: aboutController,
+                hintText: "Type Here",
+              ),
 
-            16.height,
+              16.height,
 
-            // Work Overview Section
-            _buildSectionLabel("Work Overview"),
-            _buildTextArea(
-              controller: workOverviewController,
-              hintText: "Type Here",
-            ),
+              // Work Overview Section
+              _buildSectionLabel("Work Overview"),
+              _buildTextArea(
+                controller: workOverviewController,
+                hintText: "Type Here",
+              ),
 
-            40.height,
+              40.height,
 
-            // Edit Information Button
-            CommonButton(
-              titleText: "Edit Information",
-              onTap: () {
-                // Handle edit information
-                // Get.snackbar(
-                //   "Success",
-                //   "Work information updated successfully",
-                //   backgroundColor: AppColors.primaryColor,
-                //   colorText: AppColors.white,
-                // );
-                Get.toNamed(AppRoutes.editWorkInformation);
-              },
-            ),
+              // Edit Information Button
+              CommonButton(
+                titleText: "Edit Information",
+                onTap: () {
+                  // Handle edit information
+                  // Get.snackbar(
+                  //   "Success",
+                  //   "Work information updated successfully",
+                  //   backgroundColor: AppColors.primaryColor,
+                  //   colorText: AppColors.white,
+                  // );
+                  Get.toNamed(AppRoutes.editWorkInformation);
+                },
+              ),
 
-            20.height,
-          ],
+              20.height,
+            ],
+          ),
         ),
       ),
     );
@@ -241,22 +248,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
           child: Row(
             children: [
-              Container(
-                width: 32.w,
-                height: 32.h,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(4.r),
-                ),
-                child: Center(
-                  child: CommonText(
-                    text: 'PDF',
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.white,
-                  ),
-                ),
-              ),
+              CommonImage(imageSrc: AppImages.pdf),
               SizedBox(width: 12.w),
               Expanded(
                 child: Column(
@@ -287,11 +279,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                     colorText: AppColors.white,
                   );
                 },
-                child: Icon(
-                  Icons.download,
-                  color: AppColors.primaryColor,
-                  size: 20.sp,
-                ),
+                child: CommonImage(imageSrc: AppImages.download),
               ),
             ],
           ),
@@ -301,47 +289,32 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
   }
 
   Widget _buildImageAttachmentSection() {
-    return Container(
-      height: 120.h,
-      child: GridView.builder(
-        scrollDirection: Axis.horizontal,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 8.w,
-          mainAxisSpacing: 8.w,
-          childAspectRatio: 1,
-        ),
-        itemCount: 6, // 6 placeholder boxes as shown in image
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              // Handle image upload
-              Get.snackbar(
-                "Info",
-                "Image upload functionality will be implemented",
-                backgroundColor: AppColors.primaryColor,
-                colorText: AppColors.white,
-              );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(8.r),
-                border: Border.all(
-                  color: AppColors.textFiledColor.withOpacity(0.3),
-                ),
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.add_photo_alternate_outlined,
-                  color: AppColors.textFiledColor,
-                  size: 24.sp,
-                ),
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+        crossAxisSpacing: 8.w,
+        mainAxisSpacing: 8.w,
+        childAspectRatio: 1,
+      ),
+      itemCount: 8, // 6 placeholder boxes as shown in image
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {},
+          child: Container(
+            height: 20,
+            width: 40.w,
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(8.r),
+              border: Border.all(
+                color: AppColors.textFiledColor.withOpacity(0.3),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 

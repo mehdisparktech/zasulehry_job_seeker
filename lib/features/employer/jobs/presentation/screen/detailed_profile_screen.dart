@@ -21,7 +21,7 @@ class DetailedProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: 'View Profile'),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 
@@ -149,22 +149,7 @@ class DetailedProfileScreen extends StatelessWidget {
         Row(
           children: [
             // PDF Icon
-            Container(
-              width: 40.w,
-              height: 40.h,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Center(
-                child: CommonText(
-                  text: 'PDF',
-                  fontSize: 10.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            CommonImage(imageSrc: AppImages.pdf, size: 32),
             SizedBox(width: 12.w),
 
             // File Info
@@ -174,14 +159,14 @@ class DetailedProfileScreen extends StatelessWidget {
                 children: [
                   CommonText(
                     text: 'Example.pdf',
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
                     color: AppColors.black,
                   ),
                   SizedBox(height: 2.h),
                   CommonText(
                     text: '01.02.2024',
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
                   ),
@@ -192,17 +177,9 @@ class DetailedProfileScreen extends StatelessWidget {
             // Action Icons
             Row(
               children: [
-                Icon(
-                  Icons.visibility_outlined,
-                  color: AppColors.blue500,
-                  size: 20.sp,
-                ),
+                CommonImage(imageSrc: AppImages.view, size: 24),
                 SizedBox(width: 12.w),
-                Icon(
-                  Icons.download_outlined,
-                  color: AppColors.blue500,
-                  size: 20.sp,
-                ),
+                CommonImage(imageSrc: AppImages.download, size: 24),
               ],
             ),
           ],
@@ -220,21 +197,22 @@ class DetailedProfileScreen extends StatelessWidget {
           width: 100.w,
           child: CommonText(
             text: label,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w600,
             color: AppColors.black,
+            textAlign: TextAlign.start,
           ),
         ),
         CommonText(
           text: ': ',
-          fontSize: 14.sp,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.black,
         ),
         Expanded(
           child: CommonText(
             text: value,
-            fontSize: 14.sp,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.black,
             textAlign: TextAlign.start,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/features/employer/setting/presentation/screen/verify_screen.dart';
 import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
@@ -93,7 +94,7 @@ class _SmsVerificationPopupState extends State<SmsVerificationPopup> {
               onTap: () {
                 if (phoneController.text.isNotEmpty) {
                   // Handle SMS verification logic
-                  Get.back();
+                  Get.to(() => const TwoStepVerificationVerifyScreen());
                   // You can add navigation to OTP screen here
                   _showSuccessMessage();
                 }

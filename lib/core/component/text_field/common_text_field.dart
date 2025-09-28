@@ -27,13 +27,14 @@ class CommonTextField extends StatelessWidget {
     this.borderRadius = 10,
     this.inputFormatters,
     this.fillColor = AppColors.white,
-    this.hintTextColor = AppColors.textFiledColor,
-    this.labelTextColor = AppColors.textFiledColor,
+    this.hintTextColor = AppColors.textSecondary,
+    this.labelTextColor = AppColors.textSecondary,
     this.textColor = AppColors.black,
     this.borderColor = AppColors.background,
     this.onSubmitted,
     this.onTap,
     this.suffixIcon,
+    this.readOnly = false,
   });
 
   final String? hintText;
@@ -52,6 +53,7 @@ class CommonTextField extends StatelessWidget {
   final int? mexLength;
   final int? maxLines;
   final bool isPassword;
+  final bool readOnly;
   RxBool obscureText = false.obs;
   final Function(String)? onSubmitted;
   final VoidCallback? onTap;
@@ -79,7 +81,8 @@ class CommonTextField extends StatelessWidget {
       textInputAction: textInputAction,
       maxLength: mexLength,
       maxLines: maxLines,
-      cursorColor: AppColors.white,
+      readOnly: readOnly,
+      cursorColor: AppColors.black,
       inputFormatters: inputFormatters,
       style: TextStyle(fontSize: 14, color: textColor),
       onFieldSubmitted: onSubmitted,

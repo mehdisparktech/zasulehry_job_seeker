@@ -15,7 +15,7 @@ class SignUpAllField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 10,
+      spacing: 12,
       children: [
         /// User Name here
         LocalStorage.userRole == UserRole.employer
@@ -54,7 +54,7 @@ class SignUpAllField extends StatelessWidget {
         CommonTextField(
           controller: controller.confirmPasswordController,
           isPassword: true,
-          hintText: AppString.confirmPassword,
+          hintText: AppString.repeatPassword,
           validator: (value) => OtherHelper.confirmPasswordValidator(
             value,
             controller.passwordController,

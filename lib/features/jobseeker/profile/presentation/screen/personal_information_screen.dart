@@ -54,100 +54,102 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: AppString.personalInformation),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-        child: Column(
-          children: [
-            // Profile Image Section
-            Center(
-              child: CircleAvatar(
-                radius: 60.r,
-                backgroundColor: Colors.transparent,
-                child: ClipOval(
-                  child: CommonImage(
-                    imageSrc: AppImages.profile,
-                    size: 120,
-                    defaultImage: AppImages.profile,
-                    fill: BoxFit.cover,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+          child: Column(
+            children: [
+              // Profile Image Section
+              Center(
+                child: CircleAvatar(
+                  radius: 60.r,
+                  backgroundColor: Colors.transparent,
+                  child: ClipOval(
+                    child: CommonImage(
+                      imageSrc: AppImages.profile,
+                      size: 120,
+                      defaultImage: AppImages.profile,
+                      fill: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
-            ),
 
-            24.height,
+              24.height,
 
-            // Form Fields Section
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Name Field
-                _buildFormField(
-                  label: "Name",
-                  controller: nameController,
-                  hintText: "Enter your name",
-                  prefixIcon: Icons.person,
-                ),
+              // Form Fields Section
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Name Field
+                  _buildFormField(
+                    label: "Name",
+                    controller: nameController,
+                    hintText: "Enter your name",
+                    prefixIcon: Icons.person,
+                  ),
 
-                16.height,
+                  16.height,
 
-                // Email Field
-                _buildFormField(
-                  label: "Email",
-                  controller: emailController,
-                  hintText: "Enter your email",
-                  prefixIcon: Icons.email,
-                  keyboardType: TextInputType.emailAddress,
-                ),
+                  // Email Field
+                  _buildFormField(
+                    label: "Email",
+                    controller: emailController,
+                    hintText: "Enter your email",
+                    prefixIcon: Icons.email,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
 
-                16.height,
+                  16.height,
 
-                // Contact Field
-                _buildFormField(
-                  label: "Contact",
-                  controller: contactController,
-                  hintText: "Enter your contact number",
-                  prefixIcon: Icons.phone,
-                  keyboardType: TextInputType.phone,
-                ),
+                  // Contact Field
+                  _buildFormField(
+                    label: "Contact",
+                    controller: contactController,
+                    hintText: "Enter your contact number",
+                    prefixIcon: Icons.phone,
+                    keyboardType: TextInputType.phone,
+                  ),
 
-                16.height,
+                  16.height,
 
-                // Location Field
-                _buildFormField(
-                  label: "Location",
-                  controller: locationController,
-                  hintText: "Enter your location",
-                  prefixIcon: Icons.location_on,
-                ),
+                  // Location Field
+                  _buildFormField(
+                    label: "Location",
+                    controller: locationController,
+                    hintText: "Enter your location",
+                    prefixIcon: Icons.location_on,
+                  ),
 
-                16.height,
+                  16.height,
 
-                // Role Field
-                _buildFormField(
-                  label: "Role",
-                  controller: roleController,
-                  hintText: "Enter your role",
-                  prefixIcon: Icons.work,
-                ),
+                  // Role Field
+                  _buildFormField(
+                    label: "Role",
+                    controller: roleController,
+                    hintText: "Enter your role",
+                    prefixIcon: Icons.work,
+                  ),
 
-                40.height,
+                  40.height,
 
-                // Edit Profile Button
-                CommonButton(
-                  titleText: "Edit Profile",
-                  onTap: () {
-                    // Navigate to edit profile or handle edit functionality
-                    Get.snackbar(
-                      "Info",
-                      "Edit Profile functionality will be implemented",
-                      backgroundColor: AppColors.primaryColor,
-                      colorText: AppColors.white,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ],
+                  // Edit Profile Button
+                  CommonButton(
+                    titleText: "Edit Profile",
+                    onTap: () {
+                      // Navigate to edit profile or handle edit functionality
+                      Get.snackbar(
+                        "Info",
+                        "Edit Profile functionality will be implemented",
+                        backgroundColor: AppColors.primaryColor,
+                        colorText: AppColors.white,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

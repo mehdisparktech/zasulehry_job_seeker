@@ -20,161 +20,167 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // Custom gradient header inside body to match the design
-      body: GetBuilder<EmployerProfileController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            child: Stack(
-              children: [
-                Column(
-                  children: [
-                    // Header Section with gradient and rounded bottom corners
-                    Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.only(top: 16.h, bottom: 24.h),
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          begin: Alignment(-0.9, 0),
-                          end: Alignment(1.0, 0),
-                          colors: [
-                            Color(0xFF083E4B),
-                            Color(0xFF074E5E),
-                            Color(0xFF0288A6),
-                          ],
-                          stops: [0.0, 0.4, 1.0],
+      body: SafeArea(
+        child: GetBuilder<EmployerProfileController>(
+          builder: (controller) {
+            return SingleChildScrollView(
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      // Header Section with gradient and rounded bottom corners
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.only(top: 16.h, bottom: 24.h),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment(-0.9, 0),
+                            end: Alignment(1.0, 0),
+                            colors: [
+                              Color(0xFF083E4B),
+                              Color(0xFF074E5E),
+                              Color(0xFF0288A6),
+                            ],
+                            stops: [0.0, 0.4, 1.0],
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(36.r),
+                            bottomRight: Radius.circular(36.r),
+                          ),
                         ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(36.r),
-                          bottomRight: Radius.circular(36.r),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 64),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const CommonText(
+                                text: AppString.profile,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                              SizedBox(height: 64.h), // Space for avatar
+                            ],
+                          ),
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 64),
+
+                      // Name text with extra top padding to accommodate avatar
+                      Padding(
+                        padding: EdgeInsets.only(top: 64.h, bottom: 16.h),
+                        child: CommonText(
+                          text: (LocalStorage.myName.isNotEmpty
+                              ? LocalStorage.myName
+                              : "Google"),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.blue500,
+                        ),
+                      ),
+
+                      // Menu items
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Column(
-                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            const CommonText(
-                              text: AppString.profile,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                              color: Colors.white,
+                            // Personal Information
+                            Item(
+                              image: AppImages.person2,
+                              title: AppString.personalInformation,
+                              onTap: () => Get.toNamed(
+                                AppRoutes.employerPersonalInformation,
+                              ),
                             ),
-                            SizedBox(height: 64.h), // Space for avatar
+
+                            // Settings
+                            Item(
+                              image: AppImages.ai,
+                              title: AppString.settings,
+                              onTap: () =>
+                                  Get.toNamed(AppRoutes.employerSetting),
+                            ),
+
+                            // Contact & Support
+                            Item(
+                              image: AppImages.contactSupport,
+                              title: AppString.contactAndSupport,
+                              onTap: () =>
+                                  Get.toNamed(AppRoutes.contactSupport),
+                            ),
+
+                            // Share App
+                            Item(
+                              image: AppImages.shareApp,
+                              title: AppString.shareApp,
+                              onTap: () => Get.toNamed(AppRoutes.shareApp),
+                            ),
+
+                            // privacy policy
+                            Item(
+                              image: AppImages.privacy,
+                              title: AppString.privacyPolicy,
+                              onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
+                            ),
+
+                            // terms of service
+                            Item(
+                              image: AppImages.file,
+                              title: AppString.termsOfServices,
+                              onTap: () =>
+                                  Get.toNamed(AppRoutes.termsOfServices),
+                            ),
+
+                            // Log Out
+                            Item(
+                              image: AppImages.logout2,
+                              title: AppString.logOut,
+                              onTap: logOutPopUp,
+                            ),
+
+                            // Delete Account
+                            Item(
+                              title: AppString.deleteAccount,
+                              image: AppImages.deleteAccount,
+                              onTap: () => deletePopUp(
+                                controller: controller.passwordController,
+                                onTap: controller.deleteAccountRepo,
+                                isLoading: controller.isLoading,
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                    ),
 
-                    // Name text with extra top padding to accommodate avatar
-                    Padding(
-                      padding: EdgeInsets.only(top: 64.h, bottom: 16.h),
-                      child: CommonText(
-                        text: (LocalStorage.myName.isNotEmpty
-                            ? LocalStorage.myName
-                            : "Google"),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.blue500,
-                      ),
-                    ),
+                      SizedBox(height: 24.h),
+                    ],
+                  ),
 
-                    // Menu items
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: Column(
-                        children: [
-                          // Personal Information
-                          Item(
-                            icon: Icons.person,
-                            title: AppString.personalInformation,
-                            onTap: () => Get.toNamed(
-                              AppRoutes.employerPersonalInformation,
-                            ),
+                  // Positioned CircleAvatar to overlap header container
+                  Positioned(
+                    top:
+                        140.h, // Adjust this value to position avatar correctly
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: CircleAvatar(
+                        backgroundColor: AppColors.transparent,
+                        radius: 52.r,
+                        child: const ClipOval(
+                          child: CommonImage(
+                            imageSrc: AppImages.google,
+                            size: 125,
+                            defaultImage: AppImages.google,
+                            fill: BoxFit.cover,
                           ),
-
-                          // Settings
-                          Item(
-                            icon: Icons.settings,
-                            title: AppString.settings,
-                            onTap: () => Get.toNamed(AppRoutes.employerSetting),
-                          ),
-
-                          // Contact & Support
-                          Item(
-                            icon: Icons.contact_support,
-                            title: AppString.contactAndSupport,
-                            onTap: () => Get.toNamed(AppRoutes.contactSupport),
-                          ),
-
-                          // Share App
-                          Item(
-                            icon: Icons.share,
-                            title: AppString.shareApp,
-                            onTap: () => Get.toNamed(AppRoutes.shareApp),
-                          ),
-
-                          // privacy policy
-                          Item(
-                            icon: Icons.privacy_tip,
-                            title: AppString.privacyPolicy,
-                            onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
-                          ),
-
-                          // terms of service
-                          Item(
-                            icon: Icons.description,
-                            title: AppString.termsOfServices,
-                            onTap: () => Get.toNamed(AppRoutes.termsOfServices),
-                          ),
-
-                          // Log Out
-                          Item(
-                            icon: Icons.logout,
-                            title: AppString.logOut,
-                            onTap: logOutPopUp,
-                          ),
-
-                          // Delete Account
-                          Item(
-                            title: AppString.deleteAccount,
-                            icon: Icons.delete_outline_rounded,
-                            onTap: () => deletePopUp(
-                              controller: controller.passwordController,
-                              onTap: controller.deleteAccountRepo,
-                              isLoading: controller.isLoading,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    SizedBox(height: 24.h),
-                  ],
-                ),
-
-                // Positioned CircleAvatar to overlap header container
-                Positioned(
-                  top: 140.h, // Adjust this value to position avatar correctly
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: CircleAvatar(
-                      backgroundColor: AppColors.transparent,
-                      radius: 52.r,
-                      child: const ClipOval(
-                        child: CommonImage(
-                          imageSrc: AppImages.google,
-                          size: 125,
-                          defaultImage: AppImages.google,
-                          fill: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              ),
+            );
+          },
+        ),
       ),
 
       // Bottom Navigation Bar Section

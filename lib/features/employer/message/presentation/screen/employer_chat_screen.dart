@@ -32,61 +32,63 @@ class EmployerChatListScreen extends StatelessWidget {
       backgroundColor: AppColors.background,
 
       /// Body Section Starts here
-      body: GetBuilder<EmployerChatController>(
-        builder: (controller) => switch (controller.status) {
-          /// Loading bar here
-          Status.loading => const CommonLoader(),
+      body: SafeArea(
+        child: GetBuilder<EmployerChatController>(
+          builder: (controller) => switch (controller.status) {
+            /// Loading bar here
+            Status.loading => const CommonLoader(),
 
-          /// Error Handle here
-          Status.error => ErrorScreen(
-            onTap: EmployerChatController.instance.getChatRepo,
-          ),
-
-          /// Show main data here
-          Status.completed => Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-            child: Column(
-              children: [
-                /// User Search bar here
-                CommonTextField(
-                  prefixIcon: const Icon(Icons.search, color: Colors.grey),
-                  hintText: AppString.searchHere,
-                  fillColor: Colors.white,
-                  borderRadius: 24,
-                  borderColor: Colors.white,
-                  paddingVertical: 12,
-                ),
-
-                /// Show all Chat List here
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: controller.chats.length,
-                    padding: EdgeInsets.only(top: 12.h, bottom: 8.h),
-                    itemBuilder: (context, index) {
-                      EmployerChatListModel item = controller.chats[index];
-                      return GestureDetector(
-                        /// routing with data
-                        onTap: () => Get.toNamed(
-                          AppRoutes.employerMessage,
-                          parameters: {
-                            "chatId": item.id,
-                            "name": item.participant.fullName,
-                            "image": item.participant.image,
-                          },
-                        ),
-
-                        /// Chat List item here
-                        child: employerChatListItem(
-                          item: controller.chats[index],
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
+            /// Error Handle here
+            Status.error => ErrorScreen(
+              onTap: EmployerChatController.instance.getChatRepo,
             ),
-          ),
-        },
+
+            /// Show main data here
+            Status.completed => Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              child: Column(
+                children: [
+                  /// User Search bar here
+                  CommonTextField(
+                    prefixIcon: const Icon(Icons.search, color: Colors.grey),
+                    hintText: AppString.searchHere,
+                    fillColor: Colors.white,
+                    borderRadius: 24,
+                    borderColor: Colors.white,
+                    paddingVertical: 12,
+                  ),
+
+                  /// Show all Chat List here
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: controller.chats.length,
+                      padding: EdgeInsets.only(top: 12.h, bottom: 8.h),
+                      itemBuilder: (context, index) {
+                        EmployerChatListModel item = controller.chats[index];
+                        return GestureDetector(
+                          /// routing with data
+                          onTap: () => Get.toNamed(
+                            AppRoutes.employerMessage,
+                            parameters: {
+                              "chatId": item.id,
+                              "name": item.participant.fullName,
+                              "image": item.participant.image,
+                            },
+                          ),
+
+                          /// Chat List item here
+                          child: employerChatListItem(
+                            item: controller.chats[index],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          },
+        ),
       ),
 
       /// Bottom Navigation Bar Section Starts here

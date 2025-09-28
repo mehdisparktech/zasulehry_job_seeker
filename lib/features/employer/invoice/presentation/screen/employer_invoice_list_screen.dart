@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/bottom_nav_bar/common_bottom_bar.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/features/employer/invoice/presentation/screen/employer_invoice_detail_screen.dart';
 
 class EmployerInvoiceListScreen extends StatefulWidget {
@@ -28,15 +30,17 @@ class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFE6E6E6),
       appBar: const CommonAppBar(title: 'Invoices', shapeRadius: 24),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-        child: ListView.separated(
-          itemCount: invoices.length,
-          separatorBuilder: (context, index) => SizedBox(height: 12.h),
-          itemBuilder: (context, index) {
-            final invoice = invoices[index];
-            return _buildInvoiceCard(invoice);
-          },
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+          child: ListView.separated(
+            itemCount: invoices.length,
+            separatorBuilder: (context, index) => SizedBox(height: 12.h),
+            itemBuilder: (context, index) {
+              final invoice = invoices[index];
+              return _buildInvoiceCard(invoice);
+            },
+          ),
         ),
       ),
       bottomNavigationBar: const CommonBottomNavBar(currentIndex: 2),
@@ -74,31 +78,18 @@ class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
           ),
           Row(
             children: [
-              IconButton(
-                onPressed: () {
-                  // View invoice action
+              GestureDetector(
+                onTap: () {
                   Get.to(() => EmployerInvoiceDetailScreen());
                 },
-                icon: Icon(
-                  Icons.visibility_outlined,
-                  color: AppColors.blue500,
-                  size: 20.sp,
-                ),
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
+                child: CommonImage(imageSrc: AppImages.view, size: 20),
               ),
-              SizedBox(width: 12.w),
-              IconButton(
-                onPressed: () {
-                  // Download invoice action
+              SizedBox(width: 16.w),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => EmployerInvoiceDetailScreen());
                 },
-                icon: Icon(
-                  Icons.download_outlined,
-                  color: AppColors.blue500,
-                  size: 20.sp,
-                ),
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
+                child: CommonImage(imageSrc: AppImages.download, size: 20),
               ),
             ],
           ),

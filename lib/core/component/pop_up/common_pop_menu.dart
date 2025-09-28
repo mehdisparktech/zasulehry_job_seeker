@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/utils/helpers/other_helper.dart';
 import '../../services/storage/storage_services.dart';
 import '../../constants/app_colors.dart';
@@ -106,6 +107,7 @@ logOutPopUp() {
             return FadeTransition(
               opacity: ModalRoute.of(context)!.animation!,
               child: AlertDialog(
+                backgroundColor: AppColors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.r),
                 ),
@@ -114,6 +116,7 @@ logOutPopUp() {
                   text: AppString.youSureWantToLogout,
                   maxLines: 2,
                   fontWeight: FontWeight.w600,
+                  fontSize: 18,
                 ),
                 actions: [
                   Row(
@@ -121,10 +124,6 @@ logOutPopUp() {
                       Expanded(
                         child: CommonButton(
                           titleText: AppString.no,
-                          borderWidth: 1.5,
-                          borderColor: AppColors.primaryColor,
-                          buttonColor: AppColors.transparent,
-                          titleColor: AppColors.primaryColor,
                           onTap: () => Get.back(),
                         ),
                       ),
@@ -132,9 +131,13 @@ logOutPopUp() {
                       Expanded(
                         child: CommonButton(
                           titleText: AppString.yes,
+                          borderWidth: 1.5,
+                          borderColor: AppColors.primaryColor,
+                          buttonColor: AppColors.transparent,
+                          titleColor: AppColors.primaryColor,
                           onTap: () {
                             LocalStorage.removeAllPrefData();
-                            Get.back();
+                            Get.toNamed(AppRoutes.selectRole);
                           },
                         ),
                       ),
@@ -161,6 +164,7 @@ deletePopUp({
     builder: (context) {
       return AnimationPopUp(
         child: AlertDialog(
+          backgroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),
@@ -182,7 +186,7 @@ deletePopUp({
                 ),
                 CommonText(
                   text: AppString.deleteDetails,
-                  fontSize: 16.sp,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: AppColors.black,
                   maxLines: 2,

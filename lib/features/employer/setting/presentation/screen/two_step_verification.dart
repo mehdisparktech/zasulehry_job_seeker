@@ -24,216 +24,292 @@ class _TwoStepVerificationScreenState extends State<TwoStepVerificationScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CommonAppBar(title: "2 Factor Authentication"),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Account Security Header
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 8.h),
-              child: CommonText(
-                text: "Account Security",
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: AppColors.black,
-                textAlign: TextAlign.left,
-              ),
-            ),
-
-            SizedBox(height: 16.h),
-
-            // SMS Button
-            Container(
-              width: double.infinity,
-              height: 50.h,
-              margin: EdgeInsets.only(bottom: 12.h),
-              child: ElevatedButton(
-                onPressed: () {
-                  _showSmsVerificationPopup();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.transparent,
-                  foregroundColor: AppColors.primaryColor,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.r),
-                    side: BorderSide(color: AppColors.primaryColor, width: 2),
-                  ),
-                ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Account Security Header
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 8.h),
                 child: CommonText(
-                  text: "Sms",
+                  text: "Account Security",
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.primaryColor,
+                  color: AppColors.black,
+                  textAlign: TextAlign.left,
                 ),
               ),
-            ),
 
-            // Authenticator App Button
-            Container(
-              width: double.infinity,
-              height: 50.h,
-              margin: EdgeInsets.only(bottom: 24.h),
-              child: ElevatedButton(
-                onPressed: () {
-                  _navigateToAuthenticatorApp();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.transparent,
-                  foregroundColor: AppColors.primaryColor,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.r),
-                    side: BorderSide(color: AppColors.primaryColor, width: 2),
-                  ),
-                ),
-                child: CommonText(
-                  text: "Authenticator App",
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.primaryColor,
-                ),
-              ),
-            ),
+              SizedBox(height: 16.h),
 
-            // Online/Offline Toggle Section
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      CommonText(
-                        text: "Online",
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.black,
-                      ),
-                      SizedBox(width: 12.w),
-                      Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            isOnlineEnabled.value = true;
-                            isOfflineEnabled.value = false;
-                          },
-                          child: Container(
-                            width: 24.w,
-                            height: 24.w,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: isOnlineEnabled.value
-                                  ? AppColors.primaryColor
-                                  : AppColors.textFiledColor.withOpacity(0.3),
-                            ),
-                            child: isOnlineEnabled.value
-                                ? Icon(
-                                    Icons.check,
-                                    color: AppColors.white,
-                                    size: 16.w,
-                                  )
-                                : null,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 16.h),
-
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      CommonText(
-                        text: "Offline",
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.black,
-                      ),
-                      SizedBox(width: 12.w),
-                      Obx(
-                        () => GestureDetector(
-                          onTap: () {
-                            isOfflineEnabled.value = true;
-                            isOnlineEnabled.value = false;
-                          },
-                          child: Container(
-                            width: 24.w,
-                            height: 24.w,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: isOfflineEnabled.value
-                                  ? AppColors.primaryColor
-                                  : AppColors.textFiledColor.withOpacity(0.3),
-                            ),
-                            child: isOfflineEnabled.value
-                                ? Icon(
-                                    Icons.check,
-                                    color: AppColors.white,
-                                    size: 16.w,
-                                  )
-                                : null,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 40.h),
-
-            // Third Party Apps Section
-            Row(
-              children: [
-                Container(
-                  width: 20.w,
-                  height: 20.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: AppColors.primaryColor, width: 2),
-                  ),
-                  child: Center(
-                    child: CommonText(
-                      text: "i",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryColor,
+              // SMS Button
+              Container(
+                width: double.infinity,
+                height: 50.h,
+                margin: EdgeInsets.only(bottom: 12.h),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _showSmsVerificationPopup();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.transparent,
+                    foregroundColor: AppColors.primaryColor,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.r),
+                      side: BorderSide(color: AppColors.primaryColor, width: 2),
                     ),
                   ),
-                ),
-                SizedBox(width: 12.w),
-                Expanded(
                   child: CommonText(
-                    text: "Third Party Apps",
+                    text: "Sms",
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.primaryColor,
-                    textAlign: TextAlign.left,
                   ),
                 ),
-              ],
-            ),
-
-            SizedBox(height: 12.h),
-
-            Padding(
-              padding: EdgeInsets.only(left: 32.w),
-              child: CommonText(
-                text: "Third Party Apps Dont Have Control Of Your Account",
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: AppColors.textFiledColor,
-                textAlign: TextAlign.left,
-                maxLines: 2,
               ),
-            ),
-          ],
+
+              // Authenticator App Button
+              Container(
+                width: double.infinity,
+                height: 50.h,
+                margin: EdgeInsets.only(bottom: 24.h),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _navigateToAuthenticatorApp();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.transparent,
+                    foregroundColor: AppColors.primaryColor,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.r),
+                      side: BorderSide(color: AppColors.primaryColor, width: 2),
+                    ),
+                  ),
+                  child: CommonText(
+                    text: "Authenticator App",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+              ),
+
+              // Online/Offline Toggle Section
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(4.r),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 6.h,
+                      ),
+                      child: Row(
+                        children: [
+                          Switch(
+                            value: isOnlineEnabled.value,
+                            onChanged: (value) {
+                              isOnlineEnabled.value = value;
+                            },
+                            activeColor: AppColors.primaryColor,
+                            activeTrackColor: AppColors.activeTrackColor,
+                            inactiveThumbColor: AppColors.primaryColor,
+                            inactiveTrackColor: AppColors.activeTrackColor,
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          SizedBox(width: 12.w),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CommonText(
+                                text: "Active",
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.backgroundGradient2,
+                              ),
+                              CommonText(
+                                text: "01324567890",
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.backgroundGradient2,
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 12.w),
+                          // Obx(
+                          //   () => GestureDetector(
+                          //     onTap: () {
+                          //       isOnlineEnabled.value = true;
+                          //       isOfflineEnabled.value = false;
+                          //     },
+                          //     child: Container(
+                          //       width: 24.w,
+                          //       height: 24.w,
+                          //       decoration: BoxDecoration(
+                          //         shape: BoxShape.circle,
+                          //         color: isOnlineEnabled.value
+                          //             ? AppColors.primaryColor
+                          //             : AppColors.textFiledColor.withOpacity(0.3),
+                          //       ),
+                          //       child: isOnlineEnabled.value
+                          //           ? Icon(
+                          //               Icons.check,
+                          //               color: AppColors.white,
+                          //               size: 16.w,
+                          //             )
+                          //           : null,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 16.h),
+
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(4.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+                child: Row(
+                  children: [
+                    Switch(
+                      value: isOfflineEnabled.value,
+                      onChanged: (value) {
+                        isOfflineEnabled.value = value;
+                      },
+                      activeColor: AppColors.primaryColor,
+                      activeTrackColor: AppColors.activeTrackColor,
+                      inactiveThumbColor: AppColors.primaryColor,
+                      inactiveTrackColor: AppColors.activeTrackColor,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              CommonText(
+                                text: "Inactive",
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.backgroundGradient2,
+                                textAlign: TextAlign.left,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 4.h),
+                          CommonText(
+                            text: "Google Authenticator App",
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.backgroundGradient2,
+                          ),
+                          SizedBox(width: 12.w),
+                          // Obx(
+                          //   () => GestureDetector(
+                          //     onTap: () {
+                          //       isOfflineEnabled.value = true;
+                          //       isOnlineEnabled.value = false;
+                          //     },
+                          //     child: Container(
+                          //       width: 24.w,
+                          //       height: 24.w,
+                          //       decoration: BoxDecoration(
+                          //         shape: BoxShape.circle,
+                          //         color: isOfflineEnabled.value
+                          //             ? AppColors.primaryColor
+                          //             : AppColors.textFiledColor.withOpacity(0.3),
+                          //       ),
+                          //       child: isOfflineEnabled.value
+                          //           ? Icon(
+                          //               Icons.check,
+                          //               color: AppColors.white,
+                          //               size: 16.w,
+                          //             )
+                          //           : null,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 40.h),
+
+              // Third Party Apps Section
+              Row(
+                children: [
+                  Container(
+                    width: 20.w,
+                    height: 20.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.primaryColor,
+                        width: 2,
+                      ),
+                    ),
+                    child: Center(
+                      child: CommonText(
+                        text: "i",
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: CommonText(
+                      text: "Third Party Apps",
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.backgroundGradient2,
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 12.h),
+
+              Padding(
+                padding: EdgeInsets.only(left: 32.w),
+                child: CommonText(
+                  text: "Third Party Apps Dont Have Control Of Your Account",
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textFiledColor,
+                  textAlign: TextAlign.left,
+                  maxLines: 2,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

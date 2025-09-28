@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/cvcreation_pages/presentaion/screen/cv_create_step1_screen.dart';
 import '../../../../../core/utils/extensions/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -11,8 +14,8 @@ import '../../../../../core/constants/app_images.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../widgets/edit_profile_all_filed.dart';
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
+class CreateProfile extends StatelessWidget {
+  const CreateProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +26,18 @@ class EditProfile extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: const CommonText(
-              text: AppString.profile,
+              text: AppString.createProfile,
               fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.toNamed(AppRoutes.jobSeekerHome);
+                },
+                child: const Text('Skip'),
+              ),
+            ],
           ),
 
           /// Body Sections Starts here
@@ -55,6 +66,7 @@ class EditProfile extends StatelessWidget {
                                     imageSrc: AppImages.profile,
                                     height: 170,
                                     width: 170,
+                                    fill: BoxFit.cover,
                                   ),
                           ),
                         ),
@@ -67,25 +79,43 @@ class EditProfile extends StatelessWidget {
                         child: IconButton(
                           style: ButtonStyle(
                             backgroundColor: WidgetStateColor.resolveWith(
-                              (states) => Colors.black,
+                              (states) => AppColors.blue500,
                             ),
                           ),
                           onPressed: controller.getProfileImage,
-                          icon: const Icon(Icons.edit, color: Colors.white),
+                          icon: const Icon(
+                            Icons.camera_alt_outlined,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                     ],
                   ),
+                  30.height,
 
                   /// user all information filed here
                   EditProfileAllFiled(controller: controller),
                   30.height,
 
+                  CommonButton(
+                    titleText: "inApp cv/resume creation",
+                    onTap: () {
+                      Get.to(() => CvCreateStep1Screen());
+                    },
+                    buttonRadius: 8.r,
+                    buttonHeight: 38.h,
+                    titleSize: 14.sp,
+                    titleWeight: FontWeight.w500,
+                  ),
+                  30.height,
+
                   /// Submit Button here
                   CommonButton(
-                    titleText: AppString.saveAndChanges,
+                    titleText: AppString.continues,
                     isLoading: controller.isLoading,
                     onTap: controller.editProfileRepo,
+                    titleSize: 24.sp,
+                    titleWeight: FontWeight.w500,
                   ),
                 ],
               ),

@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/other_widgets/glass_effect_icon.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
-import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/features/employer/notifications/presentation/screen/employee_notification_setting_screen.dart';
 
 class CustomAppBarWidget extends StatelessWidget
     implements PreferredSizeWidget {
@@ -89,11 +89,11 @@ class CustomAppBarWidget extends StatelessWidget
   Widget _buildNotificationButton() {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(AppRoutes.notifications);
+        Get.to(() => EmployeeNotificationSettingScreen());
       },
       child: Padding(
         padding: EdgeInsets.only(right: 14.w),
-        child: GlassEffectIcon(icon: AppImages.notification),
+        child: GlassEffectIcon(icon: AppImages.activeNotification),
       ),
     );
   }

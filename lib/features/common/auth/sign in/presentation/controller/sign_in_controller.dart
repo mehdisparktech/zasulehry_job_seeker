@@ -25,10 +25,10 @@ class SignInController extends GetxController {
   Future<void> signInUser() async {
     //if (!formKey.currentState!.validate()) return;
     LocalStorage.userRole == UserRole.jobSeeker
-        ? Get.toNamed(AppRoutes.jobSeekerHome)
+        ? Get.toNamed(AppRoutes.editProfile)
         : Get.toNamed(AppRoutes.employerDashboard);
     return;
-
+    //Get.toNamed(AppRoutes.jobSeekerHome)
     isLoading = true;
     update();
 

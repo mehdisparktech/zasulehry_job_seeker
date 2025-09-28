@@ -15,25 +15,28 @@ class EmployerPostedJobsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: AppString.myPostedJobs),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ListView.separated(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: 2,
-            itemBuilder: (context, index) => JobCard(
-              companyName: 'Google',
-              location: 'California Usa',
-              jobTitle: 'Senior Business Analys',
-              salaryRange: '\$200-\$300/Month',
-              isFullTime: true,
-              isApplied: true,
-              totalapply: '4 Apply',
-              companyLogo: AppImages.google,
-              onTap: () => Get.to(() => EmployerPostedJobsDetailsScreen()),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 2,
+              itemBuilder: (context, index) => JobCard(
+                companyName: 'Google',
+                location: 'California Usa',
+                jobTitle: 'Senior Business Analys',
+                salaryRange: '\$200-\$300/Month',
+                isFullTime: true,
+                isApplied: true,
+                isFavorite: false,
+                totalapply: '4 Apply',
+                companyLogo: AppImages.google,
+                onTap: () => Get.to(() => EmployerPostedJobsDetailsScreen()),
+              ),
+              separatorBuilder: (context, index) => 16.height,
             ),
-            separatorBuilder: (context, index) => 16.height,
           ),
         ),
       ),

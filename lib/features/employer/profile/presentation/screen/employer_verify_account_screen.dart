@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/button/common_button.dart';
 import '../../../../../core/component/text/common_text.dart';
@@ -29,171 +31,166 @@ class _EmployerVerifyAccountScreenState
         isBackButton: true,
         backgroundColor: AppColors.backgroundGradient,
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20.h),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(20.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20.h),
 
-            // Upload Business Documents Title
-            CommonText(
-              text: AppString.uploadBusinessDocuments,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.black,
-            ),
+              // Upload Business Documents Title
+              CommonText(
+                text: AppString.uploadBusinessDocuments,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.black,
+              ),
 
-            SizedBox(height: 20.h),
+              SizedBox(height: 20.h),
 
-            // Upload Section
-            GestureDetector(
-              onTap: _pickDocument,
-              child: Container(
-                width: double.infinity,
-                height: 80.h,
-                decoration: BoxDecoration(
-                  color: AppColors.transparent,
-                  border: Border.all(color: AppColors.blue500, width: 1.5),
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.cloud_upload_outlined,
-                      size: 40.sp,
-                      color: AppColors.primaryColor,
-                    ),
-                    SizedBox(height: 8.h),
-                    // CommonText(
-                    //   text: selectedDocumentPath != null
-                    //       ? "Document Selected"
-                    //       : "Tap to upload document",
-                    //   fontSize: 14.sp,
-                    //   color: AppColors.textFiledColor,
-                    // ),
-                  ],
+              // Upload Section
+              GestureDetector(
+                onTap: _pickDocument,
+                child: Container(
+                  width: double.infinity,
+                  height: 80.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.transparent,
+                    border: Border.all(color: AppColors.blue500, width: 1.5),
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CommonImage(imageSrc: AppImages.upload),
+                      SizedBox(height: 8.h),
+                      // CommonText(
+                      //   text: selectedDocumentPath != null
+                      //       ? "Document Selected"
+                      //       : "Tap to upload document",
+                      //   fontSize: 14.sp,
+                      //   color: AppColors.textFiledColor,
+                      // ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            SizedBox(height: 30.h),
+              SizedBox(height: 30.h),
+              CommonImage(imageSrc: AppImages.card),
 
-            // Business Card Examples Title
-            CommonText(
-              text: AppString.businessDocumentExamples,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.black,
-            ),
+              // // First Business Card Example
+              // _buildBusinessCardExample(
+              //   website: "www.example.com",
+              //   brandName: "BRAND NAME",
+              //   slogan: "YOUR SLOGAN HERE",
+              //   isFirstCard: true,
+              // ),
 
-            SizedBox(height: 15.h),
+              // SizedBox(height: 15.h),
 
-            // First Business Card Example
-            _buildBusinessCardExample(
-              website: "www.example.com",
-              brandName: "BRAND NAME",
-              slogan: "YOUR SLOGAN HERE",
-              isFirstCard: true,
-            ),
+              // // Second Business Card Example
+              // _buildBusinessCardExample(
+              //   name: "YOUR NAME",
+              //   designation: "GRAPHIC DESIGN",
+              //   phone1: "+000 123 456 789",
+              //   phone2: "+000 123 456 785",
+              //   email: "mail address here",
+              //   website: "Address here",
+              //   address: "Address Here 0123",
+              //   isFirstCard: false,
+              // ),
+              SizedBox(height: 30.h),
 
-            SizedBox(height: 15.h),
-
-            // Second Business Card Example
-            _buildBusinessCardExample(
-              name: "YOUR NAME",
-              designation: "GRAPHIC DESIGN",
-              phone1: "+000 123 456 789",
-              phone2: "+000 123 456 785",
-              email: "mail address here",
-              website: "Address here",
-              address: "Address Here 0123",
-              isFirstCard: false,
-            ),
-
-            SizedBox(height: 30.h),
-
-            // Terms and Conditions Checkbox
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isTermsAccepted = !isTermsAccepted;
-                    });
-                  },
-                  child: Container(
-                    width: 20.w,
-                    height: 20.w,
-                    decoration: BoxDecoration(
-                      color: isTermsAccepted
-                          ? AppColors.primaryColor
-                          : AppColors.white,
-                      border: Border.all(
-                        color: AppColors.primaryColor,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(4.r),
-                    ),
-                    child: isTermsAccepted
-                        ? Icon(Icons.check, size: 14.sp, color: AppColors.white)
-                        : null,
-                  ),
-                ),
-                SizedBox(width: 12.w),
-                Expanded(
-                  child: RichText(
-                    text: TextSpan(
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: AppColors.black,
-                        height: 1.4,
-                      ),
-                      children: [
-                        TextSpan(text: "${AppString.byContinuingYouAccepted} "),
-                        TextSpan(
-                          text: AppString.privacyPolicy,
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline,
-                          ),
+              // Terms and Conditions Checkbox
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isTermsAccepted = !isTermsAccepted;
+                      });
+                    },
+                    child: Container(
+                      width: 20.w,
+                      height: 20.w,
+                      decoration: BoxDecoration(
+                        color: isTermsAccepted
+                            ? AppColors.primaryColor
+                            : AppColors.white,
+                        border: Border.all(
+                          color: AppColors.primaryColor,
+                          width: 2,
                         ),
-                        TextSpan(text: " ${AppString.privacyPolicyAnd} "),
-                        TextSpan(
-                          text: AppString.termsAndCondition,
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                        const TextSpan(text: "."),
-                      ],
+                        borderRadius: BorderRadius.circular(4.r),
+                      ),
+                      child: isTermsAccepted
+                          ? Icon(
+                              Icons.check,
+                              size: 14.sp,
+                              color: AppColors.white,
+                            )
+                          : null,
                     ),
                   ),
-                ),
-              ],
-            ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: AppColors.black,
+                          height: 1.4,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "${AppString.byContinuingYouAccepted} ",
+                          ),
+                          TextSpan(
+                            text: AppString.privacyPolicy,
+                            style: TextStyle(
+                              color: AppColors.blue500,
+                              fontWeight: FontWeight.w600,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          TextSpan(text: " ${AppString.privacyPolicyAnd} "),
+                          TextSpan(
+                            text: AppString.termsAndCondition,
+                            style: TextStyle(
+                              color: AppColors.blue500,
+                              fontWeight: FontWeight.w600,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          const TextSpan(text: "."),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
-            SizedBox(height: 40.h),
+              SizedBox(height: 40.h),
 
-            // Confirm Button
-            CommonButton(
-              titleText: AppString.confirm,
-              onTap: isTermsAccepted ? _handleConfirm : null,
-              isLoading: false,
-            ),
+              // Confirm Button
+              CommonButton(
+                titleText: AppString.confirm,
+                onTap: isTermsAccepted ? _handleConfirm : null,
+                isLoading: false,
+              ),
 
-            SizedBox(height: 20.h),
-          ],
+              SizedBox(height: 20.h),
+            ],
+          ),
         ),
       ),
     );
   }
 
+  // ignore: unused_element
   Widget _buildBusinessCardExample({
     String? website,
     String? brandName,

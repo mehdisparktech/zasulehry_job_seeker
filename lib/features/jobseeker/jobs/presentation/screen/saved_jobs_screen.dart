@@ -29,6 +29,7 @@ class SavedJobsScreen extends StatelessWidget {
               salaryRange: '\$200-\$300/Month',
               timePosted: '2 Days Ago',
               isFullTime: true,
+              isSaved: true,
               companyLogo: AppImages.google,
               onTap: () => Get.to(
                 () =>

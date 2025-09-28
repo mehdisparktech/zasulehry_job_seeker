@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/core/utils/helpers/other_helper.dart';
+import 'package:zasulehry_job_seeker/core/component/pop_up/success_dialog.dart';
 
 class JobApplicationPopup extends StatefulWidget {
   final String jobTitle;
@@ -125,29 +128,34 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     SizedBox(height: 20.h),
 
                     // Upload Resume section
-                    Container(
-                      width: double.infinity,
-                      height: 80.h,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.textSecondary),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CommonImage(
-                            imageSrc: AppImages.upload,
-                            width: 24.w,
-                            height: 24.h,
-                          ),
-                          SizedBox(height: 8.h),
-                          CommonText(
-                            text: 'Upload Resume',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.textSecondary,
-                          ),
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        OtherHelper.openGallery();
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 80.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.textSecondary),
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CommonImage(
+                              imageSrc: AppImages.upload,
+                              width: 24.w,
+                              height: 24.h,
+                            ),
+                            SizedBox(height: 8.h),
+                            CommonText(
+                              text: 'Upload Resume',
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.textSecondary,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
 
@@ -201,28 +209,33 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                     SizedBox(height: 16.h),
 
                     // CV Creation button
-                    Container(
-                      width: double.infinity,
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            Color(0xFF083E4B),
-                            Color(0xFF074E5E),
-                            Color(0xFF0288A6),
-                          ],
-                          stops: [0.0, 0.5, 1.0],
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.cvCreateStep1);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              Color(0xFF083E4B),
+                              Color(0xFF074E5E),
+                              Color(0xFF0288A6),
+                            ],
+                            stops: [0.0, 0.5, 1.0],
+                          ),
                         ),
-                      ),
-                      child: Center(
-                        child: CommonText(
-                          text: 'Percenter Cv/Resume Creation',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.white,
+                        child: Center(
+                          child: CommonText(
+                            text: 'InApp Cv/Resume Creation',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -345,11 +358,11 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                             if (widget.onSubmit != null) {
                               widget.onSubmit!();
                             }
-                            Get.snackbar(
-                              'Success',
-                              'Application submitted successfully!',
-                              backgroundColor: AppColors.primaryColor,
-                              colorText: AppColors.white,
+                            SuccessDialog.showWithNavigation(
+                              message: 'Your application has been submitted',
+                              buttonText: "Back to Home",
+                              routeName: AppRoutes.jobSeekerHome,
+                              offAllNamed: true,
                             );
                           },
                           child: Center(

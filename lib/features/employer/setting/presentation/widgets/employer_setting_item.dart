@@ -12,7 +12,7 @@ class SettingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 52.h,
+      height: 60.h,
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       margin: EdgeInsets.only(bottom: 15.h),
       decoration: BoxDecoration(
@@ -44,7 +44,12 @@ class SettingItem extends StatelessWidget {
           ),
 
           /// show Title here
-          CommonText(text: title, color: AppColors.white, left: 12),
+          CommonText(
+            text: title,
+            color: AppColors.white,
+            left: 12,
+            fontSize: 16.sp,
+          ),
           const Spacer(),
 
           /// show Icon here

@@ -50,7 +50,7 @@ class JobOpeningsWidget extends StatelessWidget {
       itemCount: 4,
       itemBuilder: (context, index) => JobCard(
         companyName: 'Google',
-        location: 'California Usa',
+        location: 'California, Usa',
         jobTitle: 'Senior Business Analys',
         salaryRange: '\$200-\$300/Month',
         timePosted: '2 Days Ago',

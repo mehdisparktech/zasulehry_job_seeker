@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 
 class EmployerPostJobScreen extends StatefulWidget {
@@ -62,167 +64,178 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
         isBackButton: true,
         isCenterTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Category Section
-              _buildSectionTitle("Category"),
-              SizedBox(height: 8.h),
-              _buildDropdownField(
-                value: selectedCategory,
-                items: categories,
-                onChanged: (value) {
-                  setState(() {
-                    selectedCategory = value!;
-                  });
-                },
-              ),
-              SizedBox(height: 20.h),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Category Section
+                _buildSectionTitle("Category"),
+                SizedBox(height: 8.h),
+                _buildDropdownField(
+                  value: selectedCategory,
+                  items: categories,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedCategory = value!;
+                    });
+                  },
+                ),
+                SizedBox(height: 20.h),
 
-              // Sub Category Section
-              _buildSectionTitle("Sub Category"),
-              SizedBox(height: 8.h),
-              _buildDropdownField(
-                value: selectedSubCategory,
-                items: subCategories,
-                onChanged: (value) {
-                  setState(() {
-                    selectedSubCategory = value!;
-                  });
-                },
-              ),
-              SizedBox(height: 20.h),
+                // Sub Category Section
+                _buildSectionTitle("Sub Category"),
+                SizedBox(height: 8.h),
+                _buildDropdownField(
+                  value: selectedSubCategory,
+                  items: subCategories,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedSubCategory = value!;
+                    });
+                  },
+                ),
+                SizedBox(height: 20.h),
 
-              // Deadline Section
-              _buildSectionTitle("Deadline"),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                controller: deadlineController,
-                hintText: "Type Here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
+                // Deadline Section
+                _buildSectionTitle("Deadline"),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  controller: deadlineController,
+                  hintText: "Type Here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
 
-                onTap: () async {
-                  DateTime? pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime.now(),
-                    lastDate: DateTime(2030),
-                  );
-                  if (pickedDate != null) {
-                    deadlineController.text =
-                        "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
-                  }
-                },
-              ),
-              SizedBox(height: 20.h),
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2030),
+                    );
+                    if (pickedDate != null) {
+                      deadlineController.text =
+                          "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+                    }
+                  },
+                ),
+                SizedBox(height: 20.h),
 
-              // Job Description Section
-              _buildSectionTitle("Job Description"),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                controller: jobDescriptionController,
-                hintText: "Type here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
-                mexLength: 500,
-                maxLines: 8,
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-              ),
-              SizedBox(height: 20.h),
+                // Job Description Section
+                _buildSectionTitle("Job Description"),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  controller: jobDescriptionController,
+                  hintText: "Type here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
+                  mexLength: 500,
+                  maxLines: 8,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                ),
+                SizedBox(height: 20.h),
 
-              // Key Of Responsibilities Section
-              _buildSectionTitle("Key Of Responsibilities"),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                controller: keyResponsibilitiesController,
-                hintText: "Type Here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
-                mexLength: 500,
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-              ),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                hintText: "Type Here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-              ),
-              SizedBox(height: 10.h),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Icon(Icons.add_circle, color: AppColors.primaryColor),
-              ),
-              SizedBox(height: 20.h),
+                // Key Of Responsibilities Section
+                _buildSectionTitle("Key Responsibilities"),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  controller: keyResponsibilitiesController,
+                  hintText: "Type Here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
+                  mexLength: 500,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                ),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  hintText: "Type Here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                ),
+                SizedBox(height: 10.h),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: CommonImage(
+                    imageSrc: AppImages.add,
+                    width: 24.w,
+                    height: 24.h,
+                  ),
+                ),
+                SizedBox(height: 20.h),
 
-              // Qualification Section
-              _buildSectionTitle("Required Qualification"),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                controller: qualificationController,
-                hintText: "Type Here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
-                mexLength: 500,
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-              ),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                hintText: "Type Here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-              ),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                hintText: "Type Here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-              ),
-              SizedBox(height: 10.h),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Icon(Icons.add_circle, color: AppColors.primaryColor),
-              ),
-              SizedBox(height: 20.h),
+                // Qualification Section
+                _buildSectionTitle("Required Qualification"),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  controller: qualificationController,
+                  hintText: "Type Here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
+                  mexLength: 500,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                ),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  hintText: "Type Here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                ),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  hintText: "Type Here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                ),
+                SizedBox(height: 10.h),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: CommonImage(
+                    imageSrc: AppImages.add,
+                    width: 24.w,
+                    height: 24.h,
+                  ),
+                ),
+                SizedBox(height: 20.h),
 
-              // About Ourself Section
-              _buildSectionTitle("About Ourself"),
-              SizedBox(height: 8.h),
-              CommonTextField(
-                controller: aboutOurselfController,
-                hintText: "Type here...",
-                fillColor: AppColors.white,
-                borderColor: AppColors.background,
-                mexLength: 500,
-                maxLines: 5,
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-              ),
-              SizedBox(height: 40.h),
+                // About Ourself Section
+                _buildSectionTitle("About Ourself"),
+                SizedBox(height: 8.h),
+                CommonTextField(
+                  controller: aboutOurselfController,
+                  hintText: "Type here...",
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.background,
+                  mexLength: 500,
+                  maxLines: 5,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                ),
+                SizedBox(height: 40.h),
 
-              // Post Now Button
-              CommonButton(
-                titleText: "Post Now",
-                onTap: () {
-                  _handlePostJob();
-                },
-                buttonHeight: 48.h,
-                titleSize: 16.sp,
-              ),
-              SizedBox(height: 20.h),
-            ],
+                // Post Now Button
+                CommonButton(
+                  titleText: "Post Now",
+                  onTap: () {
+                    _handlePostJob();
+                  },
+                  buttonHeight: 48.h,
+                  titleSize: 16.sp,
+                  titleWeight: FontWeight.w500,
+                ),
+                SizedBox(height: 20.h),
+              ],
+            ),
           ),
         ),
       ),

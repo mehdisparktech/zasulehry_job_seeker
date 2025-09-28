@@ -14,6 +14,8 @@ class JobCard extends StatefulWidget {
   final String companyLogo;
   final String? totalapply;
   final bool isApplied;
+  final bool isSaved;
+  final bool isFavorite;
   final VoidCallback onTap;
   const JobCard({
     super.key,
@@ -26,6 +28,8 @@ class JobCard extends StatefulWidget {
     required this.companyLogo,
     this.totalapply = '',
     this.isApplied = false,
+    this.isSaved = false,
+    this.isFavorite = true,
     required this.onTap,
   });
 
@@ -34,7 +38,13 @@ class JobCard extends StatefulWidget {
 }
 
 class JobCardState extends State<JobCard> {
-  bool isFavorited = false;
+  bool isFavorited =
+      false; // Changed from false to widget.isSaved, but accessed using widget.isSaved
+  @override
+  void initState() {
+    super.initState();
+    isFavorited = widget.isSaved;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +99,7 @@ class JobCardState extends State<JobCard> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+
                       4.height,
                       Text(
                         widget.location,
@@ -102,46 +113,49 @@ class JobCardState extends State<JobCard> {
                   ),
                 ),
                 // Favorite Button
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isFavorited = !isFavorited;
-                    });
-                  },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [Color(0x30FFFFFF), Color(0x10FFFFFF)],
-                          ),
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.25),
-                            width: 1,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              blurRadius: 15,
-                              offset: Offset(0, 5),
+                if (widget.isFavorite)
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isFavorited = !isFavorited;
+                      });
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [Color(0x30FFFFFF), Color(0x10FFFFFF)],
                             ),
-                          ],
-                        ),
-                        child: Icon(
-                          isFavorited ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorited ? Colors.red : Colors.white,
-                          size: 20,
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(
+                              color: Colors.white.withOpacity(0.25),
+                              width: 1,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 15,
+                                offset: Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            isFavorited
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: isFavorited ? Colors.white : Colors.white,
+                            size: 20,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
             6.height,

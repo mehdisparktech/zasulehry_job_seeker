@@ -9,14 +9,14 @@ class ShareAppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CommonAppBar(
-        title: AppString.shareApp,
-      ),
-      body: const Center(
-        child: CommonText(
-          text: "Share App Screen",
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
+      appBar: const CommonAppBar(title: AppString.shareApp),
+      body: SafeArea(
+        child: const Center(
+          child: CommonText(
+            text: "Share App Screen",
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );

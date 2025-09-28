@@ -8,7 +8,7 @@ class SettingItem extends StatelessWidget {
   const SettingItem({
     super.key,
     required this.title,
-    required this.iconDate,
+    this.iconDate,
     this.image,
   });
 

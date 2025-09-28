@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import 'package:zasulehry_job_seeker/features/employer/appointments/presentation/controller/create_appointment_controller.dart';
 
@@ -30,52 +32,49 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
         title: 'Create Appointment',
         isShowBackButton: true,
       ),
-      body: GetBuilder<CreateAppointmentController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Search Job Seeker Dropdown
-                _buildJobSeekerDropdown(),
+      body: SafeArea(
+        child: GetBuilder<CreateAppointmentController>(
+          builder: (controller) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.all(16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Search Job Seeker Dropdown
+                  _buildJobSeekerDropdown(),
 
-                20.height,
+                  20.height,
 
-                // Date and Time Selection Row
-                Row(
-                  children: [
-                    Expanded(child: _buildDateSelector()),
-                    16.width,
-                    Expanded(child: _buildTimeSelector()),
-                  ],
-                ),
+                  // Date and Time Selection Row
+                  Row(
+                    children: [
+                      Expanded(child: _buildDateSelector()),
+                      16.width,
+                      Expanded(child: _buildTimeSelector()),
+                    ],
+                  ),
 
-                20.height,
+                  20.height,
 
-                // Appointment Options
-                _buildAppointmentOptions(),
+                  // Appointment Options
+                  _buildAppointmentOptions(),
 
-                20.height,
+                  20.height,
 
-                // Meeting Address Input
-                _buildAddressInput(),
+                  // Message Input
+                  _buildMessageInput(),
 
-                20.height,
+                  30.height,
 
-                // Message Input
-                _buildMessageInput(),
+                  // Confirm Button
+                  _buildConfirmButton(),
 
-                30.height,
-
-                // Confirm Button
-                _buildConfirmButton(),
-
-                20.height,
-              ],
-            ),
-          );
-        },
+                  20.height,
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -127,22 +126,24 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(30.r),
           border: Border.all(color: AppColors.background),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.calendar_today, color: AppColors.blue500, size: 20.sp),
             8.width,
             CommonText(
               text: controller.selectedDate.isEmpty
                   ? 'Date'
                   : controller.selectedDate,
-              fontSize: 14,
+              fontSize: 18.sp,
               color: controller.selectedDate.isEmpty
-                  ? AppColors.textFiledColor
+                  ? AppColors.textSecondary
                   : AppColors.black,
             ),
+            8.width,
+            CommonImage(imageSrc: AppImages.calender),
           ],
         ),
       ),
@@ -156,21 +157,27 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(30.r),
           border: Border.all(color: AppColors.background),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.access_time, color: AppColors.blue500, size: 20.sp),
             8.width,
             CommonText(
               text: controller.selectedTime.isEmpty
                   ? 'Time'
                   : controller.selectedTime,
-              fontSize: 14,
+              fontSize: 18.sp,
               color: controller.selectedTime.isEmpty
-                  ? AppColors.textFiledColor
+                  ? AppColors.textSecondary
                   : AppColors.black,
+            ),
+            8.width,
+            CommonImage(
+              imageSrc: AppImages.clock,
+              imageColor: AppColors.blue500,
+              size: 24,
             ),
           ],
         ),
@@ -204,18 +211,37 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
             controller.setSelectedAppointmentOption(value);
           },
           activeColor: AppColors.blue500,
+          fillColor: WidgetStateProperty.all(AppColors.blue500),
         ),
         8.width,
         Expanded(
           child: Container(
             padding: EdgeInsets.all(16.w),
-            color: AppColors.white,
-            child: CommonText(
-              text: text,
-              fontSize: 14,
-              color: AppColors.black,
-              maxLines: 4,
-              textAlign: TextAlign.start,
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(8.r),
+              border: Border.all(color: AppColors.blue500),
+            ),
+            child: Column(
+              children: [
+                CommonText(
+                  text: text,
+                  fontSize: 16.sp,
+                  color: AppColors.black,
+                  maxLines: 4,
+                  textAlign: TextAlign.start,
+                  fontWeight: FontWeight.w400,
+                ),
+                16.height,
+                if (index == 1)
+                  CommonTextField(
+                    hintText: 'type here meeting address',
+                    fillColor: AppColors.transparent,
+                    borderColor: AppColors.blue500,
+                    maxLines: 1,
+                    borderRadius: 30.r,
+                  ),
+              ],
             ),
           ),
         ),
@@ -223,58 +249,26 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
     );
   }
 
-  Widget _buildAddressInput() {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: AppColors.background),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CommonText(
-            text: 'Type Here Meeting Address',
-            fontSize: 14,
-            color: AppColors.textFiledColor,
-            bottom: 8.h,
-          ),
-          CommonTextField(
-            controller: controller.addressController,
-            hintText: 'Enter meeting address',
-            fillColor: AppColors.filledColor,
-            borderColor: AppColors.transparent,
-            maxLines: 1,
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildMessageInput() {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: AppColors.background),
-      ),
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CommonText(
             text: 'Type Here Message',
-            fontSize: 14,
-            color: AppColors.textFiledColor,
-            bottom: 8.h,
+            fontSize: 18.sp,
+            color: AppColors.black,
+            bottom: 20.h,
+            fontWeight: FontWeight.w400,
           ),
           CommonTextField(
             controller: controller.messageController,
             hintText:
                 'Lorem Ipsum Dolor Sit Amet Consectetur. Bibendum ipsum Donec Fames Et Gravida Non Est. Vel Et In Ut Egestas Elementum Ut Tristique At Imperdiet Elit In Ut At Tristique Aliquam. Tincidunt Urna Congue Ut Rhoncibus Mattis A Eu Sodales Leo Sed Tristique At Imperdiet',
-            fillColor: AppColors.filledColor,
-            borderColor: AppColors.transparent,
+            fillColor: AppColors.white,
+            borderColor: AppColors.blue500,
+            borderRadius: 8.r,
             maxLines: 5,
             textInputAction: TextInputAction.newline,
           ),

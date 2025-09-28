@@ -21,9 +21,9 @@ class JobSeekerNotification {
   });
 }
 
-
 class JobSeekersScreen extends StatelessWidget {
-  const JobSeekersScreen({super.key});
+  final String title;
+  const JobSeekersScreen({super.key, this.title = "'Job Alerts'"});
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +32,20 @@ class JobSeekersScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CommonAppBar(
-        title: 'Job Seekers',
+        title: title,
         actions: [
           IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: AppColors.white,
-              size: 35.w,
-            ),
+            icon: Icon(Icons.settings, color: AppColors.white, size: 35.w),
             onPressed: controller.onSettingsTap,
           ),
         ],
       ),
-      body: Obx(() => controller.notifications.isEmpty
-          ? _buildEmptyState()
-          : _buildNotificationsList(controller),
+      body: SafeArea(
+        child: Obx(
+          () => controller.notifications.isEmpty
+              ? _buildEmptyState()
+              : _buildNotificationsList(controller),
+        ),
       ),
     );
   }
@@ -56,11 +55,7 @@ class JobSeekersScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.notifications_none,
-            size: 64.w,
-            color: Colors.black,
-          ),
+          Icon(Icons.notifications_none, size: 64.w, color: Colors.black),
           SizedBox(height: 16.h),
           Text(
             'No notifications yet',
@@ -87,9 +82,9 @@ class JobSeekersScreen extends StatelessWidget {
   }
 
   Widget _buildNotificationItem(
-      JobSeekerNotification notification,
-      JobSeekersController controller,
-      ) {
+    JobSeekerNotification notification,
+    JobSeekersController controller,
+  ) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
       decoration: BoxDecoration(
@@ -148,26 +143,26 @@ class DetailedJobSeekersScreen extends StatelessWidget {
         title: 'Job Seekers',
         actions: [
           IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: AppColors.white,
-              size: 24.w,
-            ),
+            icon: Icon(Icons.settings, color: AppColors.white, size: 24.w),
             onPressed: controller.onSettingsTap,
           ),
         ],
       ),
-      body: Obx(() => controller.notifications.isEmpty
-          ? _buildEmptyState()
-          : ListView.separated(
-        padding: EdgeInsets.all(16.w),
-        itemCount: controller.notifications.length,
-        separatorBuilder: (context, index) => SizedBox(height: 12.h),
-        itemBuilder: (context, index) {
-          final notification = controller.notifications[index];
-          return _buildDetailedNotificationItem(notification, controller);
-        },
-      ),
+      body: Obx(
+        () => controller.notifications.isEmpty
+            ? _buildEmptyState()
+            : ListView.separated(
+                padding: EdgeInsets.all(16.w),
+                itemCount: controller.notifications.length,
+                separatorBuilder: (context, index) => SizedBox(height: 12.h),
+                itemBuilder: (context, index) {
+                  final notification = controller.notifications[index];
+                  return _buildDetailedNotificationItem(
+                    notification,
+                    controller,
+                  );
+                },
+              ),
       ),
     );
   }
@@ -177,11 +172,7 @@ class DetailedJobSeekersScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.notifications_none,
-            size: 64.w,
-            color: Colors.grey,
-          ),
+          Icon(Icons.notifications_none, size: 64.w, color: Colors.grey),
           SizedBox(height: 16.h),
           Text(
             'No notifications yet',
@@ -197,9 +188,9 @@ class DetailedJobSeekersScreen extends StatelessWidget {
   }
 
   Widget _buildDetailedNotificationItem(
-      JobSeekerNotification notification,
-      JobSeekersController controller,
-      ) {
+    JobSeekerNotification notification,
+    JobSeekersController controller,
+  ) {
     return GestureDetector(
       onTap: () => controller.onNotificationTap(notification),
       child: Container(
@@ -249,10 +240,7 @@ class DetailedJobSeekersScreen extends StatelessWidget {
                   SizedBox(height: 4.h),
                   Text(
                     'New job seeker profile available',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      color: Colors.grey,
-                    ),
+                    style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                   ),
                 ],
               ),
@@ -293,12 +281,7 @@ class EnhancedJobSeekerNotification {
   });
 }
 
-enum NotificationType {
-  jobSeeker,
-  application,
-  message,
-  system,
-}
+enum NotificationType { jobSeeker, application, message, system }
 
 // Enhanced controller with filtering and marking as read
 class EnhancedJobSeekersController extends GetxController {
@@ -355,9 +338,7 @@ class EnhancedJobSeekersController extends GetxController {
   }
 
   void _updateUnreadCount() {
-    unreadCount.value = notifications
-        .where((n) => !n.isRead)
-        .length;
+    unreadCount.value = notifications.where((n) => !n.isRead).length;
   }
 
   void markAsRead(String notificationId) {
@@ -377,16 +358,18 @@ class EnhancedJobSeekersController extends GetxController {
   }
 
   void markAllAsRead() {
-    notifications.value = notifications.map((n) =>
-        EnhancedJobSeekerNotification(
-          id: n.id,
-          title: n.title,
-          subtitle: n.subtitle,
-          time: n.time,
-          isRead: true,
-          type: n.type,
+    notifications.value = notifications
+        .map(
+          (n) => EnhancedJobSeekerNotification(
+            id: n.id,
+            title: n.title,
+            subtitle: n.subtitle,
+            time: n.time,
+            isRead: true,
+            type: n.type,
+          ),
         )
-    ).toList();
+        .toList();
     _updateUnreadCount();
   }
 
