@@ -16,7 +16,7 @@ class SalaryComparisonScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SalaryComparisonController());
+    Get.put(SalaryComparisonController());
 
     return Scaffold(
       appBar: const CommonAppBar(title: AppString.salaryComparison),
@@ -55,10 +55,7 @@ class SalaryComparisonScreen extends StatelessWidget {
               _buildJobSection('Key Words'),
               16.height,
 
-              _buildJobSection(
-                'Category',
-                isDropdown: true,
-              ),
+              _buildJobSection('Category', isDropdown: true),
               16.height,
 
               _buildJobSection(
@@ -68,25 +65,13 @@ class SalaryComparisonScreen extends StatelessWidget {
               ),
               16.height,
 
-              _buildJobSection(
-                'Enter Your Salary',
-                isNumber: true,
-              ),
+              _buildJobSection('Enter Your Salary', isNumber: true),
               16.height,
-              _buildJobSection(
-                'City',
-                isNumber: false,
-              ),
+              _buildJobSection('City', isNumber: false),
               16.height,
-              _buildJobSection(
-                'State',
-                isNumber: false,
-              ),
+              _buildJobSection('State', isNumber: false),
               16.height,
-              _buildJobSection(
-                'Country',
-                isNumber: false,
-              ),
+              _buildJobSection('Country', isNumber: false),
               16.height,
               32.height,
 
