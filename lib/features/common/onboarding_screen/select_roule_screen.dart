@@ -16,39 +16,41 @@ class SelectRouleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CommonText(
-                text: "Are You",
-                color: AppColors.blue500,
-                fontWeight: FontWeight.w700,
-                fontSize: 24,
-              ),
-              20.height,
-              selectRoleCard(
-                text: "A Job Seeker",
-                imageSrc: AppImages.seeker,
-                onTap: () {
-                  LocalStorage.userRole = UserRole.jobSeeker;
-                  Get.toNamed(AppRoutes.signUp);
-                },
-                isSeleted: true,
-              ),
-              20.height,
-              selectRoleCard(
-                text: "An Employer",
-                imageSrc: AppImages.employer,
-                onTap: () {
-                  LocalStorage.userRole = UserRole.employer;
-                  Get.toNamed(AppRoutes.signUp);
-                },
-                isSeleted: false,
-              ),
-            ],
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CommonText(
+                  text: "Are You",
+                  color: AppColors.blue500,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
+                ),
+                20.height,
+                selectRoleCard(
+                  text: "A Job Seeker",
+                  imageSrc: AppImages.seeker,
+                  onTap: () {
+                    LocalStorage.userRole = UserRole.jobSeeker;
+                    Get.toNamed(AppRoutes.signUp);
+                  },
+                  isSeleted: true,
+                ),
+                20.height,
+                selectRoleCard(
+                  text: "An Employer",
+                  imageSrc: AppImages.employer,
+                  onTap: () {
+                    LocalStorage.userRole = UserRole.employer;
+                    Get.toNamed(AppRoutes.signUp);
+                  },
+                  isSeleted: false,
+                ),
+              ],
+            ),
           ),
         ),
       ),

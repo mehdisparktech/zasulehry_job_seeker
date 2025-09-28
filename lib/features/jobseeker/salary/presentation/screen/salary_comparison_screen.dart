@@ -20,90 +20,92 @@ class SalaryComparisonScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: const CommonAppBar(title: AppString.salaryComparison),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.w),
-        child: Column(
-          children: [
-            // Company Logo
-            Container(
-              width: 100.w,
-              height: 100.h,
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF083E4B),
-                    Color(0xFF074E5E),
-                    Color(0xFF0288A6),
-                  ],
-                  stops: [0.0, 0.4, 1.0],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(20.w),
+          child: Column(
+            children: [
+              // Company Logo
+              Container(
+                width: 100.w,
+                height: 100.h,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF083E4B),
+                      Color(0xFF074E5E),
+                      Color(0xFF0288A6),
+                    ],
+                    stops: [0.0, 0.4, 1.0],
+                  ),
+                ),
+                child: Center(
+                  child: CommonText(
+                    text: 'P',
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.white,
+                  ),
                 ),
               ),
-              child: Center(
-                child: CommonText(
-                  text: 'P',
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white,
-                ),
+              24.height,
+
+              _buildJobSection(controller.job1CompanyController, 'Key Words'),
+              16.height,
+
+              _buildJobSection(
+                controller.job1LocationController,
+                'Category',
+                isDropdown: true,
               ),
-            ),
-            24.height,
+              16.height,
 
-            _buildJobSection(controller.job1CompanyController, 'Key Words'),
-            16.height,
+              _buildJobSection(
+                controller.job1SalaryController,
+                'Sub Category',
+                isNumber: true,
+                isDropdown: true,
+              ),
+              16.height,
 
-            _buildJobSection(
-              controller.job1LocationController,
-              'Category',
-              isDropdown: true,
-            ),
-            16.height,
+              _buildJobSection(
+                controller.job1BonusController,
+                'Enter Your Salary',
+                isNumber: true,
+              ),
+              16.height,
+              _buildJobSection(
+                controller.job1BonusController,
+                'City',
+                isNumber: true,
+              ),
+              16.height,
+              _buildJobSection(
+                controller.job1BonusController,
+                'State',
+                isNumber: true,
+              ),
+              16.height,
+              _buildJobSection(
+                controller.job1BonusController,
+                'Country',
+                isNumber: true,
+              ),
+              16.height,
+              32.height,
 
-            _buildJobSection(
-              controller.job1SalaryController,
-              'Sub Category',
-              isNumber: true,
-              isDropdown: true,
-            ),
-            16.height,
-
-            _buildJobSection(
-              controller.job1BonusController,
-              'Enter Your Salary',
-              isNumber: true,
-            ),
-            16.height,
-            _buildJobSection(
-              controller.job1BonusController,
-              'City',
-              isNumber: true,
-            ),
-            16.height,
-            _buildJobSection(
-              controller.job1BonusController,
-              'State',
-              isNumber: true,
-            ),
-            16.height,
-            _buildJobSection(
-              controller.job1BonusController,
-              'Country',
-              isNumber: true,
-            ),
-            16.height,
-            32.height,
-
-            // Compare Button
-            CommonButton(
-              titleText: 'Start',
-              onTap: () {
-                Get.to(() => ImpressumScreenDetails());
-              },
-              buttonHeight: 50.h,
-            ),
-          ],
+              // Compare Button
+              CommonButton(
+                titleText: 'Start',
+                onTap: () {
+                  Get.to(() => ImpressumScreenDetails());
+                },
+                buttonHeight: 50.h,
+              ),
+            ],
+          ),
         ),
       ),
     );

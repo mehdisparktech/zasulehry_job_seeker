@@ -23,54 +23,59 @@ class ForgotPasswordScreen extends StatelessWidget {
         appBar: AppBar(elevation: 0),
 
         /// body section
-        body: Center(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Form(
-              key: formKey,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-                decoration: BoxDecoration(
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const CommonText(
-                      text: AppString.forgotPassword,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 24,
-                      top: 10,
-                    ).center,
-                    const CommonText(
-                      text: AppString.forgotPasswordSubtitle,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: AppColors.textSecondary,
-                      bottom: 20,
-                      top: 4,
-                    ).center,
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Form(
+                key: formKey,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 24.h,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const CommonText(
+                        text: AppString.forgotPassword,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24,
+                        top: 10,
+                      ).center,
+                      const CommonText(
+                        text: AppString.forgotPasswordSubtitle,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: AppColors.textSecondary,
+                        bottom: 20,
+                        top: 4,
+                      ).center,
 
-                    /// forget password take email for reset Password
-                    CommonTextField(
-                      controller: controller.emailController,
-                      hintText: AppString.email,
-                      validator: OtherHelper.emailValidator,
-                    ),
-                    20.height,
-                    CommonButton(
-                      titleText: AppString.continues,
-                      isLoading: controller.isLoadingEmail,
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          controller.forgotPasswordRepo();
-                        }
-                      },
-                    ),
-                  ],
+                      /// forget password take email for reset Password
+                      CommonTextField(
+                        controller: controller.emailController,
+                        hintText: AppString.email,
+                        validator: OtherHelper.emailValidator,
+                      ),
+                      20.height,
+                      CommonButton(
+                        titleText: AppString.continues,
+                        isLoading: controller.isLoadingEmail,
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            controller.forgotPasswordRepo();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -21,245 +21,251 @@ class SalaryCalculatorScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: 'Salary Calculator'),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Tab Selection
-            _buildTabSelection(controller),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Tab Selection
+              _buildTabSelection(controller),
 
-            SizedBox(height: 20.h),
+              SizedBox(height: 20.h),
 
-            // Gross Salary
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Gross Salary'),
-                SizedBox(
-                  width: 200,
-                  child: CommonTextField(
-                    controller: controller.grossSalaryController,
-                    hintText: '20000.00',
-                    borderColor: Colors.grey,
-                    fillColor: Colors.transparent,
-                    keyboardType: TextInputType.number,
-                    suffixIcon: Icon(Icons.euro, size: 20.w),
+              // Gross Salary
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Gross Salary'),
+                  SizedBox(
+                    width: 200,
+                    child: CommonTextField(
+                      controller: controller.grossSalaryController,
+                      hintText: '20000.00',
+                      borderColor: Colors.grey,
+                      fillColor: Colors.transparent,
+                      keyboardType: TextInputType.number,
+                      suffixIcon: Icon(Icons.euro, size: 20.w),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            SizedBox(height: 20.h),
+              SizedBox(height: 20.h),
 
-            // Year
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Year'),
-                SizedBox(height: 8.h),
-                SizedBox(
-                  width: 200,
-                  child: _buildDropdownField('2025', ['2024', '2025', '2026']),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 20.h),
-
-            // Tax Exemption
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Tax Exemption'),
-                SizedBox(
-                  width: 200,
-                  child: CommonTextField(
-                    controller: controller.taxExemptionController,
-                    hintText: 'Type',
-                    suffixIcon: Icon(Icons.euro, size: 20.w),
+              // Year
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Year'),
+                  SizedBox(height: 8.h),
+                  SizedBox(
+                    width: 200,
+                    child: _buildDropdownField('2025', [
+                      '2024',
+                      '2025',
+                      '2026',
+                    ]),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            SizedBox(height: 20.h),
+              SizedBox(height: 20.h),
 
-            // Your State
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Your State'),
-                SizedBox(
-                  width: 200,
-                  child: _buildDropdownField('Berlin', [
-                    'Berlin',
-                    'Munich',
-                    'Hamburg',
+              // Tax Exemption
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Tax Exemption'),
+                  SizedBox(
+                    width: 200,
+                    child: CommonTextField(
+                      controller: controller.taxExemptionController,
+                      hintText: 'Type',
+                      suffixIcon: Icon(Icons.euro, size: 20.w),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 20.h),
+
+              // Your State
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Your State'),
+                  SizedBox(
+                    width: 200,
+                    child: _buildDropdownField('Berlin', [
+                      'Berlin',
+                      'Munich',
+                      'Hamburg',
+                    ]),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 20.h),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Tax Class'),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(left: 20.w),
+                      child: _buildTaxClassSelection(controller),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 20.h),
+
+              // Insurance Toggles
+              _buildToggleItem(
+                'Do You Pay Church Tax',
+                controller.doYouPayChurchTax,
+                controller.toggleChurchTax,
+                "Yes",
+                "No",
+              ),
+              _buildToggleItem(
+                'Health Insurance',
+                controller.healthInsurance,
+                controller.toggleHealthInsurance,
+                "Yes",
+                "No",
+              ),
+              _buildToggleItem(
+                'Care Insurance',
+                controller.careInsurance,
+                controller.toggleCareInsurance,
+                "Yes",
+                "No",
+              ),
+              _buildToggleItem(
+                'Pension Insurance',
+                controller.pensionInsurance,
+                controller.togglePensionInsurance,
+                "Yes",
+                "No",
+              ),
+              _buildToggleItem(
+                'Unemployment Insurance',
+                controller.unemploymentInsurance,
+                controller.toggleUnemploymentInsurance,
+                "Yes",
+                "No",
+              ),
+              _buildToggleItem(
+                'Do You Have Children',
+                controller.doYouHaveChildren,
+                controller.toggleHaveChildren,
+                "Yes",
+                "No",
+              ),
+
+              SizedBox(height: 20.h),
+
+              // Child Tax Exemption
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Child Tax Exemption'),
+                  _buildDropdownField('Please Select', [
+                    'Please Select',
+                    '1 Child',
+                    '2 Children',
                   ]),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            SizedBox(height: 20.h),
+              //SizedBox(height: 8.h),
+              SizedBox(height: 20.h),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Tax Class'),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 20.w),
-                    child: _buildTaxClassSelection(controller),
+              // Your Age
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Your Age'),
+                  _buildDropdownField('17-72 years', [
+                    '17-72 years',
+                    '18-65 years',
+                  ]),
+                ],
+              ),
+
+              SizedBox(height: 20.h),
+
+              // Your Profession
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSectionTitle('Your Profession'),
+                  SizedBox(
+                    width: 200,
+                    child: CommonTextField(
+                      controller: controller.professionController,
+                      hintText: 'Type Here...',
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            SizedBox(height: 20.h),
+              SizedBox(height: 20.h),
 
-            // Insurance Toggles
-            _buildToggleItem(
-              'Do You Pay Church Tax',
-              controller.doYouPayChurchTax,
-              controller.toggleChurchTax,
-              "Yes",
-              "No",
-            ),
-            _buildToggleItem(
-              'Health Insurance',
-              controller.healthInsurance,
-              controller.toggleHealthInsurance,
-              "Yes",
-              "No",
-            ),
-            _buildToggleItem(
-              'Care Insurance',
-              controller.careInsurance,
-              controller.toggleCareInsurance,
-              "Yes",
-              "No",
-            ),
-            _buildToggleItem(
-              'Pension Insurance',
-              controller.pensionInsurance,
-              controller.togglePensionInsurance,
-              "Yes",
-              "No",
-            ),
-            _buildToggleItem(
-              'Unemployment Insurance',
-              controller.unemploymentInsurance,
-              controller.toggleUnemploymentInsurance,
-              "Yes",
-              "No",
-            ),
-            _buildToggleItem(
-              'Do You Have Children',
-              controller.doYouHaveChildren,
-              controller.toggleHaveChildren,
-              "Yes",
-              "No",
-            ),
+              // Gender
+              _buildToggleItem(
+                'Gender',
+                controller.gender,
+                controller.toggleMaleFemaile,
+                "Male",
+                "Female",
+              ),
 
-            SizedBox(height: 20.h),
+              SizedBox(height: 20.h),
 
-            // Child Tax Exemption
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Child Tax Exemption'),
-                _buildDropdownField('Please Select', [
-                  'Please Select',
-                  '1 Child',
-                  '2 Children',
-                ]),
-              ],
-            ),
-
-            //SizedBox(height: 8.h),
-            SizedBox(height: 20.h),
-
-            // Your Age
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Your Age'),
-                _buildDropdownField('17-72 years', [
-                  '17-72 years',
-                  '18-65 years',
-                ]),
-              ],
-            ),
-
-            SizedBox(height: 20.h),
-
-            // Your Profession
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildSectionTitle('Your Profession'),
-                SizedBox(
-                  width: 200,
-                  child: CommonTextField(
-                    controller: controller.professionController,
-                    hintText: 'Type Here...',
+              // Calculate Button
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: CommonButton(
+                      titleText: 'Calculate',
+                      onTap: () {
+                        controller.calculate();
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 20.h),
-
-            // Gender
-            _buildToggleItem(
-              'Gender',
-              controller.gender,
-              controller.toggleMaleFemaile,
-              "Male",
-              "Female",
-            ),
-
-            SizedBox(height: 20.h),
-
-            // Calculate Button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: CommonButton(
-                    titleText: 'Calculate',
-                    onTap: () {
-                      controller.calculate();
-                    },
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: CommonButton(
+                      titleText: "\$456784",
+                      buttonColor: Colors.transparent,
+                      titleColor: Colors.black,
+                      borderColor: AppColors.blue500,
+                      titleSize: 20,
+                    ),
                   ),
-                ),
-                SizedBox(width: 20),
-                Expanded(
-                  child: CommonButton(
-                    titleText: "\$456784",
-                    buttonColor: Colors.transparent,
-                    titleColor: Colors.black,
-                    borderColor: AppColors.blue500,
-                    titleSize: 20,
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            SizedBox(height: 20.h),
+              SizedBox(height: 20.h),
 
-            // More Information Button
-            CommonButton(
-              titleText: 'More Information',
-              buttonColor: AppColors.primaryColor,
-              onTap: () {
-                Get.to(() => DetailsSalaryScreen());
-              },
-            ),
+              // More Information Button
+              CommonButton(
+                titleText: 'More Information',
+                buttonColor: AppColors.primaryColor,
+                onTap: () {
+                  Get.to(() => DetailsSalaryScreen());
+                },
+              ),
 
-            SizedBox(height: 20.h),
-          ],
+              SizedBox(height: 20.h),
+            ],
+          ),
         ),
       ),
     );

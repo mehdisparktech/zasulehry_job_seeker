@@ -14,60 +14,62 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-        child: Column(
-          children: [
-            180.height,
-            Center(
-              child: Container(
-                width: 100.w,
-                height: 100.h,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF083E4B),
-                      Color(0xFF074E5E),
-                      Color(0xFF0288A6),
-                    ],
-                    stops: [0.0, 0.4, 1.0],
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+          child: Column(
+            children: [
+              180.height,
+              Center(
+                child: Container(
+                  width: 100.w,
+                  height: 100.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFF083E4B),
+                        Color(0xFF074E5E),
+                        Color(0xFF0288A6),
+                      ],
+                      stops: [0.0, 0.4, 1.0],
+                    ),
                   ),
-                ),
-                child: Center(
-                  child: CommonText(
-                    text: 'P',
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.white,
+                  child: Center(
+                    child: CommonText(
+                      text: 'P',
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
-            26.height,
-            CommonText(
-              text: AppString.welcometitle,
-              fontSize: 38.sp,
-              color: AppColors.blue500,
-              fontWeight: FontWeight.w700,
-            ),
-            10.height,
+              26.height,
+              CommonText(
+                text: AppString.welcometitle,
+                fontSize: 38.sp,
+                color: AppColors.blue500,
+                fontWeight: FontWeight.w700,
+              ),
+              10.height,
 
-            CommonText(
-              text: AppString.welcomesubtitle,
-              color: AppColors.blue500,
-              fontSize: 22.sp,
-            ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: CommonButton(
-                titleText: AppString.getStarted,
-                onTap: () => Get.toNamed(AppRoutes.selectRole),
+              CommonText(
+                text: AppString.welcomesubtitle,
+                color: AppColors.blue500,
+                fontSize: 22.sp,
               ),
-            ),
-          ],
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: CommonButton(
+                  titleText: AppString.getStarted,
+                  onTap: () => Get.toNamed(AppRoutes.selectRole),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

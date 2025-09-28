@@ -30,15 +30,17 @@ class _EmployerInvoiceListScreenState extends State<EmployerInvoiceListScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFE6E6E6),
       appBar: const CommonAppBar(title: 'Invoices', shapeRadius: 24),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-        child: ListView.separated(
-          itemCount: invoices.length,
-          separatorBuilder: (context, index) => SizedBox(height: 12.h),
-          itemBuilder: (context, index) {
-            final invoice = invoices[index];
-            return _buildInvoiceCard(invoice);
-          },
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+          child: ListView.separated(
+            itemCount: invoices.length,
+            separatorBuilder: (context, index) => SizedBox(height: 12.h),
+            itemBuilder: (context, index) {
+              final invoice = invoices[index];
+              return _buildInvoiceCard(invoice);
+            },
+          ),
         ),
       ),
       bottomNavigationBar: const CommonBottomNavBar(currentIndex: 2),

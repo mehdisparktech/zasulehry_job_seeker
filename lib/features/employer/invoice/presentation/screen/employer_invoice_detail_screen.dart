@@ -20,34 +20,36 @@ class _EmployerInvoiceDetailScreenState
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const CommonAppBar(title: 'View Invoice', shapeRadius: 24),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(24.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Company Information
-            _buildCompanyInfo(),
-            SizedBox(height: 24.h),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(24.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Company Information
+              _buildCompanyInfo(),
+              SizedBox(height: 24.h),
 
-            // Invoice Header
-            _buildInvoiceHeader(),
-            SizedBox(height: 16.h),
+              // Invoice Header
+              _buildInvoiceHeader(),
+              SizedBox(height: 16.h),
 
-            // Invoice Details Table
-            _buildInvoiceTable(),
-            SizedBox(height: 24.h),
+              // Invoice Details Table
+              _buildInvoiceTable(),
+              SizedBox(height: 24.h),
 
-            // Items Table
-            _buildItemsTable(),
-            SizedBox(height: 24.h),
+              // Items Table
+              _buildItemsTable(),
+              SizedBox(height: 24.h),
 
-            // Pricing Summary
-            _buildPricingSummary(),
-            SizedBox(height: 80.h),
-            Divider(color: AppColors.blue500),
-            // Contact Details
-            _buildContactDetails(),
-          ],
+              // Pricing Summary
+              _buildPricingSummary(),
+              SizedBox(height: 80.h),
+              Divider(color: AppColors.blue500),
+              // Contact Details
+              _buildContactDetails(),
+            ],
+          ),
         ),
       ),
     );

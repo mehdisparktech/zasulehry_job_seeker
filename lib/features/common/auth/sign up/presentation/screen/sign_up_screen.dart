@@ -31,157 +31,162 @@ class SignUpScreen extends StatelessWidget {
       ),
 
       /// Body Section Starts Here
-      body: GetBuilder<SignUpController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Form(
-              key: signUpFormKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 10,
-                children: [
-                  /// Sign UP Instructions here
-                  Center(
-                    child: Container(
-                      width: 100.w,
-                      height: 100.h,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(0xFF083E4B),
-                            Color(0xFF074E5E),
-                            Color(0xFF0288A6),
-                          ],
-                          stops: [0.0, 0.4, 1.0],
-                        ),
-                      ),
-                      child: Center(
-                        child: CommonText(
-                          text: 'P',
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  10.height,
-                  CommonText(
-                    text: AppString.welcomeBack,
-                    fontSize: 28.sp,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.blue500,
-                    fontStyle: FontStyle.italic,
-                  ),
-                  8.height,
-
-                  /// All Text Filed here
-                  SignUpAllField(controller: controller),
-
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: controller.isTermsAndConditions,
-                        onChanged: (value) {
-                          controller.isTermsAndConditions = value ?? false;
-                          controller.update();
-                        },
-                        activeColor: AppColors.blue500,
-                        side: BorderSide(color: AppColors.primaryColor),
-                      ),
-                      Expanded(
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "By Continuing, You Accept the ",
-                                style: TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              TextSpan(
-                                text: "Privacy Policy ",
-                                style: TextStyle(
-                                  color: AppColors.blue500,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              TextSpan(
-                                text: "And ",
-                                style: TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              TextSpan(
-                                text: "terms & conditions",
-                                style: TextStyle(
-                                  color: AppColors.blue500,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              TextSpan(
-                                text: " of JobsInApp.",
-                                style: TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+      body: SafeArea(
+        child: GetBuilder<SignUpController>(
+          builder: (controller) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Form(
+                key: signUpFormKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: 10,
+                  children: [
+                    /// Sign UP Instructions here
+                    Center(
+                      child: Container(
+                        width: 100.w,
+                        height: 100.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [
+                              Color(0xFF083E4B),
+                              Color(0xFF074E5E),
+                              Color(0xFF0288A6),
                             ],
+                            stops: [0.0, 0.4, 1.0],
+                          ),
+                        ),
+                        child: Center(
+                          child: CommonText(
+                            text: 'P',
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.white,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-
-                  10.height,
-
-                  /// Submit Button Here
-                  CommonButton(
-                    titleText: AppString.signUp,
-                    isLoading: controller.isLoading,
-                    onTap: controller.signUpUser,
-                  ),
-
-                  10.height,
-
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(4),
                     ),
-                    child: CommonText(
-                      text: "Sign up with",
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
+                    10.height,
+                    CommonText(
+                      text: AppString.welcomeBack,
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.blue500,
+                      fontStyle: FontStyle.italic,
                     ),
-                  ).center,
-                  10.height,
+                    8.height,
 
-                  /// Social Icon here
-                  _buildSocialIcon(),
+                    /// All Text Filed here
+                    SignUpAllField(controller: controller),
 
-                  10.height,
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: controller.isTermsAndConditions,
+                          onChanged: (value) {
+                            controller.isTermsAndConditions = value ?? false;
+                            controller.update();
+                          },
+                          activeColor: AppColors.blue500,
+                          side: BorderSide(color: AppColors.primaryColor),
+                        ),
+                        Expanded(
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "By Continuing, You Accept the ",
+                                  style: TextStyle(
+                                    color: AppColors.textSecondary,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "Privacy Policy ",
+                                  style: TextStyle(
+                                    color: AppColors.blue500,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "And ",
+                                  style: TextStyle(
+                                    color: AppColors.textSecondary,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "terms & conditions",
+                                  style: TextStyle(
+                                    color: AppColors.blue500,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: " of JobsInApp.",
+                                  style: TextStyle(
+                                    color: AppColors.textSecondary,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
 
-                  ///  Sign In Instruction here
-                  const AlreadyAccountRichText(),
-                  30.height,
-                ],
+                    10.height,
+
+                    /// Submit Button Here
+                    CommonButton(
+                      titleText: AppString.signUp,
+                      isLoading: controller.isLoading,
+                      onTap: controller.signUpUser,
+                    ),
+
+                    10.height,
+
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: CommonText(
+                        text: "Sign up with",
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ).center,
+                    10.height,
+
+                    /// Social Icon here
+                    _buildSocialIcon(),
+
+                    10.height,
+
+                    ///  Sign In Instruction here
+                    const AlreadyAccountRichText(),
+                    30.height,
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

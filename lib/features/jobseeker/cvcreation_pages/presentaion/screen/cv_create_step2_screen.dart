@@ -21,25 +21,27 @@ class CvCreateStep2Screen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: CommonAppBar(title: "InApp CV/Resume Creation"),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Progress Indicator
-            _buildProgressIndicator(),
-            SizedBox(height: 24.h),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Progress Indicator
+              _buildProgressIndicator(),
+              SizedBox(height: 24.h),
 
-            // Step 2 Content
-            _buildStep2Content(),
+              // Step 2 Content
+              _buildStep2Content(),
 
-            SizedBox(height: 32.h),
+              SizedBox(height: 32.h),
 
-            // Navigation Buttons
-            _buildNavigationButtons(),
+              // Navigation Buttons
+              _buildNavigationButtons(),
 
-            SizedBox(height: 24.h),
-          ],
+              SizedBox(height: 24.h),
+            ],
+          ),
         ),
       ),
     );

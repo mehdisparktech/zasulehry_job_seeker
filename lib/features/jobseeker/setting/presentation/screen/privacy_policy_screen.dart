@@ -20,8 +20,9 @@ class PrivacyPolicyScreen extends StatelessWidget {
       appBar: CommonAppBar(title: AppString.privacyPolicy),
 
       /// Body Section stats here
-      body: GetBuilder<PrivacyPolicyController>(
-        builder: (controller) => switch (controller.status) {
+      body: SafeArea(
+        child: GetBuilder<PrivacyPolicyController>(
+          builder: (controller) => switch (controller.status) {
           /// Loading bar here
           Status.loading => const CommonLoader(),
 
@@ -36,6 +37,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
             child: Html(data: controller.data.content),
           ),
         },
+        ),
       ),
       bottomSheet: Container(
         color: AppColors.background,

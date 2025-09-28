@@ -25,7 +25,7 @@ class SeekerProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: CommonAppBar(title: seekerName),
-      body: _buildBody(context),
+      body: SafeArea(child: _buildBody(context)),
     );
   }
 

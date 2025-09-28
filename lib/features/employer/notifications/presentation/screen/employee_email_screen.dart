@@ -16,58 +16,60 @@ class EmployeeEmailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: const CommonAppBar(title: 'Email Settings'),
-      body: Column(
-        children: [
-          // Tab Header
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Obx(
-                    () => _buildTabItem(
-                      'E-Mail',
-                      0,
-                      controller.selectedTab.value == 0,
-                      () => controller.changeTab(0),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Tab Header
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+              decoration: BoxDecoration(
+                color: AppColors.background,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Obx(
+                      () => _buildTabItem(
+                        'E-Mail',
+                        0,
+                        controller.selectedTab.value == 0,
+                        () => controller.changeTab(0),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Obx(
-                    () => _buildTabItem(
-                      'Push Message',
-                      1,
-                      controller.selectedTab.value == 1,
-                      () => controller.changeTab(1),
+                  Expanded(
+                    child: Obx(
+                      () => _buildTabItem(
+                        'Push Message',
+                        1,
+                        controller.selectedTab.value == 1,
+                        () => controller.changeTab(1),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
 
-          // Tab Content
-          Expanded(
-            child: Obx(() => _buildTabContent(controller.selectedTab.value)),
-          ),
+            // Tab Content
+            Expanded(
+              child: Obx(() => _buildTabContent(controller.selectedTab.value)),
+            ),
 
-          // Create Jobseeker Alert Button
-          // Container(
-          //   padding: EdgeInsets.all(16.w),
-          //   child: CommonButton(
-          //     titleText: 'Create Jobseeker Alert',
-          //     onTap: () {
-          //       // Handle create jobseeker alert
-          //       Get.to(CreateJobseekerAlertScreen());
-          //     },
-          //   ),
-          // ),
-        ],
+            // Create Jobseeker Alert Button
+            // Container(
+            //   padding: EdgeInsets.all(16.w),
+            //   child: CommonButton(
+            //     titleText: 'Create Jobseeker Alert',
+            //     onTap: () {
+            //       // Handle create jobseeker alert
+            //       Get.to(CreateJobseekerAlertScreen());
+            //     },
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }

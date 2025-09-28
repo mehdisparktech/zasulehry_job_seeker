@@ -66,146 +66,151 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: "Work Information"),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Category Dropdown
-            _buildSectionLabel("Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedCategory,
-              items: categories,
-              onChanged: (value) {
-                setState(() {
-                  selectedCategory = value;
-                });
-              },
-            ),
-
-            16.height,
-
-            // Sub Category Dropdown
-            _buildSectionLabel("Sub Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedSubCategory,
-              items: subCategories,
-              onChanged: (value) {
-                setState(() {
-                  selectedSubCategory = value;
-                });
-              },
-            ),
-
-            16.height,
-            // Experience Field
-            _buildSectionLabel("Experience"),
-            CommonTextField(
-              controller: experienceController,
-              hintText: "12 Years",
-              fillColor: AppColors.white,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
-
-            16.height,
-
-            // Salary Field
-            _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
-            CommonTextField(
-              controller: salaryController,
-              hintText: "\$250",
-              keyboardType: TextInputType.number,
-              fillColor: AppColors.white,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
-            24.height,
-            Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {
-                  Get.snackbar(
-                    "Info",
-                    "Add more images functionality will be implemented",
-                    backgroundColor: AppColors.primaryColor,
-                    colorText: AppColors.white,
-                  );
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Category Dropdown
+              _buildSectionLabel("Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedCategory,
+                items: categories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedCategory = value;
+                  });
                 },
-                child: Container(
-                  height: 40.h,
-                  width: 100.w,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(30.r),
-                    gradient: LinearGradient(
-                      begin: Alignment(-0.9, 0),
-                      end: Alignment(1.0, 0),
-                      colors: [
-                        Color(0xFF083E4B), // #083E4B
-                        Color(0xFF074E5E), // #074E5E
-                        Color(0xFF0288A6), // #0288A6
-                      ],
+              ),
+
+              16.height,
+
+              // Sub Category Dropdown
+              _buildSectionLabel("Sub Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedSubCategory,
+                items: subCategories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedSubCategory = value;
+                  });
+                },
+              ),
+
+              16.height,
+              // Experience Field
+              _buildSectionLabel("Experience"),
+              CommonTextField(
+                controller: experienceController,
+                hintText: "12 Years",
+                fillColor: AppColors.white,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
+
+              16.height,
+
+              // Salary Field
+              _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
+              CommonTextField(
+                controller: salaryController,
+                hintText: "\$250",
+                keyboardType: TextInputType.number,
+                fillColor: AppColors.white,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
+              24.height,
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.snackbar(
+                      "Info",
+                      "Add more images functionality will be implemented",
+                      backgroundColor: AppColors.primaryColor,
+                      colorText: AppColors.white,
+                    );
+                  },
+                  child: Container(
+                    height: 40.h,
+                    width: 100.w,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor,
+                      borderRadius: BorderRadius.circular(30.r),
+                      gradient: LinearGradient(
+                        begin: Alignment(-0.9, 0),
+                        end: Alignment(1.0, 0),
+                        colors: [
+                          Color(0xFF083E4B), // #083E4B
+                          Color(0xFF074E5E), // #074E5E
+                          Color(0xFF0288A6), // #0288A6
+                        ],
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: CommonText(
-                      text: 'Add Other',
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.white,
+                    child: Center(
+                      child: CommonText(
+                        text: 'Add Other',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-            16.height,
+              16.height,
 
-            // Resume Section
-            // _buildSectionLabel("Resume"),
-            _buildResumeUploadSection(),
+              // Resume Section
+              // _buildSectionLabel("Resume"),
+              _buildResumeUploadSection(),
 
-            16.height,
+              16.height,
 
-            // Attachment (Image) Section
-            _buildImageAttachmentSection(),
+              // Attachment (Image) Section
+              _buildImageAttachmentSection(),
 
-            16.height,
+              16.height,
 
-            // About Myself Section
-            _buildSectionLabel("About Myself"),
-            _buildTextArea(controller: aboutController, hintText: "Type Here"),
+              // About Myself Section
+              _buildSectionLabel("About Myself"),
+              _buildTextArea(
+                controller: aboutController,
+                hintText: "Type Here",
+              ),
 
-            16.height,
+              16.height,
 
-            // Work Overview Section
-            _buildSectionLabel("Work Overview"),
-            _buildTextArea(
-              controller: workOverviewController,
-              hintText: "Type Here",
-            ),
+              // Work Overview Section
+              _buildSectionLabel("Work Overview"),
+              _buildTextArea(
+                controller: workOverviewController,
+                hintText: "Type Here",
+              ),
 
-            40.height,
+              40.height,
 
-            // Edit Information Button
-            CommonButton(
-              titleText: "Confirm",
-              onTap: () {
-                // Handle edit information
-                Get.snackbar(
-                  "Success",
-                  "Work information updated successfully",
-                  backgroundColor: AppColors.primaryColor,
-                  colorText: AppColors.white,
-                );
-              },
-            ),
+              // Edit Information Button
+              CommonButton(
+                titleText: "Confirm",
+                onTap: () {
+                  // Handle edit information
+                  Get.snackbar(
+                    "Success",
+                    "Work information updated successfully",
+                    backgroundColor: AppColors.primaryColor,
+                    colorText: AppColors.white,
+                  );
+                },
+              ),
 
-            20.height,
-          ],
+              20.height,
+            ],
+          ),
         ),
       ),
     );
@@ -525,6 +530,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
             );
           },
         ),
+        10.height,
         // Add More Button
         Align(
           alignment: Alignment.centerRight,

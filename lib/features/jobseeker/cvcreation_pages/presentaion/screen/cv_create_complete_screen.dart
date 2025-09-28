@@ -19,27 +19,29 @@ class CvCreateCompleteScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: CommonAppBar(title: "Your CV is 100% Done"),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildProfileImageSection(),
-              24.height,
-              _buildPersonalInformation(),
-              10.height,
-              _buildAboutYourself(),
-              24.height,
-              _buildEducationalInformation(),
-              24.height,
-              _buildWorkExperience(),
-              24.height,
-              _buildCurrentWorking(),
-              24.height,
-              _buildSkillsActivities(),
-              100.height,
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildProfileImageSection(),
+                24.height,
+                _buildPersonalInformation(),
+                10.height,
+                _buildAboutYourself(),
+                24.height,
+                _buildEducationalInformation(),
+                24.height,
+                _buildWorkExperience(),
+                24.height,
+                _buildCurrentWorking(),
+                24.height,
+                _buildSkillsActivities(),
+                100.height,
+              ],
+            ),
           ),
         ),
       ),

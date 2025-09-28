@@ -18,27 +18,29 @@ class EmployeeNotificationSettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffE6E6E6),
-      appBar: CommonAppBar(
-        title: title,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.to(() => CreateJobseekerAlertScreen());
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xffE6E6E6),
+        appBar: CommonAppBar(
+          title: title,
+          actions: [
+            IconButton(
+              onPressed: () {
+                Get.to(() => CreateJobseekerAlertScreen());
+              },
+              icon: Icon(Icons.settings, size: 30),
+            ),
+          ],
+        ),
+        body: Obx(
+          () => ListView.builder(
+            padding: EdgeInsets.all(16),
+            itemCount: controller.alerts.length,
+            itemBuilder: (context, index) {
+              final alert = controller.alerts[index];
+              return _buildAlertItem(alert, index);
             },
-            icon: Icon(Icons.settings, size: 30),
           ),
-        ],
-      ),
-      body: Obx(
-        () => ListView.builder(
-          padding: EdgeInsets.all(16),
-          itemCount: controller.alerts.length,
-          itemBuilder: (context, index) {
-            final alert = controller.alerts[index];
-            return _buildAlertItem(alert, index);
-          },
         ),
       ),
     );

@@ -55,185 +55,187 @@ class _EmployerPersonalInformationScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.only(top: 16.h, bottom: 24.h),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment(-0.9, 0),
-                      end: Alignment(1.0, 0),
-                      colors: [
-                        Color(0xFF083E4B),
-                        Color(0xFF074E5E),
-                        Color(0xFF0288A6),
-                      ],
-                      stops: [0.0, 0.4, 1.0],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(top: 16.h, bottom: 24.h),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment(-0.9, 0),
+                        end: Alignment(1.0, 0),
+                        colors: [
+                          Color(0xFF083E4B),
+                          Color(0xFF074E5E),
+                          Color(0xFF0288A6),
+                        ],
+                        stops: [0.0, 0.4, 1.0],
+                      ),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(36.r),
+                        bottomRight: Radius.circular(36.r),
+                      ),
                     ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(36.r),
-                      bottomRight: Radius.circular(36.r),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: () => Get.back(),
-                              icon: Icon(
-                                Icons.arrow_back_ios_new_rounded,
-                                color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () => Get.back(),
+                                icon: Icon(
+                                  Icons.arrow_back_ios_new_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.2,
-                            ),
-                            CommonText(
-                              text: widget.appTitle,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                              color: Colors.white,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 50.h), // Space for avatar
-                      ],
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                              ),
+                              CommonText(
+                                text: widget.appTitle,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                color: Colors.white,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 50.h), // Space for avatar
+                        ],
+                      ),
                     ),
                   ),
-                ),
 
-                // Name text with extra top padding to accommodate avatar
-                Align(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 64.h, bottom: 16.h),
-                    child: CommonText(
-                      text: (LocalStorage.myName.isNotEmpty
-                          ? LocalStorage.myName
-                          : "Google"),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.blue500,
-                      textAlign: TextAlign.left,
+                  // Name text with extra top padding to accommodate avatar
+                  Align(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 64.h, bottom: 16.h),
+                      child: CommonText(
+                        text: (LocalStorage.myName.isNotEmpty
+                            ? LocalStorage.myName
+                            : "Google"),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.blue500,
+                        textAlign: TextAlign.left,
+                      ),
                     ),
                   ),
-                ),
-                // Name Field
-                _buildFormField(
-                  controller: companyNameController,
-                  hintText: "company name",
-                  keyboardType: TextInputType.text,
-                ),
-
-                16.height,
-
-                // Email Field
-                _buildFormField(
-                  controller: legalFormController,
-                  hintText: "legal form",
-                  keyboardType: TextInputType.emailAddress,
-                ),
-
-                16.height,
-
-                // Contact Field
-                _buildFormField(
-                  controller: addressController,
-                  hintText: "Address",
-                  keyboardType: TextInputType.text,
-                ),
-
-                16.height,
-
-                // Location Field
-                _buildFormField(
-                  controller: addressController,
-                  hintText: "contact number",
-                  keyboardType: TextInputType.phone,
-                ),
-
-                16.height,
-
-                // Role Field
-                _buildFormField(
-                  controller: companyTypeController,
-                  hintText: "company Category",
-                  keyboardType: TextInputType.text,
-                ),
-                16.height,
-                _buildFormField(
-                  controller: taxNumberController,
-                  hintText: "tax No.",
-                  keyboardType: TextInputType.number,
-                ),
-
-                16.height,
-
-                // Location Field
-                _buildFormField(
-                  controller: denumberController,
-                  hintText: "DE No.",
-                ),
-
-                16.height,
-
-                // Role Field
-                _buildFormField(
-                  controller: typeOfBusinessController,
-                  hintText: "type of business",
-                  keyboardType: TextInputType.text,
-                ),
-
-                // Edit Profile Button
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 20.0,
+                  // Name Field
+                  _buildFormField(
+                    controller: companyNameController,
+                    hintText: "company name",
+                    keyboardType: TextInputType.text,
                   ),
-                  child: CommonButton(
-                    titleText: "Confirm",
-                    onTap: () {
-                      // Navigate to edit profile or handle edit functionality
-                      Get.snackbar(
-                        "Success",
-                        "Personal information updated successfully",
-                        backgroundColor: AppColors.primaryColor,
-                        colorText: AppColors.white,
-                      );
-                    },
+
+                  16.height,
+
+                  // Email Field
+                  _buildFormField(
+                    controller: legalFormController,
+                    hintText: "legal form",
+                    keyboardType: TextInputType.emailAddress,
                   ),
-                ),
-              ],
-            ),
-            // Positioned CircleAvatar to overlap header container
-            Positioned(
-              top: 150.h, // Adjust this value to position avatar correctly
-              left: 0,
-              right: 0,
-              child: Center(
-                child: CircleAvatar(
-                  backgroundColor: AppColors.transparent,
-                  radius: 52.r,
-                  child: const ClipOval(
-                    child: CommonImage(
-                      imageSrc: AppImages.google,
-                      size: 120,
-                      defaultImage: AppImages.google,
-                      fill: BoxFit.cover,
+
+                  16.height,
+
+                  // Contact Field
+                  _buildFormField(
+                    controller: addressController,
+                    hintText: "Address",
+                    keyboardType: TextInputType.text,
+                  ),
+
+                  16.height,
+
+                  // Location Field
+                  _buildFormField(
+                    controller: addressController,
+                    hintText: "contact number",
+                    keyboardType: TextInputType.phone,
+                  ),
+
+                  16.height,
+
+                  // Role Field
+                  _buildFormField(
+                    controller: companyTypeController,
+                    hintText: "company Category",
+                    keyboardType: TextInputType.text,
+                  ),
+                  16.height,
+                  _buildFormField(
+                    controller: taxNumberController,
+                    hintText: "tax No.",
+                    keyboardType: TextInputType.number,
+                  ),
+
+                  16.height,
+
+                  // Location Field
+                  _buildFormField(
+                    controller: denumberController,
+                    hintText: "DE No.",
+                  ),
+
+                  16.height,
+
+                  // Role Field
+                  _buildFormField(
+                    controller: typeOfBusinessController,
+                    hintText: "type of business",
+                    keyboardType: TextInputType.text,
+                  ),
+
+                  // Edit Profile Button
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 20.0,
+                    ),
+                    child: CommonButton(
+                      titleText: "Confirm",
+                      onTap: () {
+                        // Navigate to edit profile or handle edit functionality
+                        Get.snackbar(
+                          "Success",
+                          "Personal information updated successfully",
+                          backgroundColor: AppColors.primaryColor,
+                          colorText: AppColors.white,
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              // Positioned CircleAvatar to overlap header container
+              Positioned(
+                top: 150.h, // Adjust this value to position avatar correctly
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.transparent,
+                    radius: 52.r,
+                    child: const ClipOval(
+                      child: CommonImage(
+                        imageSrc: AppImages.google,
+                        size: 120,
+                        defaultImage: AppImages.google,
+                        fill: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

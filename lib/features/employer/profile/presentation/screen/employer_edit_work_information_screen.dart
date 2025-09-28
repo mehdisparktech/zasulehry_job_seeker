@@ -64,108 +64,113 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: "Work Information"),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Category Dropdown
-            _buildSectionLabel("Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedCategory,
-              items: categories,
-              onChanged: (value) {
-                setState(() {
-                  selectedCategory = value;
-                });
-              },
-            ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Category Dropdown
+              _buildSectionLabel("Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedCategory,
+                items: categories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedCategory = value;
+                  });
+                },
+              ),
 
-            16.height,
+              16.height,
 
-            // Sub Category Dropdown
-            _buildSectionLabel("Sub Category"),
-            _buildDropdown(
-              hint: "Category",
-              value: selectedSubCategory,
-              items: subCategories,
-              onChanged: (value) {
-                setState(() {
-                  selectedSubCategory = value;
-                });
-              },
-            ),
+              // Sub Category Dropdown
+              _buildSectionLabel("Sub Category"),
+              _buildDropdown(
+                hint: "Category",
+                value: selectedSubCategory,
+                items: subCategories,
+                onChanged: (value) {
+                  setState(() {
+                    selectedSubCategory = value;
+                  });
+                },
+              ),
 
-            16.height,
-            // Experience Field
-            _buildSectionLabel("Experience"),
-            CommonTextField(
-              controller: experienceController,
-              hintText: "12 Years",
-              fillColor: AppColors.filledColor,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
+              16.height,
+              // Experience Field
+              _buildSectionLabel("Experience"),
+              CommonTextField(
+                controller: experienceController,
+                hintText: "12 Years",
+                fillColor: AppColors.filledColor,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
 
-            16.height,
+              16.height,
 
-            // Salary Field
-            _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
-            CommonTextField(
-              controller: salaryController,
-              hintText: "\$250",
-              keyboardType: TextInputType.number,
-              fillColor: AppColors.filledColor,
-              borderColor: AppColors.background,
-              textColor: AppColors.black,
-            ),
+              // Salary Field
+              _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
+              CommonTextField(
+                controller: salaryController,
+                hintText: "\$250",
+                keyboardType: TextInputType.number,
+                fillColor: AppColors.filledColor,
+                borderColor: AppColors.background,
+                textColor: AppColors.black,
+              ),
 
-            16.height,
+              16.height,
 
-            // Resume Section
-            _buildSectionLabel("Resume"),
-            _buildResumeUploadSection(),
+              // Resume Section
+              _buildSectionLabel("Resume"),
+              _buildResumeUploadSection(),
 
-            16.height,
+              16.height,
 
-            // Attachment (Image) Section
-            _buildSectionLabel("Attachment (Image)"),
-            _buildImageAttachmentSection(),
+              // Attachment (Image) Section
+              _buildSectionLabel("Attachment (Image)"),
+              _buildImageAttachmentSection(),
 
-            16.height,
+              16.height,
 
-            // About Myself Section
-            _buildSectionLabel("About Myself"),
-            _buildTextArea(controller: aboutController, hintText: "Type Here"),
+              // About Myself Section
+              _buildSectionLabel("About Myself"),
+              _buildTextArea(
+                controller: aboutController,
+                hintText: "Type Here",
+              ),
 
-            16.height,
+              16.height,
 
-            // Work Overview Section
-            _buildSectionLabel("Work Overview"),
-            _buildTextArea(
-              controller: workOverviewController,
-              hintText: "Type Here",
-            ),
+              // Work Overview Section
+              _buildSectionLabel("Work Overview"),
+              _buildTextArea(
+                controller: workOverviewController,
+                hintText: "Type Here",
+              ),
 
-            40.height,
+              40.height,
 
-            // Edit Information Button
-            CommonButton(
-              titleText: "Confirm",
-              onTap: () {
-                // Handle edit information
-                Get.snackbar(
-                  "Success",
-                  "Work information updated successfully",
-                  backgroundColor: AppColors.primaryColor,
-                  colorText: AppColors.white,
-                );
-              },
-            ),
+              // Edit Information Button
+              CommonButton(
+                titleText: "Confirm",
+                onTap: () {
+                  // Handle edit information
+                  Get.snackbar(
+                    "Success",
+                    "Work information updated successfully",
+                    backgroundColor: AppColors.primaryColor,
+                    colorText: AppColors.white,
+                  );
+                },
+              ),
 
-            20.height,
-          ],
+              20.height,
+            ],
+          ),
         ),
       ),
     );

@@ -30,114 +30,120 @@ class _EmployerAppointmentsScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: AppString.appointments),
-      body: Column(
-        children: [
-          // Filter Tabs
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-            child: Row(
-              children: tabs.asMap().entries.map((entry) {
-                int index = entry.key;
-                String tab = entry.value;
-                bool isSelected = selectedTabIndex == index;
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Filter Tabs
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              child: Row(
+                children: tabs.asMap().entries.map((entry) {
+                  int index = entry.key;
+                  String tab = entry.value;
+                  bool isSelected = selectedTabIndex == index;
 
-                return Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedTabIndex = index;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 4.w),
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
-                      decoration: BoxDecoration(
-                        color: isSelected
-                            ? AppColors.blue500
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(20.r),
-                        border: Border.all(color: AppColors.blue500, width: 2),
-                      ),
-                      child: Center(
-                        child: CommonText(
-                          text: tab,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                  return Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedTabIndex = index;
+                        });
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 4.w),
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        decoration: BoxDecoration(
                           color: isSelected
-                              ? AppColors.white
-                              : AppColors.blue500,
+                              ? AppColors.blue500
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(20.r),
+                          border: Border.all(
+                            color: AppColors.blue500,
+                            width: 2,
+                          ),
+                        ),
+                        child: Center(
+                          child: CommonText(
+                            text: tab,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: isSelected
+                                ? AppColors.white
+                                : AppColors.blue500,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              }).toList(),
-            ),
-          ),
-
-          // Appointments List
-          Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Column(
-                children: [
-                  // Show appointments based on selected tab
-                  if (selectedTabIndex == 0) ..._buildConfirmedAppointments(),
-                  if (selectedTabIndex == 1) ..._buildPendingAppointments(),
-                  if (selectedTabIndex == 2) ..._buildCancelledAppointments(),
-                ],
-              ),
-            ),
-          ),
-
-          // Bottom Action Button
-          if (selectedTabIndex == 0 || selectedTabIndex == 1) ...[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: CommonButton(
-                titleText: 'Cancel',
-                onTap: () {
-                  // Handle ask for appointment action
-                  showConfirmationDialog(
-                    message: 'Are You Sure You Want To Cancel The Appointment',
-                    onConfirm: () {
-                      // Handle cancel appointment action
-                      AppointmentRequestDialog.show(
-                        isConfirm: true,
-                        isReply: false,
-                      );
-                    },
-                    onCancel: () {
-                      // Handle cancel appointment action
-                      Get.back();
-                    },
                   );
-                },
-                titleColor: AppColors.white,
-                buttonColor: AppColors.red2,
-                borderColor: AppColors.red2,
-                buttonRadius: 4.r,
-                isGradient: false,
+                }).toList(),
               ),
             ),
-            16.height,
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              margin: EdgeInsets.only(bottom: 16.h),
-              child: CommonButton(
-                titleText: 'Create New Appointment',
-                onTap: () {
-                  Get.toNamed(AppRoutes.employerCreateAppointment);
-                },
-                buttonColor: AppColors.blue500,
-                titleColor: AppColors.white,
-                buttonRadius: 4.r,
-                titleWeight: FontWeight.w500,
+
+            // Appointments List
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  children: [
+                    // Show appointments based on selected tab
+                    if (selectedTabIndex == 0) ..._buildConfirmedAppointments(),
+                    if (selectedTabIndex == 1) ..._buildPendingAppointments(),
+                    if (selectedTabIndex == 2) ..._buildCancelledAppointments(),
+                  ],
+                ),
               ),
             ),
-            40.height,
+
+            // Bottom Action Button
+            if (selectedTabIndex == 0 || selectedTabIndex == 1) ...[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: CommonButton(
+                  titleText: 'Cancel',
+                  onTap: () {
+                    // Handle ask for appointment action
+                    showConfirmationDialog(
+                      message:
+                          'Are You Sure You Want To Cancel The Appointment',
+                      onConfirm: () {
+                        // Handle cancel appointment action
+                        AppointmentRequestDialog.show(
+                          isConfirm: true,
+                          isReply: false,
+                        );
+                      },
+                      onCancel: () {
+                        // Handle cancel appointment action
+                        Get.back();
+                      },
+                    );
+                  },
+                  titleColor: AppColors.white,
+                  buttonColor: AppColors.red2,
+                  borderColor: AppColors.red2,
+                  buttonRadius: 4.r,
+                  isGradient: false,
+                ),
+              ),
+              16.height,
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                margin: EdgeInsets.only(bottom: 16.h),
+                child: CommonButton(
+                  titleText: 'Create New Appointment',
+                  onTap: () {
+                    Get.toNamed(AppRoutes.employerCreateAppointment);
+                  },
+                  buttonColor: AppColors.blue500,
+                  titleColor: AppColors.white,
+                  buttonRadius: 4.r,
+                  titleWeight: FontWeight.w500,
+                ),
+              ),
+              40.height,
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

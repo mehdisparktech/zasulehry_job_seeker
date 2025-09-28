@@ -16,64 +16,73 @@ class EmployerNotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final NotificationController controller = Get.put(NotificationController());
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const CommonAppBar(
-        title: 'Notification',
-      ),
-      body: Column(
-        children: [
-          // Tab Header
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(8.r)
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Obx(() => _buildTabItem(
-                    'E-Mail',
-                    0,
-                    controller.selectedTab.value == 0,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        appBar: const CommonAppBar(title: 'Notification'),
+        body: Column(
+          children: [
+            // Tab Header
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+              decoration: BoxDecoration(
+                color: AppColors.background,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Obx(
+                      () => _buildTabItem(
+                        'E-Mail',
+                        0,
+                        controller.selectedTab.value == 0,
                         () => controller.changeTab(0),
-                  )),
-                ),
-                Expanded(
-                  child: Obx(() => _buildTabItem(
-                    'Push Message',
-                    1,
-                    controller.selectedTab.value == 1,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Obx(
+                      () => _buildTabItem(
+                        'Push Message',
+                        1,
+                        controller.selectedTab.value == 1,
                         () => controller.changeTab(1),
-                  )),
-                ),
-              ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          // Tab Content
-          Expanded(
-            child: Obx(() => _buildTabContent(controller.selectedTab.value)),
-          ),
-
-          // Create Jobseeker Alert Button
-          Container(
-            padding: EdgeInsets.all(16.w),
-            child: CommonButton(
-              titleText: 'Create Jobseeker Alert',
-              onTap: () {
-                // Handle create jobseeker alert
-                Get.to(CreateJobseekerAlertScreen());
-              },
+            // Tab Content
+            Expanded(
+              child: Obx(() => _buildTabContent(controller.selectedTab.value)),
             ),
-          ),
-        ],
+
+            // Create Jobseeker Alert Button
+            Container(
+              padding: EdgeInsets.all(16.w),
+              child: CommonButton(
+                titleText: 'Create Jobseeker Alert',
+                onTap: () {
+                  // Handle create jobseeker alert
+                  Get.to(CreateJobseekerAlertScreen());
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildTabItem(String title, int index, bool isSelected, VoidCallback onTap) {
+  Widget _buildTabItem(
+    String title,
+    int index,
+    bool isSelected,
+    VoidCallback onTap,
+  ) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -109,7 +118,7 @@ class EmployerNotificationsScreen extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Get.snackbar("success", "successful prohect complete here");
-    },
+              },
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.white,
@@ -123,8 +132,7 @@ class EmployerNotificationsScreen extends StatelessWidget {
                   ],
                 ),
                 child: GestureDetector(
-                  onTap: (){
-                  },
+                  onTap: () {},
                   child: ListTile(
                     leading: Icon(
                       Icons.settings,
@@ -186,10 +194,7 @@ class EmployerNotificationsScreen extends StatelessWidget {
                   SizedBox(height: 8.h),
                   Text(
                     'Configure your push notification preferences',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      color: Colors.grey,
-                    ),
+                    style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -197,8 +202,7 @@ class EmployerNotificationsScreen extends StatelessWidget {
             ),
 
           // Empty space if no content
-          if (selectedTab == 0)
-            SizedBox(height: 16.h),
+          if (selectedTab == 0) SizedBox(height: 16.h),
         ],
       ),
     );
@@ -235,9 +239,7 @@ class _NotificationScreenWithTabControllerState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: const CommonAppBar(
-        title: 'Notification',
-      ),
+      appBar: const CommonAppBar(title: 'Notification'),
       body: Column(
         children: [
           // Custom Tab Header
@@ -368,10 +370,7 @@ class _NotificationScreenWithTabControllerState
                         SizedBox(height: 8.h),
                         Text(
                           'Configure your push notification preferences',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            color: Colors.grey,
-                          ),
+                          style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -388,7 +387,7 @@ class _NotificationScreenWithTabControllerState
             child: CommonButton(
               titleText: 'Create Jobseeker Alert',
               onTap: () {
-               Get.toNamed(CreateJobseekerAlertScreen().toString());
+                Get.toNamed(CreateJobseekerAlertScreen().toString());
               },
             ),
           ),

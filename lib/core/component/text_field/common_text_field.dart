@@ -82,7 +82,7 @@ class CommonTextField extends StatelessWidget {
       maxLength: mexLength,
       maxLines: maxLines,
       readOnly: readOnly,
-      cursorColor: AppColors.white,
+      cursorColor: AppColors.black,
       inputFormatters: inputFormatters,
       style: TextStyle(fontSize: 14, color: textColor),
       onFieldSubmitted: onSubmitted,

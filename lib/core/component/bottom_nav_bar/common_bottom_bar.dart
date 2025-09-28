@@ -76,44 +76,46 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const NeverScrollableScrollPhysics(),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(12.sp),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
+    return SafeArea(
+      child: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(12.sp),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.r),
+              topRight: Radius.circular(20.r),
+            ),
           ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(unselectedIcons.length, (index) {
-            return GestureDetector(
-              onTap: () => onTap(index),
-              child: Container(
-                margin: EdgeInsetsDirectional.all(12.sp),
-                child: Column(
-                  children: [
-                    index == bottomNavIndex
-                        ? selectedIcons[index]
-                        : unselectedIcons[index],
-                    CommonText(
-                      text: text[index],
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: index == bottomNavIndex
-                          ? AppColors.primaryColor
-                          : Colors.grey,
-                    ),
-                  ],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(unselectedIcons.length, (index) {
+              return GestureDetector(
+                onTap: () => onTap(index),
+                child: Container(
+                  margin: EdgeInsetsDirectional.all(12.sp),
+                  child: Column(
+                    children: [
+                      index == bottomNavIndex
+                          ? selectedIcons[index]
+                          : unselectedIcons[index],
+                      CommonText(
+                        text: text[index],
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: index == bottomNavIndex
+                            ? AppColors.primaryColor
+                            : Colors.grey,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+          ),
         ),
       ),
     );

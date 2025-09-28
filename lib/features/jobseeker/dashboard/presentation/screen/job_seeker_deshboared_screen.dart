@@ -14,75 +14,77 @@ class JobSeekerDeshboaredScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(title: AppString.dashboard, isBackButton: false),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Item(
-                image: AppImages.person2,
-                title: AppString.myAppliedJobs,
-                onTap: () => Get.toNamed(AppRoutes.myAppliedJobs),
-              ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Item(
+                  image: AppImages.person2,
+                  title: AppString.myAppliedJobs,
+                  onTap: () => Get.toNamed(AppRoutes.myAppliedJobs),
+                ),
 
-              /// Approved Jobs Item here
-              Item(
-                title: AppString.approvedJobs,
-                image: AppImages.approvedJob,
-                onTap: () => Get.toNamed(AppRoutes.approvedJobs),
-              ),
+                /// Approved Jobs Item here
+                Item(
+                  title: AppString.approvedJobs,
+                  image: AppImages.approvedJob,
+                  onTap: () => Get.toNamed(AppRoutes.approvedJobs),
+                ),
 
-              /// Pending Jobs Item here
-              Item(
-                title: AppString.pendingJobs,
-                image: AppImages.pendingJob,
-                onTap: () => Get.toNamed(AppRoutes.pendingJobs),
-              ),
+                /// Pending Jobs Item here
+                Item(
+                  title: AppString.pendingJobs,
+                  image: AppImages.pendingJob,
+                  onTap: () => Get.toNamed(AppRoutes.pendingJobs),
+                ),
 
-              /// Canceled Jobs Item here
-              Item(
-                onTap: () => Get.toNamed(AppRoutes.canceledJobs),
-                title: AppString.canceledJobs,
-                image: AppImages.cancelledJob,
-              ),
+                /// Canceled Jobs Item here
+                Item(
+                  onTap: () => Get.toNamed(AppRoutes.canceledJobs),
+                  title: AppString.canceledJobs,
+                  image: AppImages.cancelledJob,
+                ),
 
-              /// Saved Jobs Item here
-              Item(
-                title: AppString.savedJobs,
-                icon: Icons.favorite_border_outlined,
-                onTap: () => Get.toNamed(AppRoutes.savedJobs),
-              ),
+                /// Saved Jobs Item here
+                Item(
+                  title: AppString.savedJobs,
+                  icon: Icons.favorite_border_outlined,
+                  onTap: () => Get.toNamed(AppRoutes.savedJobs),
+                ),
 
-              Item(
-                image: AppImages.feedback,
-                title: AppString.feedback,
-                onTap: () => Get.toNamed(AppRoutes.feedback),
-              ),
+                Item(
+                  image: AppImages.feedback,
+                  title: AppString.feedback,
+                  onTap: () => Get.toNamed(AppRoutes.feedback),
+                ),
 
-              /// Appointments Item here
-              Item(
-                image: AppImages.appointments,
-                title: AppString.appointments,
-                onTap: () => Get.toNamed(AppRoutes.appointments),
-              ),
+                /// Appointments Item here
+                Item(
+                  image: AppImages.appointments,
+                  title: AppString.appointments,
+                  onTap: () => Get.toNamed(AppRoutes.appointments),
+                ),
 
-              /// Resume Creation Item here
-              Item(
-                image: AppImages.resume,
-                title: AppString.jobsinAppResumeCreation,
-                onTap: () => Get.toNamed(AppRoutes.cvCreateStep1),
-              ),
-              Item(
-                image: AppImages.calculator,
-                title: AppString.salaryCalculator,
-                onTap: () => Get.toNamed(AppRoutes.salaryCalculatorScreen),
-              ),
-              Item(
-                image: AppImages.comparison,
-                title: AppString.salaryComparison,
-                onTap: () => Get.toNamed(AppRoutes.salaryComparison),
-              ),
-            ],
+                /// Resume Creation Item here
+                Item(
+                  image: AppImages.resume,
+                  title: AppString.jobsinAppResumeCreation,
+                  onTap: () => Get.toNamed(AppRoutes.cvCreateStep1),
+                ),
+                Item(
+                  image: AppImages.calculator,
+                  title: AppString.salaryCalculator,
+                  onTap: () => Get.toNamed(AppRoutes.salaryCalculatorScreen),
+                ),
+                Item(
+                  image: AppImages.comparison,
+                  title: AppString.salaryComparison,
+                  onTap: () => Get.toNamed(AppRoutes.salaryComparison),
+                ),
+              ],
+            ),
           ),
         ),
       ),

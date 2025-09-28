@@ -10,14 +10,18 @@ class SalaryComparisonDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CommonAppBar(title: AppString.salaryComparison),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              CommonText(text: 'shows here all information this job category'),
-            ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CommonText(
+                  text: 'shows here all information this job category',
+                ),
+              ],
+            ),
           ),
         ),
       ),

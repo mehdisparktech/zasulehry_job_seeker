@@ -27,36 +27,38 @@ class _ViewAppointmentScreenState extends State<ViewAppointmentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: 'View'),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CommonTextField(
-                controller: messageController,
-                hintText: 'View Appointment',
-                fillColor: AppColors.white,
-                borderColor: AppColors.blue500,
-                borderRadius: 8.r,
-                maxLines: 10,
-              ),
-              100.height,
-              CommonButton(
-                titleText: 'Send Now',
-                onTap: () {
-                  Get.snackbar(
-                    'Success',
-                    'Appointment sent successfully',
-                    snackPosition: SnackPosition.BOTTOM,
-                    backgroundColor: AppColors.blue500,
-                    colorText: AppColors.white,
-                  );
-                },
-                buttonRadius: 8.r,
-              ),
-            ],
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CommonTextField(
+                  controller: messageController,
+                  hintText: 'View Appointment',
+                  fillColor: AppColors.white,
+                  borderColor: AppColors.blue500,
+                  borderRadius: 8.r,
+                  maxLines: 10,
+                ),
+                100.height,
+                CommonButton(
+                  titleText: 'Send Now',
+                  onTap: () {
+                    Get.snackbar(
+                      'Success',
+                      'Appointment sent successfully',
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: AppColors.blue500,
+                      colorText: AppColors.white,
+                    );
+                  },
+                  buttonRadius: 8.r,
+                ),
+              ],
+            ),
           ),
         ),
       ),

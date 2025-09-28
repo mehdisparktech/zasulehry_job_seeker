@@ -121,39 +121,41 @@ class _EmployerMessageScreenState extends State<EmployerMessageScreen> {
           ),
 
           /// Body Section starts here
-          body: controller.isLoading
-              /// Loading bar here
-              ? const Center(child: CircularProgressIndicator())
-              /// Show data  here
-              : ListView.builder(
-                  reverse: true,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 12.h,
-                    horizontal: 8.w,
+          body: SafeArea(
+            child: controller.isLoading
+                /// Loading bar here
+                ? const Center(child: CircularProgressIndicator())
+                /// Show data  here
+                : ListView.builder(
+                    reverse: true,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 12.h,
+                      horizontal: 8.w,
+                    ),
+                    controller: controller.scrollController,
+                    itemCount: controller.isMoreLoading
+                        ? controller.messages.length + 1
+                        : controller.messages.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      /// Message item here
+                      if (index < controller.messages.length) {
+                        EmployerChatMessageModel message =
+                            controller.messages[index];
+                        return EmployerChatBubbleMessage(
+                          index: index,
+                          image: message.image,
+                          time: message.time,
+                          text: message.text,
+                          isMe: message.isMe,
+                          onTap: () {},
+                        );
+                      } else {
+                        /// More data loading bar
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
                   ),
-                  controller: controller.scrollController,
-                  itemCount: controller.isMoreLoading
-                      ? controller.messages.length + 1
-                      : controller.messages.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    /// Message item here
-                    if (index < controller.messages.length) {
-                      EmployerChatMessageModel message =
-                          controller.messages[index];
-                      return EmployerChatBubbleMessage(
-                        index: index,
-                        image: message.image,
-                        time: message.time,
-                        text: message.text,
-                        isMe: message.isMe,
-                        onTap: () {},
-                      );
-                    } else {
-                      /// More data loading bar
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                  },
-                ),
+          ),
 
           /// bottom Navigation Bar Section starts here
           bottomNavigationBar: AnimatedPadding(

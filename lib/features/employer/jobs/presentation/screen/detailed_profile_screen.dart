@@ -21,7 +21,7 @@ class DetailedProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CommonAppBar(title: 'View Profile'),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 

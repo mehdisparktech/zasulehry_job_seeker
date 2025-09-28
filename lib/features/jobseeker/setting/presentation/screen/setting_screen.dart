@@ -33,8 +33,9 @@ class SettingScreen extends StatelessWidget {
       ),
 
       /// Body Section starts here
-      body: GetBuilder<SettingController>(
-        builder: (controller) {
+      body: SafeArea(
+        child: GetBuilder<SettingController>(
+          builder: (controller) {
           return SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -132,6 +133,7 @@ class SettingScreen extends StatelessWidget {
             ),
           );
         },
+        ),
       ),
     );
   }

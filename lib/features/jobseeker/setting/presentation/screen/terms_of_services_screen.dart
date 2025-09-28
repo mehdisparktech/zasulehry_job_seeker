@@ -20,22 +20,24 @@ class TermsOfServicesScreen extends StatelessWidget {
       appBar: CommonAppBar(title: AppString.termsOfServices),
 
       /// Body Section starts here
-      body: GetBuilder<TermsOfServicesController>(
-        builder: (controller) => switch (controller.status) {
-          /// Loading bar here
-          Status.loading => const CommonLoader(),
+      body: SafeArea(
+        child: GetBuilder<TermsOfServicesController>(
+          builder: (controller) => switch (controller.status) {
+            /// Loading bar here
+            Status.loading => const CommonLoader(),
 
-          /// Error Handle here
-          Status.error => ErrorScreen(
-            onTap: TermsOfServicesController.instance.geTermsOfServicesRepo(),
-          ),
+            /// Error Handle here
+            Status.error => ErrorScreen(
+              onTap: TermsOfServicesController.instance.geTermsOfServicesRepo(),
+            ),
 
-          /// Show main data here
-          Status.completed => SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
-            child: Html(data: controller.data.content),
-          ),
-        },
+            /// Show main data here
+            Status.completed => SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+              child: Html(data: controller.data.content),
+            ),
+          },
+        ),
       ),
       bottomSheet: Container(
         color: AppColors.background,

@@ -32,47 +32,49 @@ class _CreateAppointmentScreenState extends State<CreateAppointmentScreen> {
         title: 'Create Appointment',
         isShowBackButton: true,
       ),
-      body: GetBuilder<CreateAppointmentController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Search Job Seeker Dropdown
-                _buildJobSeekerDropdown(),
+      body: SafeArea(
+        child: GetBuilder<CreateAppointmentController>(
+          builder: (controller) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.all(16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Search Job Seeker Dropdown
+                  _buildJobSeekerDropdown(),
 
-                20.height,
+                  20.height,
 
-                // Date and Time Selection Row
-                Row(
-                  children: [
-                    Expanded(child: _buildDateSelector()),
-                    16.width,
-                    Expanded(child: _buildTimeSelector()),
-                  ],
-                ),
+                  // Date and Time Selection Row
+                  Row(
+                    children: [
+                      Expanded(child: _buildDateSelector()),
+                      16.width,
+                      Expanded(child: _buildTimeSelector()),
+                    ],
+                  ),
 
-                20.height,
+                  20.height,
 
-                // Appointment Options
-                _buildAppointmentOptions(),
+                  // Appointment Options
+                  _buildAppointmentOptions(),
 
-                20.height,
+                  20.height,
 
-                // Message Input
-                _buildMessageInput(),
+                  // Message Input
+                  _buildMessageInput(),
 
-                30.height,
+                  30.height,
 
-                // Confirm Button
-                _buildConfirmButton(),
+                  // Confirm Button
+                  _buildConfirmButton(),
 
-                20.height,
-              ],
-            ),
-          );
-        },
+                  20.height,
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

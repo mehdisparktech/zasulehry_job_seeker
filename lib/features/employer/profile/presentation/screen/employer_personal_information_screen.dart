@@ -53,139 +53,141 @@ class _EmployerPersonalInformationScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.only(top: 16.h, bottom: 24.h),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment(-0.9, 0),
-                      end: Alignment(1.0, 0),
-                      colors: [
-                        Color(0xFF083E4B),
-                        Color(0xFF074E5E),
-                        Color(0xFF0288A6),
-                      ],
-                      stops: [0.0, 0.4, 1.0],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(top: 16.h, bottom: 24.h),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment(-0.9, 0),
+                        end: Alignment(1.0, 0),
+                        colors: [
+                          Color(0xFF083E4B),
+                          Color(0xFF074E5E),
+                          Color(0xFF0288A6),
+                        ],
+                        stops: [0.0, 0.4, 1.0],
+                      ),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(36.r),
+                        bottomRight: Radius.circular(36.r),
+                      ),
                     ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(36.r),
-                      bottomRight: Radius.circular(36.r),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: () => Get.back(),
-                              icon: Icon(
-                                Icons.arrow_back_ios_new_rounded,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () => Get.back(),
+                                icon: Icon(
+                                  Icons.arrow_back_ios_new_rounded,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.15,
+                              ),
+                              const CommonText(
+                                text: AppString.personalInformation,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
                                 color: Colors.white,
                               ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.15,
-                            ),
-                            const CommonText(
-                              text: AppString.personalInformation,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ],
+                            ],
+                          ),
+                          SizedBox(height: 64.h), // Space for avatar
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // Name text with extra top padding to accommodate avatar
+                  Align(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 64.h, bottom: 16.h),
+                      child: CommonText(
+                        text: (LocalStorage.myName.isNotEmpty
+                            ? LocalStorage.myName
+                            : "Google"),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.blue500,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+
+                  _buildPersonalInformationRow(),
+
+                  40.height,
+
+                  // Name Field
+
+                  // Edit Profile Button
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CommonButton(
+                            titleText: "Edit Profile",
+                            onTap: () {
+                              Get.toNamed(
+                                AppRoutes.employerEditPersonalInformation,
+                                arguments: {"appTitle": "Edit Profile"},
+                              );
+                              // Navigate to edit profile or handle edit functionality
+                            },
+                          ),
                         ),
-                        SizedBox(height: 64.h), // Space for avatar
+                        16.width,
+                        Expanded(
+                          child: CommonButton(
+                            titleText: "Complete Profile",
+                            onTap: () {
+                              Get.toNamed(
+                                AppRoutes.employerEditPersonalInformation,
+                                arguments: {"appTitle": "Complete Profile"},
+                              );
+                              // Navigate to edit profile or handle edit functionality
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                ),
-
-                // Name text with extra top padding to accommodate avatar
-                Align(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 64.h, bottom: 16.h),
-                    child: CommonText(
-                      text: (LocalStorage.myName.isNotEmpty
-                          ? LocalStorage.myName
-                          : "Google"),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.blue500,
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-
-                _buildPersonalInformationRow(),
-
-                40.height,
-
-                // Name Field
-
-                // Edit Profile Button
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: CommonButton(
-                          titleText: "Edit Profile",
-                          onTap: () {
-                            Get.toNamed(
-                              AppRoutes.employerEditPersonalInformation,
-                              arguments: {"appTitle": "Edit Profile"},
-                            );
-                            // Navigate to edit profile or handle edit functionality
-                          },
-                        ),
+                ],
+              ),
+              // Positioned CircleAvatar to overlap header container
+              Positioned(
+                top: 160.h, // Adjust this value to position avatar correctly
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.transparent,
+                    radius: 52.r,
+                    child: const ClipOval(
+                      child: CommonImage(
+                        imageSrc: AppImages.google,
+                        size: 120,
+                        defaultImage: AppImages.google,
+                        fill: BoxFit.cover,
                       ),
-                      16.width,
-                      Expanded(
-                        child: CommonButton(
-                          titleText: "Complete Profile",
-                          onTap: () {
-                            Get.toNamed(
-                              AppRoutes.employerEditPersonalInformation,
-                              arguments: {"appTitle": "Complete Profile"},
-                            );
-                            // Navigate to edit profile or handle edit functionality
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            // Positioned CircleAvatar to overlap header container
-            Positioned(
-              top: 160.h, // Adjust this value to position avatar correctly
-              left: 0,
-              right: 0,
-              child: Center(
-                child: CircleAvatar(
-                  backgroundColor: AppColors.transparent,
-                  radius: 52.r,
-                  child: const ClipOval(
-                    child: CommonImage(
-                      imageSrc: AppImages.google,
-                      size: 120,
-                      defaultImage: AppImages.google,
-                      fill: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -19,24 +19,26 @@ class AppointmentsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: const CommonAppBar(title: AppString.appointments),
-      body: Column(
-        children: [
-          // Filter Tabs
-          const AppointmentTabWidget(),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Filter Tabs
+            const AppointmentTabWidget(),
 
-          // Appointments List
-          Expanded(
-            child: GetBuilder<AppointmentsController>(
-              builder: (controller) => SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Column(children: _buildAppointmentsList(controller)),
+            // Appointments List
+            Expanded(
+              child: GetBuilder<AppointmentsController>(
+                builder: (controller) => SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: Column(children: _buildAppointmentsList(controller)),
+                ),
               ),
             ),
-          ),
 
-          // Bottom Action Buttons
-          const BottomActionButtons(),
-        ],
+            // Bottom Action Buttons
+            const BottomActionButtons(),
+          ],
+        ),
       ),
     );
   }

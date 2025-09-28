@@ -13,43 +13,45 @@ class EmployerDownloadCenterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: 'Download Center', isCenterTitle: true),
-      body: Padding(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          children: [
-            SizedBox(height: 20.h),
-            _buildDownloadItem(
-              title: 'From 01',
-              onDownload: () {
-                // Handle download for Form 01
-                _handleDownload('Form 01');
-              },
-            ),
-            SizedBox(height: 16.h),
-            _buildDownloadItem(
-              title: 'From 02',
-              onDownload: () {
-                // Handle download for Form 02
-                _handleDownload('Form 02');
-              },
-            ),
-            SizedBox(height: 16.h),
-            _buildDownloadItem(
-              title: 'From 03',
-              onDownload: () {
-                // Handle download for Form 03
-                _handleDownload('Form 03');
-              },
-            ),
-            SizedBox(height: 16.h),
-            _buildDownloadItem(
-              title: 'From 04',
-              onDownload: () {
-                // Handle download for Form 04
-                _handleDownload('Form 04');
-              },
-            ),
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            children: [
+              SizedBox(height: 20.h),
+              _buildDownloadItem(
+                title: 'From 01',
+                onDownload: () {
+                  // Handle download for Form 01
+                  _handleDownload('Form 01');
+                },
+              ),
+              SizedBox(height: 16.h),
+              _buildDownloadItem(
+                title: 'From 02',
+                onDownload: () {
+                  // Handle download for Form 02
+                  _handleDownload('Form 02');
+                },
+              ),
+              SizedBox(height: 16.h),
+              _buildDownloadItem(
+                title: 'From 03',
+                onDownload: () {
+                  // Handle download for Form 03
+                  _handleDownload('Form 03');
+                },
+              ),
+              SizedBox(height: 16.h),
+              _buildDownloadItem(
+                title: 'From 04',
+                onDownload: () {
+                  // Handle download for Form 04
+                  _handleDownload('Form 04');
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

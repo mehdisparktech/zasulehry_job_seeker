@@ -42,7 +42,7 @@ class ViewJobDetailsScreen extends StatelessWidget {
               ]
             : [],
       ),
-      body: _buildBody(controller),
+      body: SafeArea(child: _buildBody(controller)),
     );
   }
 

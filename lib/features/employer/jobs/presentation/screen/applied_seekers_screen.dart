@@ -15,7 +15,7 @@ class AppliedSeekersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(title: 'Applied Seekers'),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 

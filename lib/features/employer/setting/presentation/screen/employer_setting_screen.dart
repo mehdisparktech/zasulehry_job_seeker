@@ -39,54 +39,56 @@ class EmployerSettingScreen extends StatelessWidget {
       ),
 
       /// Body Section starts here
-      body: GetBuilder<EmployerSettingController>(
-        builder: (controller) {
-          return SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              child: Column(
-                children: [
-                  // 2 step verification item
-                  InkWell(
-                    onTap: () =>
-                        Get.toNamed(AppRoutes.employerTwoStepVerification),
-                    child: const SettingItem(
-                      title: AppString.twoStepVerification,
-                      iconDate: Icons.security,
+      body: SafeArea(
+        child: GetBuilder<EmployerSettingController>(
+          builder: (controller) {
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                child: Column(
+                  children: [
+                    // 2 step verification item
+                    InkWell(
+                      onTap: () =>
+                          Get.toNamed(AppRoutes.employerTwoStepVerification),
+                      child: const SettingItem(
+                        title: AppString.twoStepVerification,
+                        iconDate: Icons.security,
+                      ),
                     ),
-                  ),
 
-                  /// Language Item
-                  InkWell(
-                    onTap: () => Get.toNamed(AppRoutes.languageSelection),
-                    child: const SettingItem(
-                      title: AppString.language,
-                      iconDate: Icons.language,
+                    /// Language Item
+                    InkWell(
+                      onTap: () => Get.toNamed(AppRoutes.languageSelection),
+                      child: const SettingItem(
+                        title: AppString.language,
+                        iconDate: Icons.language,
+                      ),
                     ),
-                  ),
 
-                  /// Country Item
-                  InkWell(
-                    onTap: () => Get.toNamed(AppRoutes.countrySelection),
-                    child: const SettingItem(
-                      title: AppString.country,
-                      iconDate: Icons.location_on_outlined,
+                    /// Country Item
+                    InkWell(
+                      onTap: () => Get.toNamed(AppRoutes.countrySelection),
+                      child: const SettingItem(
+                        title: AppString.country,
+                        iconDate: Icons.location_on_outlined,
+                      ),
                     ),
-                  ),
 
-                  /// Change Password Item
-                  InkWell(
-                    onTap: () => Get.toNamed(AppRoutes.changePassword),
-                    child: const SettingItem(
-                      title: AppString.changePassword,
-                      iconDate: Icons.lock_outline,
+                    /// Change Password Item
+                    InkWell(
+                      onTap: () => Get.toNamed(AppRoutes.changePassword),
+                      child: const SettingItem(
+                        title: AppString.changePassword,
+                        iconDate: Icons.lock_outline,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

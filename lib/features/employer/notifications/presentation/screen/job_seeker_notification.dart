@@ -40,10 +40,12 @@ class JobSeekersScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Obx(
-        () => controller.notifications.isEmpty
-            ? _buildEmptyState()
-            : _buildNotificationsList(controller),
+      body: SafeArea(
+        child: Obx(
+          () => controller.notifications.isEmpty
+              ? _buildEmptyState()
+              : _buildNotificationsList(controller),
+        ),
       ),
     );
   }

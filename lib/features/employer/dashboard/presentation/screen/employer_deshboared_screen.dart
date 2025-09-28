@@ -23,120 +23,122 @@ class EmployerDeshboaredScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              // My Posted Jobs
-              Item(
-                image: AppImages.postJob,
-                title: AppString.myPostedJobs,
-                onTap: () => Get.toNamed(AppRoutes.employerPostedJobs),
-              ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                // My Posted Jobs
+                Item(
+                  image: AppImages.postJob,
+                  title: AppString.myPostedJobs,
+                  onTap: () => Get.toNamed(AppRoutes.employerPostedJobs),
+                ),
 
-              // Post Job
-              Item(
-                image: AppImages.add2,
-                title: AppString.postJob,
-                onTap: () => Get.toNamed(AppRoutes.employerPostJob),
-              ),
+                // Post Job
+                Item(
+                  image: AppImages.add2,
+                  title: AppString.postJob,
+                  onTap: () => Get.toNamed(AppRoutes.employerPostJob),
+                ),
 
-              // AI Tools
-              Item(
-                image: AppImages.setting,
-                title: AppString.aiTools,
-                onTap: () => Get.toNamed(AppRoutes.employerAiTools),
-              ),
+                // AI Tools
+                Item(
+                  image: AppImages.setting,
+                  title: AppString.aiTools,
+                  onTap: () => Get.toNamed(AppRoutes.employerAiTools),
+                ),
 
-              // Appointments
-              Item(
-                image: AppImages.appointments,
-                title: AppString.appointments,
-                onTap: () => Get.toNamed(AppRoutes.employerAppointments),
-              ),
+                // Appointments
+                Item(
+                  image: AppImages.appointments,
+                  title: AppString.appointments,
+                  onTap: () => Get.toNamed(AppRoutes.employerAppointments),
+                ),
 
-              // WhatsApp Support
-              Item(
-                image: AppImages.whatsapp,
-                title: AppString.whatsappSupport,
-                onTap: () {
-                  // showDialog(
-                  //   context: context,
-                  //   builder: (context) => WhatsappSupportPopup(
-                  //     onSubmit: () {
-                  //       // Handle the WhatsApp link submission here
-                  //       if (kDebugMode) {
-                  //         print('WhatsApp link submitted');
-                  //       }
-                  //     },
-                  //   ),
-                  // );
-                },
-              ),
+                // WhatsApp Support
+                Item(
+                  image: AppImages.whatsapp,
+                  title: AppString.whatsappSupport,
+                  onTap: () {
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (context) => WhatsappSupportPopup(
+                    //     onSubmit: () {
+                    //       // Handle the WhatsApp link submission here
+                    //       if (kDebugMode) {
+                    //         print('WhatsApp link submitted');
+                    //       }
+                    //     },
+                    //   ),
+                    // );
+                  },
+                ),
 
-              // Add WhatsApp Link
-              Item(
-                image: AppImages.whatsapp,
-                title: AppString.addWhatsappLink,
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AddWhatsappLinkPopup(
-                      currentLink:
-                          'https://wa.me/1234567890?text=Hello%20I%20am%20interested%20in%20your%20job%20posting',
-                      onEdit: () {
-                        // Show edit dialog (can reuse WhatsappSupportPopup)
-                        showDialog(
-                          context: context,
-                          builder: (context) => WhatsappSupportPopup(
-                            onSubmit: () {
-                              if (kDebugMode) {
-                                print('WhatsApp link updated');
-                              }
-                            },
-                          ),
-                        );
-                      },
-                      onDelete: () {
-                        // Handle WhatsApp link deletion
-                        if (kDebugMode) {
-                          print('WhatsApp link deleted');
-                        }
-                      },
-                    ),
-                  );
-                },
-              ),
+                // Add WhatsApp Link
+                Item(
+                  image: AppImages.whatsapp,
+                  title: AppString.addWhatsappLink,
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AddWhatsappLinkPopup(
+                        currentLink:
+                            'https://wa.me/1234567890?text=Hello%20I%20am%20interested%20in%20your%20job%20posting',
+                        onEdit: () {
+                          // Show edit dialog (can reuse WhatsappSupportPopup)
+                          showDialog(
+                            context: context,
+                            builder: (context) => WhatsappSupportPopup(
+                              onSubmit: () {
+                                if (kDebugMode) {
+                                  print('WhatsApp link updated');
+                                }
+                              },
+                            ),
+                          );
+                        },
+                        onDelete: () {
+                          // Handle WhatsApp link deletion
+                          if (kDebugMode) {
+                            print('WhatsApp link deleted');
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ),
 
-              // Contact & Support
-              Item(
-                image: AppImages.contactSupport,
-                title: AppString.contactAndSupport,
-                onTap: () => Get.toNamed(AppRoutes.employerContactSupport),
-              ),
+                // Contact & Support
+                Item(
+                  image: AppImages.contactSupport,
+                  title: AppString.contactAndSupport,
+                  onTap: () => Get.toNamed(AppRoutes.employerContactSupport),
+                ),
 
-              // Download Center
-              Item(
-                image: AppImages.download2,
-                title: AppString.downloadCenter,
-                onTap: () => Get.toNamed(AppRoutes.employerDownloadCenter),
-              ),
+                // Download Center
+                Item(
+                  image: AppImages.download2,
+                  title: AppString.downloadCenter,
+                  onTap: () => Get.toNamed(AppRoutes.employerDownloadCenter),
+                ),
 
-              // Verify Account
-              Item(
-                image: AppImages.verify,
-                title: AppString.verifyAccount,
-                onTap: () => Get.toNamed(AppRoutes.employerVerifyAccount),
-              ),
+                // Verify Account
+                Item(
+                  image: AppImages.verify,
+                  title: AppString.verifyAccount,
+                  onTap: () => Get.toNamed(AppRoutes.employerVerifyAccount),
+                ),
 
-              // Salary Calculator
-              Item(
-                image: AppImages.calculator,
-                title: AppString.salaryCalculator,
-                onTap: () => Get.toNamed(AppRoutes.employerSalaryCalculator),
-              ),
-            ],
+                // Salary Calculator
+                Item(
+                  image: AppImages.calculator,
+                  title: AppString.salaryCalculator,
+                  onTap: () => Get.toNamed(AppRoutes.employerSalaryCalculator),
+                ),
+              ],
+            ),
           ),
         ),
       ),
