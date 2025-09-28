@@ -53,7 +53,7 @@ class EditProfileAllFiled extends StatelessWidget {
           controller: controller.phoneNumberController,
           validator: OtherHelper.validator,
           hintText: "Phone Number",
-          keyboardType: TextInputType.phone,
+          keyboardType: TextInputType.number,
           borderRadius: 8,
           paddingHorizontal: 16,
           paddingVertical: 16,

@@ -257,12 +257,14 @@ class CvCreateStep1Screen extends StatelessWidget {
           'Contact Number :',
           controller.contactController,
           'Enter Your Contact Number',
+          isNumber: true
         ),
         SizedBox(height: 12.h),
         _buildTextField(
           'Your Age :',
           controller.ageController,
           'Enter Your Age',
+          isNumber: true,
         ),
         SizedBox(height: 12.h),
         _buildTextField(
@@ -369,64 +371,54 @@ class CvCreateStep1Screen extends StatelessWidget {
   }
 
   Widget _buildDropdownField(
-    String value,
-    List<String> items,
-    IconData icon, {
-    required Function(String) onChanged,
-  }) {
-    return GestureDetector(
-      onTap: () => _showDropdownModal(items, onChanged),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-        decoration: BoxDecoration(
-          color: AppColors.transparent,
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(
-            color: AppColors.primaryColor.withOpacity(0.3),
-            width: 2,
-          ),
+      String value,
+      List<String> items,
+      IconData icon, {
+        required Function(String) onChanged,
+      }) {
+    // Ensure the current value exists in the items list
+    String validValue = items.contains(value) ? value : items.first;
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+      decoration: BoxDecoration(
+        color: AppColors.transparent,
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(
+          color: AppColors.primaryColor.withOpacity(0.3),
+          width: 2,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              value,
-              style: TextStyle(fontSize: 16.sp, color: AppColors.black),
-            ),
-            Icon(icon, color: Colors.grey, size: 20.w),
-          ],
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: validValue,
+          isExpanded: true,
+          icon: Icon(icon, color: Colors.grey, size: 20.w),
+          style: TextStyle(fontSize: 16.sp, color: AppColors.black),
+          dropdownColor: Colors.white,
+          onChanged: (String? newValue) {
+            if (newValue != null) {
+              onChanged(newValue);
+            }
+          },
+          items: items.map<DropdownMenuItem<String>>((String item) {
+            return DropdownMenuItem<String>(
+              value: item,
+              child: Text(
+                item,
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            );
+          }).toList(),
         ),
       ),
     );
   }
 
-  void _showDropdownModal(List<String> items, Function(String) onChanged) {
-    Get.bottomSheet(
-      Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
-          ),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: items
-              .map(
-                (item) => ListTile(
-                  title: Text(item),
-                  onTap: () {
-                    onChanged(item);
-                    Get.back();
-                  },
-                ),
-              )
-              .toList(),
-        ),
-      ),
-    );
-  }
 
   Widget _buildTextField(
     String label,
@@ -434,6 +426,7 @@ class CvCreateStep1Screen extends StatelessWidget {
     String hintText, {
     bool isDate = false,
     int maxLines = 1,
+        bool isNumber = false,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -449,6 +442,7 @@ class CvCreateStep1Screen extends StatelessWidget {
           controller: textController,
           hintText: hintText,
           maxLines: maxLines,
+          keyboardType: isNumber ? TextInputType.number : TextInputType.text,
           suffixIcon: isDate
               ? Icon(Icons.calendar_today, size: 20, color: Colors.grey[600])
               : null,
@@ -558,72 +552,63 @@ class CvCreateStep1Screen extends StatelessWidget {
           border: Border.all(color: AppColors.primaryColor, width: 2.w),
         ),
         child: Row(
-          children: List.generate(
-            controller.busAgricalrureOptions.length * 2 - 1,
-            (i) {
-              if (i.isOdd) {
-                return Container(
-                  width: 2.w,
-                  height: 45.h,
-                  color: AppColors.backgroundGradient2,
-                );
-              }
+          children: List.generate(controller.busAgricalrureOptions.length * 2 - 1, (i) {
+            if (i.isOdd) {
+              return Container(
+                width: 1.w,
+                height: 35.h,
+                color: AppColors.primaryColor,
+              );
+            }
 
-              int index = i ~/ 2;
-              String busClass = controller.busAgricalrureOptions[index];
+            int index = i ~/ 2;
+            String busClass = controller.busAgricalrureOptions[index];
 
-              return Expanded(
-                child: GestureDetector(
-                  onTap: () =>
-                      controller.selectedBusAgricalrure.value = busClass,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12.h),
-                    decoration: BoxDecoration(
-                      color: controller.selectedBusAgricalrure.value == busClass
-                          ? AppColors.primaryColor
-                          : Colors.transparent,
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xFF083E4B),
-                          Color(0xFF074E5E),
-                          Color(0xFF0288A6),
-                        ],
-                        stops: [0.0, 0.5, 1.0],
-                      ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: index == 0
-                            ? Radius.circular(23.r)
-                            : Radius.zero,
-                        bottomLeft: index == 0
-                            ? Radius.circular(23.r)
-                            : Radius.zero,
-                        topRight:
-                            index == controller.busAgricalrureOptions.length - 1
-                            ? Radius.circular(23.r)
-                            : Radius.zero,
-                        bottomRight:
-                            index == controller.busAgricalrureOptions.length - 1
-                            ? Radius.circular(23.r)
-                            : Radius.zero,
-                      ),
+            return Expanded(
+              child: GestureDetector(
+                onTap: () => controller.selectedBusAgricalrure.value = busClass,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
+                  decoration: BoxDecoration(
+                    color: controller.selectedBusAgricalrure.value == busClass
+                        ? AppColors.primaryColor
+                        : Colors.transparent,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFF083E4B),
+                        Color(0xFF074E5E),
+                        Color(0xFF0288A6),
+                      ],
+                      stops: [0.0, 0.5, 1.0],
                     ),
-                    child: Text(
-                      busClass,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        color:
-                            controller.selectedBusAgricalrure.value == busClass
-                            ? AppColors.white
-                            : AppColors.primaryColor,
-                      ),
+                    borderRadius: BorderRadius.only(
+                      topLeft: index == 0 ? Radius.circular(23.r) : Radius.zero,
+                      bottomLeft: index == 0
+                          ? Radius.circular(23.r)
+                          : Radius.zero,
+                      topRight: index == controller.busAgricalrureOptions.length - 1
+                          ? Radius.circular(23.r)
+                          : Radius.zero,
+                      bottomRight: index == controller.busAgricalrureOptions.length - 1
+                          ? Radius.circular(23.r)
+                          : Radius.zero,
+                    ),
+                  ),
+                  child: Text(
+                    busClass,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                      color: controller.selectedBusAgricalrure.value == busClass
+                          ? AppColors.white
+                          : AppColors.primaryColor,
                     ),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          }),
         ),
       );
     });

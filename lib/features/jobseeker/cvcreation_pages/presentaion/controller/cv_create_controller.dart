@@ -63,6 +63,8 @@ class CvCreateController extends GetxController {
   final selectedEducationalInformation = "Educational Information".obs;
   final selectedGrade = "A Grade".obs;
   final selectedYear = "2022".obs;
+  List<String> gradeOptons = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C'];
+  List<String> yearOptions = ['2020', '2021', '2022', '2023', '2024'];
 
   // Options
   final List<String> taxClassOptions = [
@@ -75,7 +77,7 @@ class CvCreateController extends GetxController {
     "BE",
     "E96",
   ];
-  final List<String> busAgricalrureOptions = ["D", "DIE", "D", "DE", "L", "I"];
+  final List<String> busAgricalrureOptions = ["D1", "DIE", "D", "DE", "L", "I"];
   final List<String> truckMoney = ["C1", "CIE", "C", "CE"];
   final List<String> languageOptions = [
     'English',
@@ -96,14 +98,6 @@ class CvCreateController extends GetxController {
     "Professional Information",
   ];
   final List<String> educationalInfoOption = [
-    "Personal Information",
-    "Professional Information",
-  ];
-  final List<String> gradeOptons = [
-    "Personal Information",
-    "Professional Information",
-  ];
-  final List<String> yearOptions = [
     "Personal Information",
     "Professional Information",
   ];

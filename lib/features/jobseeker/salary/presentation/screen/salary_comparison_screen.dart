@@ -52,46 +52,40 @@ class SalaryComparisonScreen extends StatelessWidget {
               ),
               24.height,
 
-              _buildJobSection(controller.job1CompanyController, 'Key Words'),
+              _buildJobSection('Key Words'),
               16.height,
 
               _buildJobSection(
-                controller.job1LocationController,
                 'Category',
                 isDropdown: true,
               ),
               16.height,
 
               _buildJobSection(
-                controller.job1SalaryController,
                 'Sub Category',
-                isNumber: true,
+                isNumber: false,
                 isDropdown: true,
               ),
               16.height,
 
               _buildJobSection(
-                controller.job1BonusController,
                 'Enter Your Salary',
                 isNumber: true,
               ),
               16.height,
               _buildJobSection(
-                controller.job1BonusController,
                 'City',
-                isNumber: true,
+                isNumber: false,
               ),
               16.height,
               _buildJobSection(
-                controller.job1BonusController,
                 'State',
-                isNumber: true,
+                isNumber: false,
               ),
               16.height,
               _buildJobSection(
-                controller.job1BonusController,
                 'Country',
-                isNumber: true,
+                isNumber: false,
               ),
               16.height,
               32.height,
@@ -112,7 +106,6 @@ class SalaryComparisonScreen extends StatelessWidget {
   }
 
   Widget _buildJobSection(
-    TextEditingController controller,
     String hint, {
     bool isNumber = false,
     bool isDropdown = false,
@@ -121,7 +114,6 @@ class SalaryComparisonScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CommonTextField(
-          controller: controller,
           hintText: hint,
           keyboardType: isNumber ? TextInputType.number : TextInputType.text,
           fillColor: AppColors.white,

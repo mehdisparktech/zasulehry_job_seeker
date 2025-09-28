@@ -61,11 +61,13 @@ class SalaryCalculatorScreen extends StatelessWidget {
                   SizedBox(height: 8.h),
                   SizedBox(
                     width: 200,
-                    child: _buildDropdownField('2025', [
-                      '2024',
-                      '2025',
-                      '2026',
-                    ]),
+                    child: Obx(() => _buildDropdownField(
+                      controller.selectedYear.value,
+                      ['2024', '2025', '2026'],
+                          (String newValue) {
+                        controller.selectedYear.value = newValue;
+                      },
+                    )),
                   ),
                 ],
               ),
@@ -83,6 +85,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
                       controller: controller.taxExemptionController,
                       hintText: 'Type',
                       suffixIcon: Icon(Icons.euro, size: 20.w),
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                 ],
@@ -95,14 +98,13 @@ class SalaryCalculatorScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildSectionTitle('Your State'),
-                  SizedBox(
-                    width: 200,
-                    child: _buildDropdownField('Berlin', [
-                      'Berlin',
-                      'Munich',
-                      'Hamburg',
-                    ]),
-                  ),
+                  Obx(() => _buildDropdownField(
+                    controller.selectedState.value,
+                    ['Berlin', 'Munich', 'Hamburg'],
+                        (String newValue) {
+                      controller.selectedState.value = newValue;
+                    },
+                  )),
                 ],
               ),
 
@@ -174,11 +176,13 @@ class SalaryCalculatorScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildSectionTitle('Child Tax Exemption'),
-                  _buildDropdownField('Please Select', [
-                    'Please Select',
-                    '1 Child',
-                    '2 Children',
-                  ]),
+                  Obx(() => _buildDropdownField(
+                    controller.selectedChildTaxExemption.value,
+                    ['Please Select', '1 Child', '2 Children'],
+                        (String newValue) {
+                      controller.selectedChildTaxExemption.value = newValue;
+                    },
+                  )),
                 ],
               ),
 
@@ -190,10 +194,14 @@ class SalaryCalculatorScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildSectionTitle('Your Age'),
-                  _buildDropdownField('17-72 years', [
-                    '17-72 years',
-                    '18-65 years',
-                  ]),
+                  Container(
+                    child: Container(
+                      width: 200,
+                      child: CommonTextField(
+                        hintText: 'Type Here...',
+                      ),
+                    ),
+                  )
                 ],
               ),
 
@@ -209,6 +217,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
                     child: CommonTextField(
                       controller: controller.professionController,
                       hintText: 'Type Here...',
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                 ],
@@ -453,24 +462,41 @@ class SalaryCalculatorScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDropdownField(String value, List<String> items) {
+  Widget _buildDropdownField(String value, List<String> items, Function(String) onChanged) {
     return Container(
       width: 200,
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
       decoration: BoxDecoration(
         color: AppColors.transparent,
         borderRadius: BorderRadius.circular(8.r),
         border: Border.all(color: Colors.grey.withOpacity(0.3)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            value,
-            style: TextStyle(fontSize: 16.sp, color: AppColors.black),
-          ),
-          Icon(Icons.keyboard_arrow_down, color: Colors.grey, size: 20.w),
-        ],
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: value,
+          isExpanded: true,
+          icon: Icon(Icons.keyboard_arrow_down, color: Colors.grey, size: 20.w),
+          style: TextStyle(fontSize: 16.sp, color: AppColors.black),
+          dropdownColor: AppColors.white,
+          onChanged: (String? newValue) {
+            if (newValue != null) {
+              onChanged(newValue);
+            }
+          },
+          items: items.map<DropdownMenuItem<String>>((String item) {
+            return DropdownMenuItem<String>(
+              value: item,
+              child: Text(
+                item,
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
