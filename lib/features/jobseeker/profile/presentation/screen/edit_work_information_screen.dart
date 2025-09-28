@@ -109,6 +109,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                 fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 textColor: AppColors.black,
+                keyboardType: TextInputType.number,
               ),
 
               16.height,

@@ -98,82 +98,69 @@ class CreateJobseekerAlertScreen extends StatelessWidget {
                 SizedBox(height: 16.h),
 
                 // Frequency Selection (only show if push message is enabled)
-                Obx(
-                  () => controller.isPushMessageEnabled.value
-                      ? Column(
-                          children: [
-                            Row(
-                              children: controller.frequencies.map((frequency) {
-                                return Obx(
-                                  () => Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () => controller.selectFrequency(
-                                          frequency,
-                                        ),
-                                        child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 16.w,
-                                            vertical: 8.h,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                controller
-                                                        .selectedFrequency
-                                                        .value ==
-                                                    frequency
-                                                ? AppColors.primaryColor
-                                                : Colors.transparent,
-                                            border: Border.all(
-                                              color:
-                                                  controller
-                                                          .selectedFrequency
-                                                          .value ==
-                                                      frequency
-                                                  ? AppColors.primaryColor
-                                                  : Colors.grey,
-                                            ),
-                                            borderRadius: BorderRadius.circular(
-                                              10,
-                                            ),
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                Color(0xFF083E4B), // #083E4B
-                                                Color(0xFF074E5E), // #074E5E
-                                                Color(0xFF0288A6), // #0288A6
-                                              ],
-                                            ),
-                                          ),
-                                          child: Text(
-                                            frequency,
-                                            style: TextStyle(
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color:
-                                                  controller
-                                                          .selectedFrequency
-                                                          .value ==
-                                                      frequency
-                                                  ? AppColors.white
-                                                  : Colors.black,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      if (frequency !=
-                                          controller.frequencies.last)
-                                        SizedBox(width: 12.w),
-                                    ],
+                Column(
+                  children: [
+                    Row(
+                      children: controller.frequencies.map((frequency) {
+                        return Obx(
+                          () => Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () =>
+                                    controller.selectFrequency(frequency),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w,
+                                    vertical: 8.h,
                                   ),
-                                );
-                              }).toList(),
-                            ),
+                                  decoration: BoxDecoration(
+                                    color:
+                                        controller.selectedFrequency.value ==
+                                            frequency
+                                        ? AppColors.primaryColor
+                                        : Colors.transparent,
+                                    border: Border.all(
+                                      color:
+                                          controller.selectedFrequency.value ==
+                                              frequency
+                                          ? AppColors.primaryColor
+                                          : Colors.grey,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xFF083E4B), // #083E4B
+                                        Color(0xFF074E5E), // #074E5E
+                                        Color(0xFF0288A6), // #0288A6
+                                      ],
+                                    ),
+                                  ),
+                                  child: Text(
+                                    frequency,
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color:
+                                          controller.selectedFrequency.value ==
+                                              frequency
+                                          ? AppColors.white
+                                          : Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              if (frequency != controller.frequencies.last)
+                                SizedBox(width: 12.w),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
 
-                            SizedBox(height: 16.h),
-                          ],
-                        )
-                      : const SizedBox(),
+                    SizedBox(height: 16.h),
+                  ],
                 ),
+                // : const SizedBox(),
 
                 // Email Address Section
                 Row(

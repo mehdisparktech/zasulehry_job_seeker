@@ -48,19 +48,22 @@ class ProfileScreen extends StatelessWidget {
                             bottomRight: Radius.circular(36.r),
                           ),
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 40.h),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const CommonText(
-                                text: AppString.profile,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(height: 64.h), // Space for avatar
-                            ],
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 10.h),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const CommonText(
+                                  text: AppString.profile,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 64.h), // Space for avatar
+                              ],
+                            ),
                           ),
                         ),
                       ),

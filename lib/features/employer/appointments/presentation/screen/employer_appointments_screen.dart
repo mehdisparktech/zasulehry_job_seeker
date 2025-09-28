@@ -106,6 +106,7 @@ class _EmployerAppointmentsScreenState
                       message:
                           'Are You Sure You Want To Cancel The Appointment',
                       onConfirm: () {
+                        Get.back();
                         // Handle cancel appointment action
                         AppointmentRequestDialog.show(
                           isConfirm: true,

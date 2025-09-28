@@ -16,6 +16,14 @@ class CustomTimePickerDialog {
     int selectedHour = currentTime.hour;
     int selectedMinute = currentTime.minute;
 
+    // Controllers for text input
+    final TextEditingController hourController = TextEditingController(
+      text: selectedHour.toString().padLeft(2, '0'),
+    );
+    final TextEditingController minuteController = TextEditingController(
+      text: selectedMinute.toString().padLeft(2, '0'),
+    );
+
     Get.dialog(
       Dialog(
         backgroundColor: Colors.transparent,
@@ -33,12 +41,12 @@ class CustomTimePickerDialog {
                   // Hour and Minute input sections
                   Row(
                     children: [
-                      // Type Hours section
+                      // Type Hours section with input field
                       Expanded(
                         child: Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 16.w,
-                            vertical: 12.h,
+                            vertical: 6.h,
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.white,
@@ -48,26 +56,44 @@ class CustomTimePickerDialog {
                               width: 2,
                             ),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CommonText(
-                                text: 'Type Hours',
-                                fontSize: 16.sp,
+                          child: TextField(
+                            controller: hourController,
+                            keyboardType: TextInputType.number,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFF666666),
+                            ),
+                            decoration: const InputDecoration(
+                              hintText: 'Type Hours',
+                              hintStyle: TextStyle(
+                                fontSize: 16,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xFF666666),
+                                color: Color(0xFF666666),
                               ),
-                            ],
+                              border: InputBorder.none,
+                            ),
+                            onChanged: (value) {
+                              if (value.isNotEmpty) {
+                                int? hour = int.tryParse(value);
+                                if (hour != null && hour >= 0 && hour <= 23) {
+                                  setState(() {
+                                    selectedHour = hour;
+                                  });
+                                }
+                              }
+                            },
                           ),
                         ),
                       ),
                       SizedBox(width: 12.w),
-                      // Type Minutes section
+                      // Type Minutes section with input field
                       Expanded(
                         child: Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 16.w,
-                            vertical: 12.h,
+                            vertical: 6.h,
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.white,
@@ -77,16 +103,36 @@ class CustomTimePickerDialog {
                               width: 2,
                             ),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CommonText(
-                                text: 'Type Minutes',
-                                fontSize: 16.sp,
+                          child: TextField(
+                            controller: minuteController,
+                            keyboardType: TextInputType.number,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFF666666),
+                            ),
+                            decoration: const InputDecoration(
+                              hintText: 'Type Minutes',
+                              hintStyle: TextStyle(
+                                fontSize: 16,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xFF666666),
+                                color: Color(0xFF666666),
                               ),
-                            ],
+                              border: InputBorder.none,
+                            ),
+                            onChanged: (value) {
+                              if (value.isNotEmpty) {
+                                int? minute = int.tryParse(value);
+                                if (minute != null &&
+                                    minute >= 0 &&
+                                    minute <= 59) {
+                                  setState(() {
+                                    selectedMinute = minute;
+                                  });
+                                }
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -128,6 +174,9 @@ class CustomTimePickerDialog {
                                 onChanged: (value) {
                                   setState(() {
                                     selectedHour = value;
+                                    hourController.text = value
+                                        .toString()
+                                        .padLeft(2, '0');
                                   });
                                 },
                               );
@@ -165,6 +214,9 @@ class CustomTimePickerDialog {
                                 onChanged: (value) {
                                   setState(() {
                                     selectedMinute = value;
+                                    minuteController.text = value
+                                        .toString()
+                                        .padLeft(2, '0');
                                   });
                                 },
                               );
@@ -222,6 +274,18 @@ class CustomTimePickerDialog {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(12.r),
                         onTap: () {
+                          // Validate and parse input values
+                          int? hour = int.tryParse(hourController.text);
+                          int? minute = int.tryParse(minuteController.text);
+
+                          // If input values are valid, use them
+                          if (hour != null && hour >= 0 && hour <= 23) {
+                            selectedHour = hour;
+                          }
+                          if (minute != null && minute >= 0 && minute <= 59) {
+                            selectedMinute = minute;
+                          }
+
                           final TimeOfDay selectedTime = TimeOfDay(
                             hour: selectedHour,
                             minute: selectedMinute,
