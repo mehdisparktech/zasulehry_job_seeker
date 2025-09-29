@@ -44,7 +44,7 @@ class AppointmentRequestDialog extends StatelessWidget {
                 borderColor: AppColors.textSecondary,
                 fillColor: AppColors.white,
                 textColor: AppColors.black,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
               ),
               16.height,
             ],

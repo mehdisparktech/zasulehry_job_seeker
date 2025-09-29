@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class DetailsSalaryController extends GetxController {
-
   // Salary data structure
   Map<String, Map<String, String>> salaryData = {
     'Gross Salary': {'Month': '\$3000', 'Years': '\$36000'},
@@ -19,12 +18,11 @@ class DetailsSalaryController extends GetxController {
     'Total Taxes': {'Month': '\$369', 'Years': '\$29358'},
   };
 
-  var value = false.obs;
+  var value = true.obs;
 
   Map<String, String> netSalary = {'Month': '\$2561', 'Years': '\$56889'};
 
   void toggleValue(bool val) {
     value.value = val;
   }
-
 }

@@ -43,181 +43,306 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      child: Container(
-        constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height * 0.9,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.white,
+    return SafeArea(
+      child: Dialog(
+        insetPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.r),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Header
-            Container(
-              padding: EdgeInsets.all(16.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CommonText(
-                    text: 'Apply To ${widget.companyName}',
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.black,
-                  ),
-                  GestureDetector(
-                    onTap: () => Get.back(),
-                    child: Icon(
-                      Icons.close,
-                      color: AppColors.red2,
-                      size: 24.sp,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Divider
-            Divider(
-              height: 1.h,
-              color: AppColors.textFiledColor.withOpacity(0.3),
-            ),
-
-            // Form content
-            Expanded(
-              child: SingleChildScrollView(
+        child: Container(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.9,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(16.r),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Container(
                 padding: EdgeInsets.all(16.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Tell Us About Yourself section
                     CommonText(
-                      text: 'Tell Us About Yourself ?',
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
+                      text: 'Apply To ${widget.companyName}',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600,
                       color: AppColors.black,
                     ),
-                    SizedBox(height: 8.h),
-                    Container(
-                      height: 100.h,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.textSecondary),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: TextField(
-                        controller: _aboutController,
-                        maxLines: null,
-                        expands: true,
-                        textAlignVertical: TextAlignVertical.top,
-                        decoration: InputDecoration(
-                          hintText: 'Type ...',
-                          hintStyle: TextStyle(
-                            color: AppColors.textSecondary,
-                            fontSize: 14.sp,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(12.w),
-                        ),
+                    GestureDetector(
+                      onTap: () => Get.back(),
+                      child: Icon(
+                        Icons.close,
+                        color: AppColors.red2,
+                        size: 24.sp,
                       ),
                     ),
+                  ],
+                ),
+              ),
 
-                    SizedBox(height: 20.h),
+              // Divider
+              Divider(
+                height: 1.h,
+                color: AppColors.textFiledColor.withOpacity(0.3),
+              ),
 
-                    // Upload Resume section
-                    GestureDetector(
-                      onTap: () {
-                        OtherHelper.openGallery();
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 80.h,
+              // Form content
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.all(16.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Tell Us About Yourself section
+                      CommonText(
+                        text: 'Tell Us About Yourself ?',
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.black,
+                      ),
+                      SizedBox(height: 8.h),
+                      Container(
+                        height: 100.h,
                         decoration: BoxDecoration(
                           border: Border.all(color: AppColors.textSecondary),
                           borderRadius: BorderRadius.circular(8.r),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        child: TextField(
+                          controller: _aboutController,
+                          maxLines: null,
+                          expands: true,
+                          textAlignVertical: TextAlignVertical.top,
+                          decoration: InputDecoration(
+                            hintText: 'Type ...',
+                            hintStyle: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 14.sp,
+                            ),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(12.w),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 20.h),
+
+                      // Upload Resume section
+                      GestureDetector(
+                        onTap: () {
+                          OtherHelper.openGallery();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 80.h,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.textSecondary),
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CommonImage(
+                                imageSrc: AppImages.upload,
+                                width: 24.w,
+                                height: 24.h,
+                              ),
+                              SizedBox(height: 8.h),
+                              CommonText(
+                                text: 'Upload Resume',
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textSecondary,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 16.h),
+
+                      // Example PDF section
+                      Padding(
+                        padding: EdgeInsets.all(12.w),
+                        child: Row(
                           children: [
                             CommonImage(
-                              imageSrc: AppImages.upload,
+                              imageSrc: AppImages.pdf,
+                              width: 32.w,
+                              height: 32.h,
+                            ),
+                            SizedBox(width: 12.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CommonText(
+                                    text: 'Example Pdf',
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.black,
+                                  ),
+                                  CommonText(
+                                    text: '01.02.2024',
+                                    fontSize: 12.sp,
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(width: 12.w),
+                            CommonImage(
+                              imageSrc: AppImages.view,
                               width: 24.w,
                               height: 24.h,
                             ),
-                            SizedBox(height: 8.h),
-                            CommonText(
-                              text: 'Upload Resume',
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textSecondary,
+                            SizedBox(width: 12.w),
+                            CommonImage(
+                              imageSrc: AppImages.download,
+                              width: 24.w,
+                              height: 24.h,
                             ),
                           ],
                         ),
                       ),
-                    ),
 
-                    SizedBox(height: 16.h),
+                      SizedBox(height: 16.h),
 
-                    // Example PDF section
-                    Padding(
-                      padding: EdgeInsets.all(12.w),
-                      child: Row(
-                        children: [
-                          CommonImage(
-                            imageSrc: AppImages.pdf,
-                            width: 32.w,
-                            height: 32.h,
-                          ),
-                          SizedBox(width: 12.w),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CommonText(
-                                  text: 'Example Pdf',
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.black,
-                                ),
-                                CommonText(
-                                  text: '01.02.2024',
-                                  fontSize: 12.sp,
-                                  color: AppColors.textSecondary,
-                                ),
+                      // CV Creation button
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.cvCreateStep1);
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                Color(0xFF083E4B),
+                                Color(0xFF074E5E),
+                                Color(0xFF0288A6),
                               ],
+                              stops: [0.0, 0.5, 1.0],
                             ),
                           ),
-                          SizedBox(width: 12.w),
-                          CommonImage(
-                            imageSrc: AppImages.view,
-                            width: 24.w,
-                            height: 24.h,
+                          child: Center(
+                            child: CommonText(
+                              text: 'InApp Cv/Resume Creation',
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.white,
+                            ),
                           ),
-                          SizedBox(width: 12.w),
-                          CommonImage(
-                            imageSrc: AppImages.download,
-                            width: 24.w,
-                            height: 24.h,
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
 
-                    SizedBox(height: 16.h),
+                      SizedBox(height: 20.h),
 
-                    // CV Creation button
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.cvCreateStep1);
-                      },
-                      child: Container(
+                      // Qualification section
+                      CommonText(
+                        text: 'Qualification',
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.black,
+                      ),
+                      SizedBox(height: 8.h),
+                      Container(
+                        height: 100.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.textSecondary),
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: TextField(
+                          controller: _qualificationController,
+                          decoration: InputDecoration(
+                            hintText: 'Type ...',
+                            hintStyle: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 14.sp,
+                            ),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(12.w),
+                          ),
+                          maxLines: 5,
+                        ),
+                      ),
+
+                      SizedBox(height: 20.h),
+
+                      // Availability section
+                      CommonText(
+                        text: 'Availability',
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.black,
+                      ),
+                      SizedBox(height: 8.h),
+                      Container(
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.textSecondary),
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: TextField(
+                          controller: _availabilityController,
+                          decoration: InputDecoration(
+                            hintText: 'Type ...',
+                            hintStyle: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 14.sp,
+                            ),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(8.w),
+                          ),
+                          maxLines: 5,
+                        ),
+                      ),
+
+                      SizedBox(height: 20.h),
+
+                      // Expected Salary section
+                      CommonText(
+                        text: 'Your Expected Salary ?',
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.black,
+                      ),
+                      SizedBox(height: 8.h),
+                      Container(
+                        height: 50.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.textSecondary),
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: TextField(
+                          controller: _salaryController,
+                          decoration: InputDecoration(
+                            hintText: 'Type ...',
+                            hintStyle: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 14.sp,
+                            ),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(10.w),
+                          ),
+                          keyboardType: TextInputType.phone,
+                        ),
+                      ),
+
+                      SizedBox(height: 30.h),
+
+                      // Submit button
+                      Container(
                         width: double.infinity,
                         height: 50.h,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
                           gradient: LinearGradient(
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
@@ -228,159 +353,41 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                             ],
                             stops: [0.0, 0.5, 1.0],
                           ),
-                        ),
-                        child: Center(
-                          child: CommonText(
-                            text: 'InApp Cv/Resume Creation',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: 20.h),
-
-                    // Qualification section
-                    CommonText(
-                      text: 'Qualification',
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                    SizedBox(height: 8.h),
-                    Container(
-                      height: 100.h,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.textSecondary),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: TextField(
-                        controller: _qualificationController,
-                        decoration: InputDecoration(
-                          hintText: 'Type ...',
-                          hintStyle: TextStyle(
-                            color: AppColors.textSecondary,
-                            fontSize: 14.sp,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(12.w),
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: 20.h),
-
-                    // Availability section
-                    CommonText(
-                      text: 'Availability',
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                    SizedBox(height: 8.h),
-                    Container(
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.textSecondary),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: TextField(
-                        controller: _availabilityController,
-                        decoration: InputDecoration(
-                          hintText: 'Type ...',
-                          hintStyle: TextStyle(
-                            color: AppColors.textSecondary,
-                            fontSize: 14.sp,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(12.w),
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: 20.h),
-
-                    // Expected Salary section
-                    CommonText(
-                      text: 'Your Expected Salary ?',
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.black,
-                    ),
-                    SizedBox(height: 8.h),
-                    Container(
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.textSecondary),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: TextField(
-                        controller: _salaryController,
-                        decoration: InputDecoration(
-                          hintText: 'Type ...',
-                          hintStyle: TextStyle(
-                            color: AppColors.textSecondary,
-                            fontSize: 14.sp,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(12.w),
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: 30.h),
-
-                    // Submit button
-                    Container(
-                      width: double.infinity,
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            Color(0xFF083E4B),
-                            Color(0xFF074E5E),
-                            Color(0xFF0288A6),
-                          ],
-                          stops: [0.0, 0.5, 1.0],
-                        ),
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
                           borderRadius: BorderRadius.circular(30.r),
-                          onTap: () {
-                            Get.back();
-                            if (widget.onSubmit != null) {
-                              widget.onSubmit!();
-                            }
-                            SuccessDialog.showWithNavigation(
-                              message: 'Your application has been submitted',
-                              buttonText: "Back to Home",
-                              routeName: AppRoutes.jobSeekerHome,
-                              offAllNamed: true,
-                            );
-                          },
-                          child: Center(
-                            child: CommonText(
-                              text: 'Submit Now',
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.white,
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(30.r),
+                            onTap: () {
+                              Get.back();
+                              if (widget.onSubmit != null) {
+                                widget.onSubmit!();
+                              }
+                              SuccessDialog.showWithNavigation(
+                                message: 'Your application has been submitted',
+                                buttonText: "Back to Home",
+                                routeName: AppRoutes.jobSeekerHome,
+                                offAllNamed: true,
+                              );
+                            },
+                            child: Center(
+                              child: CommonText(
+                                text: 'Submit Now',
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.white,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

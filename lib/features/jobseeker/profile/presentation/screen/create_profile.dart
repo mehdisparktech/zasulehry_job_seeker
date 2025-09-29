@@ -41,83 +41,85 @@ class CreateProfile extends StatelessWidget {
           ),
 
           /// Body Sections Starts here
-          body: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-            child: Form(
-              key: controller.formKey,
-              child: Column(
-                children: [
-                  /// User Profile image here
-                  Stack(
-                    children: [
-                      Center(
-                        child: CircleAvatar(
-                          radius: 85.sp,
-                          backgroundColor: Colors.transparent,
-                          child: ClipOval(
-                            child: controller.image != null
-                                ? Image.file(
-                                    File(controller.image!),
-                                    width: 170,
-                                    height: 170,
-                                    fit: BoxFit.fill,
-                                  )
-                                : const CommonImage(
-                                    imageSrc: AppImages.profile,
-                                    height: 170,
-                                    width: 170,
-                                    fill: BoxFit.cover,
-                                  ),
-                          ),
-                        ),
-                      ),
-
-                      /// image change icon here
-                      Positioned(
-                        bottom: 0,
-                        left: Get.width * 0.53,
-                        child: IconButton(
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStateColor.resolveWith(
-                              (states) => AppColors.blue500,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+              child: Form(
+                key: controller.formKey,
+                child: Column(
+                  children: [
+                    /// User Profile image here
+                    Stack(
+                      children: [
+                        Center(
+                          child: CircleAvatar(
+                            radius: 85.sp,
+                            backgroundColor: Colors.transparent,
+                            child: ClipOval(
+                              child: controller.image != null
+                                  ? Image.file(
+                                      File(controller.image!),
+                                      width: 170,
+                                      height: 170,
+                                      fit: BoxFit.fill,
+                                    )
+                                  : const CommonImage(
+                                      imageSrc: AppImages.profile,
+                                      height: 170,
+                                      width: 170,
+                                      fill: BoxFit.cover,
+                                    ),
                             ),
                           ),
-                          onPressed: controller.getProfileImage,
-                          icon: const Icon(
-                            Icons.camera_alt_outlined,
-                            color: AppColors.white,
+                        ),
+
+                        /// image change icon here
+                        Positioned(
+                          bottom: 0,
+                          left: Get.width * 0.53,
+                          child: IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStateColor.resolveWith(
+                                (states) => AppColors.blue500,
+                              ),
+                            ),
+                            onPressed: controller.getProfileImage,
+                            icon: const Icon(
+                              Icons.camera_alt_outlined,
+                              color: AppColors.white,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  30.height,
+                      ],
+                    ),
+                    30.height,
 
-                  /// user all information filed here
-                  EditProfileAllFiled(controller: controller),
-                  30.height,
+                    /// user all information filed here
+                    EditProfileAllFiled(controller: controller),
+                    30.height,
 
-                  CommonButton(
-                    titleText: "inApp cv/resume creation",
-                    onTap: () {
-                      Get.to(() => CvCreateStep1Screen());
-                    },
-                    buttonRadius: 8.r,
-                    buttonHeight: 38.h,
-                    titleSize: 14.sp,
-                    titleWeight: FontWeight.w500,
-                  ),
-                  30.height,
+                    CommonButton(
+                      titleText: "inApp cv/resume creation",
+                      onTap: () {
+                        Get.to(() => CvCreateStep1Screen());
+                      },
+                      buttonRadius: 8.r,
+                      buttonHeight: 38.h,
+                      titleSize: 14.sp,
+                      titleWeight: FontWeight.w500,
+                    ),
+                    30.height,
 
-                  /// Submit Button here
-                  CommonButton(
-                    titleText: AppString.continues,
-                    isLoading: controller.isLoading,
-                    onTap: controller.editProfileRepo,
-                    titleSize: 24.sp,
-                    titleWeight: FontWeight.w500,
-                  ),
-                ],
+                    /// Submit Button here
+                    CommonButton(
+                      titleText: AppString.continues,
+                      isLoading: controller.isLoading,
+                      onTap: controller.editProfileRepo,
+                      titleSize: 24.sp,
+                      titleWeight: FontWeight.w500,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

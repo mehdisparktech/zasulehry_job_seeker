@@ -118,7 +118,7 @@ class _EmployerCreateInvoiceScreenState
                   controller: _amountController,
                   labelText: 'Amount',
                   hintText: 'Enter amount',
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.phone,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter amount';

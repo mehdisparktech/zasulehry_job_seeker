@@ -124,7 +124,7 @@ class SalaryComparisonScreen extends StatelessWidget {
         else
           CommonTextField(
             hintText: hint,
-            keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+            keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
             fillColor: AppColors.white,
             borderColor: AppColors.background,
           ),
@@ -159,7 +159,7 @@ class _DropdownFieldState extends State<_DropdownField> {
         ),
         8.height,
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0.h),
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(10.r),

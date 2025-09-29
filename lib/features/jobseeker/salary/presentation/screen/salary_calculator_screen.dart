@@ -123,7 +123,7 @@ class SalaryCalculatorScreen extends StatelessWidget {
         CommonTextField(
           controller: controller,
           hintText: hint,
-          keyboardType: TextInputType.number,
+          keyboardType: TextInputType.phone,
           fillColor: AppColors.filledColor,
           borderColor: AppColors.background,
         ),

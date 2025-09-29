@@ -158,7 +158,7 @@ class _EmployerPersonalInformationScreenState
                   // Location Field
                   _buildFormField(
                     hintText: "contact number",
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.phone,
                   ),
 
                   16.height,
@@ -171,7 +171,7 @@ class _EmployerPersonalInformationScreenState
                   16.height,
                   _buildFormField(
                     hintText: "tax No.",
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.phone,
                   ),
 
                   16.height,
@@ -179,7 +179,7 @@ class _EmployerPersonalInformationScreenState
                   // Location Field
                   _buildFormField(
                     hintText: "DE No.",
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.phone,
                   ),
 
                   16.height,

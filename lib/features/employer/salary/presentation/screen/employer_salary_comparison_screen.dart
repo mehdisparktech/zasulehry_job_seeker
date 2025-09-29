@@ -186,7 +186,7 @@ class SalaryComparisonScreen extends StatelessWidget {
         CommonTextField(
           controller: controller,
           hintText: hint,
-          keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+          keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
           fillColor: AppColors.filledColor,
           borderColor: AppColors.background,
         ),

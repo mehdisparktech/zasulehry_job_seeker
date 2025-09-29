@@ -307,7 +307,7 @@ class CvCreateStep1Screen extends StatelessWidget {
         CommonText(text: "About Yourself", fontSize: 16.sp),
         SizedBox(height: 12.h),
         CommonTextField(hintText: "Enter about your self", maxLines: 3),
-        SizedBox(height: 12.h),
+        SizedBox(height: 20.h),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           decoration: BoxDecoration(
@@ -332,7 +332,7 @@ class CvCreateStep1Screen extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: 20.h),
         _buildTextField(
           'Certificate/Exam/Degree :',
           controller.examController,
@@ -380,7 +380,7 @@ class CvCreateStep1Screen extends StatelessWidget {
     String validValue = items.contains(value) ? value : items.first;
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0.h),
       decoration: BoxDecoration(
         color: AppColors.transparent,
         borderRadius: BorderRadius.circular(8.r),
@@ -441,7 +441,7 @@ class CvCreateStep1Screen extends StatelessWidget {
           controller: textController,
           hintText: hintText,
           maxLines: maxLines,
-          keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+          keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
           suffixIcon: isDate
               ? Icon(Icons.calendar_today, size: 20, color: Colors.grey[600])
               : null,
@@ -484,55 +484,119 @@ class CvCreateStep1Screen extends StatelessWidget {
       ),
       child: Obx(
         () => Row(
-          children: controller.taxClassOptions.asMap().entries.map((entry) {
-            int index = entry.key;
-            String taxClass = entry.value;
-            return Expanded(
-              child: GestureDetector(
-                onTap: () => controller.selectTaxClass(taxClass),
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 12.h),
-                  decoration: BoxDecoration(
-                    color: controller.selectedTaxClass.value == taxClass
-                        ? AppColors.primaryColor
-                        : Colors.transparent,
-                    gradient: LinearGradient(
-                      colors: [
-                        AppColors.backgroundGradient,
-                        AppColors.backgroundGradient2,
-                        AppColors.backgroundGradient3,
-                      ],
-                      stops: [0.0, 0.5, 1.0],
+          children: List.generate(
+            controller.busAgricalrureOptions.length * 2 - 1,
+            (i) {
+              if (i.isOdd) {
+                return Container(
+                  width: 1.w,
+                  height: 35.h,
+                  color: AppColors.primaryColor,
+                );
+              }
+
+              int index = i ~/ 2;
+              String busClass = controller.taxClassOptions[index];
+              return Expanded(
+                child: GestureDetector(
+                  onTap: () => controller.selectTaxClass(busClass),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
+                    decoration: BoxDecoration(
+                      color: controller.selectedTaxClass.value == busClass
+                          ? AppColors.primaryColor
+                          : Colors.transparent,
+                      gradient: LinearGradient(
+                        colors: [
+                          AppColors.backgroundGradient,
+                          AppColors.backgroundGradient2,
+                          AppColors.backgroundGradient3,
+                        ],
+                        stops: [0.0, 0.5, 1.0],
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: index == 0
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                        bottomLeft: index == 0
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                        topRight:
+                            index == (controller.taxClassOptions.length - 1)
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                        bottomRight:
+                            index == (controller.taxClassOptions.length - 1)
+                            ? Radius.circular(23.r)
+                            : Radius.zero,
+                      ),
                     ),
-                    borderRadius: BorderRadius.only(
-                      topLeft: index == 0 ? Radius.circular(23.r) : Radius.zero,
-                      bottomLeft: index == 0
-                          ? Radius.circular(23.r)
-                          : Radius.zero,
-                      topRight: index == (controller.taxClassOptions.length - 1)
-                          ? Radius.circular(23.r)
-                          : Radius.zero,
-                      bottomRight:
-                          index == (controller.taxClassOptions.length - 1)
-                          ? Radius.circular(23.r)
-                          : Radius.zero,
-                    ),
-                  ),
-                  child: Text(
-                    taxClass,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: controller.selectedTaxClass.value == taxClass
-                          ? AppColors.white
-                          : AppColors.primaryColor,
+                    child: Text(
+                      busClass,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        color: controller.selectedTaxClass.value == busClass
+                            ? AppColors.white
+                            : AppColors.primaryColor,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }).toList(),
+              );
+            },
+
+            // children: controller.taxClassOptions.asMap().entries.map((entry) {
+            //   int index = entry.key;
+            //   String taxClass = entry.value;
+            //   return Expanded(
+            //     child: GestureDetector(
+            //       onTap: () => controller.selectTaxClass(taxClass),
+            //       child: Container(
+            //         padding: EdgeInsets.symmetric(vertical: 12.h),
+            //         decoration: BoxDecoration(
+            //           color: controller.selectedTaxClass.value == taxClass
+            //               ? AppColors.primaryColor
+            //               : Colors.transparent,
+            //           gradient: LinearGradient(
+            //             colors: [
+            //               AppColors.backgroundGradient,
+            //               AppColors.backgroundGradient2,
+            //               AppColors.backgroundGradient3,
+            //             ],
+            //             stops: [0.0, 0.5, 1.0],
+            //           ),
+            //           borderRadius: BorderRadius.only(
+            //             topLeft: index == 0 ? Radius.circular(23.r) : Radius.zero,
+            //             bottomLeft: index == 0
+            //                 ? Radius.circular(23.r)
+            //                 : Radius.zero,
+            //             topRight: index == (controller.taxClassOptions.length - 1)
+            //                 ? Radius.circular(23.r)
+            //                 : Radius.zero,
+            //             bottomRight:
+            //                 index == (controller.taxClassOptions.length - 1)
+            //                 ? Radius.circular(23.r)
+            //                 : Radius.zero,
+            //           ),
+            //         ),
+            //         child: Text(
+            //           taxClass,
+            //           textAlign: TextAlign.center,
+            //           style: TextStyle(
+            //             fontSize: 16.sp,
+            //             fontWeight: FontWeight.w500,
+            //             color: controller.selectedTaxClass.value == taxClass
+            //                 ? AppColors.white
+            //                 : AppColors.primaryColor,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   );
+            // }).toList(),
+          ),
         ),
       ),
     );

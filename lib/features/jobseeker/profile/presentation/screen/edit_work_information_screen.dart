@@ -109,7 +109,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                 fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 textColor: AppColors.black,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
               ),
 
               16.height,
@@ -119,7 +119,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
               CommonTextField(
                 controller: salaryController,
                 hintText: "\$250",
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
                 fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 textColor: AppColors.black,

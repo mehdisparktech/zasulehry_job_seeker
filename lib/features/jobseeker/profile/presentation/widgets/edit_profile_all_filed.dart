@@ -26,9 +26,6 @@ class EditProfileAllFiled extends StatelessWidget {
                 validator: OtherHelper.validator,
                 hintText: "First Name",
                 keyboardType: TextInputType.text,
-                borderRadius: 8,
-                paddingHorizontal: 16,
-                paddingVertical: 16,
               ),
             ),
             SizedBox(width: 12.w),
@@ -38,9 +35,6 @@ class EditProfileAllFiled extends StatelessWidget {
                 validator: OtherHelper.validator,
                 hintText: "Last Name",
                 keyboardType: TextInputType.text,
-                borderRadius: 8,
-                paddingHorizontal: 16,
-                paddingVertical: 16,
               ),
             ),
           ],
@@ -53,10 +47,7 @@ class EditProfileAllFiled extends StatelessWidget {
           controller: controller.phoneNumberController,
           validator: OtherHelper.validator,
           hintText: "Phone Number",
-          keyboardType: TextInputType.number,
-          borderRadius: 8,
-          paddingHorizontal: 16,
-          paddingVertical: 16,
+          keyboardType: TextInputType.phone,
         ),
 
         SizedBox(height: 16.h),
@@ -71,9 +62,6 @@ class EditProfileAllFiled extends StatelessWidget {
             Icons.keyboard_arrow_down,
             color: AppColors.textFiledColor,
           ),
-          borderRadius: 8,
-          paddingHorizontal: 16,
-          paddingVertical: 16,
         ),
 
         SizedBox(height: 16.h),
@@ -89,8 +77,6 @@ class EditProfileAllFiled extends StatelessWidget {
             color: AppColors.textFiledColor,
           ),
           borderRadius: 8,
-          paddingHorizontal: 16,
-          paddingVertical: 16,
         ),
 
         SizedBox(height: 16.h),
@@ -115,10 +101,7 @@ class EditProfileAllFiled extends StatelessWidget {
         CommonTextField(
           controller: controller.salaryController,
           hintText: "Salary Hourly/Monthly/Yearly",
-          keyboardType: TextInputType.number,
-          borderRadius: 8,
-          paddingHorizontal: 16,
-          paddingVertical: 16,
+          keyboardType: TextInputType.text,
         ),
 
         SizedBox(height: 16.h),
@@ -134,7 +117,7 @@ class EditProfileAllFiled extends StatelessWidget {
     required VoidCallback onAddTap,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(8.r),

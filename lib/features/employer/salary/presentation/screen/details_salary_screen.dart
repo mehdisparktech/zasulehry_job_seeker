@@ -59,81 +59,79 @@ class DetailsSalaryScreen extends StatelessWidget {
 
                       // Taxes Section Header - Only show when Employee is selected
                       if (controller.value.value) ...[
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CommonText(
-                                text: 'Taxes',
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.black,
-                                textAlign: TextAlign.left,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CommonText(
+                              text: 'Taxes',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.black,
+                              textAlign: TextAlign.left,
+                            ),
+
+                            SizedBox(height: 16),
+
+                            // Tax Data Table
+                            ...controller.taxData.entries.map(
+                              (entry) => _buildTableRow(
+                                entry.key,
+                                entry.value['Month']!,
+                                entry.value['Years']!,
                               ),
+                            ),
 
-                              SizedBox(height: 16),
+                            SizedBox(height: 16),
 
-                              // Tax Data Table
-                              ...controller.taxData.entries.map(
-                                (entry) => _buildTableRow(
-                                  entry.key,
-                                  entry.value['Month']!,
-                                  entry.value['Years']!,
-                                ),
+                            // Net Salary Row
+                            SizedBox(
+                              height: 2,
+                              child: Container(color: Colors.grey[400]),
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 16,
+                                horizontal: 12,
                               ),
-
-                              SizedBox(height: 16),
-
-                              // Net Salary Row
-                              SizedBox(
-                                height: 2,
-                                child: Container(color: Colors.grey[400]),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 16,
-                                  horizontal: 12,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 3,
-                                      child: CommonText(
-                                        text: 'Net',
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.black,
-                                        textAlign: TextAlign.left,
-                                      ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: CommonText(
+                                      text: 'Net',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.black,
+                                      textAlign: TextAlign.left,
                                     ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: CommonText(
-                                        text: controller.netSalary['Month']!,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.black,
-                                        textAlign: TextAlign.left,
-                                      ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: CommonText(
+                                      text: controller.netSalary['Month']!,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.black,
+                                      textAlign: TextAlign.left,
                                     ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: CommonText(
-                                        text: controller.netSalary['Years']!,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.black,
-                                        textAlign: TextAlign.left,
-                                      ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: CommonText(
+                                      text: controller.netSalary['Years']!,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.black,
+                                      textAlign: TextAlign.left,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
 

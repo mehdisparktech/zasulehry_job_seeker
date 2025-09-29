@@ -113,7 +113,7 @@ class _AuthenticatorAppScreenState extends State<AuthenticatorAppScreen> {
               CommonTextField(
                 controller: codeController,
                 hintText: "Enter Your Code",
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.phone,
                 borderRadius: 8,
               ),
 

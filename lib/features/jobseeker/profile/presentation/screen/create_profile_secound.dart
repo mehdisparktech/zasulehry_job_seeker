@@ -53,7 +53,7 @@ class CreateProfileSecound extends StatelessWidget {
 
                 /// Grid of placeholder cards
                 _buildPlaceholderGrid(),
-                SizedBox(height: 8.h),
+                SizedBox(height: 16.h),
 
                 /// Add More Button
                 _buildAddMoreButton(),
@@ -146,6 +146,7 @@ class CreateProfileSecound extends StatelessWidget {
   Widget _buildPlaceholderGrid() {
     return GridView.builder(
       shrinkWrap: true,
+      padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,

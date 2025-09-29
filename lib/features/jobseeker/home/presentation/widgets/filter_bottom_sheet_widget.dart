@@ -15,29 +15,32 @@ class FilterBottomSheetWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<JobSeekerHomeController>();
 
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.r),
-          topRight: Radius.circular(20.r),
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.r),
+            topRight: Radius.circular(20.r),
+          ),
         ),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildHeader(),
-            8.height,
-            _buildDropdowns(controller),
-            16.height,
-            _buildSalarySection(controller),
-            16.height,
-            _buildDistanceSection(controller),
-            20.height,
-            _buildActionButtons(controller),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(),
+              8.height,
+              _buildDropdowns(controller),
+              16.height,
+              _buildSalarySection(controller),
+              16.height,
+              _buildDistanceSection(controller),
+              20.height,
+              _buildActionButtons(controller),
+              10.height,
+            ],
+          ),
         ),
       ),
     );

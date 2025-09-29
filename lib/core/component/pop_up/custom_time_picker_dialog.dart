@@ -58,7 +58,7 @@ class CustomTimePickerDialog {
                           ),
                           child: TextField(
                             controller: hourController,
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.phone,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 16.sp,
@@ -105,7 +105,7 @@ class CustomTimePickerDialog {
                           ),
                           child: TextField(
                             controller: minuteController,
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.phone,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 16.sp,

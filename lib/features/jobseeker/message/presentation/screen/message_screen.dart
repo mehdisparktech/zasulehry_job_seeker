@@ -154,51 +154,53 @@ class _MessageScreenState extends State<MessageScreen> {
                 ),
 
           /// bottom Navigation Bar Section starts here
-          bottomNavigationBar: AnimatedPadding(
-            padding: MediaQuery.of(context).viewInsets,
-            duration: const Duration(milliseconds: 100),
-            curve: Curves.decelerate,
-            child: Container(
-              padding: EdgeInsets.only(
-                left: 16.w,
-                right: 16.w,
-                bottom: 40.h,
-                top: 8.h,
-              ),
-              decoration: const BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+          bottomNavigationBar: SafeArea(
+            child: AnimatedPadding(
+              padding: MediaQuery.of(context).viewInsets,
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.decelerate,
+              child: Container(
+                padding: EdgeInsets.only(
+                  left: 16.w,
+                  right: 16.w,
+                  bottom: 10.h,
+                  top: 8.h,
                 ),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    /// Send message text filed here
-                    child: CommonTextField(
-                      hintText: AppString.typeHere,
-                      fillColor: AppColors.white,
-                      borderColor: Colors.grey,
-                      borderRadius: 24,
-                      paddingVertical: 12,
-                      controller: controller.messageController,
-                      onSubmitted: (p0) => controller.addNewMessage(),
+                decoration: const BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      /// Send message text filed here
+                      child: CommonTextField(
+                        hintText: AppString.typeHere,
+                        fillColor: AppColors.white,
+                        borderColor: Colors.grey,
+                        borderRadius: 24,
+                        paddingVertical: 12,
+                        controller: controller.messageController,
+                        onSubmitted: (p0) => controller.addNewMessage(),
+                      ),
                     ),
-                  ),
-                  10.width,
-                  _buildButtonIcon(
-                    onTap: () {
-                      controller.pickImage();
-                    },
-                    image: AppImages.image,
-                  ),
-                  8.width,
-                  _buildButtonIcon(
-                    onTap: controller.addNewMessage,
-                    image: AppImages.send,
-                  ),
-                ],
+                    10.width,
+                    _buildButtonIcon(
+                      onTap: () {
+                        controller.pickImage();
+                      },
+                      image: AppImages.image,
+                    ),
+                    8.width,
+                    _buildButtonIcon(
+                      onTap: controller.addNewMessage,
+                      image: AppImages.send,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

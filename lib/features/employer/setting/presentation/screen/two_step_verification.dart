@@ -195,7 +195,7 @@ class _TwoStepVerificationScreenState extends State<TwoStepVerificationScreen> {
                       },
                       activeColor: AppColors.primaryColor,
                       activeTrackColor: AppColors.activeTrackColor,
-                      inactiveThumbColor: AppColors.primaryColor,
+                      inactiveThumbColor: AppColors.blue200,
                       inactiveTrackColor: AppColors.activeTrackColor,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
