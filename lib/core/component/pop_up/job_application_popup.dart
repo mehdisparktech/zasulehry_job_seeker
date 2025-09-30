@@ -332,7 +332,7 @@ class _JobApplicationPopupState extends State<JobApplicationPopup> {
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.all(10.w),
                           ),
-                          keyboardType: TextInputType.phone,
+                          keyboardType: TextInputType.text,
                         ),
                       ),
 

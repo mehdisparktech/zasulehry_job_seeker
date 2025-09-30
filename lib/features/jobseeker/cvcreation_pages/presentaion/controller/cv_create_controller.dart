@@ -67,7 +67,7 @@ class CvCreateController extends GetxController {
   final selectedEducationalInformation = "Educational Information".obs;
   final selectedGrade = "A Grade".obs;
   final selectedYear = "2022".obs;
-  List<String> gradeOptons = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C'];
+  List<String> gradeOptons = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'D'];
   List<String> yearOptions = ['2020', '2021', '2022', '2023', '2024'];
 
   // Options
@@ -184,10 +184,18 @@ class CvCreateController extends GetxController {
       );
       if (image != null) {
         selectedProfileImage.value = image.path;
-        Get.snackbar('Success', 'Profile image selected successfully!', duration: const Duration(seconds: 1));
+        Get.snackbar(
+          'Success',
+          'Profile image selected successfully!',
+          duration: const Duration(seconds: 1),
+        );
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to pick image: $e', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Failed to pick image: $e',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
@@ -233,16 +241,28 @@ class CvCreateController extends GetxController {
         ),
       );
       clearWorkExperienceFields();
-      Get.snackbar('Success', 'Work experience added successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Work experience added successfully!',
+        duration: const Duration(seconds: 1),
+      );
     } else {
-      Get.snackbar('Error', 'Please fill in required fields', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Please fill in required fields',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
   void removeWorkExperience(int index) {
     if (index >= 0 && index < workExperiences.length) {
       workExperiences.removeAt(index);
-      Get.snackbar('Success', 'Work experience removed successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Work experience removed successfully!',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
@@ -260,18 +280,34 @@ class CvCreateController extends GetxController {
     if (skillText.isNotEmpty && !skills.contains(skillText)) {
       skills.add(skillText);
       skillsController.clear();
-      Get.snackbar('Success', 'Skill added successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Skill added successfully!',
+        duration: const Duration(seconds: 1),
+      );
     } else if (skills.contains(skillText)) {
-      Get.snackbar('Warning', 'Skill already exists', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Warning',
+        'Skill already exists',
+        duration: const Duration(seconds: 1),
+      );
     } else {
-      Get.snackbar('Error', 'Please enter a skill', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Please enter a skill',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
   void removeSkill(int index) {
     if (index >= 0 && index < skills.length) {
       skills.removeAt(index);
-      Get.snackbar('Success', 'Skill removed successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Skill removed successfully!',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
@@ -289,16 +325,28 @@ class CvCreateController extends GetxController {
         ),
       );
       clearEducationFields();
-      Get.snackbar('Success', 'Education added successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Education added successfully!',
+        duration: const Duration(seconds: 1),
+      );
     } else {
-      Get.snackbar('Error', 'Please fill in required fields', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Please fill in required fields',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
   void removeEducation(int index) {
     if (index >= 0 && index < educationList.length) {
       educationList.removeAt(index);
-      Get.snackbar('Success', 'Education removed successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Education removed successfully!',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
@@ -321,16 +369,28 @@ class CvCreateController extends GetxController {
         ),
       );
       clearCertificateFields();
-      Get.snackbar('Success', 'Certificate added successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Certificate added successfully!',
+        duration: const Duration(seconds: 1),
+      );
     } else {
-      Get.snackbar('Error', 'Please enter certificate name', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Please enter certificate name',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
   void removeCertificate(int index) {
     if (index >= 0 && index < certificates.length) {
       certificates.removeAt(index);
-      Get.snackbar('Success', 'Certificate removed successfully!', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Success',
+        'Certificate removed successfully!',
+        duration: const Duration(seconds: 1),
+      );
     }
   }
 
@@ -356,15 +416,27 @@ class CvCreateController extends GetxController {
   // Form Validation & Save
   bool validateForm() {
     if (nameController.text.isEmpty) {
-      Get.snackbar('Error', 'Name is required', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Name is required',
+        duration: const Duration(seconds: 1),
+      );
       return false;
     }
     if (emailController.text.isEmpty) {
-      Get.snackbar('Error', 'Email is required', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Email is required',
+        duration: const Duration(seconds: 1),
+      );
       return false;
     }
     if (contactController.text.isEmpty) {
-      Get.snackbar('Error', 'Contact number is required', duration: const Duration(seconds: 1));
+      Get.snackbar(
+        'Error',
+        'Contact number is required',
+        duration: const Duration(seconds: 1),
+      );
       return false;
     }
     return true;
