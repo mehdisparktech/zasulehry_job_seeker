@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/config/route/app_routes.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/controller/job_seeker_home_controller.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/component/text/common_text.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
@@ -26,6 +27,8 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
   final TextEditingController salaryController = TextEditingController();
   final TextEditingController aboutController = TextEditingController();
   final TextEditingController workOverviewController = TextEditingController();
+  final JobSeekerHomeController jobSeekerHomeController =
+      Get.put<JobSeekerHomeController>(JobSeekerHomeController());
 
   String? selectedCategory;
   String? selectedSubCategory;
@@ -105,17 +108,20 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
               _buildSectionLabel("Experience"),
               CommonTextField(
                 controller: experienceController,
-                hintText: "12 Years",
+                hintText: "12 Years 6 Months",
                 fillColor: AppColors.white,
                 borderColor: AppColors.background,
                 textColor: AppColors.black,
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.text,
               ),
 
               16.height,
 
+              _buildSalarySection(jobSeekerHomeController),
+              16.height,
+
               // Salary Field
-              _buildSectionLabel("Salary (Hourly/Monthly/Yearly)"),
+              //_buildSectionLabel("Enter your Salary"),
               CommonTextField(
                 controller: salaryController,
                 hintText: "\$250",
@@ -610,5 +616,78 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
         ),
       ),
     );
+  }
+
+  Widget _buildSalarySection(JobSeekerHomeController controller) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            CommonText(
+              text: 'Salary',
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.black,
+            ),
+            12.width,
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(child: _buildSegmentButton('Hourly', 0, controller)),
+                  6.width,
+                  Expanded(
+                    child: _buildSegmentButton('Monthly', 1, controller),
+                  ),
+                  6.width,
+                  Expanded(child: _buildSegmentButton('Yearly', 2, controller)),
+                ],
+              ),
+            ),
+          ],
+        ),
+        8.height,
+      ],
+    );
+  }
+
+  Widget _buildSegmentButton(
+    String text,
+    int index,
+    JobSeekerHomeController controller,
+  ) {
+    return Obx(() {
+      final bool selected = controller.salaryTypeIndex.value == index;
+      return GestureDetector(
+        onTap: () => controller.updateSalaryType(index),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+          decoration: BoxDecoration(
+            color: selected
+                ? AppColors.primaryColor
+                : AppColors.blue200.withOpacity(0.5),
+            gradient: selected
+                ? LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color(0xFF083E4B),
+                      Color(0xFF074E5E),
+                      Color(0xFF0288A6),
+                    ],
+                    stops: [0.0, 0.5, 1.0],
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          child: CommonText(
+            text: text,
+            color: selected ? Colors.white : AppColors.black,
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      );
+    });
   }
 }

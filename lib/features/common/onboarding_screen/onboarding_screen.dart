@@ -65,7 +65,7 @@ class OnboardingScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 20),
                 child: CommonButton(
                   titleText: AppString.getStarted,
-                  onTap: () => Get.toNamed(AppRoutes.signIn),
+                  onTap: () => Get.toNamed(AppRoutes.selectRole),
                 ),
               ),
             ],

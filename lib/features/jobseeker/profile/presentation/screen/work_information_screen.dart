@@ -419,7 +419,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
 
               // Experience Display
               _buildSectionLabel("Experience"),
-              _buildInfoDisplay("12 Years"),
+              _buildInfoDisplay("12 Years 6 Months"),
 
               16.height,
 

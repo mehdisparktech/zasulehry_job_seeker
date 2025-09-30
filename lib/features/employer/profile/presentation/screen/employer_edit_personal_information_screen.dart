@@ -179,7 +179,7 @@ class _EmployerPersonalInformationScreenState
                   // Location Field
                   _buildFormField(
                     hintText: "DE No.",
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.text,
                   ),
 
                   16.height,

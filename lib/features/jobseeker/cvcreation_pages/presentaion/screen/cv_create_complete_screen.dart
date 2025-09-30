@@ -39,13 +39,14 @@ class CvCreateCompleteScreen extends StatelessWidget {
                 _buildCurrentWorking(),
                 24.height,
                 _buildSkillsActivities(),
-                100.height,
+                24.height,
+                _buildBottomSheet(),
+                24.height,
               ],
             ),
           ),
         ),
       ),
-      bottomSheet: _buildBottomSheet(),
     );
   }
 
@@ -326,7 +327,7 @@ class CvCreateCompleteScreen extends StatelessWidget {
     return Container(
       color: AppColors.white,
       child: Padding(
-        padding: EdgeInsets.all(24.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Row(
           children: [
             Expanded(
@@ -337,7 +338,7 @@ class CvCreateCompleteScreen extends StatelessWidget {
                 titleColor: AppColors.blue500,
               ),
             ),
-            6.width,
+            30.width,
             Expanded(child: CommonButton(titleText: "Upload")),
           ],
         ),

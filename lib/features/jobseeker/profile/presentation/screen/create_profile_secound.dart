@@ -38,53 +38,55 @@ class CreateProfileSecound extends StatelessWidget {
           ),
 
           /// Body Sections Starts here
-          body: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// Attachment Section
-                _buildSectionTitle("Attachment"),
-                SizedBox(height: 16.h),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// Attachment Section
+                  _buildSectionTitle("Attachment"),
+                  SizedBox(height: 16.h),
 
-                /// Upload Documents Card
-                _buildUploadDocumentsCard(),
-                SizedBox(height: 16.h),
+                  /// Upload Documents Card
+                  _buildUploadDocumentsCard(),
+                  SizedBox(height: 16.h),
 
-                /// Grid of placeholder cards
-                _buildPlaceholderGrid(),
-                SizedBox(height: 16.h),
+                  /// Grid of placeholder cards
+                  _buildPlaceholderGrid(),
+                  SizedBox(height: 16.h),
 
-                /// Add More Button
-                _buildAddMoreButton(),
-                SizedBox(height: 24.h),
+                  /// Add More Button
+                  _buildAddMoreButton(),
+                  SizedBox(height: 24.h),
 
-                /// About Yourself Section
-                _buildSectionTitle("About Your Self"),
-                SizedBox(height: 16.h),
-                _buildTextArea(
-                  controller: controller.aboutYourselfController,
-                  hintText: "Type Here",
-                ),
-                SizedBox(height: 24.h),
+                  /// About Yourself Section
+                  _buildSectionTitle("About Your Self"),
+                  SizedBox(height: 16.h),
+                  _buildTextArea(
+                    controller: controller.aboutYourselfController,
+                    hintText: "Type Here",
+                  ),
+                  SizedBox(height: 24.h),
 
-                /// Work Overview Section
-                _buildSectionTitle("Work Overview"),
-                SizedBox(height: 16.h),
-                _buildTextArea(
-                  controller: controller.workOverviewController,
-                  hintText: "Type Here",
-                ),
-                SizedBox(height: 16.h),
+                  /// Work Overview Section
+                  _buildSectionTitle("Work Overview"),
+                  SizedBox(height: 16.h),
+                  _buildTextArea(
+                    controller: controller.workOverviewController,
+                    hintText: "Type Here",
+                  ),
+                  SizedBox(height: 16.h),
 
-                /// Add Other Button
-                _buildAddOtherButton(context),
-                SizedBox(height: 16.h),
+                  /// Add Other Button
+                  _buildAddOtherButton(context),
+                  SizedBox(height: 16.h),
 
-                /// Confirm Button
-                _buildConfirmButton(controller),
-                SizedBox(height: 24.h),
-              ],
+                  /// Confirm Button
+                  _buildConfirmButton(controller),
+                  SizedBox(height: 24.h),
+                ],
+              ),
             ),
           ),
         );

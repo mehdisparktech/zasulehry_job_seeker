@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
+import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
+import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
+import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/controller/job_seeker_home_controller.dart';
 import '../../../../../core/component/text_field/common_text_field.dart';
 import '../controller/profile_controller.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/utils/helpers/other_helper.dart';
 
 class EditProfileAllFiled extends StatelessWidget {
-  const EditProfileAllFiled({super.key, required this.controller});
+  EditProfileAllFiled({super.key, required this.controller});
 
   final ProfileController controller;
+  final JobSeekerHomeController jobSeekerHomeController =
+      Get.put<JobSeekerHomeController>(JobSeekerHomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -96,12 +102,14 @@ class EditProfileAllFiled extends StatelessWidget {
         ),
 
         SizedBox(height: 16.h),
+        _buildSalarySection(jobSeekerHomeController),
+        SizedBox(height: 16.h),
 
         /// Salary Field
         CommonTextField(
           controller: controller.salaryController,
-          hintText: "Salary Hourly/Monthly/Yearly",
-          keyboardType: TextInputType.text,
+          hintText: "Enter your Salary",
+          keyboardType: TextInputType.phone,
         ),
 
         SizedBox(height: 16.h),
@@ -318,5 +326,78 @@ class EditProfileAllFiled extends StatelessWidget {
     //     content: Text("Resume upload functionality to be implemented"),
     //   ),
     // );
+  }
+
+  Widget _buildSalarySection(JobSeekerHomeController controller) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            CommonText(
+              text: 'Salary',
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.black,
+            ),
+            12.width,
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(child: _buildSegmentButton('Hourly', 0, controller)),
+                  6.width,
+                  Expanded(
+                    child: _buildSegmentButton('Monthly', 1, controller),
+                  ),
+                  6.width,
+                  Expanded(child: _buildSegmentButton('Yearly', 2, controller)),
+                ],
+              ),
+            ),
+          ],
+        ),
+        8.height,
+      ],
+    );
+  }
+
+  Widget _buildSegmentButton(
+    String text,
+    int index,
+    JobSeekerHomeController controller,
+  ) {
+    return Obx(() {
+      final bool selected = controller.salaryTypeIndex.value == index;
+      return GestureDetector(
+        onTap: () => controller.updateSalaryType(index),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+          decoration: BoxDecoration(
+            color: selected
+                ? AppColors.primaryColor
+                : AppColors.blue200.withOpacity(0.5),
+            gradient: selected
+                ? LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color(0xFF083E4B),
+                      Color(0xFF074E5E),
+                      Color(0xFF0288A6),
+                    ],
+                    stops: [0.0, 0.5, 1.0],
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          child: CommonText(
+            text: text,
+            color: selected ? Colors.white : AppColors.black,
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      );
+    });
   }
 }
