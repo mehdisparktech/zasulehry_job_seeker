@@ -399,6 +399,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
                 'Job posting has been withdrawn successfully',
                 backgroundColor: AppColors.primaryColor,
                 colorText: Colors.white,
+                duration: const Duration(seconds: 1),
               );
             },
             child: CommonText(

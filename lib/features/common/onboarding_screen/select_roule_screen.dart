@@ -35,7 +35,7 @@ class SelectRouleScreen extends StatelessWidget {
                   imageSrc: AppImages.seeker,
                   onTap: () {
                     LocalStorage.userRole = UserRole.jobSeeker;
-                    Get.toNamed(AppRoutes.signIn);
+                    Get.toNamed(AppRoutes.signUp);
                   },
                   isSeleted: true,
                 ),
@@ -45,7 +45,7 @@ class SelectRouleScreen extends StatelessWidget {
                   imageSrc: AppImages.employer,
                   onTap: () {
                     LocalStorage.userRole = UserRole.employer;
-                    Get.toNamed(AppRoutes.signIn);
+                    Get.toNamed(AppRoutes.signUp);
                   },
                   isSeleted: false,
                 ),

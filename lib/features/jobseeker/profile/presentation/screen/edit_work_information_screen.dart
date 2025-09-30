@@ -134,6 +134,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                       "Add more images functionality will be implemented",
                       backgroundColor: AppColors.primaryColor,
                       colorText: AppColors.white,
+                      duration: const Duration(milliseconds: 100),
                     );
                   },
                   child: Container(
