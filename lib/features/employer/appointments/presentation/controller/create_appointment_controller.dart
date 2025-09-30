@@ -98,6 +98,7 @@ class CreateAppointmentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }
@@ -109,6 +110,7 @@ class CreateAppointmentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }
@@ -120,6 +122,7 @@ class CreateAppointmentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }
@@ -131,6 +134,7 @@ class CreateAppointmentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }
@@ -143,6 +147,7 @@ class CreateAppointmentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }
@@ -180,6 +185,7 @@ class CreateAppointmentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
 
       // Navigate back to appointments screen
@@ -196,6 +202,7 @@ class CreateAppointmentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
     }
   }

@@ -277,6 +277,7 @@
 //                     "Download functionality will be implemented",
 //                     backgroundColor: AppColors.primaryColor,
 //                     colorText: AppColors.white,
+//                     duration: const Duration(seconds: 1),
 //                   );
 //                 },
 //                 child: CommonImage(imageSrc: AppImages.download),
@@ -540,6 +541,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                     "Download functionality will be implemented",
                     backgroundColor: AppColors.primaryColor,
                     colorText: AppColors.white,
+                    duration: const Duration(seconds: 1),
                   );
                 },
                 child: CommonImage(imageSrc: AppImages.download),

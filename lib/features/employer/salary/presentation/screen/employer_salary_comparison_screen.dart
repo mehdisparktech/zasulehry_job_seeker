@@ -150,6 +150,7 @@ class SalaryComparisonScreen extends StatelessWidget {
                     'Comparison saved successfully',
                     backgroundColor: AppColors.primaryColor,
                     colorText: AppColors.white,
+                    duration: const Duration(seconds: 1),
                   );
                 },
                 buttonColor: AppColors.white,
@@ -337,6 +338,7 @@ class SalaryComparisonScreen extends StatelessWidget {
                             'Comparison saved successfully',
                             backgroundColor: AppColors.primaryColor,
                             colorText: AppColors.white,
+                            duration: const Duration(seconds: 1),
                           );
                         },
                       ),

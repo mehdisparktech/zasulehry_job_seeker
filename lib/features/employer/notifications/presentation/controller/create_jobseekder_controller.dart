@@ -62,6 +62,7 @@ class CreateJobseekerAlertController extends GetxController {
           'Please accept the Privacy Policy and Terms & Conditions',
           backgroundColor: Colors.red,
           colorText: AppColors.white,
+          duration: const Duration(seconds: 1),
         );
         return;
       }
@@ -72,6 +73,7 @@ class CreateJobseekerAlertController extends GetxController {
         'Jobseeker alert created successfully',
         backgroundColor: AppColors.primaryColor,
         colorText: AppColors.white,
+        duration: const Duration(seconds: 1),
       );
       Get.back();
     }

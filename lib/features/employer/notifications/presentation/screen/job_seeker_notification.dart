@@ -23,7 +23,7 @@ class JobSeekerNotification {
 
 class JobSeekersScreen extends StatelessWidget {
   final String title;
-  const JobSeekersScreen({super.key, this.title = "'Job Alerts'"});
+  const JobSeekersScreen({super.key, this.title = "Job Alerts"});
 
   @override
   Widget build(BuildContext context) {
@@ -380,6 +380,7 @@ class EnhancedJobSeekersController extends GetxController {
       notification.title,
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -389,6 +390,7 @@ class EnhancedJobSeekersController extends GetxController {
       'Opening notification settings',
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 }

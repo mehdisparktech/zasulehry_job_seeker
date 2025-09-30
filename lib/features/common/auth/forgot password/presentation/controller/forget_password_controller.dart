@@ -94,7 +94,7 @@ class ForgetPasswordController extends GetxController {
       Utils.successSnackBar(response.statusCode.toString(), response.message);
       Get.toNamed(AppRoutes.verifyEmail);
     } else {
-      Get.snackbar(response.statusCode.toString(), response.message);
+      Get.snackbar(response.statusCode.toString(), response.message, duration: const Duration(seconds: 1));
     }
     isLoadingEmail = false;
     update();
@@ -118,7 +118,7 @@ class ForgetPasswordController extends GetxController {
       forgetPasswordToken = data['data']['forgetPasswordToken'];
       Get.toNamed(AppRoutes.createPassword);
     } else {
-      Get.snackbar(response.statusCode.toString(), response.message);
+      Get.snackbar(response.statusCode.toString(), response.message, duration: const Duration(seconds: 1));
     }
 
     isLoadingVerify = false;
@@ -161,7 +161,7 @@ class ForgetPasswordController extends GetxController {
       passwordController.clear();
       confirmPasswordController.clear();
     } else {
-      Get.snackbar(response.statusCode.toString(), response.message);
+      Get.snackbar(response.statusCode.toString(), response.message, duration: const Duration(seconds: 1));
     }
     isLoadingReset = false;
     update();

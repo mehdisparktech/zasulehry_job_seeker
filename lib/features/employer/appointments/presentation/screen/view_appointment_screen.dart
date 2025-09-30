@@ -53,6 +53,7 @@ class _ViewAppointmentScreenState extends State<ViewAppointmentScreen> {
                       snackPosition: SnackPosition.BOTTOM,
                       backgroundColor: AppColors.blue500,
                       colorText: AppColors.white,
+                      duration: const Duration(seconds: 1),
                     );
                   },
                   buttonRadius: 8.r,

@@ -11,6 +11,7 @@ class Utils {
       colorText: AppColors.white,
       backgroundColor: AppColors.black,
       snackPosition: SnackPosition.BOTTOM,
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -21,6 +22,7 @@ class Utils {
       colorText: AppColors.white,
       backgroundColor: AppColors.red,
       snackPosition: SnackPosition.TOP,
+      duration: const Duration(seconds: 1),
     );
   }
 }

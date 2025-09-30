@@ -96,6 +96,7 @@ class EmployerSalaryCalculatorController extends GetxController {
       'More information about salary calculation',
       backgroundColor: Colors.blue,
       colorText: Colors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 }

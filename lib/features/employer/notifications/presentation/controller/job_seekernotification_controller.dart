@@ -55,6 +55,7 @@ class JobSeekersController extends GetxController {
       notification.title,
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -65,6 +66,7 @@ class JobSeekersController extends GetxController {
       'Opening settings',
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 }

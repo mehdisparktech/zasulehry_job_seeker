@@ -143,6 +143,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                         "Edit Profile functionality will be implemented",
                         backgroundColor: AppColors.primaryColor,
                         colorText: AppColors.white,
+                        duration: const Duration(seconds: 1),
                       );
                     },
                   ),

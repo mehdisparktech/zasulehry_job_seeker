@@ -138,7 +138,7 @@ class _ConnectedAccountsScreenState extends State<ConnectedAccountsScreen> {
                                   ? Colors.green
                                   : Colors.orange,
                               colorText: Colors.white,
-                              duration: const Duration(seconds: 2),
+                              duration: const Duration(seconds: 1),
                             );
                           },
                           activeColor: AppColors.blue500,

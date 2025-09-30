@@ -421,6 +421,7 @@ class EmployerPostedJobsDetailsScreen extends StatelessWidget {
       'Navigate to edit job screen',
       backgroundColor: AppColors.primaryColor,
       colorText: Colors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 }

@@ -120,7 +120,7 @@ class ViewJobDetailsController extends GetxController {
 
   /// Show success message
   void _showSuccessMessage(String message) {
-    Get.snackbar('Success', message, snackPosition: SnackPosition.BOTTOM);
+    Get.snackbar('Success', message, snackPosition: SnackPosition.BOTTOM, duration: const Duration(seconds: 1));
   }
 
   /// Get button text based on apply status

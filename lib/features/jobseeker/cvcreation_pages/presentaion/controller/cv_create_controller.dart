@@ -133,6 +133,7 @@ class CvCreateController extends GetxController {
           'Progress',
           'Moving to step ${currentStep.value + 1}',
           snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 1),
         );
       }
     } else {
@@ -183,10 +184,10 @@ class CvCreateController extends GetxController {
       );
       if (image != null) {
         selectedProfileImage.value = image.path;
-        Get.snackbar('Success', 'Profile image selected successfully!');
+        Get.snackbar('Success', 'Profile image selected successfully!', duration: const Duration(seconds: 1));
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to pick image: $e');
+      Get.snackbar('Error', 'Failed to pick image: $e', duration: const Duration(seconds: 1));
     }
   }
 
@@ -232,16 +233,16 @@ class CvCreateController extends GetxController {
         ),
       );
       clearWorkExperienceFields();
-      Get.snackbar('Success', 'Work experience added successfully!');
+      Get.snackbar('Success', 'Work experience added successfully!', duration: const Duration(seconds: 1));
     } else {
-      Get.snackbar('Error', 'Please fill in required fields');
+      Get.snackbar('Error', 'Please fill in required fields', duration: const Duration(seconds: 1));
     }
   }
 
   void removeWorkExperience(int index) {
     if (index >= 0 && index < workExperiences.length) {
       workExperiences.removeAt(index);
-      Get.snackbar('Success', 'Work experience removed successfully!');
+      Get.snackbar('Success', 'Work experience removed successfully!', duration: const Duration(seconds: 1));
     }
   }
 
@@ -259,18 +260,18 @@ class CvCreateController extends GetxController {
     if (skillText.isNotEmpty && !skills.contains(skillText)) {
       skills.add(skillText);
       skillsController.clear();
-      Get.snackbar('Success', 'Skill added successfully!');
+      Get.snackbar('Success', 'Skill added successfully!', duration: const Duration(seconds: 1));
     } else if (skills.contains(skillText)) {
-      Get.snackbar('Warning', 'Skill already exists');
+      Get.snackbar('Warning', 'Skill already exists', duration: const Duration(seconds: 1));
     } else {
-      Get.snackbar('Error', 'Please enter a skill');
+      Get.snackbar('Error', 'Please enter a skill', duration: const Duration(seconds: 1));
     }
   }
 
   void removeSkill(int index) {
     if (index >= 0 && index < skills.length) {
       skills.removeAt(index);
-      Get.snackbar('Success', 'Skill removed successfully!');
+      Get.snackbar('Success', 'Skill removed successfully!', duration: const Duration(seconds: 1));
     }
   }
 
@@ -288,16 +289,16 @@ class CvCreateController extends GetxController {
         ),
       );
       clearEducationFields();
-      Get.snackbar('Success', 'Education added successfully!');
+      Get.snackbar('Success', 'Education added successfully!', duration: const Duration(seconds: 1));
     } else {
-      Get.snackbar('Error', 'Please fill in required fields');
+      Get.snackbar('Error', 'Please fill in required fields', duration: const Duration(seconds: 1));
     }
   }
 
   void removeEducation(int index) {
     if (index >= 0 && index < educationList.length) {
       educationList.removeAt(index);
-      Get.snackbar('Success', 'Education removed successfully!');
+      Get.snackbar('Success', 'Education removed successfully!', duration: const Duration(seconds: 1));
     }
   }
 
@@ -320,16 +321,16 @@ class CvCreateController extends GetxController {
         ),
       );
       clearCertificateFields();
-      Get.snackbar('Success', 'Certificate added successfully!');
+      Get.snackbar('Success', 'Certificate added successfully!', duration: const Duration(seconds: 1));
     } else {
-      Get.snackbar('Error', 'Please enter certificate name');
+      Get.snackbar('Error', 'Please enter certificate name', duration: const Duration(seconds: 1));
     }
   }
 
   void removeCertificate(int index) {
     if (index >= 0 && index < certificates.length) {
       certificates.removeAt(index);
-      Get.snackbar('Success', 'Certificate removed successfully!');
+      Get.snackbar('Success', 'Certificate removed successfully!', duration: const Duration(seconds: 1));
     }
   }
 
@@ -355,15 +356,15 @@ class CvCreateController extends GetxController {
   // Form Validation & Save
   bool validateForm() {
     if (nameController.text.isEmpty) {
-      Get.snackbar('Error', 'Name is required');
+      Get.snackbar('Error', 'Name is required', duration: const Duration(seconds: 1));
       return false;
     }
     if (emailController.text.isEmpty) {
-      Get.snackbar('Error', 'Email is required');
+      Get.snackbar('Error', 'Email is required', duration: const Duration(seconds: 1));
       return false;
     }
     if (contactController.text.isEmpty) {
-      Get.snackbar('Error', 'Contact number is required');
+      Get.snackbar('Error', 'Contact number is required', duration: const Duration(seconds: 1));
       return false;
     }
     return true;
@@ -377,6 +378,7 @@ class CvCreateController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
     }
   }

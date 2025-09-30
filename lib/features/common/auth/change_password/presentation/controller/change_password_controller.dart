@@ -40,7 +40,7 @@ class ChangePasswordController extends GetxController {
 
       Get.back();
     } else {
-      Get.snackbar(response.statusCode.toString(), response.message);
+      Get.snackbar(response.statusCode.toString(), response.message, duration: const Duration(seconds: 1));
     }
     isLoading = false;
     update();

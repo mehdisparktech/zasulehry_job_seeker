@@ -147,6 +147,7 @@ class CvCreateStep1Screen extends StatelessWidget {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }
@@ -157,6 +158,7 @@ class CvCreateStep1Screen extends StatelessWidget {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       return false;
     }

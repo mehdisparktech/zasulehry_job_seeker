@@ -439,6 +439,7 @@ class _EmployerVerifyAccountScreenState
       snackPosition: SnackPosition.BOTTOM,
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -450,6 +451,7 @@ class _EmployerVerifyAccountScreenState
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: AppColors.red,
         colorText: AppColors.white,
+        duration: const Duration(seconds: 1),
       );
       return;
     }
@@ -461,6 +463,7 @@ class _EmployerVerifyAccountScreenState
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: AppColors.red,
         colorText: AppColors.white,
+        duration: const Duration(seconds: 1),
       );
       return;
     }
@@ -471,6 +474,7 @@ class _EmployerVerifyAccountScreenState
       snackPosition: SnackPosition.BOTTOM,
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
 
     // Navigate back or to next screen

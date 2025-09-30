@@ -114,7 +114,7 @@ class EmployeeEmailScreen extends StatelessWidget {
           if (selectedTab == 0)
             GestureDetector(
               onTap: () {
-                Get.snackbar("success", "successful prohect complete here");
+                Get.snackbar("success", "successful prohect complete here", duration: const Duration(seconds: 1));
               },
               child: Container(
                 decoration: BoxDecoration(

@@ -472,6 +472,7 @@ class CreateProfileSecound extends StatelessWidget {
         SnackBar(
           content: Text("Title: $title\nFeatures: $features"),
           backgroundColor: AppColors.primaryColor,
+          duration: const Duration(seconds: 1),
         ),
       );
 
@@ -486,6 +487,7 @@ class CreateProfileSecound extends StatelessWidget {
         const SnackBar(
           content: Text("Please enter at least one field"),
           backgroundColor: Colors.red,
+          duration: Duration(seconds: 1),
         ),
       );
     }

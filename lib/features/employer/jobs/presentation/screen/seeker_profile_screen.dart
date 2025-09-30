@@ -492,9 +492,10 @@ class SeekerProfileScreen extends StatelessWidget {
                     Get.back();
                     Get.snackbar(
                       'Success',
-                      '$seekerName has been approved for the position',
+                      'Job seeker hired successfully!',
                       backgroundColor: AppColors.primaryColor,
                       colorText: Colors.white,
+                      duration: const Duration(seconds: 1),
                     );
                   },
                   titleText: 'Approve',

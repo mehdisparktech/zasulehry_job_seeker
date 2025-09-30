@@ -113,7 +113,7 @@ class _SmsVerificationPopupState extends State<SmsVerificationPopup> {
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
       snackPosition: SnackPosition.TOP,
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: 1),
     );
   }
 

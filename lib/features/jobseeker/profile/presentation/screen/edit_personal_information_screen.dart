@@ -213,6 +213,7 @@ class _EditPersonalInformationScreenState
                         "Personal information updated successfully",
                         backgroundColor: AppColors.primaryColor,
                         colorText: AppColors.white,
+                        duration: const Duration(seconds: 1),
                       );
                     },
                   ),

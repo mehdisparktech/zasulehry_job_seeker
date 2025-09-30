@@ -164,6 +164,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                     "Work information updated successfully",
                     backgroundColor: AppColors.primaryColor,
                     colorText: AppColors.white,
+                    duration: const Duration(seconds: 1),
                   );
                 },
               ),
@@ -324,6 +325,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
               "Resume upload functionality will be implemented",
               backgroundColor: AppColors.primaryColor,
               colorText: AppColors.white,
+              duration: const Duration(seconds: 1),
             );
           },
           child: Container(
@@ -408,6 +410,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                     "Download functionality will be implemented",
                     backgroundColor: AppColors.primaryColor,
                     colorText: AppColors.white,
+                    duration: const Duration(seconds: 1),
                   );
                 },
                 child: Icon(
@@ -428,6 +431,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
               "Add other resume functionality will be implemented",
               backgroundColor: AppColors.primaryColor,
               colorText: AppColors.white,
+              duration: const Duration(seconds: 1),
             );
           },
           child: Container(
@@ -470,6 +474,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
               "Document upload functionality will be implemented",
               backgroundColor: AppColors.primaryColor,
               colorText: AppColors.white,
+              duration: const Duration(seconds: 1),
             );
           },
           child: Container(
@@ -522,6 +527,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                     "Image upload functionality will be implemented",
                     backgroundColor: AppColors.primaryColor,
                     colorText: AppColors.white,
+                    duration: const Duration(seconds: 1),
                   );
                 },
                 child: Container(
@@ -555,6 +561,7 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                 "Add more images functionality will be implemented",
                 backgroundColor: AppColors.primaryColor,
                 colorText: AppColors.white,
+                duration: const Duration(seconds: 1),
               );
             },
             child: Container(

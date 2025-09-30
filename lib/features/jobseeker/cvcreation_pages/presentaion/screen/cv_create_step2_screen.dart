@@ -351,6 +351,7 @@ class CvCreateStep2Screen extends StatelessWidget {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green,
         colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
     }
   }

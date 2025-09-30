@@ -83,6 +83,7 @@ class _WhatsappSupportPopupState extends State<WhatsappSupportPopup> {
                       colorText: AppColors.white,
                       margin: EdgeInsets.all(16.w),
                       borderRadius: 8.r,
+                      duration: const Duration(seconds: 1),
                     );
                   } else {
                     Get.snackbar(
@@ -92,6 +93,7 @@ class _WhatsappSupportPopupState extends State<WhatsappSupportPopup> {
                       colorText: AppColors.white,
                       margin: EdgeInsets.all(16.w),
                       borderRadius: 8.r,
+                      duration: const Duration(seconds: 1),
                     );
                   }
                 },

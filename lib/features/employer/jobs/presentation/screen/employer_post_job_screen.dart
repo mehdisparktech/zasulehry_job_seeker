@@ -289,30 +289,31 @@ class _EmployerPostJobScreenState extends State<EmployerPostJobScreen> {
   void _handlePostJob() {
     // Validate required fields
     if (selectedCategory.isEmpty) {
-      Get.snackbar("Error", "Please select a category");
+      Get.snackbar("Error", "Please select a category", duration: const Duration(seconds: 1));
       return;
     }
 
     if (selectedSubCategory.isEmpty) {
-      Get.snackbar("Error", "Please select a sub category");
+      Get.snackbar("Error", "Please select a sub category", duration: const Duration(seconds: 1));
       return;
     }
 
     if (deadlineController.text.isEmpty) {
-      Get.snackbar("Error", "Please select a deadline");
+      Get.snackbar("Error", "Please select a deadline", duration: const Duration(seconds: 1));
       return;
     }
 
     if (jobDescriptionController.text.isEmpty) {
-      Get.snackbar("Error", "Please enter job description");
+      Get.snackbar("Error", "Please enter job description", duration: const Duration(seconds: 1));
       return;
     }
 
     Get.snackbar(
-      "Success",
-      "Job posted successfully!",
+      'Success',
+      'Job posted successfully!',
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
 
     // Navigate back to dashboard

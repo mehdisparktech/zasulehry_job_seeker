@@ -217,6 +217,7 @@ class _EmployerCreateInvoiceScreenState
       'Invoice saved as draft',
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 
@@ -224,10 +225,11 @@ class _EmployerCreateInvoiceScreenState
     if (_formKey.currentState?.validate() == true) {
       // Create invoice logic
       Get.snackbar(
-        'Success',
-        'Invoice created successfully',
-        backgroundColor: AppColors.primaryColor,
-        colorText: AppColors.white,
+        'Error',
+        'Please fill all required fields',
+        backgroundColor: AppColors.red,
+        colorText: Colors.white,
+        duration: const Duration(seconds: 1),
       );
       Get.back();
     }

@@ -117,7 +117,7 @@ class EmployerNotificationsScreen extends StatelessWidget {
           if (selectedTab == 0)
             GestureDetector(
               onTap: () {
-                Get.snackbar("success", "successful prohect complete here");
+                Get.snackbar("success", "successful prohect complete here", duration: const Duration(seconds: 1));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -326,6 +326,7 @@ class _NotificationScreenWithTabControllerState
                               'Opening E-Mail Settings',
                               backgroundColor: AppColors.primaryColor,
                               colorText: AppColors.white,
+                              duration: const Duration(seconds: 1),
                             );
                           },
                         ),

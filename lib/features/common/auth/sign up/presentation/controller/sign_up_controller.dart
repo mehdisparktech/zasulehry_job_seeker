@@ -168,7 +168,7 @@ class SignUpController extends GetxController {
       //   Get.offAllNamed(AppRoutes.patientsHome);
       // }
     } else {
-      Get.snackbar(response.statusCode.toString(), response.message);
+      Get.snackbar(response.statusCode.toString(), response.message, duration: const Duration(seconds: 1));
     }
 
     isLoadingVerify = false;

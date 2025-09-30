@@ -30,6 +30,7 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
         'Please select a rating',
         backgroundColor: AppColors.red,
         colorText: AppColors.white,
+        duration: const Duration(seconds: 1),
       );
       return;
     }
@@ -40,6 +41,7 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
         'Please write your review',
         backgroundColor: AppColors.red,
         colorText: AppColors.white,
+        duration: const Duration(seconds: 1),
       );
       return;
     }
@@ -51,6 +53,7 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
       'Thank you for your feedback!',
       backgroundColor: AppColors.primaryColor,
       colorText: AppColors.white,
+      duration: const Duration(seconds: 1),
     );
   }
 

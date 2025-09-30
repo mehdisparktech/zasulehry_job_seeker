@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../core/component/appbar/common_app_bar.dart';
 import '../../../../../core/constants/app_string.dart';
 import '../../../../../core/component/text/common_text.dart';
+import '../../../../../core/constants/app_colors.dart';
 
 class ConnectedAccountsScreen extends StatefulWidget {
   const ConnectedAccountsScreen({super.key});
@@ -175,16 +176,11 @@ class _ConnectedAccountsScreenState extends State<ConnectedAccountsScreen> {
 
                                 // Show connection status
                                 Get.snackbar(
-                                  value ? 'Connected' : 'Disconnected',
-                                  value
-                                      ? '$accountName account connected successfully'
-                                      : '$accountName account disconnected',
-                                  snackPosition: SnackPosition.BOTTOM,
-                                  backgroundColor: value
-                                      ? Colors.green
-                                      : Colors.orange,
-                                  colorText: Colors.white,
-                                  duration: const Duration(seconds: 2),
+                                  'Success',
+                                  'Account connected successfully!',
+                                  backgroundColor: AppColors.primaryColor,
+                                  colorText: AppColors.white,
+                                  duration: const Duration(seconds: 1),
                                 );
                               },
                               activeColor: Colors.blue,

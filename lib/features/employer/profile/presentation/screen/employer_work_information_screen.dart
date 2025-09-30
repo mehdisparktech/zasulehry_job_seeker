@@ -247,6 +247,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
               "Resume upload functionality will be implemented",
               backgroundColor: AppColors.primaryColor,
               colorText: AppColors.white,
+              duration: const Duration(seconds: 1),
             );
           },
           child: Container(
@@ -333,6 +334,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                     "Download functionality will be implemented",
                     backgroundColor: AppColors.primaryColor,
                     colorText: AppColors.white,
+                    duration: const Duration(seconds: 1),
                   );
                 },
                 child: Icon(
@@ -369,6 +371,7 @@ class _WorkInformationScreenState extends State<WorkInformationScreen> {
                 "Image upload functionality will be implemented",
                 backgroundColor: AppColors.primaryColor,
                 colorText: AppColors.white,
+                duration: const Duration(seconds: 1),
               );
             },
             child: Container(
