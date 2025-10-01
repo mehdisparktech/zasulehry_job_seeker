@@ -437,7 +437,13 @@ class _EditWorkInformationScreenState extends State<EditWorkInformationScreen> {
                   duration: const Duration(seconds: 1),
                 );
               },
-              child: CommonImage(imageSrc: AppImages.download),
+              child: Row(
+                children: [
+                  CommonImage(imageSrc: AppImages.view),
+                  16.width,
+                  CommonImage(imageSrc: AppImages.download),
+                ],
+              ),
             ),
           ],
         ),

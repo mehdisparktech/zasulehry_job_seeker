@@ -133,6 +133,13 @@ class ProfileScreen extends StatelessWidget {
                                   Get.toNamed(AppRoutes.termsOfServices),
                             ),
 
+                            /// Impressum Item
+                            Item(
+                              title: AppString.impressum,
+                              image: AppImages.impressum,
+                              onTap: () => Get.toNamed(AppRoutes.impressum),
+                            ),
+
                             // Log Out
                             Item(
                               image: AppImages.logout2,
