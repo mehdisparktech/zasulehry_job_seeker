@@ -44,32 +44,7 @@ class SignUpScreen extends StatelessWidget {
                   spacing: 10,
                   children: [
                     /// Sign UP Instructions here
-                    Center(
-                      child: Container(
-                        width: 100.w,
-                        height: 100.h,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0xFF083E4B),
-                              Color(0xFF074E5E),
-                              Color(0xFF0288A6),
-                            ],
-                            stops: [0.0, 0.4, 1.0],
-                          ),
-                        ),
-                        child: Center(
-                          child: CommonText(
-                            text: 'P',
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                    Center(child: CommonImage(imageSrc: AppImages.logo)),
                     10.height,
                     CommonText(
                       text: AppString.welcomeBack,

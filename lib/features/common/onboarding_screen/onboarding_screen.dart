@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import '../../../../../core/config/route/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,40 +22,9 @@ class OnboardingScreen extends StatelessWidget {
           child: Column(
             children: [
               180.height,
-              Center(
-                child: Container(
-                  width: 100.w,
-                  height: 100.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xFF083E4B),
-                        Color(0xFF074E5E),
-                        Color(0xFF0288A6),
-                      ],
-                      stops: [0.0, 0.4, 1.0],
-                    ),
-                  ),
-                  child: Center(
-                    child: CommonText(
-                      text: 'P',
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.white,
-                    ),
-                  ),
-                ),
-              ),
-              26.height,
-              CommonText(
-                text: AppString.welcometitle,
-                fontSize: 38.sp,
-                color: AppColors.blue500,
-                fontWeight: FontWeight.w700,
-              ),
-              10.height,
+              Center(child: CommonImage(imageSrc: AppImages.logo)),
+
+              40.height,
 
               CommonText(
                 text: AppString.welcomesubtitle,

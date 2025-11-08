@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:zasulehry_job_seeker/core/component/appbar/common_app_bar.dart';
 import 'package:zasulehry_job_seeker/core/component/button/common_button.dart';
+import 'package:zasulehry_job_seeker/core/component/image/common_image.dart';
 import 'package:zasulehry_job_seeker/core/component/text/common_text.dart';
 import 'package:zasulehry_job_seeker/core/component/text_field/common_text_field.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_colors.dart';
+import 'package:zasulehry_job_seeker/core/constants/app_images.dart';
 import 'package:zasulehry_job_seeker/core/constants/app_string.dart';
 import 'package:zasulehry_job_seeker/core/utils/extensions/extension.dart';
 import 'package:zasulehry_job_seeker/features/jobseeker/home/presentation/controller/job_seeker_home_controller.dart';
@@ -30,30 +32,7 @@ class SalaryComparisonScreen extends StatelessWidget {
           child: Column(
             children: [
               // Company Logo
-              Container(
-                width: 100.w,
-                height: 100.h,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF083E4B),
-                      Color(0xFF074E5E),
-                      Color(0xFF0288A6),
-                    ],
-                    stops: [0.0, 0.4, 1.0],
-                  ),
-                ),
-                child: Center(
-                  child: CommonText(
-                    text: 'P',
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.white,
-                  ),
-                ),
-              ),
+              CommonImage(imageSrc: AppImages.logo),
               24.height,
 
               _buildJobSection('Key Words'),

@@ -78,4 +78,6 @@ class AppImages {
   static const String editFile = "$baseurl/edit_file.png";
   static const String activeNotification = "$baseurl/active_notification.png";
   static const String silder = "$baseurl/silder.png";
+
+  static const String logo = "$baseurl/logo.png";
 }
